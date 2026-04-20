@@ -1,0 +1,183 @@
+version: '3'
+
+# Taskfile for Agentic Workflows Presentation
+# Requires: go-task (https://taskfile.dev/)
+# Install: brew install go-task (macOS) or go install github.com/go-task/task/v3/cmd/task@latest
+
+vars:
+  PROJECT_NAME: agentic-workflows-presentation
+  NODE_VERSION: 18
+  NPM_CMD: npm
+
+tasks:
+  default:
+    desc: Show available tasks
+    cmds:
+      - task --list
+
+  setup:
+    desc: Set up development environment (install dependencies)
+    cmds:
+      - echo "Setting up {{.PROJECT_NAME}}..."
+      - node --version || (echo "Node.js {{.NODE_VERSION}}+ required" && exit 1)
+      - "{{.NPM_CMD}} --version"
+      - "{{.NPM_CMD}} install"
+      - echo "✓ Dependencies installed successfully"
+    sources:
+      - package.json
+      - package-lock.json
+    generates:
+      - node_modules/**
+
+  dev:
+    desc: Start development server with hot reload
+    deps: [setup]
+    cmds:
+      - echo "Starting Slidev development server..."
+      - "{{.NPM_CMD}} run dev"
+
+  build:
+    desc: Build presentation for production
+    deps: [setup]
+    cmds:
+      - echo "Building presentation..."
+      - "{{.NPM_CMD}} run build"
+      - echo "✓ Build complete - output in dist/"
+    sources:
+      - slides.md
+      - layouts/**/*.vue
+      - components/**/*.vue
+      - styles/**/*.css
+      - public/**/*
+      - slidev.config.ts
+    generates:
+      - dist/**
+
+  export:
+    desc: Export presentation to PDF
+    deps: [setup]
+    cmds:
+      - echo "Exporting presentation to PDF..."
+      - "{{.NPM_CMD}} run export"
+      - echo "✓ PDF exported successfully"
+    sources:
+      - slides.md
+      - layouts/**/*.vue
+      - components/**/*.vue
+      - styles/**/*.css
+      - public/**/*
+    generates:
+      - slides-export.pdf
+
+  preview:
+    desc: Preview built presentation
+    deps: [build]
+    cmds:
+      - echo "Previewing built presentation..."
+      - npx vite preview --outDir dist
+
+  clean:
+    desc: Clean build artifacts and caches
+    cmds:
+      - echo "Cleaning build artifacts..."
+      - rm -rf dist/
+      - rm -rf .slidev/
+      - rm -rf node_modules/.cache/
+      - rm -f slides-export.pdf
+      - echo "✓ Clean complete"
+
+  clean:all:
+    desc: Clean everything including dependencies
+    cmds:
+      - task: clean
+      - echo "Removing node_modules..."
+      - rm -rf node_modules/
+      - echo "✓ Complete clean finished"
+
+  lint:
+    desc: Lint markdown and code files
+    cmds:
+      - echo "Linting markdown files..."
+      - npx markdownlint slides.md || echo "⚠ Markdown linting issues found"
+      - echo "Linting Vue files..."
+      - npx eslint 'layouts/**/*.vue' 'components/**/*.vue' --fix || echo "⚠ ESLint issues found"
+
+  format:
+    desc: Format code with Prettier
+    cmds:
+      - echo "Formatting code..."
+      - npx prettier --write "**/*.{md,vue,ts,js,json,css}"
+      - echo "✓ Formatting complete"
+
+  test:examples:
+    desc: Test all code examples for syntax and execution
+    cmds:
+      - echo "Testing code examples..."
+      - |
+        for example in examples/*/; do
+          if [ -f "$example/package.json" ]; then
+            echo "Testing $example..."
+            (cd "$example" && npm install && npm test)
+          fi
+        done
+      - echo "✓ All examples tested"
+
+  validate:
+    desc: Validate presentation structure and content
+    cmds:
+      - echo "Validating presentation..."
+      - node --version
+      - test -f slides.md || (echo "✗ slides.md missing" && exit 1)
+      - test -f slidev.config.ts || (echo "✗ slidev.config.ts missing" && exit 1)
+      - test -d layouts || (echo "✗ layouts/ directory missing" && exit 1)
+      - test -d components || (echo "✗ components/ directory missing" && exit 1)
+      - test -d styles || (echo "✗ styles/ directory missing" && exit 1)
+      - test -d public || (echo "✗ public/ directory missing" && exit 1)
+      - test -d examples || (echo "✗ examples/ directory missing" && exit 1)
+      - echo "✓ Validation complete - all required files present"
+
+  presenter:
+    desc: Open presentation in presenter mode
+    deps: [dev]
+    cmds:
+      - echo "Opening presenter mode..."
+      - open http://localhost:3030/presenter
+
+  ci:
+    desc: Run CI checks (validate, lint, build)
+    cmds:
+      - task: validate
+      - task: lint
+      - task: build
+      - echo "✓ CI checks passed"
+
+  help:
+    desc: Show detailed help and usage examples
+    cmds:
+      - |
+        cat << 'EOF'
+        === Agentic Workflows Presentation - Task Runner ===
+
+        Quick Start:
+          task setup    # Install dependencies
+          task dev      # Start development server
+
+        Building:
+          task build    # Build for production
+          task export   # Export to PDF
+          task preview  # Preview built presentation
+
+        Development:
+          task lint     # Lint code
+          task format   # Format code
+          task validate # Validate structure
+
+        Testing:
+          task test:examples  # Test code examples
+
+        Cleanup:
+          task clean     # Remove build artifacts
+          task clean:all # Remove everything including node_modules
+
+        Full documentation - See README.md
+        EOF
