@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #ff6600; }
+      .label { font: 16px sans-serif; fill: #333; }
+      .small-label { font: 14px sans-serif; fill: #333; }
+      .box { fill: #fff; stroke: #333; stroke-width: 2; }
+      .agent-box { fill: #e6f2ff; stroke: #333; stroke-width: 2; }
+      .human-box { fill: #ffe6cc; stroke: #333; stroke-width: 2; }
+      .decision-box { fill: #fff3cd; stroke: #333; stroke-width: 2; }
+      .arrow { stroke: #ff6600; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .pause-icon { fill: #ff6600; }
+      .note { font: 12px sans-serif; fill: #666; font-style: italic; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ff6600" />
+    </marker>
+  </defs>
+
+  <text x="400" y="30" class="title" text-anchor="middle">Human-in-the-Loop Pattern</text>
+
+  <!-- Step 1: Agent Execution -->
+  <rect x="300" y="70" width="200" height="60" class="agent-box" rx="5"/>
+  <text x="400" y="95" class="label" text-anchor="middle">Agent Execution</text>
+  <text x="400" y="115" class="small-label" text-anchor="middle">Performs initial task</text>
+
+  <!-- Step 2: Pause Point -->
+  <rect x="300" y="160" width="200" height="50" class="box" rx="5" style="fill: #ffcccc;"/>
+  <text x="380" y="190" class="label" text-anchor="middle">⏸️ Pause</text>
+  <circle cx="450" cy="185" r="12" class="pause-icon"/>
+  <rect x="444" cy="179" width="4" height="12" fill="#fff"/>
+  <rect x="452" cy="179" width="4" height="12" fill="#fff"/>
+
+  <path d="M 400 130 L 400 160" class="arrow"/>
+
+  <!-- Step 3: Human Review -->
+  <rect x="300" y="240" width="200" height="70" class="human-box" rx="5"/>
+  <text x="400" y="265" class="label" text-anchor="middle">👤 Human Review</text>
+  <text x="400" y="285" class="small-label" text-anchor="middle">Expert evaluates</text>
+  <text x="400" y="302" class="note" text-anchor="middle">Approve / Reject / Modify</text>
+
+  <path d="M 400 210 L 400 240" class="arrow"/>
+
+  <!-- Decision Diamond -->
+  <polygon points="400,350 480,390 400,430 320,390" class="decision-box"/>
+  <text x="400" y="395" class="small-label" text-anchor="middle">Decision?</text>
+
+  <path d="M 400 310 L 400 350" class="arrow"/>
+
+  <!-- Approve Path -->
+  <rect x="550" y="360" width="140" height="60" class="box" rx="5" style="fill: #d4edda;"/>
+  <text x="620" y="385" class="label" text-anchor="middle">✅ Approved</text>
+  <text x="620" y="405" class="small-label" text-anchor="middle">Continue</text>
+
+  <path d="M 480 390 L 550 390" class="arrow"/>
+  <text x="515" y="380" class="note">Approve</text>
+
+  <!-- Reject Path (back to agent) -->
+  <rect x="100" y="360" width="140" height="60" class="box" rx="5" style="fill: #f8d7da;"/>
+  <text x="170" y="385" class="label" text-anchor="middle">❌ Rejected</text>
+  <text x="170" y="405" class="small-label" text-anchor="middle">Regenerate</text>
+
+  <path d="M 320 390 L 240 390" class="arrow"/>
+  <text x="280" y="380" class="note">Reject</text>
+
+  <path d="M 170 360 L 170 100 L 300 100" class="arrow"/>
+  <text x="200" y="230" class="note">Retry with feedback</text>
+
+  <!-- Modify Path -->
+  <rect x="300" y="470" width="200" height="60" class="agent-box" rx="5"/>
+  <text x="400" y="495" class="label" text-anchor="middle">Incorporate</text>
+  <text x="400" y="515" class="small-label" text-anchor="middle">Feedback</text>
+
+  <path d="M 400 430 L 400 470" class="arrow"/>
+  <text x="420" y="455" class="note">Modify</text>
+
+  <path d="M 300 500 L 170 500 L 170 420" class="arrow"/>
+
+  <!-- Key Features -->
+  <text x="50" y="540" class="note">• Strategic human checkpoints</text>
+  <text x="250" y="540" class="note">• Expert oversight</text>
+  <text x="420" y="540" class="note">• Quality assurance</text>
+  <text x="600" y="540" class="note">• Risk mitigation</text>
+</svg>

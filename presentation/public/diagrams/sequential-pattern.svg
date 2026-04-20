@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <style>
+      .title { font-family: 'Roboto', sans-serif; font-size: 18px; font-weight: 700; fill: #ff6b35; }
+      .label { font-family: 'Roboto', sans-serif; font-size: 13px; fill: #ffffff; font-weight: 600; }
+      .sublabel { font-family: 'Roboto', sans-serif; font-size: 11px; fill: #cccccc; }
+      .box { fill: #1a1a1a; stroke: #ff6b35; stroke-width: 2; }
+      .step-box { fill: rgba(255, 107, 53, 0.15); stroke: #ff6b35; stroke-width: 2; }
+      .arrow { fill: none; stroke: #ff9f1c; stroke-width: 3; marker-end: url(#arrowhead); }
+      .data-flow { fill: none; stroke: #ff6b35; stroke-width: 2; stroke-dasharray: 5,3; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ff9f1c" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">Sequential Workflow: Prompt Chaining</text>
+
+  <!-- Input -->
+  <rect x="50" y="80" width="150" height="60" rx="5" class="box"/>
+  <text x="125" y="105" text-anchor="middle" class="label">📥 Input</text>
+  <text x="125" y="125" text-anchor="middle" class="sublabel">Original Text</text>
+
+  <!-- Arrow -->
+  <path d="M 200 110 L 250 110" class="arrow"/>
+  <text x="225" y="100" text-anchor="middle" class="sublabel" style="fill: #ff9f1c;">feeds into</text>
+
+  <!-- Step 1 -->
+  <rect x="250" y="80" width="150" height="60" rx="5" class="step-box"/>
+  <text x="325" y="100" text-anchor="middle" class="label">Step 1: LLM</text>
+  <text x="325" y="115" text-anchor="middle" class="sublabel">Summarize</text>
+  <text x="325" y="130" text-anchor="middle" class="sublabel" style="font-size: 9px;">Output: Summary</text>
+
+  <!-- Arrow -->
+  <path d="M 400 110 L 450 110" class="arrow"/>
+  <text x="425" y="100" text-anchor="middle" class="sublabel" style="fill: #ff9f1c;">feeds into</text>
+
+  <!-- Step 2 -->
+  <rect x="450" y="80" width="150" height="60" rx="5" class="step-box"/>
+  <text x="525" y="100" text-anchor="middle" class="label">Step 2: LLM</text>
+  <text x="525" y="115" text-anchor="middle" class="sublabel">Translate</text>
+  <text x="525" y="130" text-anchor="middle" class="sublabel" style="font-size: 9px;">Output: Translation</text>
+
+  <!-- Arrow down -->
+  <path d="M 525 140 L 525 200" class="arrow"/>
+
+  <!-- Step 3 -->
+  <rect x="450" y="200" width="150" height="60" rx="5" class="step-box"/>
+  <text x="525" y="220" text-anchor="middle" class="label">Step 3: LLM</text>
+  <text x="525" y="235" text-anchor="middle" class="sublabel">Format Markdown</text>
+  <text x="525" y="250" text-anchor="middle" class="sublabel" style="font-size: 9px;">Output: Formatted</text>
+
+  <!-- Arrow left -->
+  <path d="M 450 230 L 200 230" class="arrow"/>
+
+  <!-- Final Output -->
+  <rect x="50" y="200" width="150" height="60" rx="5" class="box"/>
+  <text x="125" y="225" text-anchor="middle" class="label">📤 Final Output</text>
+  <text x="125" y="245" text-anchor="middle" class="sublabel">Markdown Summary</text>
+
+  <!-- Data Flow Annotation -->
+  <path d="M 125 80 L 125 200" class="data-flow"/>
+  <text x="40" y="150" class="sublabel" style="fill: #ff6b35; font-size: 10px; writing-mode: tb;">Data Flow</text>
+
+  <!-- Characteristics Box -->
+  <rect x="50" y="290" width="700" height="130" rx="5" style="fill: rgba(255, 107, 53, 0.1); stroke: #ff9f1c; stroke-width: 1;"/>
+
+  <text x="60" y="310" class="label" style="fill: #ff9f1c;">Key Characteristics:</text>
+
+  <text x="60" y="330" class="sublabel">• <tspan font-weight="600">Linear Flow:</tspan> Each step executes in order, one after another</text>
+  <text x="60" y="350" class="sublabel">• <tspan font-weight="600">Data Transformation:</tspan> Each LLM transforms its input and passes output to next step</text>
+  <text x="60" y="370" class="sublabel">• <tspan font-weight="600">Predictable:</tspan> Fixed sequence, no branching or decision-making</text>
+  <text x="60" y="390" class="sublabel">• <tspan font-weight="600">Debuggable:</tspan> Easy to inspect intermediate outputs at each stage</text>
+  <text x="60" y="410" class="sublabel">• <tspan font-weight="600">Composable:</tspan> Steps can be reused in different chains</text>
+
+  <!-- Use Cases Box -->
+  <rect x="50" y="430" width="350" height="15" rx="3" style="fill: rgba(255, 159, 28, 0.2); stroke: #ff9f1c; stroke-width: 1;"/>
+  <text x="60" y="442" class="sublabel" style="font-size: 10px; font-weight: 600; fill: #ff9f1c;">Use Cases: Document generation, Data processing pipelines, Content transformation</text>
+
+  <!-- Phil Schmid Attribution -->
+  <text x="750" y="445" text-anchor="end" class="sublabel" style="font-size: 9px; fill: #666;">Source: Phil Schmid</text>
+</svg>

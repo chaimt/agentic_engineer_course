@@ -95,7 +95,8 @@
 - **FR-005**: Presentation MUST address common challenges and solutions in agentic development
 - **FR-006**: Presentation MUST include assessment mechanisms to validate learning outcomes
 - **FR-007**: Presentation MUST be delivered using Slidev framework, with black and orange color theme providing strong contrast and professional appearance
-- **FR-008**: Presentation MUST cover the 8 modern agent architecture patterns from the 2025 guide, each with: definition, use cases, performance metrics, and key limitations:
+- **FR-008**: Presentation MUST cover the 7 foundational workflow patterns from Phil Schmid's taxonomy, organized into workflow patterns (Prompt Chaining, Routing, Parallelization) and agentic patterns (Reflection, Tool Use, Planning, Multi-Agent), each with: definition, use cases, benefits, and code examples
+- **FR-009**: Presentation MUST cover the 8 modern agent architecture patterns from the 2025 guide, each with: definition, use cases, performance metrics, and key limitations:
   1. **Single Agent + Tools** (ReAct pattern) — 50% cheaper than complex architectures
   2. **Sequential Agents** — 15-25% higher completion rate on complex tasks
   3. **Single Agent + MCP Servers + Tools** — 37% faster, 93% vs 78% completion rate
@@ -104,8 +105,10 @@
   6. **Single Agent + Human in the Loop + Tools** — 50-80% reduction in critical errors
   7. **Single Agent + Dynamically Call Other Agents** — hub-spoke model, 15-25% accuracy improvement
   8. **Agents Hierarchy + Loop + Parallel Agents + Shared RAG** — 40-60% time reduction
-- **FR-009**: Presentation MUST include an implementation frameworks comparison covering LangChain, LangGraph, AutoGen, and CrewAI, with guidance on which framework suits which architecture pattern
-- **FR-010**: Presentation MUST include an architecture selection guide with 5 decision criteria: (1) task complexity, (2) specialization needs, (3) control and oversight requirements, (4) resource constraints, (5) framework selection
+- **FR-010**: Presentation MUST include an implementation frameworks comparison covering LangChain, LangGraph, AutoGen, and CrewAI, with guidance on which framework suits which architecture pattern
+- **FR-011**: Presentation MUST include an architecture selection guide with 5 decision criteria: (1) task complexity, (2) specialization needs, (3) control and oversight requirements, (4) resource constraints, (5) framework selection
+- **FR-012**: Presentation MUST include implementation best practices from Phil Schmid's research: simplicity-first approach, robust error handling, iterative optimization, and pattern composition guidance
+- **FR-013**: Presentation MUST include Anthropic's "Building Effective Agents" principles and guidance: (1) simplicity over complexity with measured improvements, (2) transparent planning steps and reasoning display, (3) tool documentation with ACI (Agent-Computer Interface) best practices, (4) clear decision criteria for when to build agents vs simpler solutions, (5) workflow pattern comparisons (Anthropic's perspective), (6) real-world applications (customer support, coding agents)
 
 ### Key Entities *(include if feature involves data)*
 
@@ -154,6 +157,9 @@
 ### Session 2026-04-20
 
 - Q: What color scheme should the presentation use? → A: Black and orange theme for strong contrast and professional technical appearance
+- Q: What additional research sources should inform the pattern taxonomy? → A: Phil Schmid's "Agentic Workflow Patterns" article (https://www.philschmid.de/agentic-pattern) provides authoritative definitions for 7 foundational patterns, organized into workflow patterns (Prompt Chaining, Routing, Parallelization) and agentic patterns (Reflection, Tool Use, Planning, Multi-Agent)
+- Q: How should patterns be organized pedagogically? → A: Start with foundational workflow patterns from Phil Schmid (simpler, non-agentic), progress to agentic patterns (autonomous decision-making), then cover modern architectures from 2025 guide (complex compositions)
+- Q: What implementation best practices should be emphasized? → A: Simplicity-first approach, robust error handling, iterative optimization, and pattern composition guidance from Phil Schmid's research
 
 ## Assumptions
 
@@ -168,9 +174,9 @@
 | Source | URL | Key Contribution |
 |--------|-----|-----------------|
 | The Ultimate Guide to AI Agent Architectures in 2025 | https://dev.to/sohail-akbar/the-ultimate-guide-to-ai-agent-architectures-in-2025-2j1c | 8 modern architecture patterns with performance metrics, framework comparisons, and selection guide |
+| Agentic Workflow Patterns - Philipp Schmid | https://www.philschmid.de/agentic-pattern | 7 foundational workflow patterns (Prompt Chaining, Routing, Parallelization, Reflection, Tool Use, Planning, Multi-Agent) with implementation examples and best practices |
 | Anthropic Claude Code | https://docs.anthropic.com/en/docs/claude-code | Primary agentic tool for live demos |
 | ByteByteGo | https://bytebytego.com | System design and distributed patterns |
-| Philipp Schmid | https://www.philschmid.de | LLM/agent implementation guides |
 | Weaviate | https://weaviate.io | RAG and vector store patterns |
 
 ## Architecture Reference *(from 2025 Guide)*
@@ -206,6 +212,49 @@ Eight major architecture patterns examined as standards in the field:
 3. **Control and oversight** → High-stakes: Human in the Loop | Predefined flow: Sequential Agents | Adaptive: Hierarchical
 4. **Resource constraints** → Limited compute: Simpler architectures | Performance priority: Specialized multi-agent
 5. **Framework selection** → Rapid prototyping: CrewAI or LangChain | Complex workflows: LangGraph | Conversational: AutoGen | Enterprise: AutoGen or LangGraph
+
+## Foundational Workflow Patterns *(from Phil Schmid)*
+
+Seven core patterns that form the building blocks of agentic systems:
+
+### Workflow Patterns (Non-Agentic)
+
+1. **Prompt Chaining**: Sequential LLM calls where output from one feeds into the next
+   - Use cases: Structured document generation, multi-step data processing
+   - Example: Summarize text → Translate summary → Format output
+
+2. **Routing (Handoff)**: Initial LLM classifies input and directs to specialized handlers
+   - Use cases: Customer support routing, tiered model selection
+   - Benefits: Separation of concerns, cost optimization, specialized handling
+
+3. **Parallelization**: Independent subtasks processed simultaneously with aggregated outputs
+   - Use cases: RAG with decomposed queries, document analysis, map-reduce operations
+   - Benefits: Improved latency, enhanced quality through diverse outputs
+
+### Agentic Patterns (Autonomous Decision-Making)
+
+4. **Reflection**: Agent generates output, evaluates against criteria, iteratively refines
+   - Use cases: Code generation with error correction, writing refinement
+   - Key characteristic: Self-correction loop with evaluation-optimization cycle
+
+5. **Tool Use (Function Calling)**: LLM invokes external functions/APIs via structured output
+   - Use cases: Appointment booking, real-time data retrieval, code execution
+   - Impact: "Vastly extends the LLM's capabilities beyond its training data"
+
+6. **Planning (Orchestrator-Workers)**: Central planner generates dynamic task breakdown for specialized workers
+   - Use cases: Complex software development, research reports, multi-modal tasks
+   - Benefits: Reduces cognitive load, enables parallel execution, dynamic adaptation
+
+7. **Multi-Agent**: Multiple distinct agents with specific roles collaborate autonomously
+   - Use cases: Debates/brainstorming, complex software creation, collaborative content
+   - Key characteristic: Each agent has unique role and specialized knowledge
+
+### Implementation Best Practices
+
+- **Simplicity First**: "Always seek the simplest solution first" - use workflows for well-defined tasks, agents for flexibility
+- **Robustness**: "Agentic systems must incorporate robust error logging, exception handling, and retry mechanisms"
+- **Iterative Optimization**: "Define metrics, measure performance, identify bottlenecks...and iterate"
+- **Pattern Composition**: Patterns aren't mutually exclusive—real systems combine multiple patterns
 
 ## Risk Register *(optional)*
 

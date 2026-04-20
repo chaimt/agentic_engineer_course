@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <style>
+      .title { font-family: 'Roboto', sans-serif; font-size: 18px; font-weight: 700; fill: #ff6b35; }
+      .label { font-family: 'Roboto', sans-serif; font-size: 13px; fill: #ffffff; font-weight: 600; }
+      .sublabel { font-family: 'Roboto', sans-serif; font-size: 11px; fill: #cccccc; }
+      .box { fill: #1a1a1a; stroke: #ff6b35; stroke-width: 2; }
+      .worker-box { fill: rgba(255, 159, 28, 0.15); stroke: #ff9f1c; stroke-width: 2; }
+      .aggregate-box { fill: rgba(255, 107, 53, 0.2); stroke: #ff6b35; stroke-width: 3; }
+      .arrow { fill: none; stroke: #ff9f1c; stroke-width: 2; marker-end: url(#arrowhead); }
+      .parallel-line { fill: none; stroke: #ff6b35; stroke-width: 1; stroke-dasharray: 3,3; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ff9f1c" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">Parallel Workflow: Concurrent Execution</text>
+
+  <!-- Input Task -->
+  <rect x="325" y="60" width="150" height="60" rx="5" class="box"/>
+  <text x="400" y="85" text-anchor="middle" class="label">🎯 Complex Task</text>
+  <text x="400" y="105" text-anchor="middle" class="sublabel">Decompose into subtasks</text>
+
+  <!-- Split arrows -->
+  <path d="M 350 120 L 150 170" class="arrow"/>
+  <path d="M 400 120 L 400 170" class="arrow"/>
+  <path d="M 450 120 L 650 170" class="arrow"/>
+
+  <!-- Parallel indicator -->
+  <line x1="100" y1="200" x2="700" y2="200" class="parallel-line"/>
+  <text x="50" y="205" class="sublabel" style="fill: #ff6b35; font-size: 10px;">Parallel Execution Zone</text>
+
+  <!-- Worker 1 -->
+  <rect x="75" y="170" width="150" height="70" rx="5" class="worker-box"/>
+  <text x="150" y="195" text-anchor="middle" class="label">Worker 1: LLM</text>
+  <text x="150" y="212" text-anchor="middle" class="sublabel" style="font-size: 10px;">Subtask A</text>
+  <text x="150" y="228" text-anchor="middle" class="sublabel" style="font-size: 9px;">Result: Output A</text>
+
+  <!-- Worker 2 -->
+  <rect x="325" y="170" width="150" height="70" rx="5" class="worker-box"/>
+  <text x="400" y="195" text-anchor="middle" class="label">Worker 2: LLM</text>
+  <text x="400" y="212" text-anchor="middle" class="sublabel" style="font-size: 10px;">Subtask B</text>
+  <text x="400" y="228" text-anchor="middle" class="sublabel" style="font-size: 9px;">Result: Output B</text>
+
+  <!-- Worker 3 -->
+  <rect x="575" y="170" width="150" height="70" rx="5" class="worker-box"/>
+  <text x="650" y="195" text-anchor="middle" class="label">Worker 3: LLM</text>
+  <text x="650" y="212" text-anchor="middle" class="sublabel" style="font-size: 10px;">Subtask C</text>
+  <text x="650" y="228" text-anchor="middle" class="sublabel" style="font-size: 9px;">Result: Output C</text>
+
+  <!-- Parallel indicator bottom -->
+  <line x1="100" y1="260" x2="700" y2="260" class="parallel-line"/>
+
+  <!-- Gather arrows -->
+  <path d="M 150 240 L 350 290" class="arrow"/>
+  <path d="M 400 240 L 400 290" class="arrow"/>
+  <path d="M 650 240 L 450 290" class="arrow"/>
+
+  <text x="400" y="272" text-anchor="middle" class="sublabel" style="fill: #ff9f1c; font-size: 10px;">Collect Results</text>
+
+  <!-- Aggregator -->
+  <rect x="300" y="290" width="200" height="80" rx="5" class="aggregate-box"/>
+  <text x="400" y="315" text-anchor="middle" class="label" style="font-size: 15px;">Aggregator: LLM</text>
+  <text x="400" y="335" text-anchor="middle" class="sublabel">Synthesize all outputs</text>
+  <text x="400" y="355" text-anchor="middle" class="sublabel" style="font-size: 10px;">Combine A + B + C</text>
+
+  <!-- Final arrow -->
+  <path d="M 400 370 L 400 410" class="arrow"/>
+
+  <!-- Final Output -->
+  <rect x="300" y="410" width="200" height="60" rx="5" class="box"/>
+  <text x="400" y="435" text-anchor="middle" class="label">📤 Final Result</text>
+  <text x="400" y="455" text-anchor="middle" class="sublabel">Comprehensive Synthesis</text>
+
+  <!-- Timing annotation -->
+  <rect x="50" y="310" width="180" height="50" rx="3" style="fill: rgba(0, 0, 0, 0.5); stroke: #ff6b35; stroke-width: 1;"/>
+  <text x="140" y="328" text-anchor="middle" class="sublabel" style="font-size: 10px; fill: #ff9f1c;">⚡ Performance Gain</text>
+  <text x="140" y="343" text-anchor="middle" class="sublabel" style="font-size: 9px;">Sequential: 3 × T</text>
+  <text x="140" y="356" text-anchor="middle" class="sublabel" style="font-size: 9px;">Parallel: T + aggregation</text>
+
+  <!-- Phil Schmid Attribution -->
+  <text x="750" y="495" text-anchor="end" class="sublabel" style="font-size: 9px; fill: #666;">Source: Phil Schmid</text>
+</svg>

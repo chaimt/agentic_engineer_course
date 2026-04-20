@@ -300,6 +300,87 @@ slides/sections/                    # Generated (read-only)
 
 ---
 
+## R13: arunpshankar/Agentic-Workflow-Patterns GitHub Repository
+
+**Source**: https://github.com/arunpshankar/Agentic-Workflow-Patterns  
+**Companion Article**: https://medium.com/google-cloud/designing-cognitive-architectures-agentic-workflow-patterns-from-scratch-63baa74c54bc  
+**Decision**: Incorporate 4 unique patterns from this repo not yet covered in the spec, and enrich existing pattern descriptions with concrete implementation details.
+
+**Rationale**: This is one of the most cited Python pattern libraries for agentic workflows, implemented against Google Cloud / Vertex AI. The patterns are concrete, runnable, and represent well-named architectural conventions. Four patterns (Web Access, Dynamic Sharding, Dynamic Decomposition, DAG Orchestration) provide significant coverage gaps in the current spec.
+
+**Repository Overview**:
+- Language: Python 94.4%, Mermaid 5.6%
+- Platform: Google Cloud Platform / Vertex AI + SERP API
+- Structure: `src/patterns/<name>/pipeline.py` as the main entry point per pattern
+- Data: `data/patterns/<name>/` holds prompt templates, JSON schemas, and outputs
+- Credentials: GCP service account key (`credentials/key.json`) + SERP API key (`credentials/key.yml`)
+
+**All 8 Patterns with Implementation Details**:
+
+### Pattern 1 — Reflection (Actor-Critic Framework)
+- **Implementation**: Two-agent loop — Actor generates content, Critic reviews it, loop continues until quality threshold
+- **Key Mechanics**: Iterative refinement via continuous feedback; Actor and Critic are separate LLM calls with different system prompts
+- **Maps to**: T034-T036 (Reflection Pattern) — already covered; enrich slide with Actor-Critic framing
+- **Code Path**: `src/patterns/reflection/pipeline.py`
+
+### Pattern 2 — Web Access (Search → Scrape → Summarize Pipeline)
+- **Implementation**: Three specialized agents in pipeline: SearchAgent (SERP API), ScrapeAgent (HTML extraction), SummarizeAgent (content distillation)
+- **Key Mechanics**: Each agent is single-responsibility; chained sequentially with handoff data
+- **Use Case**: Information retrieval workflows, research automation
+- **Maps to**: NEW — not currently in spec; complements Tool Use pattern with web-specific specialization
+- **Code Path**: `src/patterns/web_access/pipeline.py`
+
+### Pattern 3 — Semantic Routing (Coordinator-Delegate Architecture)
+- **Implementation**: TravelPlannerAgent acts as coordinator; routes to FlightAgent, HotelAgent, CarRentalAgent based on semantic intent classification
+- **Key Mechanics**: Intent classification via LLM → deterministic routing to domain specialists
+- **Maps to**: T057-T059 (Routing Pattern) — already covered; enrich with "coordinator-delegate" terminology and travel planning example
+
+### Pattern 4 — Parallel Delegation (NER-Based Entity Extraction)
+- **Implementation**: Named Entity Recognition (NER) identifies distinct entities in a query; each entity delegated to a specialized agent running concurrently
+- **Key Mechanics**: Entity extraction → parallel fan-out → result aggregation
+- **Maps to**: T047-T049 (Parallel Workflow) — already covered; enrich with NER-based delegation framing
+- **Code Path**: `src/patterns/parallel_delegation/pipeline.py`
+
+### Pattern 5 — Dynamic Sharding (Large Dataset Parallel Processing)
+- **Implementation**: Input dataset dynamically split into N shards based on size/complexity; each shard processed by a worker agent in parallel; results merged
+- **Key Mechanics**: Adaptive sharding strategy (not fixed-size); demonstrated with celebrity biography fetching via web search
+- **Use Case**: Large-scale data processing, batch enrichment pipelines
+- **Maps to**: NEW — distinct from parallel delegation (data-driven vs entity-driven); add as standalone pattern
+- **Code Path**: `src/patterns/dynamic_sharding/pipeline.py`
+
+### Pattern 6 — Task Decomposition (Predefined Sub-Task Agents)
+- **Implementation**: Complex task broken into predefined independent subtasks; each managed by a dedicated Sub-Task Agent with its own context and tools
+- **Key Mechanics**: Static decomposition (human-defined subtask list); parallel or sequential Sub-Task Agents
+- **Maps to**: T040-T042 (Planning Pattern) — closely related; enrich slide with Sub-Task Agent framing and distinction from dynamic decomposition
+
+### Pattern 7 — Dynamic Decomposition (LLM-Generated Subtasks)
+- **Implementation**: An orchestrator LLM receives the complex task and autonomously generates a list of subtasks (no predefined decomposition); each subtask routed to a SubtaskAgent
+- **Key Mechanics**: Decomposition itself is AI-generated — enables open-ended task handling; subtask list is dynamic and context-dependent
+- **Use Case**: Open-ended research, complex content generation, adaptive workflows
+- **Maps to**: NEW — distinct from static Task Decomposition; the LLM designs its own plan
+- **Code Path**: `src/patterns/dynamic_decomposition/pipeline.py`
+
+### Pattern 8 — DAG Orchestration (YAML-Defined Directed Acyclic Graph)
+- **Implementation**: Workflow structure defined in YAML as a DAG; orchestrator reads DAG, resolves dependencies, executes nodes in topological order; supports parallel branches
+- **Key Mechanics**: Declarative workflow definition; dependency graph determines execution order; non-blocking parallel branches execute concurrently
+- **Use Case**: Complex multi-step workflows with interdependencies, ETL pipelines, build systems
+- **Maps to**: NEW — most sophisticated orchestration pattern; enables declarative multi-agent orchestration
+- **Code Path**: `src/patterns/dag_orchestration/pipeline.py`
+
+**Key Implementation Insights for Slides**:
+- All patterns follow a `pipeline.py` entry point convention — good for showing "how to run" in demos
+- Credential setup is two-step: GCP service account + SERP API key — relevant for "Getting Started" slide
+- Patterns use modular agent classes with clear single responsibilities — validates separation of concerns principle
+- Actor-Critic is the canonical Reflection implementation — use this framing in the Reflection slide
+
+**New Patterns to Add to Spec** (4 gaps identified):
+1. **Web Access** — Search/Scrape/Summarize pipeline (specialized tool-use chain)
+2. **Dynamic Sharding** — Data-volume-driven parallel processing (distinct from entity-driven parallel delegation)
+3. **Dynamic Decomposition** — LLM-autonomously-generated subtask planning (distinct from predefined task decomposition)
+4. **DAG Orchestration** — YAML-declarative dependency-aware workflow execution (most advanced orchestration pattern)
+
+---
+
 ## Research Complete
 
 All technical clarifications from plan.md resolved:

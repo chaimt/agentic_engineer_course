@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #ff6600; }
+      .label { font: 16px sans-serif; fill: #333; }
+      .small-label { font: 14px sans-serif; fill: #333; }
+      .box { fill: #fff; stroke: #333; stroke-width: 2; }
+      .router { fill: #ff6600; stroke: #333; stroke-width: 2; }
+      .handler { fill: #e6f2ff; stroke: #333; stroke-width: 2; }
+      .arrow { stroke: #ff6600; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .route-path { stroke: #ff6600; stroke-width: 2; fill: none; }
+      .note { font: 12px sans-serif; fill: #666; font-style: italic; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ff6600" />
+    </marker>
+  </defs>
+
+  <text x="400" y="30" class="title" text-anchor="middle">Routing Pattern (Intelligent Handoff)</text>
+
+  <!-- Incoming Request -->
+  <rect x="300" y="60" width="200" height="50" class="box" rx="5"/>
+  <text x="400" y="90" class="label" text-anchor="middle">Incoming Request</text>
+
+  <path d="M 400 110 L 400 150" class="arrow"/>
+
+  <!-- Router/Classifier -->
+  <rect x="300" y="150" width="200" height="70" class="router" rx="5"/>
+  <text x="400" y="175" class="label" text-anchor="middle" fill="#fff">Router Agent</text>
+  <text x="400" y="200" class="small-label" text-anchor="middle" fill="#fff">(Classifier)</text>
+
+  <!-- Classification Step -->
+  <text x="400" y="245" class="note" text-anchor="middle">Analyze &amp; Classify</text>
+
+  <!-- Specialized Handlers -->
+  <rect x="50" y="300" width="140" height="80" class="handler" rx="5"/>
+  <text x="120" y="330" class="label" text-anchor="middle">Technical</text>
+  <text x="120" y="350" class="small-label" text-anchor="middle">Support</text>
+  <text x="120" y="370" class="note" text-anchor="middle" font-size="10">System issues,</text>
+  <text x="120" y="383" class="note" text-anchor="middle" font-size="10">bugs, login</text>
+
+  <rect x="220" y="300" width="140" height="80" class="handler" rx="5"/>
+  <text x="290" y="330" class="label" text-anchor="middle">Billing</text>
+  <text x="290" y="350" class="small-label" text-anchor="middle">Department</text>
+  <text x="290" y="370" class="note" text-anchor="middle" font-size="10">Payments,</text>
+  <text x="290" y="383" class="note" text-anchor="middle" font-size="10">invoices, refunds</text>
+
+  <rect x="390" y="300" width="140" height="80" class="handler" rx="5"/>
+  <text x="460" y="330" class="label" text-anchor="middle">Product</text>
+  <text x="460" y="350" class="small-label" text-anchor="middle">Expert</text>
+  <text x="460" y="370" class="note" text-anchor="middle" font-size="10">Features,</text>
+  <text x="460" y="383" class="note" text-anchor="middle" font-size="10">capabilities</text>
+
+  <rect x="560" y="300" width="140" height="80" class="handler" rx="5"/>
+  <text x="630" y="330" class="label" text-anchor="middle">General</text>
+  <text x="630" y="350" class="small-label" text-anchor="middle">Support</text>
+  <text x="630" y="370" class="note" text-anchor="middle" font-size="10">Everything</text>
+  <text x="630" y="383" class="note" text-anchor="middle" font-size="10">else</text>
+
+  <!-- Routing Arrows -->
+  <path d="M 340 220 L 120 300" class="route-path" marker-end="url(#arrowhead)"/>
+  <text x="210" y="255" class="note">Technical</text>
+
+  <path d="M 370 220 L 290 300" class="route-path" marker-end="url(#arrowhead)"/>
+  <text x="320" y="255" class="note">Billing</text>
+
+  <path d="M 430 220 L 460 300" class="route-path" marker-end="url(#arrowhead)"/>
+  <text x="450" y="255" class="note">Product</text>
+
+  <path d="M 460 220 L 630 300" class="route-path" marker-end="url(#arrowhead)"/>
+  <text x="560" y="255" class="note">General</text>
+
+  <!-- Response Flow -->
+  <rect x="300" y="450" width="200" height="50" class="box" rx="5" style="fill: #e6ffe6;"/>
+  <text x="400" y="480" class="label" text-anchor="middle">Specialized Response</text>
+
+  <path d="M 120 380 L 380 450" class="arrow"/>
+  <path d="M 290 380 L 390 450" class="arrow"/>
+  <path d="M 460 380 L 410 450" class="arrow"/>
+  <path d="M 630 380 L 420 450" class="arrow"/>
+
+  <!-- Routing Strategies Box -->
+  <rect x="50" y="520" width="330" height="70" class="box" rx="5" style="fill: #fff8e6;"/>
+  <text x="60" y="540" class="small-label">Alternative Routing Strategies:</text>
+  <text x="70" y="560" class="note">• Category-based (Technical, Billing, Product)</text>
+  <text x="70" y="578" class="note">• Complexity-based (Simple → Haiku, Complex → Sonnet)</text>
+
+  <!-- Performance Metrics Box -->
+  <rect x="420" y="520" width="330" height="70" class="box" rx="5" style="fill: #fff8e6;"/>
+  <text x="430" y="540" class="small-label">Performance Benefits:</text>
+  <text x="440" y="560" class="note">• Cost: Route simple queries to cheaper models</text>
+  <text x="440" y="578" class="note">• Quality: 85-95% routing accuracy achievable</text>
+</svg>

@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #ff6600; }
+      .label { font: 16px sans-serif; fill: #333; }
+      .small-label { font: 14px sans-serif; fill: #333; }
+      .box { fill: #fff; stroke: #333; stroke-width: 2; }
+      .agent-box { fill: #e6f2ff; stroke: #333; stroke-width: 2; }
+      .tool-box { fill: #fff8e6; stroke: #333; stroke-width: 2; }
+      .data-box { fill: #e6ffe6; stroke: #333; stroke-width: 2; }
+      .arrow { stroke: #ff6600; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .note { font: 12px sans-serif; fill: #666; font-style: italic; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ff6600" />
+    </marker>
+  </defs>
+
+  <text x="400" y="30" class="title" text-anchor="middle">Web Access Pattern (Three-Agent Pipeline)</text>
+
+  <!-- Input -->
+  <rect x="300" y="60" width="200" height="50" class="box" rx="5"/>
+  <text x="400" y="90" class="label" text-anchor="middle">Research Query</text>
+
+  <path d="M 400 110 L 400 140" class="arrow"/>
+
+  <!-- Stage 1: Search Agent -->
+  <rect x="280" y="140" width="240" height="80" class="agent-box" rx="5"/>
+  <text x="400" y="165" class="label" text-anchor="middle">1. Search Agent</text>
+  <text x="400" y="185" class="small-label" text-anchor="middle">Single Responsibility:</text>
+  <text x="400" y="205" class="small-label" text-anchor="middle">Find Relevant URLs</text>
+
+  <!-- Tool: SERP API -->
+  <rect x="560" y="155" width="140" height="50" class="tool-box" rx="5"/>
+  <text x="630" y="175" class="small-label" text-anchor="middle">Tool:</text>
+  <text x="630" y="195" class="small-label" text-anchor="middle">SERP API</text>
+
+  <path d="M 520 180 L 560 180" stroke="#999" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- Data: URLs -->
+  <rect x="300" y="250" width="200" height="50" class="data-box" rx="5"/>
+  <text x="400" y="270" class="small-label" text-anchor="middle">URLs</text>
+  <text x="400" y="287" class="note" text-anchor="middle" font-size="11">List of relevant sources</text>
+
+  <path d="M 400 220 L 400 250" class="arrow"/>
+
+  <!-- Stage 2: Scrape Agent -->
+  <rect x="280" y="330" width="240" height="80" class="agent-box" rx="5"/>
+  <text x="400" y="355" class="label" text-anchor="middle">2. Scrape Agent</text>
+  <text x="400" y="375" class="small-label" text-anchor="middle">Single Responsibility:</text>
+  <text x="400" y="395" class="small-label" text-anchor="middle">Extract Content</text>
+
+  <path d="M 400 300 L 400 330" class="arrow"/>
+
+  <!-- Tool: Web Scraping -->
+  <rect x="560" y="345" width="140" height="50" class="tool-box" rx="5"/>
+  <text x="630" y="365" class="small-label" text-anchor="middle">Tool:</text>
+  <text x="630" y="385" class="small-label" text-anchor="middle">BeautifulSoup</text>
+
+  <path d="M 520 370 L 560 370" stroke="#999" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- Data: Extracted Content -->
+  <rect x="280" y="440" width="240" height="50" class="data-box" rx="5"/>
+  <text x="400" y="460" class="small-label" text-anchor="middle">Extracted Content</text>
+  <text x="400" y="477" class="note" text-anchor="middle" font-size="11">Text from each URL</text>
+
+  <path d="M 400 410 L 400 440" class="arrow"/>
+
+  <!-- Stage 3: Summarize Agent -->
+  <rect x="50" y="250" width="180" height="80" class="agent-box" rx="5"/>
+  <text x="140" y="275" class="label" text-anchor="middle">3. Summarize</text>
+  <text x="140" y="295" class="small-label" text-anchor="middle">Single Resp:</text>
+  <text x="140" y="315" class="small-label" text-anchor="middle">Synthesize Info</text>
+
+  <path d="M 280 465 L 140 465 L 140 330" class="arrow"/>
+
+  <!-- Tool: LLM Synthesis -->
+  <rect x="60" y="130" width="160" height="50" class="tool-box" rx="5"/>
+  <text x="140" y="150" class="small-label" text-anchor="middle">Tool:</text>
+  <text x="140" y="170" class="small-label" text-anchor="middle">LLM Summarization</text>
+
+  <path d="M 140 250 L 140 180" stroke="#999" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- Output: Summary -->
+  <rect x="60" y="60" width="160" height="50" class="box" rx="5" style="fill: #ffe6cc;"/>
+  <text x="140" y="80" class="label" text-anchor="middle">Final Summary</text>
+  <text x="140" y="97" class="note" text-anchor="middle" font-size="11">Synthesized answer</text>
+
+  <path d="M 140 130 L 140 110" class="arrow"/>
+
+  <!-- Pipeline Flow Label -->
+  <text x="400" y="525" class="note" text-anchor="middle">Sequential Pipeline: Query → URLs → Content → Summary</text>
+
+  <!-- Key Features -->
+  <text x="50" y="545" class="note">• Single-responsibility agents</text>
+  <text x="280" y="545" class="note">• Tool specialization</text>
+  <text x="490" y="545" class="note">• Clear data flow</text>
+  <text x="650" y="545" class="note">• Error handling per stage</text>
+</svg>

@@ -32,7 +32,7 @@
 - ByteByteGo agentic workflow patterns
 - Dev.to agentic workflow exploration 
 - Philipp Schmid agentic patterns
-- GitHub agentic workflow patterns repository
+- GitHub agentic workflow patterns repository: https://github.com/arunpshankar/Agentic-Workflow-Patterns (8 patterns: Reflection/Actor-Critic, Web Access, Semantic Routing, Parallel Delegation/NER, Dynamic Sharding, Task Decomposition, Dynamic Decomposition, DAG Orchestration)
 - Weaviate agentic workflows blog
 - Anthropic effective agents engineering
 

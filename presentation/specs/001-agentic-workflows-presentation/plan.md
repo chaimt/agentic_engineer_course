@@ -7,7 +7,7 @@
 
 ## Summary
 
-Create an educational presentation on agentic workflows using Slidev framework with Speckit content management. The presentation teaches developers how to implement AI-assisted development workflows, featuring live Claude Code demonstrations and practical implementation examples. Content follows a concept-first arc from fundamentals through advanced patterns, delivered in 45-60 minutes to developers familiar with AI tools but not yet practicing structured agentic workflows.
+Create an educational presentation on agentic workflows using Slidev framework with Speckit content management. The presentation teaches developers how to implement AI-assisted development workflows, featuring live Claude Code demonstrations and practical implementation examples. Content follows a concept-first arc from fundamentals through advanced patterns, covering 15 core patterns: Phil Schmid's 7 foundational workflow patterns (Prompt Chaining, Routing, Parallelization, Reflection, Tool Use, Planning, Multi-Agent) and 8 modern agent architectures from the 2025 guide. Delivered in 45-60 minutes to developers familiar with AI tools but not yet practicing structured agentic workflows, using black and orange color theme for maximum contrast.
 
 ## Technical Context
 

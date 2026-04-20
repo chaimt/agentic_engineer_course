@@ -9,10 +9,19 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 **Prerequisites**: plan.md (tech stack, project structure), spec.md (user stories with priorities), context.md (research sources)
 **Context**: Presentation explaining the difference between LLMs and agents, with detailed coverage of agentic workflow patterns
 
-**Research Sources**: ByteByteGo, Anthropic, Dev.to (2025 Architecture Guide), Philipp Schmid, GitHub repositories, Weaviate
-**Patterns Coverage**: 18 patterns total - 10 original workflow patterns + 8 modern agent architectures from 2025 guide
+**Research Sources**: 
+- Philipp Schmid - Agentic Workflow Patterns: https://www.philschmid.de/agentic-pattern
+- Dev.to - 2025 Architecture Guide: https://dev.to/sohail-akbar/the-ultimate-guide-to-ai-agent-architectures-in-2025-2j1c
+- Anthropic Claude Code, ByteByteGo, Weaviate
+
+**Patterns Coverage**: 
+- **7 Foundational Patterns** (Phil Schmid): Prompt Chaining, Routing, Parallelization, Reflection, Tool Use, Planning, Multi-Agent
+- **8 Modern Architectures** (2025 Guide): Single Agent+Tools, Sequential, MCP Servers, Hierarchy+Parallel, Router, Human-in-Loop, Dynamic Delegation, Hierarchy+Loop+RAG
+- **Total: 15 core patterns** with composable combinations for advanced workflows
+
 **Theme**: Black and orange color scheme for professional technical appearance with maximum contrast
-**Architecture Guide**: https://dev.to/sohail-akbar/the-ultimate-guide-to-ai-agent-architectures-in-2025-2j1c
+
+**Pedagogical Approach**: Phil Schmid's taxonomy provides the foundation (simple → complex), 2025 Guide adds modern architectural compositions
 
 **Tests**: Tests are NOT explicitly requested in the specification - test tasks are excluded per requirements.
 
@@ -140,40 +149,62 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 
 **Slide Sequence**: Section Header → Sequential → Parallel
 
-- [ ] T043 [P] [US2] Create "Workflow Patterns" section header slide in slides.md
-- [ ] T044 [P] [US2] Create "Sequential Workflow Pattern" slide in slides.md explaining step-by-step execution
-- [ ] T045 [P] [US2] Create sequential workflow example in examples/sequential/sequential_workflow.py
-- [ ] T046 [P] [US2] Add sequential workflow diagram in public/diagrams/sequential-pattern.svg
-- [ ] T047 [P] [US2] Create "Parallel Workflow Pattern" slide in slides.md explaining concurrent execution
-- [ ] T048 [P] [US2] Create parallel workflow example in examples/parallel/parallel_workflow.py
-- [ ] T049 [P] [US2] Add parallel workflow diagram in public/diagrams/parallel-pattern.svg
+- [X] T043 [P] [US2] Create "Workflow Patterns" section header slide in slides.md
+- [X] T044 [P] [US2] Create "Sequential Workflow Pattern" slide in slides.md explaining step-by-step execution
+- [X] T045 [P] [US2] Create sequential workflow example in examples/sequential/sequential_workflow.py
+- [X] T046 [P] [US2] Add sequential workflow diagram in public/diagrams/sequential-pattern.svg
+- [X] T047 [P] [US2] Create "Parallel Workflow Pattern" slide in slides.md explaining concurrent execution
+- [X] T048 [P] [US2] Create parallel workflow example in examples/parallel/parallel_workflow.py
+- [X] T049 [P] [US2] Add parallel workflow diagram in public/diagrams/parallel-pattern.svg
 
 ### Coordination Patterns (Multi-Agent Systems)
 
 **Slide Sequence**: Section Header → Multi-Agent → Hierarchical → Routing
 
-- [ ] T050 [P] [US2] Create "Coordination Patterns" section header slide in slides.md
-- [ ] T051 [P] [US2] Create "Multi-Agent Collaboration" slide in slides.md explaining agent coordination
-- [ ] T052 [P] [US2] Create multi-agent example in examples/multi-agent/collaborative_agents.py
-- [ ] T053 [P] [US2] Add multi-agent pattern diagram in public/diagrams/multi-agent-pattern.svg
-- [ ] T054 [P] [US2] Create "Hierarchical Workflow Pattern" slide in slides.md explaining parent-child relationships
-- [ ] T055 [P] [US2] Create hierarchical workflow example in examples/hierarchical/hierarchical_agents.py
-- [ ] T056 [P] [US2] Add hierarchical workflow diagram in public/diagrams/hierarchical-pattern.svg
-- [ ] T057 [P] [US2] Create "Routing Pattern" slide in slides.md explaining task delegation to specialized agents
-- [ ] T058 [P] [US2] Create routing pattern example in examples/routing/routing_agent.py
-- [ ] T059 [P] [US2] Add routing pattern diagram in public/diagrams/routing-pattern.svg
+- [X] T050 [P] [US2] Create "Coordination Patterns" section header slide in slides.md
+- [X] T051 [P] [US2] Create "Multi-Agent Collaboration" slide in slides.md explaining agent coordination
+- [X] T052 [P] [US2] Create multi-agent example in examples/multi-agent/collaborative_agents.py
+- [X] T053 [P] [US2] Add multi-agent pattern diagram in public/diagrams/multi-agent-pattern.svg
+- [X] T054 [P] [US2] Create "Hierarchical Workflow Pattern" slide in slides.md explaining parent-child relationships
+- [X] T055 [P] [US2] Create hierarchical workflow example in examples/hierarchical/hierarchical_agents.py
+- [X] T056 [P] [US2] Add hierarchical workflow diagram in public/diagrams/hierarchical-pattern.svg
+- [X] T057 [P] [US2] Create "Routing Pattern" slide in slides.md explaining task delegation to specialized agents
+- [X] T058 [P] [US2] Create routing pattern example in examples/routing/routing_agent.py
+- [X] T059 [P] [US2] Add routing pattern diagram in public/diagrams/routing-pattern.svg
 
 ### Control Patterns (Oversight and Improvement)
 
 **Slide Sequence**: Section Header → Human-in-Loop → Feedback
 
-- [ ] T060 [P] [US2] Create "Control Patterns" section header slide in slides.md
-- [ ] T061 [P] [US2] Create "Human-in-the-Loop Pattern" slide in slides.md explaining human oversight
-- [ ] T062 [P] [US2] Create human-in-the-loop example in examples/human-loop/human_oversight_agent.py
-- [ ] T063 [P] [US2] Add human-in-the-loop diagram in public/diagrams/human-loop-pattern.svg
-- [ ] T064 [P] [US2] Create "Feedback Loop Pattern" slide in slides.md explaining iterative improvement
-- [ ] T065 [P] [US2] Create feedback loop example in examples/feedback/feedback_loop_agent.py
-- [ ] T066 [P] [ASYNC] [US2] Add feedback loop diagram in public/diagrams/feedback-pattern.svg
+- [X] T060 [P] [US2] Create "Control Patterns" section header slide in slides.md
+- [X] T061 [P] [US2] Create "Human-in-the-Loop Pattern" slide in slides.md explaining human oversight
+- [X] T062 [P] [US2] Create human-in-the-loop example in examples/human-loop/human_oversight_agent.py
+- [X] T063 [P] [US2] Add human-in-the-loop diagram in public/diagrams/human-loop-pattern.svg
+- [X] T064 [P] [US2] Create "Feedback Loop Pattern" slide in slides.md explaining iterative improvement
+- [X] T065 [P] [US2] Create feedback loop example in examples/feedback/feedback_loop_agent.py
+- [X] T066 [P] [ASYNC] [US2] Add feedback loop diagram in public/diagrams/feedback-pattern.svg
+
+### arunpshankar Patterns (GitHub Reference Implementation)
+
+**Slide Sequence**: Section Header → Web Access → Dynamic Sharding → Dynamic Decomposition → DAG Orchestration
+**Source**: https://github.com/arunpshankar/Agentic-Workflow-Patterns
+**Note**: Reflection (Actor-Critic), Semantic Routing, and Parallel Delegation are already covered in earlier sections. These 4 patterns are the unique additions from this reference repository.
+
+- [X] T066a [P] [ASYNC] [US2] Create "arunpshankar Patterns" section header slide in slides.md introducing patterns from the reference Python implementation repository
+- [X] T066b [P] [ASYNC] [US2] Create "Web Access Pattern" slide in slides.md — Search → Scrape → Summarize three-agent pipeline; each agent is single-responsibility; chained sequentially; uses SERP API for search; demonstrates tool-use specialization for web content workflows
+- [X] T066c [P] [ASYNC] [US2] Create web access pattern example in examples/web-access/web_access_agent.py implementing SearchAgent, ScrapeAgent, SummarizeAgent pipeline
+- [X] T066d [P] [ASYNC] [US2] Add web access pattern diagram in public/diagrams/web-access-pattern.svg showing the three-stage pipeline with data flow
+- [ ] T066e [P] [ASYNC] [US2] Create "Dynamic Sharding Pattern" slide in slides.md — adaptive splitting of large datasets into N shards based on size/complexity; each shard processed by a parallel worker agent; results merged; contrast with entity-driven Parallel Delegation
+- [ ] T066f [P] [ASYNC] [US2] Create dynamic sharding example in examples/dynamic-sharding/dynamic_sharding_agent.py showing adaptive shard creation and parallel worker dispatch
+- [ ] T066g [P] [ASYNC] [US2] Add dynamic sharding diagram in public/diagrams/dynamic-sharding-pattern.svg showing dataset → shard → parallel workers → merge flow
+- [ ] T066h [P] [ASYNC] [US2] Create "Dynamic Decomposition Pattern" slide in slides.md — orchestrator LLM autonomously generates subtask list (no predefined decomposition); each AI-generated subtask routed to a SubtaskAgent; enables open-ended task handling; contrast with static Task Decomposition/Planning Pattern
+- [ ] T066i [P] [ASYNC] [US2] Create dynamic decomposition example in examples/dynamic-decomposition/dynamic_decomposition_agent.py with orchestrator that generates subtask plan and delegates to SubtaskAgents
+- [ ] T066j [P] [ASYNC] [US2] Add dynamic decomposition diagram in public/diagrams/dynamic-decomposition-pattern.svg showing orchestrator → AI-generated plan → subtask agents flow
+- [ ] T066k [P] [ASYNC] [US2] Create "DAG Orchestration Pattern" slide in slides.md — YAML-defined directed acyclic graph describes workflow dependencies; orchestrator resolves topological order; parallel branches execute concurrently; most sophisticated declarative orchestration pattern; use case: ETL pipelines, complex multi-step workflows with interdependencies
+- [ ] T066l [P] [ASYNC] [US2] Create DAG orchestration example in examples/dag-orchestration/dag_orchestration_agent.py with YAML DAG loader, dependency resolver, and parallel branch executor
+- [ ] T066m [P] [ASYNC] [US2] Add DAG orchestration diagram in public/diagrams/dag-orchestration-pattern.svg showing YAML DAG structure with dependency arrows and parallel execution paths
+- [ ] T066n [P] [ASYNC] [US2] Update "Reflection Pattern" slide (T034) to add Actor-Critic framework framing: Actor generates content, Critic reviews, loop repeats until quality threshold — from reference implementation
+- [ ] T066o [P] [ASYNC] [US2] Update "Routing Pattern" slide (T057) to add coordinator-delegate architecture terminology with concrete travel planning example (FlightAgent, HotelAgent, CarRentalAgent) from reference implementation
 
 ### Modern Agent Architecture Patterns (2025 Guide)
 
@@ -229,13 +260,44 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 
 **Slide Sequence**: Selection Guide → Comparison Table → Tools and Libraries
 
-- [ ] T092 [SYNC] [US2] Create "Pattern Selection Guide" slide in slides.md with the 5 decision criteria from the 2025 guide: (1) task complexity, (2) specialization needs, (3) control and oversight, (4) resource constraints, (5) framework selection — covering all 18 patterns
-- [ ] T093 [SYNC] [US2] Create "Pattern Comparison Table" slide in slides.md summarizing all 18 patterns (10 original + 8 architecture patterns) with use cases and key performance metrics
+- [ ] T092 [SYNC] [US2] Create "Pattern Selection Guide" slide in slides.md with the 5 decision criteria from the 2025 guide: (1) task complexity, (2) specialization needs, (3) control and oversight, (4) resource constraints, (5) framework selection — covering all 22 patterns
+- [ ] T093 [SYNC] [US2] Create "Pattern Comparison Table" slide in slides.md summarizing all 22 patterns (10 original + 4 arunpshankar reference + 8 architecture patterns) with use cases and key performance metrics
 - [ ] T094 [ASYNC] [US2] Create "Tools and Libraries" slide in slides.md listing LangChain, LangGraph, LlamaIndex, AutoGen, CrewAI, MCP, etc. with brief descriptions
 - [ ] T095 [SYNC] [US2] Integrate CodeExample component into slides.md with pattern examples
 - [ ] T096 [SYNC] [US2] Integrate PatternSelector component into slides.md for interactive pattern exploration
 
-**Checkpoint**: At this point, User Stories 1 AND 2 should both work independently - attendees understand concepts, all 18 patterns (10 original + 8 modern architectures), implementation frameworks, and memory systems
+### Anthropic's "Building Effective Agents" Best Practices
+
+**Slide Sequence**: Section Header → Core Principles → When to Build Agents → Workflow Patterns (Anthropic View) → Tool Development → Real-World Applications
+**Source**: https://www.anthropic.com/engineering/building-effective-agents
+
+- [ ] T096a [P] [ASYNC] [US2] Create "Anthropic's Agent Building Principles" section header slide in slides.md introducing Anthropic's engineering perspective on effective agents
+- [ ] T096b [P] [SYNC] [US2] Create "Core Principles for Effective Agents" slide in slides.md covering: (1) Simplicity over complexity - start with prompts, optimize with evaluation, add agentic systems only when needed, (2) Transparency - display planning steps and reasoning explicitly, (3) Tool Documentation - treat ACI (Agent-Computer Interface) with same care as HCI
+- [ ] T096c [P] [SYNC] [US2] Create "When to Build Agents (Decision Framework)" slide in slides.md with two columns: DON'T use agents for (single LLM call with retrieval/examples, latency/cost > performance gains) vs DO use agents for (open-ended problem-solving, unpredictable steps, flexibility required, clear success criteria + feedback loops)
+- [ ] T096d [P] [SYNC] [US2] Create "Anthropic's Workflow Patterns" slide in slides.md comparing their 6 patterns: (1) Prompt Chaining with gates, (2) Routing with specialized handlers, (3) Parallelization (sectioning vs voting), (4) Orchestrator-Workers dynamic delegation, (5) Evaluator-Optimizer loops, (6) Autonomous Agents with tools — highlighting differences from Phil Schmid's taxonomy
+- [ ] T096e [P] [SYNC] [US2] Create "Tool Development Best Practices (ACI Design)" slide in slides.md covering: (1) format selection (close to natural text, avoid overhead), (2) documentation (examples, edge cases, boundaries), (3) model perspective (developer-obvious = LLM-obvious), (4) testing (workbench validation), (5) poka-yoke error prevention (e.g., absolute vs relative paths)
+- [ ] T096f [P] [SYNC] [US2] Create "Framework Considerations" slide in slides.md with Anthropic's guidance: start with LLM APIs directly, understand mechanisms before abstracting, be cautious about hidden complexity, many patterns require minimal code
+- [ ] T096g [P] [SYNC] [US2] Create "Real-World Agent Applications" slide in slides.md covering: (1) Customer Support - natural agents with conversation + tools + data retrieval, (2) Coding Agents - highly effective due to verifiable solutions and automated testing, (3) key success factors
+- [ ] T096h [P] [ASYNC] [US2] Create "Common Pitfalls to Avoid" slide in slides.md listing: complexity without measurement, misunderstood framework abstractions, insufficient tool documentation, poor evaluation design, missing sandboxing/guardrails, insufficient human oversight
+- [ ] T096i [P] [ASYNC] [US2] Add Anthropic workflow patterns comparison diagram in public/diagrams/anthropic-workflow-patterns.svg showing the 6 patterns with decision flow
+- [ ] T096j [P] [ASYNC] [US2] Add ACI design principles diagram in public/diagrams/aci-design-principles.svg visualizing tool documentation, format selection, and poka-yoke concepts
+
+### Diagram Enhancement for Existing Slides
+
+**Purpose**: Enhance pattern slides with visual diagrams created earlier
+
+- [ ] T096k [P] [ASYNC] [US2] Update Reflection Pattern slide (around line 570) to embed public/diagrams/reflection-pattern.svg
+- [ ] T096l [P] [ASYNC] [US2] Update Tool Use Pattern slide (around line 600) to embed public/diagrams/tool-use-pattern.svg
+- [ ] T096m [P] [ASYNC] [US2] Update Planning Pattern slide (around line 630) to embed public/diagrams/planning-pattern.svg
+- [ ] T096n [P] [ASYNC] [US2] Update Sequential Workflow Pattern slide (around line 730) to embed public/diagrams/sequential-pattern.svg
+- [ ] T096o [P] [ASYNC] [US2] Update Parallel Workflow Pattern slide (around line 870) to embed public/diagrams/parallel-pattern.svg
+- [ ] T096p [P] [ASYNC] [US2] Update Multi-Agent Collaboration slide (around line 960) to embed public/diagrams/multi-agent-pattern.svg
+- [ ] T096q [P] [ASYNC] [US2] Update Hierarchical Workflow slide (around line 1030) to embed public/diagrams/hierarchical-pattern.svg
+- [ ] T096r [P] [ASYNC] [US2] Update Routing Pattern slide (around line 1105) to embed public/diagrams/routing-pattern.svg
+- [ ] T096s [P] [ASYNC] [US2] Update Human-in-the-Loop slide to embed public/diagrams/human-loop-pattern.svg
+- [ ] T096t [P] [ASYNC] [US2] Update Feedback Loop slide to embed public/diagrams/feedback-pattern.svg
+
+**Checkpoint**: At this point, User Stories 1 AND 2 should both work independently - attendees understand concepts, all 22 patterns (10 original + 4 arunpshankar reference + 8 modern architectures), Anthropic's engineering best practices, implementation frameworks, and memory systems
 
 ---
 
@@ -257,7 +319,7 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 - [ ] T102 [SYNC] [US3] Create "Optimization Techniques" slide section in slides.md covering performance and efficiency
 - [ ] T103 [P] [ASYNC] [US3] Create optimized agent example in examples/advanced/optimized_agent.py
 - [ ] T104 [P] [SYNC] [US3] Create "Pattern Trade-offs" slide in slides.md comparing complexity vs capability
-- [ ] T105 [SYNC] [US3] Create "Decision Framework: Choosing the Right Pattern" slide in slides.md with flowchart for 18 patterns
+- [ ] T105 [SYNC] [US3] Create "Decision Framework: Choosing the Right Pattern" slide in slides.md with flowchart for 22 patterns
 - [ ] T106 [P] [ASYNC] [US3] Create advanced workflow diagram in public/diagrams/advanced-workflows.svg
 - [ ] T107 [SYNC] [US3] Create "Real-World Case Studies" slide section in slides.md with production examples
 - [ ] T108 [SYNC] [US3] Integrate PatternSelector component into advanced patterns section of slides.md
@@ -274,7 +336,13 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 
 ### Resources and Documentation
 
-- [ ] T109 [P] [ASYNC] Create resources/references.md with links to all research sources (ByteByteGo, Anthropic, Dev.to, 2025 Architecture Guide, etc.)
+- [ ] T109 [P] [ASYNC] Create resources/references.md with links to all research sources including:
+  - https://www.philschmid.de/agentic-pattern (Philipp Schmid — Agentic Workflow Patterns)
+  - https://github.com/arunpshankar/Agentic-Workflow-Patterns (arunpshankar — Python reference implementations)
+  - https://dev.to/sohail-akbar/the-ultimate-guide-to-ai-agent-architectures-in-2025-2j1c (2025 Architecture Guide)
+  - https://www.anthropic.com/engineering/building-effective-agents (Anthropic — Building Effective Agents best practices)
+  - ByteByteGo, Weaviate, and other sources
+- [ ] T109a [P] [ASYNC] Add "Resources & Further Reading" section to final slides in slides.md with organized links to all reference materials including pattern sources, implementation frameworks, tools/libraries, and research articles
 - [ ] T110 [P] [ASYNC] Create resources/further-reading.md with additional learning materials
 - [ ] T111 [P] [ASYNC] Create resources/tools-and-libraries.md listing LangChain, LlamaIndex, AutoGen, CrewAI, MCP, etc.
 - [ ] T112 [P] [ASYNC] Create resources/pattern-catalog.md with comprehensive reference for all 18 patterns
@@ -289,13 +357,13 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 ### Assessment and Closing
 
 - [ ] T117 [P] [ASYNC] Create assessment quiz component in components/QuizComponent.vue
-- [ ] T118 [SYNC] Add quiz slides to slides.md for learning validation covering all 18 patterns and concepts
-- [ ] T119 [SYNC] Create closing slide with key takeaways, next steps, and resources in slides.md
+- [ ] T118 [SYNC] Add quiz slides to slides.md for learning validation covering all 22 patterns and concepts
+- [ ] T119 [SYNC] Create closing slide with key takeaways, next steps, and resource links in slides.md - include QR codes or short URLs to all reference materials (Phil Schmid, arunpshankar, 2025 Guide, Anthropic)
 
 ### Quality Assurance
 
 - [ ] T120 [P] [ASYNC] Add speaker notes throughout slides.md for presentation delivery
-- [ ] T121 [P] [ASYNC] Optimize all diagrams for presentation clarity in public/diagrams/ (18 pattern diagrams total)
+- [ ] T121 [P] [ASYNC] Optimize all diagrams for presentation clarity in public/diagrams/ (22 pattern diagrams total)
 - [ ] T122 [SYNC] Verify all code examples execute successfully in examples/ for all 18 patterns
 - [ ] T123 [SYNC] Test presentation flow and timing (60-75 minute target with expanded content)
 - [ ] T124 [SYNC] Review slide transitions and animations for smooth delivery
@@ -342,50 +410,68 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 22. Human-in-the-Loop Pattern
 23. Feedback Loop Pattern
 
-### Section 7: Modern Agent Architectures - 2025 Guide (US2)
-24. Modern Agent Architectures Section Header
-25. Single Agent + Tools (ReAct pattern)
-26. Sequential Agents (15-25% completion improvement)
-27. Single Agent + MCP Servers + Tools (37% faster)
-28. Agents Hierarchy + Parallel + Shared Tools
-29. Single Agent + Tools + Router (85-95% accuracy)
-30. Single Agent + Human in Loop + Tools (50-80% error reduction)
-31. Single Agent + Dynamically Call Other Agents (hub-spoke)
-32. Agents Hierarchy + Loop + Parallel + Shared RAG (40-60% time reduction)
+### Section 7: arunpshankar Reference Patterns (US2)
+24. arunpshankar Patterns Section Header
+25. Web Access Pattern (Search → Scrape → Summarize pipeline)
+26. Dynamic Sharding Pattern (adaptive dataset parallel processing)
+27. Dynamic Decomposition Pattern (LLM-generated subtask planning)
+28. DAG Orchestration Pattern (YAML-declarative dependency-aware execution)
 
-### Section 8: Implementation Frameworks & Memory (US2)
-33. Implementation Frameworks Section Header
-34. LangChain (chains, prompts, tools, agents)
-35. LangGraph (graph-based, stateful, human-in-the-loop)
-36. AutoGen (conversational, code execution, no-code GUI)
-37. CrewAI (role-based, standalone, clean API)
-38. Framework Selection Guide (decision matrix)
-39. Memory Systems (simple + MemGPT advanced)
+### Section 8: Modern Agent Architectures - 2025 Guide (US2)
+29. Modern Agent Architectures Section Header
+30. Single Agent + Tools (ReAct pattern)
+31. Sequential Agents (15-25% completion improvement)
+32. Single Agent + MCP Servers + Tools (37% faster)
+33. Agents Hierarchy + Parallel + Shared Tools
+34. Single Agent + Tools + Router (85-95% accuracy)
+35. Single Agent + Human in Loop + Tools (50-80% error reduction)
+36. Single Agent + Dynamically Call Other Agents (hub-spoke)
+37. Agents Hierarchy + Loop + Parallel + Shared RAG (40-60% time reduction)
 
-### Section 9: Pattern Selection (US2)
-40. Pattern Selection Guide (18 patterns, 5 decision criteria)
-41. Pattern Comparison Table (18 patterns with use cases + metrics)
-42. Tools and Libraries (MCP, LangChain, LangGraph, AutoGen, etc.)
+### Section 9: Implementation Frameworks & Memory (US2)
+38. Implementation Frameworks Section Header
+39. LangChain (chains, prompts, tools, agents)
+40. LangGraph (graph-based, stateful, human-in-the-loop)
+41. AutoGen (conversational, code execution, no-code GUI)
+42. CrewAI (role-based, standalone, clean API)
+43. Framework Selection Guide (decision matrix)
+44. Memory Systems (simple + MemGPT advanced)
 
-### Section 10: Advanced Topics (US3)
-43. Advanced Patterns Section Header
-44. Combining Patterns
-45. Optimization Techniques
-46. Pattern Trade-offs
-47. Decision Framework (18 patterns)
-48. Real-World Case Studies
+### Section 10: Pattern Selection (US2)
+45. Pattern Selection Guide (22 patterns, 5 decision criteria)
+46. Pattern Comparison Table (22 patterns with use cases + metrics)
+47. Tools and Libraries (MCP, LangChain, LangGraph, AutoGen, etc.)
 
-### Section 11: Practical Guidance (Polish)
-49. Common Challenges
-50. Security Considerations
-51. Team Coordination
-52. Debugging Agentic Workflows
+### Section 11: Anthropic's Agent Building Best Practices (US2)
+48. Anthropic's Agent Building Principles Section Header
+49. Core Principles for Effective Agents (Simplicity, Transparency, Tool Documentation/ACI)
+50. When to Build Agents (Decision Framework - when to use vs when not to use)
+51. Anthropic's Workflow Patterns (6 patterns with comparison to Phil Schmid)
+52. Tool Development Best Practices (ACI Design - format, documentation, testing, poka-yoke)
+53. Framework Considerations (start simple, understand before abstracting)
+54. Real-World Agent Applications (Customer Support, Coding Agents)
+55. Common Pitfalls to Avoid
 
-### Section 12: Closing (Polish)
-53. Assessment Quiz (18 patterns + frameworks coverage)
-54. Key Takeaways and Next Steps
+### Section 12: Advanced Topics (US3)
+56. Advanced Patterns Section Header
+57. Combining Patterns
+58. Optimization Techniques
+59. Pattern Trade-offs
+60. Decision Framework (22 patterns)
+61. Real-World Case Studies
 
-**Total: ~54 slide topics with clear pedagogical progression (expanded with 8 architecture patterns + section header + 7 framework/memory slides)**
+### Section 13: Practical Guidance (Polish)
+62. Common Challenges
+63. Security Considerations
+64. Team Coordination
+65. Debugging Agentic Workflows
+
+### Section 14: Closing (Polish)
+66. Assessment Quiz (22 patterns + frameworks coverage)
+67. Resources & Further Reading (all reference materials with links)
+68. Key Takeaways and Next Steps
+
+**Total: ~68 slide topics with clear pedagogical progression (expanded with 4 arunpshankar patterns + 8 architecture patterns + 8 Anthropic best practices + section headers + 7 framework/memory slides)**
 
 ---
 
@@ -407,8 +493,11 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 - **User Story 2 (P1)**: Can start after Foundational (Phase 2) - Independent of US1, though logically builds on concepts
   - Setup slides (T028-T032) must complete before pattern slides
   - Pattern categories are independent and can be developed in parallel
+  - arunpshankar Reference Patterns (T066a-T066o) can be developed in parallel
   - Modern Architecture Patterns (T067-T091) can be developed in parallel
   - Implementation Frameworks slides (T092a-T092f) can be developed in parallel
+  - Anthropic Best Practices slides (T096a-T096j) can be developed in parallel
+  - Diagram Enhancement tasks (T096k-T096t) can be developed in parallel after corresponding pattern diagrams are created
   - Memory Systems slide (T092g) can be developed in parallel
   - Selection/comparison slides (T092-T096) should come after all pattern slides
 - **User Story 3 (P2)**: Can start after Foundational (Phase 2) - Independent of US1/US2, though requires pattern knowledge
@@ -422,6 +511,7 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
     - Workflow Patterns (T043-T049): 7 tasks
     - Coordination Patterns (T050-T059): 10 tasks
     - Control Patterns (T060-T066): 7 tasks
+    - arunpshankar Reference Patterns (T066a-T066o): 15 tasks (4 patterns × 3 tasks each + section header + 2 enrichment tasks)
     - Modern Agent Architectures (T067-T091): 25 tasks (8 patterns × 3 tasks each + section header)
   - Selection/Resources (T092-T096) after all patterns complete
 
@@ -435,6 +525,7 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
   - Workflow Patterns team: T044-T049 (6 tasks)
   - Coordination Patterns team: T051-T059 (9 tasks)
   - Control Patterns team: T061-T066 (6 tasks)
+  - arunpshankar Reference Patterns team: T066a-T066o (15 tasks)
   - Each category includes: section header + patterns (each with slide + code + diagram)
 - Different user stories can be worked on in parallel by different team members
 - Polish tasks marked [P] can run in parallel (T084-T087, T092, T096, T100)
@@ -495,10 +586,13 @@ Task: "Create 'Human-in-the-Loop' slide"
    - Add Workflow Patterns (Sequential, Parallel) - 2 patterns
    - Add Coordination Patterns (Multi-Agent, Hierarchical, Routing) - 3 patterns
    - Add Control Patterns (Human-Loop, Feedback) - 2 patterns
+   - Add arunpshankar Reference Patterns (Web Access, Dynamic Sharding, Dynamic Decomposition, DAG Orchestration) - 4 patterns
    - Add Modern Agent Architectures (8 patterns from 2025 guide)
    - Add Implementation Frameworks comparison (LangChain, LangGraph, AutoGen, CrewAI)
    - Add Memory Systems (simple + MemGPT)
-   - Add Selection Guide and Resources (updated for 18 patterns + frameworks)
+   - Add Selection Guide and Resources (updated for 22 patterns + frameworks)
+   - Add Anthropic Best Practices (Building Effective Agents - 8 slides)
+   - Add Diagram Enhancements to existing pattern slides (10 diagrams)
 4. Add User Story 3 → Test independently → Demo advanced techniques
 5. Add Polish → Complete presentation
 
@@ -513,10 +607,12 @@ With multiple developers (organized by pattern category):
    - Developer C: US2 Workflow Patterns (T043-T049)
    - Developer D: US2 Coordination Patterns (T050-T059)
    - Developer E: US2 Control Patterns (T060-T066)
-   - Developer F: US2 Modern Agent Architectures (T067-T091) - 8 patterns
-   - Developer G: US2 Implementation Frameworks + Memory (T092a-T092g)
-   - Developer H: US2 Selection + Resources (T092-T096)
-   - Developer I: User Story 3 (Advanced patterns T097-T108)
+   - Developer F: US2 arunpshankar Reference Patterns (T066a-T066o) - 4 new patterns
+   - Developer G: US2 Modern Agent Architectures (T067-T091) - 8 patterns
+   - Developer H: US2 Implementation Frameworks + Memory (T092a-T092g)
+   - Developer I: US2 Selection + Resources (T092-T096)
+   - Developer J: US2 Anthropic Best Practices + Diagram Enhancements (T096a-T096t) - 8 slides + 10 diagram embeds
+   - Developer K: User Story 3 (Advanced patterns T097-T108)
 3. Each developer creates: slides + code examples + diagrams for their patterns
 4. Stories and patterns integrate sequentially into slides.md for proper flow
 
@@ -524,35 +620,42 @@ With multiple developers (organized by pattern category):
 
 ## Pattern Coverage Summary
 
-**18 Agentic Workflow Patterns - Organized by Category:**
+**22 Agentic Workflow Patterns - Organized by Category:**
 
 ### Core Patterns (Fundamental Building Blocks)
-1. **Reflection Pattern** (T034-T036): Self-review and improvement
+1. **Reflection Pattern** (T034-T036): Self-review and improvement — Actor-Critic framework (arunpshankar reference)
 2. **Tool Use Pattern** (T037-T039): External tool integration
-3. **Planning Pattern** (T040-T042): Task decomposition and planning
+3. **Planning Pattern / Task Decomposition** (T040-T042): Predefined subtask decomposition with Sub-Task Agents (arunpshankar reference)
 
 ### Workflow Patterns (Execution Flow)
 4. **Sequential Workflow** (T044-T046): Step-by-step execution
-5. **Parallel Workflow** (T047-T049): Concurrent execution
+5. **Parallel Workflow / Parallel Delegation** (T047-T049): NER-based entity extraction + concurrent agent dispatch (arunpshankar reference)
 
 ### Coordination Patterns (Multi-Agent Systems)
 6. **Multi-Agent Collaboration** (T051-T053): Agent coordination
 7. **Hierarchical Workflow** (T054-T056): Parent-child relationships
-8. **Routing Pattern** (T057-T059): Task delegation to specialists
+8. **Routing / Semantic Routing** (T057-T059): Coordinator-delegate architecture; intent classification → domain specialists (arunpshankar reference)
 
 ### Control Patterns (Oversight and Improvement)
 9. **Human-in-the-Loop** (T061-T063): Human oversight integration
 10. **Feedback Loop Pattern** (T064-T066): Iterative improvement cycles
 
+### arunpshankar Reference Patterns (GitHub Implementation)
+**Source**: https://github.com/arunpshankar/Agentic-Workflow-Patterns
+11. **Web Access Pattern** (T066b-T066d): Search → Scrape → Summarize three-agent pipeline; SERP API + HTML extraction + content distillation
+12. **Dynamic Sharding** (T066e-T066g): Adaptive dataset splitting into N shards; parallel worker agents; results merge — data-volume-driven (contrast: Parallel Delegation is entity-driven)
+13. **Dynamic Decomposition** (T066h-T066j): Orchestrator LLM autonomously generates subtask list; open-ended task handling (contrast: Task Decomposition uses predefined subtasks)
+14. **DAG Orchestration** (T066k-T066m): YAML-defined directed acyclic graph; topological execution order; parallel branches; declarative multi-agent orchestration
+
 ### Modern Agent Architectures (2025 Guide)
-11. **Single Agent + Tools** (T068-T070): ReAct approach with reasoning-action cycles
-12. **Sequential Agents** (T071-T073): Chain workflow with 15-25% completion improvement
-13. **Single Agent + MCP Servers + Tools** (T074-T076): Standardized API, 37% faster completion
-14. **Agents Hierarchy + Parallel + Shared Tools** (T077-T079): Supervisor coordination with 25-40% completion improvement
-15. **Single Agent + Tools + Router** (T080-T082): Structured decision-making with 85-95% routing accuracy
-16. **Single Agent + Human in Loop + Tools** (T083-T085): Human approval gates with 50-80% error reduction
-17. **Single Agent + Dynamically Call Other Agents** (T086-T088): Hub-spoke model with 15-25% accuracy improvement
-18. **Agents Hierarchy + Loop + Parallel + Shared RAG** (T089-T091): Most sophisticated pattern with 40-60% time reduction
+15. **Single Agent + Tools** (T068-T070): ReAct approach with reasoning-action cycles
+16. **Sequential Agents** (T071-T073): Chain workflow with 15-25% completion improvement
+17. **Single Agent + MCP Servers + Tools** (T074-T076): Standardized API, 37% faster completion
+18. **Agents Hierarchy + Parallel + Shared Tools** (T077-T079): Supervisor coordination with 25-40% completion improvement
+19. **Single Agent + Tools + Router** (T080-T082): Structured decision-making with 85-95% routing accuracy
+20. **Single Agent + Human in Loop + Tools** (T083-T085): Human approval gates with 50-80% error reduction
+21. **Single Agent + Dynamically Call Other Agents** (T086-T088): Hub-spoke model with 15-25% accuracy improvement
+22. **Agents Hierarchy + Loop + Parallel + Shared RAG** (T089-T091): Most sophisticated pattern with 40-60% time reduction
 
 Each pattern includes:
 - Dedicated slide explaining the pattern with key metrics
@@ -560,10 +663,10 @@ Each pattern includes:
 - Visual diagram illustrating the pattern structure
 
 ### Implementation Frameworks (from 2025 Guide)
-19. **LangChain** (T092b): Chains, prompts, memory, tools, agents — extensive integrations
-20. **LangGraph** (T092c): Graph-based workflows, stateful execution, human-in-the-loop, time-travel debugging
-21. **AutoGen** (T092d): Conversational agents, code execution, no-code AutoGen Studio
-22. **CrewAI** (T092e): Role/goal/backstory design, standalone framework, clean API
+23. **LangChain** (T092b): Chains, prompts, memory, tools, agents — extensive integrations
+24. **LangGraph** (T092c): Graph-based workflows, stateful execution, human-in-the-loop, time-travel debugging
+25. **AutoGen** (T092d): Conversational agents, code execution, no-code AutoGen Studio
+26. **CrewAI** (T092e): Role/goal/backstory design, standalone framework, clean API
 
 ### Memory Systems (from 2025 Guide)
 - **Simple Memory** (T092g): ConversationBufferMemory, ConversationSummaryMemory, VectorStoreMemory
@@ -580,9 +683,9 @@ Each pattern includes:
 - Pattern categories provide clear organization and enable parallel development
 - Each user story should be independently completable and testable
 - All code examples must be executable and tested (T122)
-- All 18 patterns (10 original + 8 modern architectures) should be validated in assessment quiz (T118)
-- Presentation timing target: 60-75 minutes due to expanded content (T123)
-- Pattern catalog resource provides comprehensive reference for all 18 patterns (T112)
+- All 22 patterns (10 original + 4 arunpshankar reference + 8 modern architectures) should be validated in assessment quiz (T118)
+- Presentation timing target: 70-85 minutes due to expanded content (T123)
+- Pattern catalog resource provides comprehensive reference for all 22 patterns (T112)
 - Create examples/architectures/ directory for the 8 new architecture pattern examples
 - Commit after each task or logical group
 - Stop at any checkpoint to validate story independently
