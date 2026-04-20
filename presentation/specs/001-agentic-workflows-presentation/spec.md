@@ -88,19 +88,19 @@
 
 ### Functional Requirements
 
-- **FR-001**: Presentation MUST explain core agentic workflow concepts including definition, benefits, and key components
-- **FR-002**: Presentation MUST demonstrate practical implementation examples using real development scenarios
-- **FR-003**: Presentation MUST include interactive code examples that attendees can follow along
+- **FR-001**: Presentation MUST follow a concept-first structure: (1) What are agentic workflows, (2) Why they matter, (3) Live Claude Code demo, (4) Workflow patterns, (5) Practical tips, (6) Q&A
+- **FR-002**: Presentation MUST demonstrate practical implementation examples using Claude Code as the primary agentic tool, with brief mentions of alternative tools (e.g., GitHub Copilot, Cursor)
+- **FR-003**: Presentation MUST include presenter-driven live coding demos using Claude Code (audience watches, no hands-on exercises)
 - **FR-004**: Presentation MUST provide setup instructions for implementing agentic workflows
 - **FR-005**: Presentation MUST address common challenges and solutions in agentic development
 - **FR-006**: Presentation MUST include assessment mechanisms to validate learning outcomes
-- **FR-007**: Presentation MUST be delivered using Slidev framework for developer-friendly presentation
+- **FR-007**: Presentation MUST be delivered using Slidev framework, with visual styling matching the referenced Google Slides theme (color scheme, layout, typography) as closely as possible
 
 ### Key Entities *(include if feature involves data)*
 
 - **Agentic Workflow**: Structured process that integrates AI assistance into software development
 - **Development Task**: Specific coding or engineering activities enhanced by agentic tools
-- **AI Agent**: Software component that provides intelligent assistance in development workflows
+- **AI Agent**: Software component that provides intelligent assistance in development workflows (primary reference: Claude Code CLI agent)
 - **Code Example**: Practical implementation demonstrations with before/after comparisons
 
 ### Non-Functional Requirements
@@ -108,8 +108,8 @@
 - **NFR-001**: Presentation MUST be delivered within 45-60 minute timeframe
 - **NFR-002**: Slides MUST be visually clear and readable for audience of 10-100 people
 - **NFR-003**: Code examples MUST be executable and tested for accuracy
-- **NFR-004**: Presentation MUST support interactive elements for audience engagement
-- **NFR-005**: Content MUST be accessible to developers with varying AI/ML experience levels
+- **NFR-004**: Presentation MUST support audience engagement through presenter-driven live demos (no audience hands-on setup required)
+- **NFR-005**: Content MUST target developers who are aware of AI tools but not yet practicing structured agentic workflows, while remaining accessible to complete beginners
 
 ### Quality Attributes
 
@@ -130,11 +130,21 @@
 - **SC-004**: Presentation maintains audience engagement with average attention score above 85%
 - **SC-005**: Code examples execute successfully during live demonstration without errors
 
+## Clarifications
+
+### Session 2026-04-16
+
+- Q: Which specific agentic development tools should the presentation feature? → A: Claude Code (Anthropic's CLI agent) as primary tool, with brief mentions of alternatives
+- Q: What high-level structure should the presentation follow? → A: Concept-first arc: What are agentic workflows → Why they matter → Live Claude Code demo → Workflow patterns → Practical tips → Q&A
+- Q: What is the primary audience experience level with AI-assisted development? → A: Aware but not practicing — developers who've tried Copilot/ChatGPT casually but lack structured agentic workflows
+- Q: What type of interactive elements should be included? → A: Presenter-driven live demos only — presenter codes live with Claude Code while audience watches
+- Q: What visual style should the Slidev presentation use? → A: Match the referenced Google Slides color scheme and layout as closely as possible in Slidev
+
 ## Assumptions
 
-- Attendees have basic software development experience and familiarity with development tools
-- Presentation will be delivered to technical audience (developers, engineers, technical leads)
-- Audience has access to laptops/devices for following along with interactive examples
+- Attendees have basic software development experience and casual exposure to AI coding tools (e.g., Copilot, ChatGPT) but lack structured agentic workflow practices
+- Presentation will be delivered to technical audience (developers, engineers, technical leads) who are aware of AI-assisted development but not yet practicing structured workflows
+- Audience does not need laptops; all demos are presenter-driven
 - Presentation environment supports live coding and screen sharing capabilities
 - Attendees are interested in improving their development productivity through AI assistance
 

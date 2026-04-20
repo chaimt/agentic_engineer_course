@@ -1,0 +1,173 @@
+# Slidev Slide Frontmatter Schema
+# Contract for generated slide metadata in slides/sections/*.md
+
+type: object
+properties:
+  # === Slide Layout & Display ===
+  layout:
+    type: string
+    enum: [cover, default, section, two-cols, image-left, image-right, center, end, intro, quote, fact, statement]
+    default: default
+    description: "Slidev layout template"
+
+  # === Backgrounds ===
+  background:
+    type: string
+    description: "Background image path (absolute: /diagrams/concept.svg)"
+    examples:
+      - "/diagrams/workflow-architecture.svg"
+      - "/screenshots/claude-code-demo.png"
+
+  class:
+    type: string
+    description: "CSS classes for custom styling"
+    examples:
+      - "text-center"
+      - "dark-slide"
+
+  # === Transitions ===
+  transition:
+    type: string
+    enum: [slide, fade, slide-left, slide-up, none]
+    default: slide
+    description: "Slide transition animation"
+
+  # === Click Animations ===
+  clicks:
+    type: integer
+    minimum: 0
+    description: "Number of click-through steps on this slide"
+
+  clicksStart:
+    type: integer
+    minimum: 0
+    description: "Starting click count for progressive reveals"
+
+  # === Presenter Notes ===
+  notes:
+    type: string
+    description: "Markdown content visible only in presenter mode"
+    examples:
+      - |
+          **Demo Checkpoint**: If Claude Code fails to start, switch to recording 01-basics-demo.mp4
+
+          Talking points:
+          - Emphasize tool usage, not just text generation
+          - Walk through CLAUDE.md line by line
+          - Pause for questions after showing hooks
+
+  # === Code Highlighting (Monaco) ===
+  monaco:
+    type: string
+    enum: [true, false, dev]
+    description: "Enable Monaco editor for this slide (editable code)"
+
+  # === Custom Theme Colors ===
+  color:
+    type: string
+    description: "Override slide text color"
+
+  highlighter:
+    type: string
+    enum: [shiki, prism]
+    default: shiki
+    description: "Syntax highlighter to use"
+
+  # === Source Attribution (Generated Slides) ===
+  source_spec:
+    type: string
+    description: "Path to source specification file"
+    examples:
+      - "specs/001-agentic-workflows-presentation/sections/01-concepts.spec.md"
+
+  auto_generated:
+    type: boolean
+    default: true
+    description: "Indicates this slide was auto-generated from spec"
+
+  generation_date:
+    type: string
+    format: date
+    description: "When this slide was last generated"
+
+  # === Educational Metadata ===
+  section_id:
+    type: string
+    description: "Parent section identifier"
+    examples:
+      - "01-concepts"
+      - "03-demo"
+
+  learning_objective:
+    type: string
+    description: "Primary learning objective addressed by this slide"
+
+  bloom_level:
+    type: string
+    enum: [remember, understand, apply, analyze, evaluate, create]
+    description: "Cognitive level of content"
+
+# === Full Example ===
+examples:
+  - # Concept introduction slide
+    layout: default
+    section_id: "01-concepts"
+    learning_objective: "Define agentic workflows"
+    bloom_level: understand
+    transition: slide
+    notes: |
+      **Key Points**:
+      - Emphasize "multi-step" and "tool usage"
+      - Contrast with autocomplete (single-shot completions)
+      - Use hand gesture: autocomplete is one step, agentic is a workflow
+    source_spec: "specs/001-agentic-workflows-presentation/sections/01-concepts.spec.md"
+    auto_generated: true
+    generation_date: "2026-04-16"
+
+  - # Code demonstration slide
+    layout: two-cols
+    section_id: "01-concepts"
+    background: "/diagrams/workflow-concept.svg"
+    monaco: false
+    clicks: 3
+    notes: |
+      **Progressive Reveal**:
+      - Click 1: Show agent initialization
+      - Click 2: Highlight tool definitions
+      - Click 3: Reveal execution flow
+
+      **Demo Timing**: ~90 seconds for this slide
+    source_spec: "specs/001-agentic-workflows-presentation/sections/01-concepts.spec.md"
+    auto_generated: true
+
+  - # Live demo slide
+    layout: center
+    section_id: "03-demo"
+    class: "demo-slide"
+    notes: |
+      **LIVE DEMO SEGMENT 1: Basics**
+
+      **Setup Check** (30 seconds before):
+      - Terminal open in correct directory
+      - Claude API key active
+      - Previous demo state cleared
+
+      **Script**:
+      1. Run `claude init` (expect CLAUDE.md generation)
+      2. Open CLAUDE.md, show structure
+      3. Run simple command: "add a hello function"
+      4. Show Claude Code's tool usage (file read, edit, test)
+
+      **Validation**: Function appears in code, tests pass
+
+      **Failover**: If any step fails >30 sec, switch to /demos/01-basics-demo.mp4
+    source_spec: "specs/001-agentic-workflows-presentation/sections/03-demo.spec.md"
+    auto_generated: true
+
+  - # Section divider slide
+    layout: section
+    section_id: "04-patterns"
+    background: "/diagrams/patterns-overview.svg"
+    transition: fade
+    notes: "Transition to practical patterns. Pause for questions before continuing."
+    auto_generated: true
