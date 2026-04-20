@@ -1,0 +1,107 @@
+/* Custom theme styles for Agentic Workflows Presentation */
+/* Black and Orange Professional Technical Theme */
+
+:root {
+  /* Primary Colors - Orange Palette */
+  --slidev-theme-primary: #ff6b35;
+  --slidev-theme-secondary: #ff9f1c;
+  --slidev-theme-tertiary: #d94f30;
+
+  /* Background Colors - Black Palette */
+  --slidev-theme-background: #000000;
+  --slidev-theme-background-alt: #0a0a0a;
+  --slidev-theme-foreground: #ffffff;
+
+  /* Text Colors */
+  --slidev-theme-text: #ffffff;
+  --slidev-theme-text-muted: #cccccc;
+  --slidev-theme-heading: #ff6b35;
+
+  /* Accent Colors - Orange Variations */
+  --slidev-theme-accent: #ff6b35;
+  --slidev-theme-success: #ff9f1c;
+  --slidev-theme-warning: #ffb347;
+  --slidev-theme-error: #d94f30;
+
+  /* Code Block Colors */
+  --slidev-code-background: #1a1a1a;
+  --slidev-code-border: #ff6b35;
+  --slidev-code-text: #f0f0f0;
+}
+
+/* Typography */
+.slidev-layout h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--slidev-theme-heading);
+  margin-bottom: 1rem;
+}
+
+.slidev-layout h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--slidev-theme-primary);
+  margin-bottom: 0.75rem;
+}
+
+.slidev-layout h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--slidev-theme-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.slidev-layout p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--slidev-theme-text);
+}
+
+/* Code Blocks */
+.slidev-layout pre {
+  background: var(--slidev-code-background);
+  border: 1px solid var(--slidev-code-border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.slidev-layout code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.95rem;
+}
+
+/* Lists */
+.slidev-layout ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+  color: var(--slidev-theme-text);
+}
+
+.slidev-layout li {
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+}
+
+/* Emphasis */
+.slidev-layout strong {
+  color: var(--slidev-theme-accent);
+  font-weight: 600;
+}
+
+.slidev-layout em {
+  color: var(--slidev-theme-primary);
+  font-style: italic;
+}
+
+/* Links */
+.slidev-layout a {
+  color: var(--slidev-theme-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color 0.2s;
+}
+
+.slidev-layout a:hover {
+  border-bottom-color: var(--slidev-theme-accent);
+}

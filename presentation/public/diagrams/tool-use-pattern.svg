@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 450">
+  <defs>
+    <style>
+      .title { font-family: 'Roboto', sans-serif; font-size: 18px; font-weight: 700; fill: #ff6b35; }
+      .label { font-family: 'Roboto', sans-serif; font-size: 13px; fill: #ffffff; font-weight: 600; }
+      .sublabel { font-family: 'Roboto', sans-serif; font-size: 11px; fill: #cccccc; }
+      .tool-label { font-family: 'Roboto', sans-serif; font-size: 10px; fill: #ffffff; font-weight: 600; }
+      .box { fill: #1a1a1a; stroke: #ff6b35; stroke-width: 2; }
+      .agent-box { fill: rgba(255, 107, 53, 0.2); stroke: #ff6b35; stroke-width: 3; }
+      .tool-box { fill: rgba(255, 159, 28, 0.15); stroke: #ff9f1c; stroke-width: 2; }
+      .arrow { fill: none; stroke: #ff9f1c; stroke-width: 2; marker-end: url(#arrowhead); }
+      .result-arrow { fill: none; stroke: #ff6b35; stroke-width: 2; stroke-dasharray: 3,3; marker-end: url(#arrowhead-result); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ff9f1c" />
+    </marker>
+    <marker id="arrowhead-result" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ff6b35" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="350" y="30" text-anchor="middle" class="title">Tool Use Pattern: Agent-Tool Interaction</text>
+
+  <!-- Central Agent -->
+  <rect x="250" y="180" width="200" height="80" rx="8" class="agent-box"/>
+  <text x="350" y="210" text-anchor="middle" class="label" style="font-size: 16px;">🤖 Agent</text>
+  <text x="350" y="230" text-anchor="middle" class="sublabel">Decision Maker</text>
+  <text x="350" y="245" text-anchor="middle" class="sublabel">Tool Orchestrator</text>
+
+  <!-- Tool 1: File System -->
+  <rect x="50" y="60" width="120" height="70" rx="5" class="tool-box"/>
+  <text x="110" y="85" text-anchor="middle" class="tool-label">📁 File System</text>
+  <text x="110" y="100" text-anchor="middle" class="sublabel" style="font-size: 9px;">read_file()</text>
+  <text x="110" y="113" text-anchor="middle" class="sublabel" style="font-size: 9px;">write_file()</text>
+
+  <!-- Arrow from Agent to File System -->
+  <path d="M 250 200 L 170 100" class="arrow"/>
+  <text x="200" y="145" class="sublabel" style="fill: #ff9f1c; font-size: 10px;">Call</text>
+
+  <!-- Result arrow back -->
+  <path d="M 160 130 L 250 210" class="result-arrow"/>
+  <text x="190" y="180" class="sublabel" style="fill: #ff6b35; font-size: 10px;">Result</text>
+
+  <!-- Tool 2: Shell -->
+  <rect x="530" y="60" width="120" height="70" rx="5" class="tool-box"/>
+  <text x="590" y="85" text-anchor="middle" class="tool-label">⚙️ Shell</text>
+  <text x="590" y="100" text-anchor="middle" class="sublabel" style="font-size: 9px;">execute(cmd)</text>
+  <text x="590" y="113" text-anchor="middle" class="sublabel" style="font-size: 9px;">get_output()</text>
+
+  <!-- Arrow from Agent to Shell -->
+  <path d="M 450 200 L 530 100" class="arrow"/>
+  <text x="500" y="145" class="sublabel" style="fill: #ff9f1c; font-size: 10px;">Call</text>
+
+  <!-- Result arrow back -->
+  <path d="M 540 130 L 450 210" class="result-arrow"/>
+  <text x="510" y="180" class="sublabel" style="fill: #ff6b35; font-size: 10px;">Result</text>
+
+  <!-- Tool 3: API -->
+  <rect x="50" y="320" width="120" height="70" rx="5" class="tool-box"/>
+  <text x="110" y="345" text-anchor="middle" class="tool-label">🌐 API</text>
+  <text x="110" y="360" text-anchor="middle" class="sublabel" style="font-size: 9px;">http_get()</text>
+  <text x="110" y="373" text-anchor="middle" class="sublabel" style="font-size: 9px;">http_post()</text>
+
+  <!-- Arrow from Agent to API -->
+  <path d="M 250 250 L 170 350" class="arrow"/>
+  <text x="200" y="305" class="sublabel" style="fill: #ff9f1c; font-size: 10px;">Call</text>
+
+  <!-- Result arrow back -->
+  <path d="M 160 320 L 250 240" class="result-arrow"/>
+  <text x="190" y="270" class="sublabel" style="fill: #ff6b35; font-size: 10px;">Result</text>
+
+  <!-- Tool 4: Database -->
+  <rect x="530" y="320" width="120" height="70" rx="5" class="tool-box"/>
+  <text x="590" y="345" text-anchor="middle" class="tool-label">💾 Database</text>
+  <text x="590" y="360" text-anchor="middle" class="sublabel" style="font-size: 9px;">query(sql)</text>
+  <text x="590" y="373" text-anchor="middle" class="sublabel" style="font-size: 9px;">insert(data)</text>
+
+  <!-- Arrow from Agent to Database -->
+  <path d="M 450 250 L 530 350" class="arrow"/>
+  <text x="500" y="305" class="sublabel" style="fill: #ff9f1c; font-size: 10px;">Call</text>
+
+  <!-- Result arrow back -->
+  <path d="M 540 320 L 450 240" class="result-arrow"/>
+  <text x="510" y="270" class="sublabel" style="fill: #ff6b35; font-size: 10px;">Result</text>
+
+  <!-- Workflow Description -->
+  <rect x="220" y="290" width="260" height="35" rx="5" style="fill: rgba(0, 0, 0, 0.5); stroke: none;"/>
+  <text x="350" y="305" text-anchor="middle" class="sublabel" style="fill: #ff9f1c;">Agent Loop:</text>
+  <text x="350" y="318" text-anchor="middle" class="sublabel" style="font-size: 10px;">Plan → Call Tool → Observe → Decide → Repeat</text>
+
+  <!-- Key Benefits Box -->
+  <rect x="50" y="410" width="600" height="35" rx="5" style="fill: rgba(255, 159, 28, 0.1); stroke: #ff9f1c; stroke-width: 1;"/>
+  <text x="60" y="425" class="label" style="fill: #ff9f1c; font-size: 11px;">Benefits:</text>
+  <text x="60" y="437" class="sublabel" style="font-size: 10px;">• Autonomous execution  • Real-world impact  • Feedback loops  • Extensible (add new tools)</text>
+</svg>

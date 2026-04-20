@@ -10,7 +10,7 @@
 
 **Goal**: Create an educational presentation that teaches developers how to implement and use agentic workflows in software engineering
 **Success Criteria**: Attendees understand agentic concepts, can identify use cases, and have practical implementation knowledge
-**Constraints**: Must be delivered using Slidev framework, content-first approach via Speckit
+**Constraints**: Must be delivered using Slidev framework, content-first approach via Speckit, black and orange color theme
 
 ## Demo Sentence *(mandatory)*
 
@@ -94,7 +94,18 @@
 - **FR-004**: Presentation MUST provide setup instructions for implementing agentic workflows
 - **FR-005**: Presentation MUST address common challenges and solutions in agentic development
 - **FR-006**: Presentation MUST include assessment mechanisms to validate learning outcomes
-- **FR-007**: Presentation MUST be delivered using Slidev framework, with visual styling matching the referenced Google Slides theme (color scheme, layout, typography) as closely as possible
+- **FR-007**: Presentation MUST be delivered using Slidev framework, with black and orange color theme providing strong contrast and professional appearance
+- **FR-008**: Presentation MUST cover the 8 modern agent architecture patterns from the 2025 guide, each with: definition, use cases, performance metrics, and key limitations:
+  1. **Single Agent + Tools** (ReAct pattern) — 50% cheaper than complex architectures
+  2. **Sequential Agents** — 15-25% higher completion rate on complex tasks
+  3. **Single Agent + MCP Servers + Tools** — 37% faster, 93% vs 78% completion rate
+  4. **Agents Hierarchy + Parallel Agents + Shared Tools** — 30-60% execution time reduction
+  5. **Single Agent + Tools + Router** — 85-95% routing accuracy
+  6. **Single Agent + Human in the Loop + Tools** — 50-80% reduction in critical errors
+  7. **Single Agent + Dynamically Call Other Agents** — hub-spoke model, 15-25% accuracy improvement
+  8. **Agents Hierarchy + Loop + Parallel Agents + Shared RAG** — 40-60% time reduction
+- **FR-009**: Presentation MUST include an implementation frameworks comparison covering LangChain, LangGraph, AutoGen, and CrewAI, with guidance on which framework suits which architecture pattern
+- **FR-010**: Presentation MUST include an architecture selection guide with 5 decision criteria: (1) task complexity, (2) specialization needs, (3) control and oversight requirements, (4) resource constraints, (5) framework selection
 
 ### Key Entities *(include if feature involves data)*
 
@@ -140,6 +151,10 @@
 - Q: What type of interactive elements should be included? → A: Presenter-driven live demos only — presenter codes live with Claude Code while audience watches
 - Q: What visual style should the Slidev presentation use? → A: Match the referenced Google Slides color scheme and layout as closely as possible in Slidev
 
+### Session 2026-04-20
+
+- Q: What color scheme should the presentation use? → A: Black and orange theme for strong contrast and professional technical appearance
+
 ## Assumptions
 
 - Attendees have basic software development experience and casual exposure to AI coding tools (e.g., Copilot, ChatGPT) but lack structured agentic workflow practices
@@ -147,6 +162,50 @@
 - Audience does not need laptops; all demos are presenter-driven
 - Presentation environment supports live coding and screen sharing capabilities
 - Attendees are interested in improving their development productivity through AI assistance
+
+## Research Sources
+
+| Source | URL | Key Contribution |
+|--------|-----|-----------------|
+| The Ultimate Guide to AI Agent Architectures in 2025 | https://dev.to/sohail-akbar/the-ultimate-guide-to-ai-agent-architectures-in-2025-2j1c | 8 modern architecture patterns with performance metrics, framework comparisons, and selection guide |
+| Anthropic Claude Code | https://docs.anthropic.com/en/docs/claude-code | Primary agentic tool for live demos |
+| ByteByteGo | https://bytebytego.com | System design and distributed patterns |
+| Philipp Schmid | https://www.philschmid.de | LLM/agent implementation guides |
+| Weaviate | https://weaviate.io | RAG and vector store patterns |
+
+## Architecture Reference *(from 2025 Guide)*
+
+Eight major architecture patterns examined as standards in the field:
+
+### Pattern Performance Benchmarks
+
+| Architecture | Key Metric | Notes |
+|---|---|---|
+| Single Agent + Tools | ~50% cheaper vs complex alternatives | Pass^8 score <50% on τ-bench |
+| Sequential Agents | 15-25% higher completion rate | 30-40% higher domain accuracy |
+| Single Agent + MCP Servers | 37% faster, 93% success rate | 42% more tokens (caching overhead) |
+| Hierarchy + Parallel + Shared Tools | 25-40% higher completion, 30-60% faster | 45% better task adaptation |
+| Single Agent + Router | 85-95% routing accuracy | Claude 3.5: 0.91 score |
+| Human in the Loop | 50-80% error reduction | 15-25% quality improvement |
+| Dynamic Agent Delegation | 15-25% accuracy improvement | 30-40% token reduction |
+| Hierarchy + Loop + Parallel + RAG | 40-60% time reduction, 25-35% quality gain | Most sophisticated pattern |
+
+### Implementation Frameworks
+
+| Framework | Best For | Key Strength | Key Limitation |
+|---|---|---|---|
+| LangChain | Rapid prototyping, tool integration | Extensive integrations, API abstraction | Rapidly evolving API, frequent breaking changes |
+| LangGraph | Complex multi-agent workflows | Graph-based state, human-in-the-loop, time-travel debugging | LangChain dependency, steeper learning curve |
+| AutoGen | Conversational multi-agent systems | Conversational paradigm, code execution, No-code GUI | Less structured control flow, limited visualization |
+| CrewAI | Role-based agent teams | Clean API, role/goal/backstory design, standalone | Less mature ecosystem, fewer advanced features |
+
+### Architecture Selection Decision Framework
+
+1. **Task complexity** → Simple/focused: Single Agent + Tools | Multi-domain: Dynamic Delegation | Multi-stage: Sequential Agents | Complex research: Hierarchy + Parallel
+2. **Specialization needs** → General-purpose: Single Agent | Deep expertise: Multi-agent | Standardized tools: MCP Servers
+3. **Control and oversight** → High-stakes: Human in the Loop | Predefined flow: Sequential Agents | Adaptive: Hierarchical
+4. **Resource constraints** → Limited compute: Simpler architectures | Performance priority: Specialized multi-agent
+5. **Framework selection** → Rapid prototyping: CrewAI or LangChain | Complex workflows: LangGraph | Conversational: AutoGen | Enterprise: AutoGen or LangGraph
 
 ## Risk Register *(optional)*
 

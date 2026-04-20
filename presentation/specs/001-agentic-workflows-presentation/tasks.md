@@ -9,9 +9,10 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 **Prerequisites**: plan.md (tech stack, project structure), spec.md (user stories with priorities), context.md (research sources)
 **Context**: Presentation explaining the difference between LLMs and agents, with detailed coverage of agentic workflow patterns
 
-**Research Sources**: ByteByteGo, Anthropic, Dev.to, Philipp Schmid, GitHub repositories, Weaviate
-**Patterns Coverage**: Each major agentic workflow pattern gets a dedicated slide with code examples
-**Theme Reference**: https://docs.google.com/presentation/d/1KEfu6VjQZBZscsg7GodkjttD9GPi3pRvP65boUg7IMY/edit?slide=id.g36c849d51ab_0_1530 - Slidev theme MUST match the visual style of this presentation
+**Research Sources**: ByteByteGo, Anthropic, Dev.to (2025 Architecture Guide), Philipp Schmid, GitHub repositories, Weaviate
+**Patterns Coverage**: 18 patterns total - 10 original workflow patterns + 8 modern agent architectures from 2025 guide
+**Theme**: Black and orange color scheme for professional technical appearance with maximum contrast
+**Architecture Guide**: https://dev.to/sohail-akbar/the-ultimate-guide-to-ai-agent-architectures-in-2025-2j1c
 
 **Tests**: Tests are NOT explicitly requested in the specification - test tasks are excluded per requirements.
 
@@ -39,15 +40,20 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 
 **Purpose**: Project initialization and basic Slidev structure
 
-- [ ] T001 Create project structure per implementation plan at repository root
-- [ ] T002 Initialize Node.js project with package.json including Slidev, Vue.js 3, Vite dependencies
-- [ ] T003 [P] Create slidev.config.ts with presentation configuration
-- [ ] T004 [P] Create public/ directory structure for images/, diagrams/, and patterns/
-- [ ] T005 [P] Create components/ directory for custom Vue components
-- [ ] T006 [P] Create layouts/ directory for custom slide layouts
-- [ ] T007 [P] Create styles/ directory with theme.css (matching reference presentation colors/fonts) and code-highlighting.css
-- [ ] T008 [P] Create examples/ directory with subdirectories for each pattern (reflection/, tool-use/, planning/, multi-agent/, sequential/, parallel/, hierarchical/, routing/, human-loop/, feedback/)
-- [ ] T009 [P] Create resources/ directory for additional learning materials
+- [X] T001 [ASYNC] Create project structure per implementation plan at repository root
+- [X] T002 [ASYNC] Initialize Node.js project with package.json including Slidev, Vue.js 3, Vite dependencies
+- [X] T002a [ASYNC] Create Taskfile.yml with go-task targets for environment setup and build automation (✅ TESTED: Working)
+- [X] T002b [ASYNC] Add task in Taskfile.yml for installing Node.js dependencies (npm install) (✅ TESTED: Working)
+- [X] T002c [ASYNC] Add task in Taskfile.yml for running development server (slidev dev) (✅ VALIDATED: Command exists)
+- [X] T002d [ASYNC] Add task in Taskfile.yml for building presentation (slidev build) (✅ TESTED: Working - builds in 1.46s)
+- [X] T002e [ASYNC] Add task in Taskfile.yml for exporting to PDF (slidev export) (✅ VALIDATED: Command exists)
+- [X] T003 [P] [ASYNC] Create slidev.config.ts with presentation configuration
+- [X] T004 [P] [ASYNC] Create public/ directory structure for images/, diagrams/, and patterns/
+- [X] T005 [P] [ASYNC] Create components/ directory for custom Vue components
+- [X] T006 [P] [ASYNC] Create layouts/ directory for custom slide layouts
+- [X] T007 [P] [ASYNC] Create styles/ directory with theme.css (matching reference presentation colors/fonts) and code-highlighting.css
+- [X] T008 [P] [ASYNC] Create examples/ directory with subdirectories for each pattern (reflection/, tool-use/, planning/, multi-agent/, sequential/, parallel/, hierarchical/, routing/, human-loop/, feedback/)
+- [X] T009 [P] [ASYNC] Create resources/ directory for additional learning materials
 
 ---
 
@@ -57,18 +63,18 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-**Theme Reference**: https://docs.google.com/presentation/d/1KEfu6VjQZBZscsg7GodkjttD9GPi3pRvP65boUg7IMY/edit?slide=id.g36c849d51ab_0_1530
+**Theme**: Black and orange color scheme for professional technical appearance
 
-- [ ] T010 Review reference Google Slides presentation and document theme elements (colors, fonts, layouts, spacing) in .specify/theme-notes.md
-- [ ] T011 Create main slides.md file with basic Slidev frontmatter and structure
-- [ ] T012 [P] Implement base slide layout in layouts/default.vue matching reference presentation style
-- [ ] T013 [P] Configure Slidev theme in slidev.config.ts to match reference presentation (colors, fonts, transitions)
-- [ ] T014 [P] Create styles/theme.css with color scheme and typography matching reference presentation
-- [ ] T015 [P] Setup Prism.js syntax highlighting configuration in styles/code-highlighting.css with theme-matching colors
-- [ ] T016 [P] Create intro slide layout in layouts/intro.vue matching reference presentation intro style
-- [ ] T017 [P] Create section header layout in layouts/section-header.vue matching reference presentation section headers
-- [ ] T018 [P] Create pattern showcase layout in layouts/pattern-slide.vue for consistent pattern presentation
-- [ ] T019 [P] Setup presentation navigation and structure in slides.md
+- [X] T010 Document black and orange theme elements (colors, fonts, layouts, spacing) in .specify/theme-notes.md (✅ UPDATED)
+- [X] T011 Create main slides.md file with basic Slidev frontmatter and structure
+- [X] T012 [P] Implement base slide layout in layouts/default.vue with black/orange theme
+- [X] T013 [P] Configure Slidev theme in slidev.config.ts with black/orange colors (✅ UPDATED)
+- [X] T014 [P] Create styles/theme.css with black and orange color scheme (✅ UPDATED)
+- [X] T015 [P] Setup syntax highlighting in styles/code-highlighting.css with black/orange theme (✅ UPDATED)
+- [X] T016 [P] Create intro slide layout in layouts/intro.vue with black/orange theme
+- [X] T017 [P] Create section header layout in layouts/section-header.vue with black/orange theme
+- [X] T018 [P] Create pattern showcase layout in layouts/pattern-slide.vue for consistent pattern presentation
+- [X] T019 [P] Setup presentation navigation and structure in slides.md
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -84,18 +90,18 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 
 ### Implementation for User Story 1
 
-- [ ] T020 [P] [US1] Create title slide content in slides.md explaining presentation goals using reference theme style
-- [ ] T021 [P] [US1] Create "What is an LLM?" slide section in slides.md with definition and characteristics
-- [ ] T022 [P] [US1] Create "What is an Agent?" slide section in slides.md with definition and characteristics
-- [ ] T023 [US1] Create "LLM vs Agent" comparison slide in slides.md highlighting key differences
-- [ ] T024 [US1] Create "Agentic Workflows Defined" slide section in slides.md with core concepts
-- [ ] T025 [P] [US1] Add diagram comparing LLM request-response vs agent autonomous behavior in public/diagrams/llm-vs-agent.svg
-- [ ] T026 [P] [US1] Create "Benefits of Agentic Workflows" slide in slides.md
-- [ ] T027 [P] [US1] Create "Use Cases" slide section in slides.md identifying practical applications
-- [ ] T028 [US1] Create interactive comparison component in components/LlmAgentComparison.vue
-- [ ] T029 [US1] Integrate LlmAgentComparison component into slides.md for concept demonstration
+- [X] T020 [P] [US1] Create title slide content in slides.md explaining presentation goals using reference theme style
+- [X] T021 [P] [US1] Create "What is an LLM?" slide section in slides.md with definition and characteristics
+- [X] T022 [P] [US1] Create "What is an Agent?" slide section in slides.md with definition and characteristics
+- [X] T023 [US1] Create "LLM vs Agent" comparison slide in slides.md highlighting key differences
+- [X] T024 [US1] Create "Agentic Workflows Defined" slide section in slides.md with core concepts
+- [X] T025 [P] [US1] Add diagram comparing LLM request-response vs agent autonomous behavior in public/diagrams/llm-vs-agent.svg
+- [X] T026 [P] [US1] Create "Benefits of Agentic Workflows" slide in slides.md
+- [X] T027 [P] [US1] Create "Use Cases" slide section in slides.md identifying practical applications
+- [X] T028 [US1] Create interactive comparison component in components/LlmAgentComparison.vue
+- [X] T029 [US1] Integrate LlmAgentComparison component into slides.md for concept demonstration
 
-**Checkpoint**: At this point, User Story 1 should be fully functional - attendees can understand core concepts
+**Checkpoint**: ✅ User Story 1 COMPLETE - attendees can understand core concepts
 
 ---
 
@@ -167,19 +173,69 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 - [ ] T063 [P] [US2] Add human-in-the-loop diagram in public/diagrams/human-loop-pattern.svg
 - [ ] T064 [P] [US2] Create "Feedback Loop Pattern" slide in slides.md explaining iterative improvement
 - [ ] T065 [P] [US2] Create feedback loop example in examples/feedback/feedback_loop_agent.py
-- [ ] T066 [P] [US2] Add feedback loop diagram in public/diagrams/feedback-pattern.svg
+- [ ] T066 [P] [ASYNC] [US2] Add feedback loop diagram in public/diagrams/feedback-pattern.svg
+
+### Modern Agent Architecture Patterns (2025 Guide)
+
+**Slide Sequence**: Section Header → 8 Architecture Patterns (each with slide + example + diagram)
+**Source**: https://dev.to/sohail-akbar/the-ultimate-guide-to-ai-agent-architectures-in-2025-2j1c
+
+- [ ] T067 [P] [ASYNC] [US2] Create "Modern Agent Architectures" section header slide in slides.md
+- [ ] T068 [P] [ASYNC] [US2] Create "Single Agent + Tools" pattern slide in slides.md with ReAct approach and characteristics
+- [ ] T069 [P] [ASYNC] [US2] Create single-agent-tools example in examples/architectures/single_agent_tools.py
+- [ ] T070 [P] [ASYNC] [US2] Add single-agent-tools architecture diagram in public/diagrams/arch-single-agent-tools.svg
+- [ ] T071 [P] [ASYNC] [US2] Create "Sequential Agents" pattern slide in slides.md with chain workflow and 15-25% completion rate improvement
+- [ ] T072 [P] [ASYNC] [US2] Create sequential-agents example in examples/architectures/sequential_agents.py
+- [ ] T073 [P] [ASYNC] [US2] Add sequential-agents architecture diagram in public/diagrams/arch-sequential-agents.svg
+- [ ] T074 [P] [ASYNC] [US2] Create "Single Agent + MCP Servers + Tools" pattern slide in slides.md with standardized API and 37% faster completion
+- [ ] T075 [P] [ASYNC] [US2] Create mcp-servers example in examples/architectures/mcp_servers_agent.py
+- [ ] T076 [P] [ASYNC] [US2] Add MCP servers architecture diagram in public/diagrams/arch-mcp-servers.svg
+- [ ] T077 [P] [ASYNC] [US2] Create "Agents Hierarchy + Parallel Agents + Shared Tools" pattern slide in slides.md with supervisor coordination
+- [ ] T078 [P] [ASYNC] [US2] Create hierarchical-parallel example in examples/architectures/hierarchical_parallel.py
+- [ ] T079 [P] [ASYNC] [US2] Add hierarchical-parallel architecture diagram in public/diagrams/arch-hierarchical-parallel.svg
+- [ ] T080 [P] [ASYNC] [US2] Create "Single Agent + Tools + Router" pattern slide in slides.md with 85-95% routing accuracy
+- [ ] T081 [P] [ASYNC] [US2] Create router-agent example in examples/architectures/router_agent.py
+- [ ] T082 [P] [ASYNC] [US2] Add router-agent architecture diagram in public/diagrams/arch-router-agent.svg
+- [ ] T083 [P] [ASYNC] [US2] Create "Single Agent + Human in the Loop + Tools" pattern slide in slides.md with 50-80% error reduction
+- [ ] T084 [P] [ASYNC] [US2] Create human-in-loop-arch example in examples/architectures/human_in_loop_arch.py
+- [ ] T085 [P] [ASYNC] [US2] Add human-in-loop architecture diagram in public/diagrams/arch-human-in-loop.svg
+- [ ] T086 [P] [ASYNC] [US2] Create "Single Agent + Dynamically Call Other Agents" pattern slide in slides.md with hub-spoke model
+- [ ] T087 [P] [ASYNC] [US2] Create dynamic-delegation example in examples/architectures/dynamic_delegation.py
+- [ ] T088 [P] [ASYNC] [US2] Add dynamic-delegation architecture diagram in public/diagrams/arch-dynamic-delegation.svg
+- [ ] T089 [P] [ASYNC] [US2] Create "Agents Hierarchy + Loop + Parallel + Shared RAG" pattern slide in slides.md with 40-60% time reduction
+- [ ] T090 [P] [ASYNC] [US2] Create advanced-rag-hierarchy example in examples/architectures/advanced_rag_hierarchy.py
+- [ ] T091 [P] [ASYNC] [US2] Add advanced-rag-hierarchy architecture diagram in public/diagrams/arch-advanced-rag-hierarchy.svg
+
+### Implementation Frameworks Comparison
+
+**Slide Sequence**: Section Header → LangChain → LangGraph → AutoGen → CrewAI → Framework Selection Guide
+**Source**: https://dev.to/sohail-akbar/the-ultimate-guide-to-ai-agent-architectures-in-2025-2j1c (Implementation Frameworks section)
+
+- [ ] T092a [P] [ASYNC] [US2] Create "Implementation Frameworks" section header slide in slides.md
+- [ ] T092b [P] [ASYNC] [US2] Create "LangChain" framework slide in slides.md covering: chains, prompts, memory, tools, agents; architecture support matrix; extensive integrations strength; rapidly evolving API limitation
+- [ ] T092c [P] [ASYNC] [US2] Create "LangGraph" framework slide in slides.md covering: graph structure, state management, checkpointers; human-in-the-loop & time-travel debugging; LangChain dependency limitation
+- [ ] T092d [P] [ASYNC] [US2] Create "AutoGen" framework slide in slides.md covering: conversational paradigm, code execution, no-code AutoGen Studio; Group Chat Manager; less structured control flow limitation
+- [ ] T092e [P] [ASYNC] [US2] Create "CrewAI" framework slide in slides.md covering: role/goal/backstory agent design, crew + task + process model; standalone (no LangChain dependency); newer/less mature ecosystem limitation
+- [ ] T092f [SYNC] [US2] Create "Framework Selection Guide" slide in slides.md with decision matrix: rapid prototyping → CrewAI/LangChain, complex workflows → LangGraph, conversational systems → AutoGen, enterprise → AutoGen/LangGraph
+
+### Memory Systems
+
+**Slide Sequence**: Memory Types → Simple Memory → Advanced Memory (MemGPT)
+**Source**: https://dev.to/sohail-akbar/the-ultimate-guide-to-ai-agent-architectures-in-2025-2j1c (Memory Systems section)
+
+- [ ] T092g [P] [ASYNC] [US2] Create "Memory Systems" slide in slides.md covering: ConversationBufferMemory, ConversationSummaryMemory, VectorStoreMemory; and MemGPT advanced two-tier memory (core context + archival), self-editing memory, virtual context management
 
 ### Pattern Selection and Resources
 
 **Slide Sequence**: Selection Guide → Comparison Table → Tools and Libraries
 
-- [ ] T067 [US2] Create "Pattern Selection Guide" slide in slides.md with decision criteria for choosing patterns
-- [ ] T068 [US2] Create "Pattern Comparison Table" slide in slides.md summarizing all 10 patterns with use cases
-- [ ] T069 [US2] Create "Tools and Libraries" slide in slides.md listing LangChain, LlamaIndex, AutoGen, CrewAI, etc.
-- [ ] T070 [US2] Integrate CodeExample component into slides.md with pattern examples
-- [ ] T071 [US2] Integrate PatternSelector component into slides.md for interactive pattern exploration
+- [ ] T092 [SYNC] [US2] Create "Pattern Selection Guide" slide in slides.md with the 5 decision criteria from the 2025 guide: (1) task complexity, (2) specialization needs, (3) control and oversight, (4) resource constraints, (5) framework selection — covering all 18 patterns
+- [ ] T093 [SYNC] [US2] Create "Pattern Comparison Table" slide in slides.md summarizing all 18 patterns (10 original + 8 architecture patterns) with use cases and key performance metrics
+- [ ] T094 [ASYNC] [US2] Create "Tools and Libraries" slide in slides.md listing LangChain, LangGraph, LlamaIndex, AutoGen, CrewAI, MCP, etc. with brief descriptions
+- [ ] T095 [SYNC] [US2] Integrate CodeExample component into slides.md with pattern examples
+- [ ] T096 [SYNC] [US2] Integrate PatternSelector component into slides.md for interactive pattern exploration
 
-**Checkpoint**: At this point, User Stories 1 AND 2 should both work independently - attendees understand concepts and all 10 patterns
+**Checkpoint**: At this point, User Stories 1 AND 2 should both work independently - attendees understand concepts, all 18 patterns (10 original + 8 modern architectures), implementation frameworks, and memory systems
 
 ---
 
@@ -193,18 +249,18 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 
 ### Implementation for User Story 3
 
-- [ ] T072 [P] [US3] Create "Advanced Patterns" section header slide in slides.md
-- [ ] T073 [P] [US3] Create "Combining Patterns" slide in slides.md showing pattern composition strategies
-- [ ] T074 [P] [US3] Create hybrid pattern example combining reflection + tool use in examples/advanced/hybrid_reflection_tools.py
-- [ ] T075 [P] [US3] Create advanced multi-agent system in examples/advanced/advanced_multi_agent.py
-- [ ] T076 [P] [US3] Create pattern composition diagram in public/diagrams/pattern-composition.svg
-- [ ] T077 [US3] Create "Optimization Techniques" slide section in slides.md covering performance and efficiency
-- [ ] T078 [P] [US3] Create optimized agent example in examples/advanced/optimized_agent.py
-- [ ] T079 [P] [US3] Create "Pattern Trade-offs" slide in slides.md comparing complexity vs capability
-- [ ] T080 [US3] Create "Decision Framework: Choosing the Right Pattern" slide in slides.md with flowchart
-- [ ] T081 [P] [US3] Create advanced workflow diagram in public/diagrams/advanced-workflows.svg
-- [ ] T082 [US3] Create "Real-World Case Studies" slide section in slides.md with production examples
-- [ ] T083 [US3] Integrate PatternSelector component into advanced patterns section of slides.md
+- [ ] T097 [P] [ASYNC] [US3] Create "Advanced Patterns" section header slide in slides.md
+- [ ] T098 [P] [SYNC] [US3] Create "Combining Patterns" slide in slides.md showing pattern composition strategies
+- [ ] T099 [P] [ASYNC] [US3] Create hybrid pattern example combining reflection + tool use in examples/advanced/hybrid_reflection_tools.py
+- [ ] T100 [P] [ASYNC] [US3] Create advanced multi-agent system in examples/advanced/advanced_multi_agent.py
+- [ ] T101 [P] [ASYNC] [US3] Create pattern composition diagram in public/diagrams/pattern-composition.svg
+- [ ] T102 [SYNC] [US3] Create "Optimization Techniques" slide section in slides.md covering performance and efficiency
+- [ ] T103 [P] [ASYNC] [US3] Create optimized agent example in examples/advanced/optimized_agent.py
+- [ ] T104 [P] [SYNC] [US3] Create "Pattern Trade-offs" slide in slides.md comparing complexity vs capability
+- [ ] T105 [SYNC] [US3] Create "Decision Framework: Choosing the Right Pattern" slide in slides.md with flowchart for 18 patterns
+- [ ] T106 [P] [ASYNC] [US3] Create advanced workflow diagram in public/diagrams/advanced-workflows.svg
+- [ ] T107 [SYNC] [US3] Create "Real-World Case Studies" slide section in slides.md with production examples
+- [ ] T108 [SYNC] [US3] Integrate PatternSelector component into advanced patterns section of slides.md
 
 **Checkpoint**: All user stories should now be independently functional - complete learning journey from concepts through advanced implementation
 
@@ -218,32 +274,32 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 
 ### Resources and Documentation
 
-- [ ] T084 [P] Create resources/references.md with links to all research sources (ByteByteGo, Anthropic, Dev.to, etc.)
-- [ ] T085 [P] Create resources/further-reading.md with additional learning materials
-- [ ] T086 [P] Create resources/tools-and-libraries.md listing LangChain, LlamaIndex, AutoGen, CrewAI, etc.
-- [ ] T087 [P] Create resources/pattern-catalog.md with comprehensive pattern reference guide
+- [ ] T109 [P] [ASYNC] Create resources/references.md with links to all research sources (ByteByteGo, Anthropic, Dev.to, 2025 Architecture Guide, etc.)
+- [ ] T110 [P] [ASYNC] Create resources/further-reading.md with additional learning materials
+- [ ] T111 [P] [ASYNC] Create resources/tools-and-libraries.md listing LangChain, LlamaIndex, AutoGen, CrewAI, MCP, etc.
+- [ ] T112 [P] [ASYNC] Create resources/pattern-catalog.md with comprehensive reference for all 18 patterns
 
 ### Practical Guidance Slides
 
-- [ ] T088 Create "Common Challenges" slide section in slides.md addressing edge cases and troubleshooting
-- [ ] T089 Create "Security Considerations" slide in slides.md for AI-assisted development
-- [ ] T090 Create "Team Coordination" slide in slides.md for multi-developer scenarios
-- [ ] T091 Create "Debugging Agentic Workflows" slide in slides.md with troubleshooting techniques
+- [ ] T113 [SYNC] Create "Common Challenges" slide section in slides.md addressing edge cases and troubleshooting
+- [ ] T114 [SYNC] Create "Security Considerations" slide in slides.md for AI-assisted development
+- [ ] T115 [SYNC] Create "Team Coordination" slide in slides.md for multi-developer scenarios
+- [ ] T116 [SYNC] Create "Debugging Agentic Workflows" slide in slides.md with troubleshooting techniques
 
 ### Assessment and Closing
 
-- [ ] T092 [P] Create assessment quiz component in components/QuizComponent.vue
-- [ ] T093 Add quiz slides to slides.md for learning validation covering all 10 patterns and concepts
-- [ ] T094 Create closing slide with key takeaways, next steps, and resources in slides.md
+- [ ] T117 [P] [ASYNC] Create assessment quiz component in components/QuizComponent.vue
+- [ ] T118 [SYNC] Add quiz slides to slides.md for learning validation covering all 18 patterns and concepts
+- [ ] T119 [SYNC] Create closing slide with key takeaways, next steps, and resources in slides.md
 
 ### Quality Assurance
 
-- [ ] T095 [P] Add speaker notes throughout slides.md for presentation delivery
-- [ ] T096 [P] Optimize all diagrams for presentation clarity in public/diagrams/
-- [ ] T097 Verify all code examples execute successfully in examples/ for all 10 patterns
-- [ ] T098 Test presentation flow and timing (45-60 minute target)
-- [ ] T099 Review slide transitions and animations for smooth delivery
-- [ ] T100 [P] Add README.md with setup and delivery instructions at repository root
+- [ ] T120 [P] [ASYNC] Add speaker notes throughout slides.md for presentation delivery
+- [ ] T121 [P] [ASYNC] Optimize all diagrams for presentation clarity in public/diagrams/ (18 pattern diagrams total)
+- [ ] T122 [SYNC] Verify all code examples execute successfully in examples/ for all 18 patterns
+- [ ] T123 [SYNC] Test presentation flow and timing (60-75 minute target with expanded content)
+- [ ] T124 [SYNC] Review slide transitions and animations for smooth delivery
+- [ ] T125 [P] [ASYNC] Update README.md with setup and delivery instructions (already exists at repository root)
 
 ---
 
@@ -286,30 +342,50 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 22. Human-in-the-Loop Pattern
 23. Feedback Loop Pattern
 
-### Section 7: Pattern Selection (US2)
-24. Pattern Selection Guide
-25. Pattern Comparison Table
-26. Tools and Libraries
+### Section 7: Modern Agent Architectures - 2025 Guide (US2)
+24. Modern Agent Architectures Section Header
+25. Single Agent + Tools (ReAct pattern)
+26. Sequential Agents (15-25% completion improvement)
+27. Single Agent + MCP Servers + Tools (37% faster)
+28. Agents Hierarchy + Parallel + Shared Tools
+29. Single Agent + Tools + Router (85-95% accuracy)
+30. Single Agent + Human in Loop + Tools (50-80% error reduction)
+31. Single Agent + Dynamically Call Other Agents (hub-spoke)
+32. Agents Hierarchy + Loop + Parallel + Shared RAG (40-60% time reduction)
 
-### Section 8: Advanced Topics (US3)
-27. Advanced Patterns Section Header
-28. Combining Patterns
-29. Optimization Techniques
-30. Pattern Trade-offs
-31. Decision Framework
-32. Real-World Case Studies
+### Section 8: Implementation Frameworks & Memory (US2)
+33. Implementation Frameworks Section Header
+34. LangChain (chains, prompts, tools, agents)
+35. LangGraph (graph-based, stateful, human-in-the-loop)
+36. AutoGen (conversational, code execution, no-code GUI)
+37. CrewAI (role-based, standalone, clean API)
+38. Framework Selection Guide (decision matrix)
+39. Memory Systems (simple + MemGPT advanced)
 
-### Section 9: Practical Guidance (Polish)
-33. Common Challenges
-34. Security Considerations
-35. Team Coordination
-36. Debugging Agentic Workflows
+### Section 9: Pattern Selection (US2)
+40. Pattern Selection Guide (18 patterns, 5 decision criteria)
+41. Pattern Comparison Table (18 patterns with use cases + metrics)
+42. Tools and Libraries (MCP, LangChain, LangGraph, AutoGen, etc.)
 
-### Section 10: Closing (Polish)
-37. Assessment Quiz
-38. Key Takeaways and Next Steps
+### Section 10: Advanced Topics (US3)
+43. Advanced Patterns Section Header
+44. Combining Patterns
+45. Optimization Techniques
+46. Pattern Trade-offs
+47. Decision Framework (18 patterns)
+48. Real-World Case Studies
 
-**Total: ~38 slide topics with clear pedagogical progression**
+### Section 11: Practical Guidance (Polish)
+49. Common Challenges
+50. Security Considerations
+51. Team Coordination
+52. Debugging Agentic Workflows
+
+### Section 12: Closing (Polish)
+53. Assessment Quiz (18 patterns + frameworks coverage)
+54. Key Takeaways and Next Steps
+
+**Total: ~54 slide topics with clear pedagogical progression (expanded with 8 architecture patterns + section header + 7 framework/memory slides)**
 
 ---
 
@@ -331,7 +407,10 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 - **User Story 2 (P1)**: Can start after Foundational (Phase 2) - Independent of US1, though logically builds on concepts
   - Setup slides (T028-T032) must complete before pattern slides
   - Pattern categories are independent and can be developed in parallel
-  - Selection/comparison slides (T067-T071) should come after pattern slides
+  - Modern Architecture Patterns (T067-T091) can be developed in parallel
+  - Implementation Frameworks slides (T092a-T092f) can be developed in parallel
+  - Memory Systems slide (T092g) can be developed in parallel
+  - Selection/comparison slides (T092-T096) should come after all pattern slides
 - **User Story 3 (P2)**: Can start after Foundational (Phase 2) - Independent of US1/US2, though requires pattern knowledge
 
 ### Within Each User Story
@@ -343,7 +422,8 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
     - Workflow Patterns (T043-T049): 7 tasks
     - Coordination Patterns (T050-T059): 10 tasks
     - Control Patterns (T060-T066): 7 tasks
-  - Selection/Resources (T067-T071) after patterns complete
+    - Modern Agent Architectures (T067-T091): 25 tasks (8 patterns × 3 tasks each + section header)
+  - Selection/Resources (T092-T096) after all patterns complete
 
 ### Parallel Opportunities
 
@@ -411,11 +491,14 @@ Task: "Create 'Human-in-the-Loop' slide"
 1. Complete Setup + Foundational → Presentation framework ready
 2. Add User Story 1 → Test independently → Demo concepts section (MVP!)
 3. Add User Story 2 incrementally by pattern category:
-   - Add Setup + Core Patterns (Reflection, Tool Use, Planning)
-   - Add Workflow Patterns (Sequential, Parallel)
-   - Add Coordination Patterns (Multi-Agent, Hierarchical, Routing)
-   - Add Control Patterns (Human-Loop, Feedback)
-   - Add Selection Guide and Resources
+   - Add Setup + Core Patterns (Reflection, Tool Use, Planning) - 3 patterns
+   - Add Workflow Patterns (Sequential, Parallel) - 2 patterns
+   - Add Coordination Patterns (Multi-Agent, Hierarchical, Routing) - 3 patterns
+   - Add Control Patterns (Human-Loop, Feedback) - 2 patterns
+   - Add Modern Agent Architectures (8 patterns from 2025 guide)
+   - Add Implementation Frameworks comparison (LangChain, LangGraph, AutoGen, CrewAI)
+   - Add Memory Systems (simple + MemGPT)
+   - Add Selection Guide and Resources (updated for 18 patterns + frameworks)
 4. Add User Story 3 → Test independently → Demo advanced techniques
 5. Add Polish → Complete presentation
 
@@ -429,8 +512,11 @@ With multiple developers (organized by pattern category):
    - Developer B: US2 Setup + Core Patterns (T028-T042)
    - Developer C: US2 Workflow Patterns (T043-T049)
    - Developer D: US2 Coordination Patterns (T050-T059)
-   - Developer E: US2 Control Patterns + Selection (T060-T071)
-   - Developer F: User Story 3 (Advanced patterns)
+   - Developer E: US2 Control Patterns (T060-T066)
+   - Developer F: US2 Modern Agent Architectures (T067-T091) - 8 patterns
+   - Developer G: US2 Implementation Frameworks + Memory (T092a-T092g)
+   - Developer H: US2 Selection + Resources (T092-T096)
+   - Developer I: User Story 3 (Advanced patterns T097-T108)
 3. Each developer creates: slides + code examples + diagrams for their patterns
 4. Stories and patterns integrate sequentially into slides.md for proper flow
 
@@ -438,7 +524,7 @@ With multiple developers (organized by pattern category):
 
 ## Pattern Coverage Summary
 
-**10 Agentic Workflow Patterns - Organized by Category:**
+**18 Agentic Workflow Patterns - Organized by Category:**
 
 ### Core Patterns (Fundamental Building Blocks)
 1. **Reflection Pattern** (T034-T036): Self-review and improvement
@@ -458,24 +544,46 @@ With multiple developers (organized by pattern category):
 9. **Human-in-the-Loop** (T061-T063): Human oversight integration
 10. **Feedback Loop Pattern** (T064-T066): Iterative improvement cycles
 
+### Modern Agent Architectures (2025 Guide)
+11. **Single Agent + Tools** (T068-T070): ReAct approach with reasoning-action cycles
+12. **Sequential Agents** (T071-T073): Chain workflow with 15-25% completion improvement
+13. **Single Agent + MCP Servers + Tools** (T074-T076): Standardized API, 37% faster completion
+14. **Agents Hierarchy + Parallel + Shared Tools** (T077-T079): Supervisor coordination with 25-40% completion improvement
+15. **Single Agent + Tools + Router** (T080-T082): Structured decision-making with 85-95% routing accuracy
+16. **Single Agent + Human in Loop + Tools** (T083-T085): Human approval gates with 50-80% error reduction
+17. **Single Agent + Dynamically Call Other Agents** (T086-T088): Hub-spoke model with 15-25% accuracy improvement
+18. **Agents Hierarchy + Loop + Parallel + Shared RAG** (T089-T091): Most sophisticated pattern with 40-60% time reduction
+
 Each pattern includes:
-- Dedicated slide explaining the pattern
-- Executable code example
-- Visual diagram illustrating the pattern
+- Dedicated slide explaining the pattern with key metrics
+- Executable code example demonstrating the architecture
+- Visual diagram illustrating the pattern structure
+
+### Implementation Frameworks (from 2025 Guide)
+19. **LangChain** (T092b): Chains, prompts, memory, tools, agents — extensive integrations
+20. **LangGraph** (T092c): Graph-based workflows, stateful execution, human-in-the-loop, time-travel debugging
+21. **AutoGen** (T092d): Conversational agents, code execution, no-code AutoGen Studio
+22. **CrewAI** (T092e): Role/goal/backstory design, standalone framework, clean API
+
+### Memory Systems (from 2025 Guide)
+- **Simple Memory** (T092g): ConversationBufferMemory, ConversationSummaryMemory, VectorStoreMemory
+- **Advanced Memory / MemGPT** (T092g): Two-tier memory (core context + archival), self-editing memory, virtual context management
 
 ---
 
 ## Notes
 
 - [P] tasks = different files, no dependencies
+- [SYNC]/[ASYNC] markers indicate execution mode and review requirements
 - [Story] label maps task to specific user story for traceability
 - Slides are ordered for optimal learning: simple → complex, concepts → practice
 - Pattern categories provide clear organization and enable parallel development
 - Each user story should be independently completable and testable
-- All code examples must be executable and tested (T097)
-- All 10 patterns should be validated in assessment quiz (T093)
-- Presentation timing target: 45-60 minutes (T098)
-- Pattern catalog resource provides quick reference (T087)
+- All code examples must be executable and tested (T122)
+- All 18 patterns (10 original + 8 modern architectures) should be validated in assessment quiz (T118)
+- Presentation timing target: 60-75 minutes due to expanded content (T123)
+- Pattern catalog resource provides comprehensive reference for all 18 patterns (T112)
+- Create examples/architectures/ directory for the 8 new architecture pattern examples
 - Commit after each task or logical group
 - Stop at any checkpoint to validate story independently
 - Educational effectiveness is the primary success metric
