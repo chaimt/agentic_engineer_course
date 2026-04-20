@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500">
+  <defs>
+    <style>
+      .title { font-family: 'Roboto', sans-serif; font-size: 18px; font-weight: 700; fill: #ff6b35; }
+      .label { font-family: 'Roboto', sans-serif; font-size: 13px; fill: #ffffff; font-weight: 600; }
+      .sublabel { font-family: 'Roboto', sans-serif; font-size: 11px; fill: #cccccc; }
+      .task-label { font-family: 'Roboto', sans-serif; font-size: 10px; fill: #ffffff; }
+      .box { fill: #1a1a1a; stroke: #ff6b35; stroke-width: 2; }
+      .goal-box { fill: rgba(255, 107, 53, 0.3); stroke: #ff6b35; stroke-width: 3; }
+      .task-box { fill: rgba(255, 159, 28, 0.15); stroke: #ff9f1c; stroke-width: 2; }
+      .complete-box { fill: rgba(255, 159, 28, 0.2); stroke: #ff9f1c; stroke-width: 2; }
+      .arrow { fill: none; stroke: #ff9f1c; stroke-width: 2; marker-end: url(#arrowhead); }
+      .dep-arrow { fill: none; stroke: #cccccc; stroke-width: 1; stroke-dasharray: 3,3; marker-end: url(#arrowhead-dep); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ff9f1c" />
+    </marker>
+    <marker id="arrowhead-dep" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#cccccc" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="350" y="30" text-anchor="middle" class="title">Planning Pattern: Task Decomposition</text>
+
+  <!-- High-Level Goal -->
+  <rect x="250" y="55" width="200" height="50" rx="5" class="goal-box"/>
+  <text x="350" y="77" text-anchor="middle" class="label">🎯 High-Level Goal</text>
+  <text x="350" y="93" text-anchor="middle" class="sublabel" style="font-size: 10px;">"Add user authentication"</text>
+
+  <!-- Arrow to Planning -->
+  <path d="M 350 105 L 350 135" class="arrow"/>
+
+  <!-- Planning Step -->
+  <rect x="250" y="135" width="200" height="50" rx="5" class="box"/>
+  <text x="350" y="157" text-anchor="middle" class="label">📋 Plan Generation</text>
+  <text x="350" y="173" text-anchor="middle" class="sublabel">Decompose into sub-tasks</text>
+
+  <!-- Arrow to Tasks -->
+  <path d="M 350 185 L 350 215" class="arrow"/>
+
+  <!-- Task Grid Title -->
+  <text x="350" y="210" text-anchor="middle" class="sublabel" style="fill: #ff6b35;">Ordered Sub-Tasks:</text>
+
+  <!-- Task 1 -->
+  <rect x="50" y="230" width="140" height="55" rx="5" class="task-box"/>
+  <text x="120" y="247" text-anchor="middle" class="label" style="font-size: 11px;">Task 1</text>
+  <text x="120" y="262" text-anchor="middle" class="task-label">Create user model</text>
+  <text x="120" y="275" text-anchor="middle" class="sublabel" style="font-size: 9px;">No dependencies</text>
+
+  <!-- Task 2 -->
+  <rect x="210" y="230" width="140" height="55" rx="5" class="task-box"/>
+  <text x="280" y="247" text-anchor="middle" class="label" style="font-size: 11px;">Task 2</text>
+  <text x="280" y="262" text-anchor="middle" class="task-label">Hash passwords</text>
+  <text x="280" y="275" text-anchor="middle" class="sublabel" style="font-size: 9px;">Depends on: Task 1</text>
+
+  <!-- Dependency arrow 1→2 -->
+  <path d="M 190 257 L 210 257" class="dep-arrow"/>
+
+  <!-- Task 3 -->
+  <rect x="370" y="230" width="140" height="55" rx="5" class="task-box"/>
+  <text x="440" y="247" text-anchor="middle" class="label" style="font-size: 11px;">Task 3</text>
+  <text x="440" y="262" text-anchor="middle" class="task-label">Login endpoint</text>
+  <text x="440" y="275" text-anchor="middle" class="sublabel" style="font-size: 9px;">Depends on: Task 2</text>
+
+  <!-- Dependency arrow 2→3 -->
+  <path d="M 350 257 L 370 257" class="dep-arrow"/>
+
+  <!-- Task 4 -->
+  <rect x="530" y="230" width="140" height="55" rx="5" class="task-box"/>
+  <text x="600" y="247" text-anchor="middle" class="label" style="font-size: 11px;">Task 4</text>
+  <text x="600" y="262" text-anchor="middle" class="task-label">JWT generation</text>
+  <text x="600" y="275" text-anchor="middle" class="sublabel" style="font-size: 9px;">Depends on: Task 3</text>
+
+  <!-- Dependency arrow 3→4 -->
+  <path d="M 510 257 L 530 257" class="dep-arrow"/>
+
+  <!-- Task 5 -->
+  <rect x="130" y="310" width="140" height="55" rx="5" class="task-box"/>
+  <text x="200" y="327" text-anchor="middle" class="label" style="font-size: 11px;">Task 5</text>
+  <text x="200" y="342" text-anchor="middle" class="task-label">Auth middleware</text>
+  <text x="200" y="355" text-anchor="middle" class="sublabel" style="font-size: 9px;">Depends on: Task 4</text>
+
+  <!-- Dependency arrow 4→5 -->
+  <path d="M 600 285 L 600 337 L 270 337" class="dep-arrow"/>
+
+  <!-- Task 6 -->
+  <rect x="290" y="310" width="140" height="55" rx="5" class="task-box"/>
+  <text x="360" y="327" text-anchor="middle" class="label" style="font-size: 11px;">Task 6</text>
+  <text x="360" y="342" text-anchor="middle" class="task-label">Write tests</text>
+  <text x="360" y="355" text-anchor="middle" class="sublabel" style="font-size: 9px;">Depends on: Tasks 3,5</text>
+
+  <!-- Dependency arrows to Task 6 -->
+  <path d="M 440 285 L 440 295 L 360 295 L 360 310" class="dep-arrow"/>
+  <path d="M 200 365 L 200 375 L 360 375 L 360 365" class="dep-arrow"/>
+
+  <!-- Execution Flow Arrow -->
+  <path d="M 360 365 L 360 395" class="arrow"/>
+
+  <!-- Verification -->
+  <rect x="260" y="395" width="180" height="50" rx="5" class="complete-box"/>
+  <text x="350" y="415" text-anchor="middle" class="label">✓ Verify Goal</text>
+  <text x="350" y="432" text-anchor="middle" class="sublabel" style="font-size: 10px;">Confirm authentication works</text>
+
+  <!-- Key Benefits Box -->
+  <rect x="50" y="460" width="600" height="35" rx="5" style="fill: rgba(255, 159, 28, 0.1); stroke: #ff9f1c; stroke-width: 1;"/>
+  <text x="60" y="475" class="label" style="fill: #ff9f1c; font-size: 11px;">Benefits:</text>
+  <text x="60" y="487" class="sublabel" style="font-size: 10px;">• Structured approach  • Clear progress tracking  • Handles complexity  • Ensures correct ordering</text>
+</svg>

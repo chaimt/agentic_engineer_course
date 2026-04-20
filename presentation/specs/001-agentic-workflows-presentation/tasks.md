@@ -115,26 +115,26 @@ description: "Task list for Agentic Workflows Presentation feature implementatio
 
 ### Setup and Overview
 
-- [ ] T028 [US2] Create "Getting Started" slide section in slides.md with setup overview and prerequisites
-- [ ] T029 [US2] Create "Pattern Categories Overview" slide in slides.md introducing the 4 pattern types (Core, Workflow, Coordination, Control)
-- [ ] T030 [US2] Create code demo layout in layouts/code-demo.vue for live coding display
-- [ ] T031 [US2] Create interactive code example component in components/CodeExample.vue
-- [ ] T032 [US2] Create pattern selector component in components/PatternSelector.vue for interactive exploration
+- [X] T028 [US2] Create "Getting Started" slide section in slides.md with setup overview and prerequisites
+- [X] T029 [US2] Create "Pattern Categories Overview" slide in slides.md introducing the 4 pattern types (Core, Workflow, Coordination, Control)
+- [X] T030 [US2] Create code demo layout in layouts/code-demo.vue for live coding display
+- [X] T031 [US2] Create interactive code example component in components/CodeExample.vue
+- [X] T032 [US2] Create pattern selector component in components/PatternSelector.vue for interactive exploration
 
 ### Core Patterns (Fundamental Building Blocks)
 
 **Slide Sequence**: Section Header → Reflection → Tool Use → Planning
 
-- [ ] T033 [P] [US2] Create "Core Patterns" section header slide in slides.md
-- [ ] T034 [P] [US2] Create "Reflection Pattern" slide in slides.md explaining self-review and improvement
-- [ ] T035 [P] [US2] Create reflection pattern example in examples/reflection/reflection_agent.py
-- [ ] T036 [P] [US2] Add reflection pattern diagram in public/diagrams/reflection-pattern.svg
-- [ ] T037 [P] [US2] Create "Tool Use Pattern" slide in slides.md explaining external tool integration
-- [ ] T038 [P] [US2] Create tool use pattern example in examples/tool-use/tool_agent.py
-- [ ] T039 [P] [US2] Add tool use pattern diagram in public/diagrams/tool-use-pattern.svg
-- [ ] T040 [P] [US2] Create "Planning Pattern" slide in slides.md explaining task decomposition
-- [ ] T041 [P] [US2] Create planning pattern example in examples/planning/planning_agent.py
-- [ ] T042 [P] [US2] Add planning pattern diagram in public/diagrams/planning-pattern.svg
+- [X] T033 [P] [US2] Create "Core Patterns" section header slide in slides.md
+- [X] T034 [P] [US2] Create "Reflection Pattern" slide in slides.md explaining self-review and improvement
+- [X] T035 [P] [US2] Create reflection pattern example in examples/reflection/reflection_agent.py
+- [X] T036 [P] [US2] Add reflection pattern diagram in public/diagrams/reflection-pattern.svg
+- [X] T037 [P] [US2] Create "Tool Use Pattern" slide in slides.md explaining external tool integration
+- [X] T038 [P] [US2] Create tool use pattern example in examples/tool-use/tool_agent.py
+- [X] T039 [P] [US2] Add tool use pattern diagram in public/diagrams/tool-use-pattern.svg
+- [X] T040 [P] [US2] Create "Planning Pattern" slide in slides.md explaining task decomposition
+- [X] T041 [P] [US2] Create planning pattern example in examples/planning/planning_agent.py
+- [X] T042 [P] [US2] Add planning pattern diagram in public/diagrams/planning-pattern.svg
 
 ### Workflow Patterns (Execution Flow)
 

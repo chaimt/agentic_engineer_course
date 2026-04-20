@@ -6,14 +6,15 @@ An educational presentation on agentic workflows using the Slidev framework.
 
 This presentation teaches developers how to implement AI-assisted development workflows, featuring:
 - **Foundational Concepts**: Understanding the shift from LLMs to agentic systems
-- **Live Demonstrations**: Claude Code in action
-- **Practical Patterns**: 10+ workflow patterns with code examples
-- **Advanced Techniques**: Pattern composition and optimization
+- **18 Agentic Workflow Patterns**: 10 core patterns + 8 modern agent architectures from the 2025 guide
+- **Implementation Frameworks**: LangChain, LangGraph, AutoGen, and CrewAI comparison
+- **Memory Systems**: Simple memory and advanced MemGPT two-tier memory
+- **Advanced Techniques**: Pattern composition, optimization, and real-world case studies
 - **Best Practices**: Getting started and avoiding common pitfalls
 
 **Target Audience**: Developers familiar with AI tools (Copilot, ChatGPT) but new to structured agentic workflows
 
-**Duration**: 45-60 minutes
+**Duration**: 60-75 minutes
 
 ## Quick Start
 
@@ -105,7 +106,15 @@ presentation/
 │   ├── reflection/       # Reflection pattern examples
 │   ├── tool-use/         # Tool use pattern examples
 │   ├── planning/         # Planning pattern examples
-│   └── ...               # Additional patterns
+│   ├── sequential/       # Sequential workflow examples
+│   ├── parallel/         # Parallel workflow examples
+│   ├── multi-agent/      # Multi-agent collaboration examples
+│   ├── hierarchical/     # Hierarchical workflow examples
+│   ├── routing/          # Routing pattern examples
+│   ├── human-loop/       # Human-in-the-loop examples
+│   ├── feedback/         # Feedback loop examples
+│   ├── architectures/    # Modern agent architecture examples (2025)
+│   └── advanced/         # Advanced pattern combinations
 ├── public/                # Static assets
 │   ├── screenshots/      # Demo screenshots
 │   ├── diagrams/         # Architecture diagrams
@@ -131,7 +140,8 @@ presentation/
 
 ### Theme
 
-- Dark developer-focused theme
+- Black and orange color scheme for professional technical appearance
+- High-contrast design with maximum readability
 - Material Theme Palenight syntax highlighting
 - Accessible color contrast (WCAG AAA)
 - Custom fonts: Roboto (sans), Roboto Slab (serif), Fira Code (mono)
@@ -139,17 +149,37 @@ presentation/
 ### Code Examples
 
 All examples in `examples/` are executable and tested:
+
+**Core Patterns:**
 - Reflection pattern
 - Tool use pattern
 - Planning pattern
+
+**Workflow Patterns:**
 - Sequential workflow
 - Parallel workflow
+
+**Coordination Patterns:**
 - Multi-agent collaboration
 - Hierarchical workflows
 - Routing pattern
+
+**Control Patterns:**
 - Human-in-the-loop
 - Feedback loops
-- Advanced pattern combinations
+
+**Modern Agent Architectures (2025):**
+- Single Agent + Tools (ReAct)
+- Sequential Agents
+- Single Agent + MCP Servers + Tools
+- Agents Hierarchy + Parallel + Shared Tools
+- Single Agent + Tools + Router
+- Single Agent + Human in Loop + Tools
+- Single Agent + Dynamically Call Other Agents
+- Agents Hierarchy + Loop + Parallel + Shared RAG
+
+**Advanced:**
+- Advanced pattern combinations and hybrid approaches
 
 ## Development
 
@@ -284,12 +314,20 @@ Educational use - check with repository owner for distribution rights.
 
 ## Status
 
-**Implementation Progress**: Phase 2 Complete (Foundation Ready)
+**Implementation Progress**: Phase 4 Partially Complete (Core Patterns Done)
 
 ✅ Phase 1: Setup (Complete)
 ✅ Phase 2: Foundational Infrastructure (Complete)
-⏳ Phase 3: User Story 1 - Understanding Agentic Concepts (In Progress)
-⏳ Phase 4: User Story 2 - Practical Implementation Knowledge (Pending)
+✅ Phase 3: User Story 1 - Understanding Agentic Concepts (Complete)
+🔄 Phase 4: User Story 2 - Practical Implementation Knowledge (In Progress)
+  - ✅ Setup and Overview
+  - ✅ Core Patterns (Reflection, Tool Use, Planning)
+  - ⏳ Workflow Patterns (Sequential, Parallel)
+  - ⏳ Coordination Patterns (Multi-Agent, Hierarchical, Routing)
+  - ⏳ Control Patterns (Human-in-Loop, Feedback)
+  - ⏳ Modern Agent Architectures (8 patterns)
+  - ⏳ Implementation Frameworks & Memory Systems
+  - ⏳ Pattern Selection & Resources
 ⏳ Phase 5: User Story 3 - Advanced Workflow Patterns (Pending)
 ⏳ Phase 6: Polish & Cross-Cutting Concerns (Pending)
 
