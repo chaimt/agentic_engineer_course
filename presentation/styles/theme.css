@@ -2,10 +2,10 @@
 /* Black and Orange Professional Technical Theme */
 
 :root {
-  /* Primary Colors - Orange Palette */
-  --slidev-theme-primary: #ff6b35;
-  --slidev-theme-secondary: #ff9f1c;
-  --slidev-theme-tertiary: #d94f30;
+  /* Primary Colors - Tikal Orange Palette */
+  --slidev-theme-primary: #F47721;
+  --slidev-theme-secondary: #FF9A3C;
+  --slidev-theme-tertiary: #C13429;
 
   /* Background Colors - Black Palette */
   --slidev-theme-background: #000000;
@@ -15,17 +15,17 @@
   /* Text Colors */
   --slidev-theme-text: #ffffff;
   --slidev-theme-text-muted: #cccccc;
-  --slidev-theme-heading: #ff6b35;
+  --slidev-theme-heading: #F47721;
 
-  /* Accent Colors - Orange Variations */
-  --slidev-theme-accent: #ff6b35;
-  --slidev-theme-success: #ff9f1c;
+  /* Accent Colors - Tikal Orange Variations */
+  --slidev-theme-accent: #F47721;
+  --slidev-theme-success: #FF9A3C;
   --slidev-theme-warning: #ffb347;
-  --slidev-theme-error: #d94f30;
+  --slidev-theme-error: #C13429;
 
   /* Code Block Colors */
   --slidev-code-background: #1a1a1a;
-  --slidev-code-border: #ff6b35;
+  --slidev-code-border: #F47721;
   --slidev-code-text: #f0f0f0;
 }
 

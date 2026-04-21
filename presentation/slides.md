@@ -1,6 +1,6 @@
 ---
 theme: default
-background: '#1e293b'
+background: '#000000'
 class: text-center
 highlighter: shiki
 lineNumbers: false
@@ -27,17 +27,17 @@ From AI Autocomplete to Development Partner
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space to start <carbon:arrow-right class="inline"/>
+    Press Space to start <mdi:arrow-right class="inline"/>
   </span>
 </div>
 
 <div class="abs-br m-6 flex gap-2">
   <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
+    <mdi:pencil />
   </button>
   <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub" title="Open in GitHub"
     class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:logo-github />
+    <mdi:github />
   </a>
 </div>
 
@@ -118,8 +118,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-8 p-4 bg-blue-900 bg-opacity-30 rounded">
-<carbon:information class="inline"/> Think of an LLM as a highly sophisticated autocomplete engine.
+<div v-click class="mt-8 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:information class="inline"/> Think of an LLM as a highly sophisticated autocomplete engine.
 </div>
 
 <!--
@@ -153,8 +153,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-8 p-4 bg-purple-900 bg-opacity-30 rounded">
-<carbon:bot class="inline"/> Think of an agent as an LLM with hands and memory.
+<div v-click class="mt-8 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:robot class="inline"/> Think of an agent as an LLM with hands and memory.
 </div>
 
 <!--
@@ -210,7 +210,7 @@ layout: default
 </div>
 
 <div v-click class="mt-8 p-4 bg-orange-900 bg-opacity-30 rounded border-l-4 border-orange-500">
-<carbon:arrow-right class="inline"/> <strong>The Shift</strong>: From "AI suggests code" to "AI writes, tests, and deploys code"
+<mdi:arrow-right class="inline"/> <strong>The Shift</strong>: From "AI suggests code" to "AI writes, tests, and deploys code"
 </div>
 
 <!--
@@ -235,7 +235,7 @@ layout: default
 <LlmAgentComparison />
 
 <div class="mt-8 p-4 bg-orange-900 bg-opacity-30 rounded text-center">
-<carbon:idea class="inline"/> The transformation: From passive advisor to active partner
+<mdi:lightbulb class="inline"/> The transformation: From passive advisor to active partner
 </div>
 
 <!--
@@ -408,7 +408,7 @@ layout: default
 </div>
 
 <div v-click class="mt-8 p-4 bg-orange-900 bg-opacity-30 rounded">
-<carbon:idea class="inline"/> <strong>Common pattern</strong>: Tasks that are well-defined but tedious are perfect for agentic workflows
+<mdi:lightbulb class="inline"/> <strong>Common pattern</strong>: Tasks that are well-defined but tedious are perfect for agentic workflows
 </div>
 
 <!--
@@ -468,7 +468,7 @@ layout: default
 </v-clicks>
 
 <div v-click class="mt-8 p-4 bg-orange-900 bg-opacity-30 rounded">
-<carbon:checkmark class="inline"/> You don't need to be an AI expert - these tools are designed for working developers
+<mdi:check class="inline"/> You don't need to be an AI expert - these tools are designed for working developers
 </div>
 
 <!--
@@ -534,7 +534,7 @@ Oversight and feedback
 </div>
 
 <div v-click class="mt-8 p-4 bg-orange-900 bg-opacity-30 rounded text-center">
-<carbon:idea class="inline"/> <strong>Plus 8 Modern Architectures</strong> from the 2025 Architectural Guide
+<mdi:lightbulb class="inline"/> <strong>Plus 8 Modern Architectures</strong> from the 2025 Architectural Guide
 </div>
 
 <!--
@@ -591,8 +591,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-purple-900 bg-opacity-30 rounded">
-<carbon:idea class="inline"/> The agent becomes its own code reviewer
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:lightbulb class="inline"/> The agent becomes its own code reviewer
 </div>
 
 </div>
@@ -652,8 +652,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-blue-900 bg-opacity-30 rounded">
-<carbon:tools class="inline"/> Transforms suggestions into actions
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:tools class="inline"/> Transforms suggestions into actions
 </div>
 
 </div>
@@ -714,8 +714,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-green-900 bg-opacity-30 rounded">
-<carbon:diagram class="inline"/> From "what" to "how" automatically
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:sitemap class="inline"/> From "what" to "how" automatically
 </div>
 
 </div>
@@ -810,8 +810,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-blue-900 bg-opacity-30 rounded">
-<carbon:flow class="inline"/> Like a pipeline: each stage transforms the input
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:pipe class="inline"/> Like a pipeline: each stage transforms the input
 </div>
 
 </div>
@@ -879,8 +879,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-green-900 bg-opacity-30 rounded">
-<carbon:arrows-horizontal class="inline"/> Map-Reduce for LLMs
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:arrow-left-right class="inline"/> Map-Reduce for LLMs
 </div>
 
 </div>
@@ -972,8 +972,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-purple-900 bg-opacity-30 rounded">
-<carbon:collaborate class="inline"/> Like a team of specialists working together
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:account-group class="inline"/> Like a team of specialists working together
 </div>
 
 </div>
@@ -1044,8 +1044,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-green-900 bg-opacity-30 rounded">
-<carbon:tree-view class="inline"/> Parent-child relationship for delegation
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:file-tree class="inline"/> Parent-child relationship for delegation
 </div>
 
 </div>
@@ -1118,8 +1118,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-blue-900 bg-opacity-30 rounded">
-<carbon:decision-tree class="inline"/> Smart dispatch to specialists
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:graph class="inline"/> Smart dispatch to specialists
 </div>
 
 </div>
@@ -1211,8 +1211,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-yellow-900 bg-opacity-30 rounded">
-<carbon:user-avatar class="inline"/> Critical checkpoints for human wisdom
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:account class="inline"/> Critical checkpoints for human wisdom
 </div>
 
 </div>
@@ -1286,8 +1286,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-green-900 bg-opacity-30 rounded">
-<carbon:renew class="inline"/> Self-improvement through iteration
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:refresh class="inline"/> Self-improvement through iteration
 </div>
 
 </div>
@@ -1389,8 +1389,8 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-blue-900 bg-opacity-30 rounded">
-<carbon:search class="inline"/> Three-stage pipeline for web content processing
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<mdi:magnify class="inline"/> Three-stage pipeline for web content processing
 </div>
 
 </div>

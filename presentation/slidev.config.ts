@@ -27,7 +27,7 @@ export default defineConfig({
   presenter: true,
 
   // Color scheme
-  colorSchema: 'auto',
+  colorSchema: 'dark',
 
   // Fonts
   fonts: {
