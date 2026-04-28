@@ -11,13 +11,13 @@ layout: section
 
 # Simplicity Over Complexity
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-2 gap-4 mt-2 text-sm">
 
 <div>
 
 <v-clicks>
 
-## Start With the Simplest Thing That Works
+### Start With the Simplest Thing That Works
 
 Anthropic's core recommendation: **don't build multi-agent systems until a single agent demonstrably fails at your task.**
 
@@ -38,7 +38,7 @@ Anthropic's core recommendation: **don't build multi-agent systems until a singl
 
 <v-clicks>
 
-## Why Simplicity Wins
+### Why Simplicity Wins
 
 Each layer of added complexity:
 - Increases latency (coordination overhead)
@@ -46,7 +46,7 @@ Each layer of added complexity:
 - Increases failure surface (more moving parts)
 - Decreases debuggability
 
-## Measured Improvements from Anthropic
+### Measured Improvements from Anthropic
 
 - Adding MCP: **37% speed improvement** → justified
 - Adding parallelism: **30-60% time reduction** → justified for large tasks
@@ -56,7 +56,7 @@ Each layer of added complexity:
 
 </v-clicks>
 
-<div v-click class="mt-4 p-3 bg-orange-900 bg-opacity-30 rounded">
+<div v-click class="mt-2 p-2 bg-orange-900 bg-opacity-30 rounded">
 
 *"The best agent architecture is the simplest one that solves your problem reliably."*
 

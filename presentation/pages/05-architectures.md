@@ -557,27 +557,23 @@ Each coordinator runs a feedback loop until quality threshold is met, then passe
 
 # Architecture Selection Guide
 
-<div class="mt-3">
+<div class="text-sm mb-1">Use these 5 criteria to select the right architecture:</div>
 
-Use these 5 criteria to select the right architecture:
-
-</div>
-
-<div class="grid grid-cols-2 gap-6 mt-2">
+<div class="grid grid-cols-2 gap-4 mt-1 text-sm">
 
 <div class="dense-col">
 
 <v-clicks>
 
-### 1. Task Complexity
+#### 1. Task Complexity
 - Simple, single-domain → **Single Agent + Tools**
 - Multi-phase, multi-domain → **Sequential or Hierarchical**
 
-### 2. Parallelism Available
+#### 2. Parallelism Available
 - Tasks are independent → **Parallel workers**
 - Tasks are sequential → **Sequential agents or single agent**
 
-### 3. Human Oversight Required
+#### 3. Human Oversight Required
 - High-stakes, irreversible → **Human in the Loop**
 - Routine, verifiable → **Fully autonomous**
 
@@ -589,17 +585,17 @@ Use these 5 criteria to select the right architecture:
 
 <v-clicks>
 
-### 4. Domain Expertise Needed
+#### 4. Domain Expertise Needed
 - Single domain → **Generalist agent**
 - Multiple domains → **Routing or Multi-Agent**
 
-### 5. Iteration Requirements
+#### 5. Iteration Requirements
 - First-pass accuracy acceptable → **No feedback loop**
 - Quality must be verified → **Reflection / Feedback Loop**
 
 </v-clicks>
 
-<div v-click class="mt-4 p-3 bg-green-900 bg-opacity-30 rounded">
+<div v-click class="mt-2 p-2 bg-green-900 bg-opacity-30 rounded text-sm">
 
 **Decision Rule**: Choose the **simplest architecture** that meets your requirements — add complexity only when you have a measured reason to do so
 
