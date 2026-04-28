@@ -30,18 +30,29 @@ A logical grouping of slides forming one part of the presentation arc.
 | Field | Type | Description |
 |-------|------|-------------|
 | name | string | Section identifier matching FR-001 structure |
-| order | number | Position in presentation flow (1-6) |
+| order | number | Position in presentation flow (1-6 audience-facing) |
 | duration_min | number | Target duration in minutes |
 | learning_objective | string | What attendees should understand after this section |
 | slides | ref[] → Slide | Ordered list of slides in this section |
+| source_file | string | Markdown file backing the section (or "inline" for slides defined directly in `slides.md`) |
 
-**Sections (from FR-001)**:
-1. What Are Agentic Workflows (8 min)
-2. Why They Matter (7 min)
-3. Live Claude Code Demo (15 min)
-4. Workflow Patterns (10 min)
-5. Practical Tips (8 min)
-6. Q&A (7 min)
+**Sections (active deck, updated 2026-04-28 to reflect `slides.md`)**:
+
+| # | Section | Source | Duration | Notes |
+|---|---------|--------|----------|-------|
+| 0 | Title + Overview | inline (`slides.md`) | ≈2 min | Hero image: `agentic-hero.png`; overview lists the 6 audience-facing sections |
+| 1 | Understanding Agentic Workflows | `pages/01-concepts.md` | ≈10 min | Definition, mental model shift, key characteristics, why they matter, industry adoption, productivity gains |
+| 2 | Tools & Memory Fundamentals | section-header inline + `pages/02-tools-memory.md` | ≈12 min | Hero image: `tools-memory-hero.png`. Sub-slides: What are Tools? · What is Memory? · Tools + Memory in Action (RAG) · Why This Matters |
+| 3 | Workflow Patterns | inline (`slides.md`), 5 sub-groups | ≈18 min | Core (Reflection, Tool Use, Planning) · Workflow (Sequential / Prompt Chaining, Parallel / Parallelization) · Coordination (Multi-Agent, Hierarchical, Routing) · Control (Human-in-the-Loop, Feedback Loop) · arunpshankar Reference (Web Access) |
+| 4 | Modern Architecture Patterns | `pages/05-architectures.md` | ≈10 min | 8 architectures with performance metrics + framework comparison + selection guide |
+| 5 | Anthropic Principles + Practical Tips | `pages/06-principles.md` | ≈8 min | Simplicity, transparent planning, when to build agents, getting started, challenges, best practices, team coordination |
+| 6 | Q&A + References | `pages/06-principles.md` (Q&A) + inline References slide | ≈7 min | Closing references list (Phil Schmid, arunpshankar, 2025 architecture guide) + tool/framework links |
+
+**Total Duration**: ≈55–65 minutes (audience-facing)
+
+**Orphaned modules** (retained in repo, not imported by `slides.md`):
+- `pages/03-demo.md` — Live Claude Code demo (CLAUDE.md setup, interactive CLI workflow, hooks/MCP). Available as opt-in extension if presenter chooses to include a live coding segment.
+- `pages/04-patterns.md` — Older standalone patterns page including a "Why Multi-Agent?" intro and Phil Schmid pattern slides. Superseded by inline pattern slides in `slides.md` organized into 4 thematic groups.
 
 ### CodeExample
 
@@ -214,7 +225,7 @@ Notes: [presenter notes]
 - Every Section must have ≥2 LearningObjectives
 - Every Section must have ≥1 AssessmentItem
 - Every Section must have at least 1 Slide
-- Sum of all section durations must be 55-60 minutes
+- Sum of all section durations must be 55-65 minutes (updated 2026-04-28 to reflect 6-section audience-facing structure)
 
 **Code Quality**:
 - Every CodeExample with `is_live_demo: true` must be tested and executable
@@ -231,7 +242,7 @@ Notes: [presenter notes]
 - File sizes must meet optimization requirements
 - All assets must have alt_text for accessibility
 
-**Demo Readiness**:
+**Demo Readiness** (only applies if the optional `pages/03-demo.md` opt-in module is enabled — not part of the active deck per 2026-04-28 restructure):
 - All DemoSegments must have `rehearsal_status: validated` before presentation
 - Total demo duration must be ≤15 minutes
 - All demo segments must have backup recordings

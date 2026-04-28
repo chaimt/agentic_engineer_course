@@ -311,28 +311,30 @@ npm run dev
 ```markdown
 ## Rehearsal Log: [Date]
 
-**Total Duration**: X minutes (target: 55-60)
+**Total Duration**: X minutes (target: 55-65)
 
-**Section Timing**:
-- 01-concepts: X min (target: 8)
-- 02-benefits: X min (target: 7)
-- 03-demo: X min (target: 15)
-- 04-patterns: X min (target: 10)
-- 05-tips: X min (target: 8)
-- 06-qa: X min (target: 7)
+**Section Timing** (active deck, post 2026-04-28 restructure):
+- 1. Concepts (pages/01-concepts.md): X min (target: 10)
+- 2. Tools & Memory (pages/02-tools-memory.md): X min (target: 12)
+- 3. Patterns (inline in slides.md, 4 thematic groups + reference): X min (target: 18)
+- 4. Modern Architectures (pages/05-architectures.md): X min (target: 10)
+- 5. Principles & Practical Tips (pages/06-principles.md): X min (target: 8)
+- 6. Q&A + References: X min (target: 7)
 
 **Issues**:
-- [ ] Demo segment 2 failed at step 3 (hook didn't trigger)
-- [ ] Slide timing too fast in section 04
+- [ ] Pattern transition between Coordination and Control rushed
+- [ ] Slide timing too fast in Tools & Memory section
 - [ ] Code example on slide 12 has syntax error
 
 **Action Items**:
-- Fix hook configuration in .clauderc
-- Add pauses in section 04 narration
-- Correct code example and regenerate
+- Add a beat between Coordination and Control section headers
+- Slow narration in Tools & Memory RAG walkthrough
+- Correct code example
 ```
 
-### Demo Segment Rehearsal
+### Demo Segment Rehearsal (OPT-IN ONLY)
+
+> **Note (2026-04-28)**: The Live Claude Code Demo section was removed from the active deck. The procedures below apply only if you opt in by re-importing `pages/03-demo.md` in `slides.md`.
 
 **For each demo segment** (e.g., `demo-01-basics`):
 
@@ -365,14 +367,18 @@ demo_segments:
 
 ### Validation Checklist (Before Presentation)
 
+- [ ] Total presentation duration is 55-65 minutes
+- [ ] No code examples on slides have syntax errors (static validation per SC-005)
+- [ ] All assets load correctly in slides (hero images, per-pattern SVG diagrams)
+- [ ] Closing References slide loads with all primary source links
+- [ ] Section header slides render correctly for the 4 pattern groups + arunpshankar reference
+
+**If opt-in `pages/03-demo.md` is enabled**:
 - [ ] All 3 demo segments have `rehearsal_status: validated`
-- [ ] Total presentation duration is 55-60 minutes
 - [ ] All demo validation checkpoints pass
 - [ ] All backup recordings exist and play correctly
 - [ ] Failover procedures tested and documented
 - [ ] Presenter can execute demos without script reference
-- [ ] No code examples have syntax errors
-- [ ] All assets load correctly in slides
 
 ---
 
@@ -457,17 +463,20 @@ Follow demo scripts exactly:
 <!-- Play video, narrate over it -->
 ```
 
-**Time Management**:
+**Time Management** (active deck, post 2026-04-28 restructure):
 
 Check timer at these checkpoints:
-- End of Section 01: 8 min elapsed
-- Start of Demo: 15 min elapsed
-- End of Patterns: 40 min elapsed
+- End of Concepts (Section 1): ≈10 min elapsed
+- End of Tools & Memory (Section 2): ≈22 min elapsed
+- End of Patterns (Section 3): ≈40 min elapsed
+- End of Modern Architectures (Section 4): ≈50 min elapsed
+- End of Principles & Tips (Section 5): ≈58 min elapsed
+- Q&A + References (Section 6): final 7 min
 
 If running late:
-- Reduce Section 02 buffer (skip one benefit example)
-- Skip demo segment #3 (advanced)
-- Shorten tips section (5 min instead of 8)
+- Skip one or two arunpshankar reference patterns (currently only Web Access — easy to defer)
+- Compress Coordination Patterns to a single overview slide (Multi-Agent + Hierarchical + Routing)
+- Shorten Practical Tips section (cover 3 best-practice cards instead of all)
 - Reduce Q&A to 5 min
 
 ### Audience Engagement
@@ -622,15 +631,15 @@ npm run dev
 
 **Solutions**:
 
-**Immediate adjustments**:
-- Skip demo segment #3 (advanced) - saves 3 min
-- Reduce patterns section: skip multi-agent pattern (P2) - saves 3 min
-- Shorten tips section: cover 3 tips instead of 5 - saves 3 min
+**Immediate adjustments** (active deck, post 2026-04-28 restructure):
+- Skip arunpshankar reference patterns (currently only Web Access) - saves ≈2 min
+- Compress Coordination Patterns to a single overview slide - saves ≈3 min
+- Shorten Practical Tips: cover 3 best-practice cards instead of 5 - saves ≈3 min
 - Reduce Q&A to 5 min instead of 7 - saves 2 min
 
 **Communication**:
-- "In the interest of time, I'll skip the advanced demo and focus on core patterns..."
-- "For additional patterns, see the resources slide at the end"
+- "In the interest of time, I'll skip the reference implementations — they're listed on the closing slide..."
+- "For additional patterns, see the References & Further Reading slide at the end"
 
 **Never**:
 - Rush through demo (reduces effectiveness)
@@ -728,20 +737,31 @@ cd examples/claude-code-demo && ./reset-demo.sh
 | `P` | Toggle presenter mode |
 | `F` | Toggle fullscreen |
 
-### Timing Quick Reference
+### Timing Quick Reference (active deck, post 2026-04-28 restructure)
 
-| Section | Target (min) | Slides | Notes |
-|---------|--------------|--------|-------|
-| 01-Concepts | 8 | 5-7 | Foundation - don't rush |
-| 02-Benefits | 7 | 4-5 | Can reduce if running late |
-| 03-Demo | 15 | 3-5 | Critical - maintain quality |
-| 04-Patterns | 10 | 6-8 | Can skip pattern #4 if late |
-| 05-Tips | 8 | 5-6 | Can shorten to 5 min |
-| 06-Q&A | 7 | 1-2 | Flexible buffer |
-| **Total** | **55** | **30-35** | Target: 55-60 min |
+| # | Section | Source | Target (min) | Notes |
+|---|---------|--------|--------------|-------|
+| 1 | Concepts | `pages/01-concepts.md` | 10 | Definition, mental model, benefits, adoption — don't rush |
+| 2 | Tools & Memory | `pages/02-tools-memory.md` | 12 | Tools/ACI · Memory types · RAG support agent · Why this matters |
+| 3 | Workflow Patterns | inline in `slides.md` | 18 | 4 thematic groups (Core / Workflow / Coordination / Control) + arunpshankar reference (Web Access) |
+| 4 | Modern Architectures | `pages/05-architectures.md` | 10 | 8 architectures + framework comparison + selection guide |
+| 5 | Principles & Practical Tips | `pages/06-principles.md` | 8 | Anthropic principles + getting started + challenges + best practices + team coordination |
+| 6 | Q&A + References | `pages/06-principles.md` (Q&A) + inline References | 7 | Flexible buffer; closing slide lists all primary sources |
+| | **Total** | | **65** | Target: 55-65 min |
+
+**Optional opt-in modules** (not imported in active `slides.md`):
+- `pages/03-demo.md` — Live Claude Code demo (15 min, 3-5 slides). Adds presenter-driven CLAUDE.md, interactive CLI, hooks, and MCP demo. Re-enable by adding `src: ./pages/03-demo.md` to `slides.md`.
+- `pages/04-patterns.md` — Older standalone patterns layout including a "Why Multi-Agent?" intro and Phil Schmid pattern slides. Superseded by inline pattern slides in `slides.md`.
+
+### Section Mapping Note (2026-04-28)
+
+Several sections in this guide reference the older 9-section plan that included a dedicated demo. The active deck is now 6 audience-facing sections (above). Where the guide says:
+- "Section 03-Demo" → see opt-in `pages/03-demo.md`. Demo rehearsal procedures still apply if you re-enable it.
+- "Section 04-Patterns" → patterns are inline in `slides.md` (4 thematic groups + arunpshankar reference). The standalone `pages/04-patterns.md` file is retained but not imported.
+- Tools & Memory is now Section 2 (was Section 4 in the 2026-04-24 plan).
 
 ---
 
-**Version**: 1.0.0  
-**Last Updated**: 2026-04-19  
+**Version**: 1.1.0  
+**Last Updated**: 2026-04-28  
 **Maintainer**: Feature Owner (001-agentic-workflows-presentation)

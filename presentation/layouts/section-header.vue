@@ -2,7 +2,7 @@
   <div class="slidev-layout section-header-layout" :class="$attrs.class">
     <div class="section-header-content">
       <div class="section-indicator">
-        <slot name="section-number">Section</slot>
+        <slot name="section-number"></slot>
       </div>
       <div class="section-title">
         <slot />
