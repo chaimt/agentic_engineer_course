@@ -36,9 +36,9 @@ layout: section
 
 # Single Agent + Tools (ReAct)
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-2 gap-6 mt-2">
 
-<div>
+<div class="dense-col">
 
 ## ReAct: Reason + Act Loop
 
@@ -46,17 +46,18 @@ layout: section
 
 The foundational architecture — a single agent reasons about what to do, acts via tools, observes results, and loops.
 
-```
+```text
 Goal
   ↓
-[Reason] What do I need?
+[Reason]  What do I need?
   ↓
-[Act]    Call tool
+[Act]     Call tool
   ↓
 [Observe] Read result
   ↓
-Goal achieved? No → back to Reason
-              Yes → Return result
+Goal achieved?
+  No  → back to Reason
+  Yes → Return result
 ```
 
 </v-clicks>

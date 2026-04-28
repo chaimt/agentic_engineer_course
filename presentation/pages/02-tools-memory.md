@@ -48,7 +48,7 @@
 
 # What is Memory?
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-2 gap-6 mt-2 text-sm">
 
 <div class="dense-col">
 
@@ -56,20 +56,13 @@
 
 ## Memory Types
 
-**Short-term Memory**
-- Conversation context within token limits (~200K tokens for Claude)
-- In-context, ephemeral, fast
+**Short-term** — Conversation context within token limits (~200K tokens), ephemeral and fast
 
-**Long-term Memory**
-- Persistent storage across sessions
-- Vector databases, SQL, file systems
+**Long-term** — Persistent storage across sessions via vector DBs, SQL, file systems
 
-**Semantic Memory**
-- Embeddings-based retrieval (RAG)
-- Query by meaning, not exact match
+**Semantic** — Embeddings-based retrieval (RAG); query by meaning, not exact match
 
-**Episodic Memory**
-- Structured records of past interactions, decisions, outcomes
+**Episodic** — Structured records of past interactions, decisions, and outcomes
 
 </v-clicks>
 
@@ -86,7 +79,6 @@
 - **Update** — Modify memories as understanding evolves
 - **Prune** — Remove outdated or irrelevant information
 
-
 </v-clicks>
 
 </div>
@@ -97,7 +89,9 @@
 
 # Tools + Memory in Action
 
-<div class="grid grid-cols-2 gap-6 mt-2 text-sm">
+<img src="/images/tools-action-hero.jpg" class="w-full max-h-14 object-cover rounded-lg mb-2 opacity-75" style="object-position: center 60%" alt="AI Tools and Memory in Action" />
+
+<div class="grid grid-cols-2 gap-6 mt-1 text-sm">
 
 <div>
 
@@ -128,6 +122,8 @@ past = db.query(
 </div>
 
 <div v-click>
+
+<img src="/images/memory-brain.jpg" class="w-full max-h-20 object-cover rounded-lg mb-2 opacity-85" style="object-position: center 30%" alt="AI Memory Retrieval" />
 
 **Step 3 — Synthesis**
 

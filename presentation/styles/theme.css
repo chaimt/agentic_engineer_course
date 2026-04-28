@@ -141,3 +141,15 @@
   margin-top: 0.15rem !important;
   margin-bottom: 0.25rem !important;
 }
+
+.dense-col pre {
+  padding: 0.5rem 0.75rem !important;
+  margin: 0.25rem 0 !important;
+  font-size: 0.75rem !important;
+  line-height: 1.25 !important;
+}
+
+.dense-col pre code {
+  font-size: 0.75rem !important;
+  line-height: 1.25 !important;
+}

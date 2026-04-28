@@ -101,7 +101,7 @@ layout: section-header
 
 The building blocks that transform LLMs into agents
 
-<img src="/images/tools-memory-hero.png" alt="Tools and Memory" class="mx-auto mt-6 w-2/3 rounded-xl opacity-90 shadow-lg" />
+<img src="/images/tools-memory-hero-new.jpg" alt="Tools and Memory" class="mx-auto mt-6 w-2/3 rounded-xl opacity-90 shadow-lg" />
 
 <!--
 Before diving into patterns, we need to understand the two primitives that make agentic workflows possible.
