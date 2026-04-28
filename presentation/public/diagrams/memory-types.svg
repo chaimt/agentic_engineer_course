@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420">
+  <defs>
+    <style>
+      .title { font-family: 'Roboto', sans-serif; font-size: 18px; font-weight: 700; fill: #ff6b35; }
+      .label { font-family: 'Roboto', sans-serif; font-size: 13px; fill: #ffffff; font-weight: 600; }
+      .sublabel { font-family: 'Roboto', sans-serif; font-size: 11px; fill: #cccccc; }
+      .mem-label { font-family: 'Roboto', sans-serif; font-size: 10px; fill: #ffffff; font-weight: 600; }
+      .box { fill: #1a1a1a; stroke: #ff6b35; stroke-width: 2; }
+      .agent-box { fill: rgba(255, 107, 53, 0.2); stroke: #ff6b35; stroke-width: 3; }
+      .mem-box { fill: rgba(255, 159, 28, 0.15); stroke: #ff9f1c; stroke-width: 2; }
+      .store-arrow { fill: none; stroke: #ff9f1c; stroke-width: 2; marker-end: url(#arrowhead); }
+      .retrieve-arrow { fill: none; stroke: #ff6b35; stroke-width: 2; stroke-dasharray: 4,3; marker-end: url(#arrowhead-r); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ff9f1c" />
+    </marker>
+    <marker id="arrowhead-r" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ff6b35" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="350" y="30" text-anchor="middle" class="title">Memory Types: How Agents Remember</text>
+
+  <!-- Central Agent -->
+  <rect x="265" y="165" width="170" height="75" rx="8" class="agent-box"/>
+  <text x="350" y="193" text-anchor="middle" class="label" style="font-size: 15px;">> Agent</text>
+  <text x="350" y="210" text-anchor="middle" class="sublabel">Reads &amp; Writes</text>
+  <text x="350" y="225" text-anchor="middle" class="sublabel">Memory Stores</text>
+
+  <!-- Short-term Memory (top) -->
+  <rect x="245" y="50" width="210" height="70" rx="5" class="mem-box"/>
+  <text x="350" y="73" text-anchor="middle" class="mem-label">¡ Short-term Memory</text>
+  <text x="350" y="88" text-anchor="middle" class="sublabel" style="font-size: 9px;">Conversation context (in-context window)</text>
+  <text x="350" y="101" text-anchor="middle" class="sublabel" style="font-size: 9px;">~200K tokens · Ephemeral · Fast</text>
+  <text x="350" y="113" text-anchor="middle" class="sublabel" style="font-size: 9px; fill: #ff9f1c;">Cleared at session end</text>
+
+  <!-- Arrow: Agent ” Short-term -->
+  <path d="M 340 165 L 340 122" class="store-arrow"/>
+  <path d="M 360 120 L 360 165" class="retrieve-arrow"/>
+  <text x="368" y="148" class="sublabel" style="fill: #ff9f1c; font-size: 9px;">store</text>
+  <text x="317" y="148" class="sublabel" style="fill: #ff6b35; font-size: 9px; text-anchor: end;">recall</text>
+
+  <!-- Semantic / Vector Memory (left) -->
+  <rect x="40" y="260" width="155" height="80" rx="5" class="mem-box"/>
+  <text x="117" y="282" text-anchor="middle" class="mem-label">= Semantic Memory</text>
+  <text x="117" y="297" text-anchor="middle" class="sublabel" style="font-size: 9px;">Vector embeddings (RAG)</text>
+  <text x="117" y="310" text-anchor="middle" class="sublabel" style="font-size: 9px;">Query by meaning</text>
+  <text x="117" y="323" text-anchor="middle" class="sublabel" style="font-size: 9px; fill: #ff9f1c;">vector_store.search(q, k=5)</text>
+
+  <!-- Arrow: Agent ” Semantic -->
+  <path d="M 265 210 L 185 270" class="store-arrow"/>
+  <path d="M 182 258 L 265 202" class="retrieve-arrow"/>
+  <text x="200" y="245" class="sublabel" style="fill: #ff9f1c; font-size: 9px;">embed</text>
+  <text x="218" y="268" class="sublabel" style="fill: #ff6b35; font-size: 9px;">retrieve</text>
+
+  <!-- Episodic / SQL Memory (right) -->
+  <rect x="505" y="260" width="155" height="80" rx="5" class="mem-box"/>
+  <text x="582" y="282" text-anchor="middle" class="mem-label">=Ë Episodic Memory</text>
+  <text x="582" y="297" text-anchor="middle" class="sublabel" style="font-size: 9px;">Past interactions &amp; outcomes</text>
+  <text x="582" y="310" text-anchor="middle" class="sublabel" style="font-size: 9px;">SQL / structured records</text>
+  <text x="582" y="323" text-anchor="middle" class="sublabel" style="font-size: 9px; fill: #ff9f1c;">db.query("WHERE error='429'")</text>
+
+  <!-- Arrow: Agent ” Episodic -->
+  <path d="M 435 210 L 515 268" class="store-arrow"/>
+  <path d="M 518 256 L 435 202" class="retrieve-arrow"/>
+  <text x="492" y="245" class="sublabel" style="fill: #ff9f1c; font-size: 9px;">record</text>
+  <text x="460" y="268" class="sublabel" style="fill: #ff6b35; font-size: 9px;">query</text>
+
+  <!-- Arrow labels legend -->
+  <rect x="40" y="370" width="620" height="40" rx="5" style="fill: rgba(255, 159, 28, 0.1); stroke: #ff9f1c; stroke-width: 1;"/>
+  <line x1="55" y1="386" x2="90" y2="386" style="stroke:#ff9f1c;stroke-width:2;"/>
+  <polygon points="86,383 96,386 86,389" fill="#ff9f1c"/>
+  <text x="100" y="390" class="sublabel" style="font-size: 10px; fill: #ff9f1c;">Store (write)</text>
+  <line x1="195" y1="386" x2="230" y2="386" style="stroke:#ff6b35;stroke-width:2;stroke-dasharray:4,3;"/>
+  <polygon points="226,383 236,386 226,389" fill="#ff6b35"/>
+  <text x="240" y="390" class="sublabel" style="font-size: 10px; fill: #ff6b35;">Retrieve (read)</text>
+  <text x="360" y="383" class="sublabel" style="font-size: 10px; fill: #cccccc; text-anchor: middle;">Short-term: fast, ephemeral</text>
+  <text x="360" y="397" class="sublabel" style="font-size: 10px; fill: #cccccc; text-anchor: middle;">Long-term: persistent across sessions</text>
+</svg>

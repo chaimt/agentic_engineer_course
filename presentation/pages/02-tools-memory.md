@@ -88,13 +88,11 @@
 
 ## Implementation
 
-```python
-# Vector (semantic) search
-results = vector_store.search(query, k=5)
+<img src="/diagrams/memory-types.svg" class="w-full mt-1 rounded max-h-44 object-contain" />
 
-# SQL (episodic) search
-past = db.query(
-    "WHERE error_code = '429'")
+```python
+results = vector_store.search(query, k=5)
+past = db.query("WHERE error_code='429'")
 ```
 
 </v-clicks>
