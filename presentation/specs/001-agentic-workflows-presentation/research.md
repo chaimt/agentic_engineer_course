@@ -381,6 +381,278 @@ slides/sections/                    # Generated (read-only)
 
 ---
 
+## R14: Tools and Memory Fundamentals (NEW REQUIREMENT 2026-04-24)
+
+**Decision**: Add comprehensive Tools and Memory section before agent architectures, with practical RAG system example
+
+**Rationale**: User explicitly requested: "before describing agents add a slide about tools and memory and how they work. in addition bring an example of a rag system that uses tools and memory"
+
+**Pedagogical Benefit**: Understanding tools and memory as building blocks helps audience comprehend how patterns and architectures combine these primitives.
+
+### Tools: Agent-Computer Interface (ACI)
+
+**Definition**: Structured interfaces that extend LLM capabilities beyond text generation by enabling interaction with external systems, APIs, databases, and computational resources.
+
+**Key Concepts**:
+1. **Tool Structure** (Anthropic API format):
+   - Name and description (agent decides when to use)
+   - Input schema (typed parameters with validation)
+   - Execution logic (actual functionality)
+   - Output format (structured response)
+
+2. **Tool Categories**:
+   - Information Retrieval: Search, database queries, API calls
+   - Computation: Math operations, data processing, code execution
+   - Action Execution: File operations, system commands, external service integration
+   - Memory Access: Vector store queries, context retrieval, conversation history
+
+3. **Implementation Example**:
+```python
+{
+  "name": "search_codebase",
+  "description": "Search code repository for function definitions, class names, or keywords",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "query": {"type": "string", "description": "Search query or keyword"},
+      "file_types": {"type": "array", "items": {"type": "string"}}
+    },
+    "required": ["query"]
+  }
+}
+```
+
+**Best Practices** (from Anthropic's Building Effective Agents):
+- Detailed descriptions help agent decide when to call
+- Clear input schemas prevent malformed requests
+- Structured outputs enable agent parsing and use
+- Error handling helps agent recover from failures
+
+### Memory: Stateful Context Management
+
+**Definition**: Memory systems enable agents to maintain context across interactions, store learned information, and retrieve relevant historical data to inform current decisions.
+
+**Key Concepts**:
+1. **Memory Types**:
+   - **Short-term Memory**: Conversation context within token limits (~200K tokens for Claude 3.5)
+   - **Long-term Memory**: Persistent storage (vector databases, traditional databases, file systems)
+   - **Semantic Memory**: Embeddings-based retrieval (RAG pattern)
+   - **Episodic Memory**: Structured records of past interactions, decisions, outcomes
+
+2. **Memory Operations**:
+   - Storage: Save information for future retrieval
+   - Retrieval: Query relevant information based on current context
+   - Update: Modify existing memories as understanding evolves
+   - Pruning: Remove outdated or irrelevant information
+
+3. **Memory Architecture Patterns**:
+   - Context Window Management: Fit recent context within token limits
+   - Retrieval-Augmented Generation (RAG): Query external knowledge on-demand
+   - Hybrid Memory: Combine context window + vector store + structured DB
+   - Shared Memory: Multiple agents access common knowledge base
+
+4. **Implementation Approaches**:
+```python
+# Vector Store (Semantic Memory)
+vector_store = WeaviateClient(
+    collection="documentation",
+    embedding_model="text-embedding-3-large"
+)
+
+# Structured Memory (Episodic)
+db.query(
+    "SELECT solution, resolution_time FROM tickets "
+    "WHERE error_code = '429' AND status = 'resolved'"
+)
+```
+
+### RAG Example: API Support Agent with Tools + Memory
+
+**Use Case**: Customer support agent helping developers troubleshoot API integration issues
+
+**Architecture Demonstration**:
+
+```
+User Query: "My API calls are returning 429 errors"
+       ↓
+[Agent receives query + conversation history]
+       ↓
+┌──────────────────────────────────────────┐
+│  TOOLS (Action Execution)                │
+│  ✓ search_issue_tracker("429 errors")   │
+│  ✓ check_api_rate_limits(user_id)       │
+│  ✓ fetch_recent_logs(last_hour)         │
+└──────────────────────────────────────────┘
+       ↓
+┌──────────────────────────────────────────┐
+│  MEMORY (RAG - Knowledge Retrieval)      │
+│  ✓ Vector search: "rate limiting best   │
+│    practices" in documentation           │
+│  ✓ Retrieve: Past solutions for 429s    │
+│  ✓ Find: API quota upgrade procedures   │
+└──────────────────────────────────────────┘
+       ↓
+[Agent synthesizes: Logs show 1000 req/min,
+ limit is 100/min. Documentation recommends
+ exponential backoff. Past solutions suggest
+ upgrading to Enterprise tier.]
+       ↓
+Response: "You're hitting rate limits (100/min).
+Implement exponential backoff (code example from
+docs). For higher limits, upgrade to Enterprise."
+```
+
+**Implementation Details**:
+
+1. **Tools Used**:
+```python
+tools = [
+    {
+        "name": "search_issue_tracker",
+        "description": "Search past support tickets and issues",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "query": {"type": "string"},
+                "status": {"type": "string", "enum": ["open", "closed", "all"]}
+            }
+        }
+    },
+    {
+        "name": "check_rate_limits",
+        "description": "Get current API usage and limits for a user",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "user_id": {"type": "string"}
+            }
+        }
+    },
+    {
+        "name": "fetch_logs",
+        "description": "Retrieve API request logs for debugging",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "time_range": {"type": "string"},
+                "filter": {"type": "string"}
+            }
+        }
+    }
+]
+```
+
+2. **Memory (RAG) Retrieval**:
+```python
+# Vector Store Setup
+vector_store = WeaviateClient(
+    collection="api_documentation",
+    embedding_model="text-embedding-3-large"
+)
+
+# Semantic Search
+def retrieve_relevant_docs(query: str, k: int = 5):
+    embedding = get_embedding(query)
+    results = vector_store.similarity_search(
+        embedding=embedding,
+        limit=k,
+        filters={"category": ["troubleshooting", "rate-limits"]}
+    )
+    return results
+
+# Hybrid Memory: Vector + Structured
+past_solutions = db.query(
+    "SELECT solution, resolution_time FROM tickets "
+    "WHERE error_code = '429' AND status = 'resolved' "
+    "ORDER BY created_at DESC LIMIT 10"
+)
+```
+
+3. **Complete Workflow**:
+```python
+# Agent receives query
+user_query = "My API calls are returning 429 errors"
+
+# Execute tools in parallel
+tool_results = await execute_parallel([
+    search_issue_tracker("429 errors"),
+    check_rate_limits(user_id),
+    fetch_logs(last_hour)
+])
+
+# Query memory (RAG)
+relevant_docs = retrieve_relevant_docs(
+    query="API rate limiting troubleshooting",
+    k=3
+)
+past_solutions = get_similar_resolutions(error_code="429")
+
+# Synthesize with full context
+context = {
+    "user_query": user_query,
+    "tool_results": tool_results,
+    "documentation": relevant_docs,
+    "past_solutions": past_solutions
+}
+
+response = agent.generate_response(context)
+```
+
+**Performance Benefits**:
+- **Tool Use**: Real-time data access (current limits, logs) vs outdated knowledge
+- **RAG Memory**: 37% faster resolution (from Pattern #3: MCP + Tools benchmark in spec)
+- **Combined**: Reduced back-and-forth (agent has full context immediately)
+
+**Slide Structure** (4 slides total):
+
+1. **"What are Tools?"**
+   - Definition: Structured interfaces for agent-external system interaction
+   - Categories: Information, Computation, Action, Memory Access
+   - Code example: Tool definition structure
+   - Key point: Tools transform LLMs into agents
+
+2. **"What is Memory?"**
+   - Definition: Stateful context management across interactions
+   - Types: Short-term (context window) vs Long-term (vector stores, DBs)
+   - Memory operations: Store, Retrieve, Update, Prune
+   - Key point: Memory enables learning and context-aware responses
+
+3. **"Tools + Memory in Action: RAG Support Agent"**
+   - Use case: API troubleshooting support
+   - Architecture diagram showing query → tools → memory → synthesis
+   - Code walkthrough: Tool calls + RAG retrieval
+   - Results: Faster resolution, better accuracy, learned from past issues
+
+4. **"Why This Matters"**
+   - Without tools: Agent can only generate text from training knowledge
+   - Without memory: Agent repeats same mistakes, lacks personalization
+   - Together: Powerful, context-aware, action-capable agents
+   - Transition: "Now let's see how to architect these into complete systems..."
+
+**Integration into Presentation Flow**:
+
+Updated Section Order (inserted after live demo, before patterns):
+1. Introduction: What are agentic workflows
+2. Why they matter
+3. Live Claude Code demo
+4. **NEW: Fundamentals - Tools and Memory** (18 minutes: 5 min tools + 5 min memory + 8 min RAG example)
+5. Foundational Workflow Patterns (Phil Schmid's 7 patterns)
+6. Modern Architecture Patterns (2025 guide's 8 patterns)
+7. Anthropic Building Effective Agents principles
+8. Practical implementation tips
+9. Q&A
+
+**Time Budget Impact**:
+- Tools + Memory section: 18 minutes
+- Remaining for patterns/principles/Q&A: 42 minutes (within 60-minute constraint)
+
+**Alternatives Considered**:
+- Integrate tools/memory into pattern sections - rejected because it dilutes focus and loses coherent narrative
+- Add at beginning before demo - rejected because lacks context, audience won't appreciate importance
+- Add at end after patterns - rejected because too late, patterns already introduced concepts
+
+---
+
 ## Research Complete
 
 All technical clarifications from plan.md resolved:
@@ -389,5 +661,6 @@ All technical clarifications from plan.md resolved:
 - ✅ Asset management strategy
 - ✅ Speckit-Slidev integration workflow
 - ✅ Live demo rehearsal and backup procedures
+- ✅ **NEW: Tools and Memory fundamentals with RAG system example**
 
 **Next Phase**: Phase 1 - Design & Contracts (data-model.md, contracts/, quickstart.md)

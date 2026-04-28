@@ -1,0 +1,150 @@
+/* Custom Slide Layouts for Agentic Workflows Presentation */
+
+/* Two-column layout for side-by-side content */
+.two-cols-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  height: 100%;
+}
+
+.two-cols-layout .col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Image-left layout for diagrams */
+.image-left-layout {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 2rem;
+  align-items: center;
+  height: 100%;
+}
+
+.image-left-layout .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-left-layout .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Cover slide layout */
+.cover-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+}
+
+.cover-layout h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: var(--slidev-theme-primary);
+}
+
+.cover-layout h2 {
+  font-size: 2rem;
+  color: var(--slidev-theme-text-muted);
+  font-weight: 400;
+}
+
+/* Section divider layout */
+.section-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  background: var(--slidev-theme-background);
+  border-left: 8px solid var(--slidev-theme-primary);
+}
+
+.section-layout h1 {
+  font-size: 3.5rem;
+  color: var(--slidev-theme-primary);
+}
+
+/* Code-focused layout */
+.code-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2rem;
+}
+
+.code-layout .code-title {
+  font-size: 1.5rem;
+  color: var(--slidev-theme-primary);
+  margin-bottom: 1rem;
+}
+
+.code-layout pre {
+  flex: 1;
+  margin: 0;
+  max-height: calc(100% - 4rem);
+}
+
+/* Comparison layout for before/after or vs scenarios */
+.comparison-layout {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  height: 100%;
+  align-items: center;
+}
+
+.comparison-layout .vs {
+  font-size: 3rem;
+  color: var(--slidev-theme-accent);
+  font-weight: 700;
+  text-align: center;
+}
+
+.comparison-layout .left,
+.comparison-layout .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  border: 2px solid var(--slidev-theme-primary);
+  border-radius: 0.5rem;
+  background: var(--slidev-theme-background-alt);
+}
+
+/* Quote layout */
+.quote-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 4rem;
+}
+
+.quote-layout blockquote {
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--slidev-theme-text);
+  border-left: 4px solid var(--slidev-theme-primary);
+  padding-left: 2rem;
+  margin: 0;
+}
+
+.quote-layout .attribution {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  color: var(--slidev-theme-accent);
+  text-align: right;
+  width: 100%;
+}

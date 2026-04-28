@@ -35,13 +35,21 @@ A logical grouping of slides forming one part of the presentation arc.
 | learning_objective | string | What attendees should understand after this section |
 | slides | ref[] → Slide | Ordered list of slides in this section |
 
-**Sections (from FR-001)**:
+**Sections (from FR-001, updated 2026-04-24)**:
 1. What Are Agentic Workflows (8 min)
 2. Why They Matter (7 min)
 3. Live Claude Code Demo (15 min)
-4. Workflow Patterns (10 min)
-5. Practical Tips (8 min)
-6. Q&A (7 min)
+4. **Fundamentals: Tools and Memory** (18 min) — NEW: Added per user requirement
+   - What are Tools (5 min)
+   - What is Memory (5 min)
+   - RAG Example: Tools + Memory in Action (8 min)
+5. Foundational Workflow Patterns (10 min)
+6. Modern Architecture Patterns (10 min)
+7. Anthropic Building Effective Agents (5 min)
+8. Practical Tips (5 min)
+9. Q&A (7 min)
+
+**Total Duration**: ~60 minutes
 
 ### CodeExample
 

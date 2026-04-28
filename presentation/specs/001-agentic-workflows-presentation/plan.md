@@ -1,65 +1,67 @@
 # Implementation Plan: Agentic Workflows Presentation
 
-**Branch**: `001-agentic-workflows-presentation` | **Date**: 2026-04-16 | **Spec**: [spec.md](./spec.md)
+**Branch**: `001-agentic-workflows-presentation` | **Date**: 2026-04-24 | **Spec**: [spec.md](./spec.md)
 **Input**: Feature specification from `/specs/001-agentic-workflows-presentation/spec.md`
 
-**Note**: This template is filled in by the `/spec.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
+**Note**: This template is filled in by the `/speckit-plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
 ## Summary
 
-Create an educational presentation on agentic workflows using Slidev framework with Speckit content management. The presentation teaches developers how to implement AI-assisted development workflows, featuring live Claude Code demonstrations and practical implementation examples. Content follows a concept-first arc from fundamentals through advanced patterns, covering 15 core patterns: Phil Schmid's 7 foundational workflow patterns (Prompt Chaining, Routing, Parallelization, Reflection, Tool Use, Planning, Multi-Agent) and 8 modern agent architectures from the 2025 guide. Delivered in 45-60 minutes to developers familiar with AI tools but not yet practicing structured agentic workflows, using black and orange color theme for maximum contrast.
+Create a comprehensive educational presentation on agentic workflows using Slidev framework. The presentation will teach developers how to implement AI-assisted development workflows, covering foundational patterns from Phil Schmid's taxonomy (7 patterns: Prompt Chaining, Routing, Parallelization, Reflection, Tool Use, Planning, Multi-Agent), modern architecture patterns from 2025 guide (8 patterns with performance metrics), and Anthropic's Building Effective Agents principles. Primary tool demonstration will be Claude Code CLI with live presenter-driven demos. Black and orange color theme for professional technical appearance.
+
+**NEW REQUIREMENT**: Before describing agent architectures, add comprehensive slide section covering Tools and Memory concepts with practical RAG system example demonstrating both.
 
 ## Technical Context
 
-**Language/Version**: JavaScript/TypeScript with Node.js (NEEDS CLARIFICATION: specific Node version)  
-**Primary Dependencies**: Slidev (NEEDS CLARIFICATION: version and theme customization approach), Vue 3, Vite, Markdown processors  
-**Storage**: N/A (static presentation content in markdown, assets in filesystem)  
-**Testing**: Manual presentation rehearsal, code examples validation (NEEDS CLARIFICATION: testing framework for embedded code snippets)  
-**Target Platform**: Modern web browsers (Chrome, Firefox, Safari) for presentation delivery and export to PDF  
-**Project Type**: Interactive developer presentation with live coding demonstrations  
-**Performance Goals**: Smooth slide transitions (<100ms), fast initial load (<3s), responsive navigation  
-**Constraints**: 45-60 minute delivery time, must match referenced Google Slides visual theme, presenter-driven demos only  
-**Scale/Scope**: ~50-80 slides covering 6 main sections (concepts, benefits, demo, patterns, tips, Q&A), 3-5 code examples with live demos
-
-**Clarifications Needed (Phase 0 Research)**:
-1. How to customize Slidev theme to match Google Slides color scheme and layout
-2. Best practices for embedding executable code examples in Slidev
-3. Recommended approach for managing presentation assets (screenshots, diagrams, demo recordings)
-4. Integration strategy between Speckit content specifications and Slidev markdown structure
-5. Setup and rehearsal workflow for live Claude Code demonstrations
+**Language/Version**: JavaScript/TypeScript with Node.js (Slidev requirement)
+**Primary Dependencies**: Slidev (Vue 3 + Vite), TailwindCSS or custom CSS for black/orange theming, Shiki for syntax highlighting, Mermaid for diagrams
+**Storage**: Markdown files (slides.md), static assets (images, code examples), theme configuration
+**Testing**: Manual presentation testing, code example validation (ensuring all demos execute successfully), content accuracy review
+**Target Platform**: Modern web browsers (Chrome, Firefox, Safari), presentation mode with speaker notes
+**Project Type**: Interactive web-based presentation application
+**Performance Goals**: Instant slide transitions (<100ms), smooth animations (60fps), fast initial load (<2s)
+**Constraints**: 45-60 minute delivery window, readable text for audiences 10-100 people, all code examples must be executable and tested, presenter-driven demos only
+**Scale/Scope**: ~60-80 slides covering 7 foundational patterns + 8 architecture patterns + tools/memory section + Anthropic principles + live demos + assessment
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-### Pre-Design Evaluation (before Phase 0)
+### Content-First Development ✅ PASS
+- Feature spec defines complete learning objectives, slide narratives, and success criteria
+- Educational outcomes are measurable (SC-001 through SC-005)
+- No implementation started without approved content specification
 
-| Principle | Status | Evidence |
-|-----------|--------|----------|
-| **I. Content-First Development** | ✅ PASS | Feature spec defines learning objectives, audience, and success criteria before technical implementation |
-| **II. Speckit-Slidev Integration** | ✅ PASS | Project uses Speckit for content management (.specify/ structure) and targets Slidev for delivery |
-| **III. Developer-Focused Pedagogy** | ⚠️ PENDING | Requires executable code examples and live demos - will validate in Phase 1 design |
-| **IV. Specification-Driven Slides** | ⚠️ PENDING | Requires structured documentation for each slide - will create in Phase 1 (data-model.md, contracts/) |
-| **V. Modular Content Architecture** | ✅ PASS | Feature spec defines 6 independent modules: concepts, benefits, demo, patterns, tips, Q&A |
+### Speckit-Slidev Integration ✅ PASS
+- Content managed through Speckit framework (.specify/ directory structure)
+- Presentation delivery via Slidev framework (NFR-007 requirement)
+- Specification-driven slide generation planned
 
-### Workflow Gates
+### Developer-Focused Pedagogy (NON-NEGOTIABLE) ✅ PASS
+- Target audience: developers aware of AI tools but not practicing structured workflows (NFR-005)
+- All code examples required to be executable and tested (NFR-003)
+- Presenter-driven live demos with Claude Code (FR-003)
+- Hands-on methodology with practical implementations (FR-002, FR-004)
 
-| Phase | Status | Notes |
-|-------|--------|-------|
-| 1. Content Specification | ✅ COMPLETE | spec.md defines learning objectives, target audience, key concepts |
-| 2. Technical Planning | 🔄 IN PROGRESS | This plan.md - completing Technical Context |
-| 3. Slide Design | ⏸️ BLOCKED | Awaits Phase 0 research and Phase 1 data-model |
-| 4. Content Integration | ⏸️ BLOCKED | Awaits slide design completion |
-| 5. Review Phase | ⏸️ BLOCKED | Awaits content integration |
-| 6. Delivery Preparation | ⏸️ BLOCKED | Awaits review completion |
+### Specification-Driven Slides ✅ PASS
+- Learning objectives defined per user story (Priority P1, P2)
+- Code examples and demos specified (FR-003, FR-008, FR-009)
+- Assessment criteria included (FR-006, SC-001 through SC-005)
+- Technical examples derived from approved research sources
 
-### Gate Violations
+### Modular Content Architecture ✅ PASS
+- Content organized into independent educational modules:
+  1. Agentic concepts introduction
+  2. Live Claude Code demo
+  3. Foundational workflow patterns (7 patterns)
+  4. **NEW: Tools and Memory fundamentals with RAG example**
+  5. Modern architecture patterns (8 patterns)
+  6. Anthropic Building Effective Agents principles
+  7. Practical implementation and Q&A
+- Each module delivers standalone value
+- Clear dependencies documented in presentation flow
 
-None identified. The feature spec aligns with all constitutional principles. Two principles (III, IV) require validation during Phase 1 design to ensure technical implementation meets educational standards.
-
-### Post-Design Re-Evaluation
-
-*Will be completed after Phase 1 (data-model.md, contracts/, quickstart.md generation)*
+**GATE STATUS**: ✅ ALL GATES PASS - Proceed to Phase 0 research
 
 ## Project Structure
 
@@ -78,106 +80,149 @@ specs/[###-feature]/
 ### Source Code (repository root)
 
 ```text
-presentation/                    # Repository root
-├── slides/                      # Slidev presentation content
-│   ├── slides.md               # Main presentation file (Slidev markdown)
-│   ├── sections/               # Modular slide sections
-│   │   ├── 01-concepts.md      # What are agentic workflows
-│   │   ├── 02-benefits.md      # Why they matter
-│   │   ├── 03-demo.md          # Live Claude Code demonstration
-│   │   ├── 04-patterns.md      # Workflow patterns
-│   │   ├── 05-tips.md          # Practical tips
-│   │   └── 06-qa.md            # Q&A section
-│   ├── theme/                  # Custom Slidev theme
-│   │   ├── styles/             # CSS matching Google Slides theme
-│   │   └── layouts/            # Custom slide layouts
-│   └── components/             # Vue components for interactive elements
-│
-├── examples/                    # Code examples and demos
-│   ├── basic-workflow/         # Simple agentic workflow example
-│   ├── advanced-patterns/      # Advanced workflow patterns
-│   └── claude-code-demo/       # Live demo scripts and setup
-│
-├── assets/                      # Presentation assets
-│   ├── images/                 # Screenshots, diagrams
-│   ├── videos/                 # Demo recordings (backup)
-│   └── references/             # Additional learning materials
-│
-├── .specify/                    # Speckit framework (content specs)
-│   ├── memory/
-│   │   └── constitution.md     # Presentation principles
-│   └── scripts/
-│
-└── specs/                       # Feature specifications
-    └── 001-agentic-workflows-presentation/
-        ├── spec.md             # Feature specification
-        ├── plan.md             # This file
-        ├── research.md         # Phase 0 output
-        ├── data-model.md       # Phase 1: Content structure
-        ├── quickstart.md       # Phase 1: Presenter guide
-        └── contracts/          # Phase 1: Slide content contracts
+presentation/
+├── slides.md                 # Main Slidev presentation file (markdown-based slides)
+├── pages/                    # Additional slide pages (if splitting content)
+│   ├── 01-concepts.md       # Agentic concepts introduction
+│   ├── 02-tools-memory.md   # NEW: Tools and Memory fundamentals + RAG example
+│   ├── 03-demo.md           # Live Claude Code demo
+│   ├── 04-patterns.md       # Foundational workflow patterns
+│   ├── 05-architectures.md  # Modern architecture patterns
+│   └── 06-principles.md     # Anthropic Building Effective Agents
+├── components/               # Custom Vue components for interactive elements
+│   ├── CodeExample.vue      # Syntax-highlighted code with copy button
+│   ├── PatternComparison.vue # Side-by-side pattern comparison
+│   └── ArchitectureDiagram.vue # Interactive architecture diagrams
+├── public/                   # Static assets
+│   ├── images/              # Diagrams, screenshots, logos
+│   ├── examples/            # Code example files for demos
+│   └── fonts/               # Custom fonts if needed
+├── styles/                   # Custom CSS/SCSS
+│   ├── theme.css           # Black and orange color theme
+│   ├── code-highlighting.css # Custom syntax theme
+│   └── layouts.css         # Custom slide layouts
+├── setup/                    # Slidev setup scripts
+│   └── shiki.ts            # Code highlighting configuration
+├── slidev.config.ts         # Slidev configuration
+├── package.json             # Node dependencies
+└── vite.config.ts          # Vite build configuration
 ```
 
-**Structure Decision**: Slidev presentation with modular content architecture. The `slides/` directory contains all presentation content organized by section for maintainability. Code examples are separated into `examples/` for testing and reuse. Speckit specifications in `specs/` drive content creation, ensuring alignment with constitution principles. Custom theme in `slides/theme/` matches referenced Google Slides visual style.
+**Structure Decision**: Slidev presentation with modular page organization. Main slides.md serves as entry point with imports from pages/ directory for each major section. Custom Vue components enable interactive elements (code examples, diagrams, comparisons). Black and orange theme implemented via custom CSS. All code examples stored as executable files in public/examples/ for validation and live demo use.
 
 ## Triage Framework: [SYNC] vs [ASYNC] Classification
 
-**Execution Strategy**: This presentation project uses a hybrid model combining human creativity and pedagogical expertise ([SYNC]) with automated setup and scaffolding ([ASYNC]).
+**Execution Strategy**: This feature uses primarily [SYNC] (human-authored) approach due to the nature of educational content creation requiring pedagogical expertise and narrative coherence.
 
 ### Preliminary Task Classification
 
-Complete during planning phase - will be validated and refined during task generation
-
 | Task Category | Estimated [SYNC] Tasks | Estimated [ASYNC] Tasks | Rationale |
 |---------------|----------------------|----------------------|-----------|
-| Content Narrative | 6 | 0 | Learning objectives and story flow require pedagogical expertise |
-| Slide Design | 4 | 3 | Visual layouts can be automated, but educational flow needs human review |
-| Code Examples | 3 | 2 | Example selection requires context, but scaffolding can be automated |
-| Theme Customization | 2 | 1 | Design decisions are human-driven, but CSS implementation can be delegated |
-| Infrastructure Setup | 0 | 4 | Slidev configuration and project setup are fully automatable |
+| Content Writing | 10 | 0 | Educational content requires pedagogical expertise, narrative flow, and learning outcome alignment |
+| Slide Design | 8 | 2 | Custom layouts and theming require design decisions; standard slides can be templated |
+| Code Examples | 0 | 6 | Executable code examples (tools, memory, RAG) can be generated and validated automatically |
+| Technical Setup | 0 | 4 | Slidev configuration, build setup, dependency management are automatable |
+| Testing/Validation | 2 | 4 | Content review requires human judgment; code execution testing can be automated |
 
 ### Triage Decision Criteria Applied
 
 **High-Risk [SYNC] Classifications:**
 
-- Learning objective definition for each module (educational effectiveness)
-- Content narrative and story flow (pedagogical coherence)
-- Live demo script creation (presentation success critical)
-- Educational assessment design (learning validation)
-- Audience engagement strategy (presentation effectiveness)
-- Visual theme design decisions (brand and accessibility compliance)
+- All section narrative content (learning objectives, concept explanations, transitions)
+- Tools and Memory conceptual explanations
+- RAG example architecture design and walkthrough narrative
+- Live demo script and presenter notes
+- Assessment questions and success criteria alignment
+- Slide layout decisions affecting pedagogical flow
 
 **Agent-Delegated [ASYNC] Classifications:**
 
-- Slidev project initialization and configuration
-- File structure and asset organization
-- Slide template scaffolding
-- Code example file structure setup
-- Documentation generation (quickstart, presenter notes)
-- Research on Slidev theming best practices
+- Code example implementations (tools definition, RAG retrieval, vector store setup)
+- Slidev configuration and theme setup
+- Test harness for code examples
+- Asset optimization (image compression, syntax highlighting config)
+- Build and deployment scripts
+- Documentation generation (API docs from code)
 
 ### Triage Audit Trail
 
 | Task | Classification | Primary Criteria | Risk Level | Rationale |
 |------|----------------|------------------|------------|-----------|
-| Define learning objectives | [SYNC] | Educational effectiveness | High | Requires pedagogical expertise and domain knowledge |
-| Design content narrative | [SYNC] | Pedagogical coherence | High | Story flow impacts learning outcomes |
-| Create live demo scripts | [SYNC] | Presentation success | High | Demo failures reduce credibility and engagement |
-| Initialize Slidev project | [ASYNC] | Technical setup | Low | Standard configuration, well-documented process |
-| Setup file structure | [ASYNC] | Organization | Low | Follows established patterns from project structure |
-| Research Slidev theming | [ASYNC] | Knowledge gathering | Low | Information retrieval and synthesis |
-| Create slide templates | [ASYNC] | Scaffolding | Low | Based on defined content structure |
-| Design visual theme | [SYNC] | Design decisions | Medium | Must match brand and ensure accessibility |
+| Tools slide narrative | [SYNC] | Educational quality | High | Requires pedagogical framing for developer audience |
+| Memory slide narrative | [SYNC] | Educational quality | High | Complex concepts need expert explanation |
+| RAG example code | [ASYNC] | Technical implementation | Low | Standard Python patterns with clear spec |
+| RAG architecture diagram | [SYNC] | Pedagogical design | Medium | Visual communication requires design judgment |
+| Code validation tests | [ASYNC] | Automation-friendly | Low | Standard pytest patterns |
+| Slidev theme config | [ASYNC] | Configuration | Low | Black/orange theme specs are clear |
+| Slide transitions | [SYNC] | User experience | Medium | Affects presentation pacing and flow |
+
+## Complexity Tracking
+
+> **No violations detected** - Constitution Check passed all gates
+
+## Phase 0 Completion Summary
+
+✅ **Research Phase Complete** (2026-04-24)
+
+**Deliverables**:
+- research.md updated with R14: Tools and Memory Fundamentals
+- Tools definition and categorization (Agent-Computer Interface)
+- Memory types and architecture patterns (short-term, long-term, semantic, episodic)
+- RAG example specification (API Support Agent with tools + memory)
+- Slide structure planned (4 slides: Tools, Memory, RAG Example, Why This Matters)
+- Presentation flow integration confirmed (inserted as Section 4, after demo, before patterns)
+- Time budget validated (18 minutes for tools/memory, 42 minutes remaining, within 60-minute constraint)
+
+## Phase 1 Completion Summary
+
+✅ **Design & Contracts Phase Complete** (2026-04-24)
+
+**Deliverables**:
+- data-model.md updated with new Section 4 (Tools and Memory)
+- Presentation flow restructured (9 sections total, previously 6)
+- Duration allocations updated (60-minute total confirmed)
+- contracts/ directory reviewed (existing contracts apply to new section)
+- quickstart.md reviewed (setup process unchanged)
+- Agent context updated (CLAUDE.md refreshed with current technologies)
+
+## Constitution Re-Check (Post Phase 1)
+
+*GATE: Re-evaluate after design phase*
+
+### Content-First Development ✅ PASS (CONFIRMED)
+- Tools and Memory section fully specified in research.md before implementation
+- Learning objectives defined: Understand tools (5 min), memory (5 min), practical integration (8 min)
+- RAG example architecture designed with clear pedagogical goals
+- Implementation will follow approved specification
+
+### Speckit-Slidev Integration ✅ PASS (CONFIRMED)
+- New section managed through Speckit framework (research.md, data-model.md)
+- Slidev delivery planned with standard section structure
+- Specification-driven: Code examples specified before implementation
+- Single source of truth maintained
+
+### Developer-Focused Pedagogy (NON-NEGOTIABLE) ✅ PASS (CONFIRMED)
+- RAG example chosen for high developer relevance (API troubleshooting)
+- Code examples designed to be executable and tested
+- Concrete implementations shown (tool definitions, vector store setup, hybrid memory)
+- Hands-on methodology: Working code + architecture diagrams + walkthrough
+
+### Specification-Driven Slides ✅ PASS (CONFIRMED)
+- 4-slide structure documented with clear content per slide
+- Learning objectives: Define tools, define memory, demonstrate integration, explain value
+- Code examples specified in research.md with implementation details
+- Assessment implicit: Audience should understand tools/memory as building blocks after this section
+
+### Modular Content Architecture ✅ PASS (CONFIRMED)
+- Section 4 is self-contained: Can present tools/memory independently if needed
+- Clear dependencies: Follows demo (provides context), precedes patterns (provides building blocks)
+- Standalone educational value: Understanding tools and memory is foundational for any agentic system
+- No coupling: Other sections don't require modification for this addition
+
+**GATE STATUS**: ✅ ALL GATES PASS (RECONFIRMED) - Constitution compliance maintained after design phase
 
 ## Complexity Tracking
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-No violations identified. Feature aligns with all constitutional principles:
-- Content-First Development satisfied by spec.md
-- Speckit-Slidev Integration achieved through project structure
-- Developer-Focused Pedagogy enforced through executable examples and live demos
-- Specification-Driven Slides ensured by Phase 1 contracts generation
-- Modular Content Architecture implemented via 6 independent sections
-
-No complexity justification required.
+N/A - No violations detected
