@@ -86,14 +86,6 @@
 - **Update** — Modify memories as understanding evolves
 - **Prune** — Remove outdated or irrelevant information
 
-## Implementation
-
-<img src="/diagrams/memory-types.svg" class="w-full mt-1 rounded max-h-44 object-contain" />
-
-```python
-results = vector_store.search(query, k=5)
-past = db.query("WHERE error_code='429'")
-```
 
 </v-clicks>
 
