@@ -34,7 +34,7 @@ Anthropic's core recommendation: **don't build multi-agent systems until a singl
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -72,37 +72,30 @@ Each layer of added complexity:
 
 <div class="grid grid-cols-2 gap-6 mt-4">
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
 ## Show the Agent's Reasoning
 
-**Extended Thinking** allows agents to reason through problems before acting — and exposing that reasoning builds trust and enables debugging.
+**Extended Thinking** lets agents reason through problems before acting — exposing that reasoning builds trust and enables debugging.
 
 ```python
 response = client.messages.create(
     model="claude-opus-4-5",
-    thinking={
-        "type": "enabled",
-        "budget_tokens": 10000
-    },
-    messages=[{
-        "role": "user",
-        "content": "Refactor this module for testability"
-    }]
+    thinking={"type": "enabled",
+              "budget_tokens": 10000},
+    messages=[{"role": "user",
+        "content": "Refactor for testability"}]
 )
-
-# Agent shows reasoning before acting:
-# "I need to identify dependencies, extract
-#  interfaces, apply dependency injection..."
+# Agent thinks before acting...
 ```
 
 </v-clicks>
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -111,22 +104,17 @@ response = client.messages.create(
 **Tool Descriptions Matter**:
 
 ```python
-# Bad — agent guesses when to use it
+# Bad: agent guesses when to use it
 {"name": "search", "description": "Search things"}
 
-# Good — agent knows exactly when to call it
-{
-  "name": "search_codebase",
-  "description":
-    "Search the repository for function definitions,
-     class declarations, or import statements.
-     Use when you need to locate where a symbol
-     is defined or find all usages of a pattern.
-     Returns: file paths and line numbers.",
-}
+# Good: agent knows exactly when to call it
+{"name": "search_codebase",
+ "description": "Find function/class definitions.
+   Use to locate symbols or find usages.
+   Returns: file paths and line numbers."}
 ```
 
-**Structured Outputs**: Return JSON with typed fields so the agent can reliably parse and use results
+**Structured Outputs**: Return JSON with typed fields so the agent can reliably parse results
 
 **Error Messages**: Include context — `"File not found: auth/jwt.ts"` not just `"Error 404"`
 
@@ -160,7 +148,7 @@ Tasks that are genuinely hard to automate with simple scripts but **well-suited 
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -293,7 +281,7 @@ Add hooks, MCP servers, larger tasks
 
 # Best Practices
 
-<div class="grid grid-cols-3 gap-4 mt-6">
+<div class="grid grid-cols-3 gap-4 mt-3">
 
 <div class="p-4 bg-gray-800 rounded-lg" v-click>
 
@@ -320,10 +308,8 @@ Automated quality gates
   "hooks": {
     "PostToolUse": [{
       "matcher": "Write|Edit",
-      "hooks": [{
-        "type": "command",
-        "command": "npm run lint -- $FILE"
-      }]
+      "hooks": [{"type": "command",
+        "command": "npm run lint -- $FILE"}]
     }]
   }
 }
@@ -362,7 +348,7 @@ The spec becomes the agent's persistent memory and the team's shared understandi
 
 # Team Coordination
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-2 gap-6 mt-2">
 
 <div>
 
@@ -376,20 +362,19 @@ Check `CLAUDE.md` into version control. Every team member's agent sessions run w
 
 ```bash
 # Everyone gets the same agent behavior
-git clone repo
-cd repo
+git clone repo && cd repo
 claude  # reads shared CLAUDE.md automatically
 ```
 
 **Spec-Driven Alignment**
 
-Tasks defined in `specs/` before execution means all agents work from the same source of truth — no "it worked on my machine" for agent output.
+Tasks defined in `specs/` before execution means all agents work from the same source of truth.
 
 </v-clicks>
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -401,13 +386,13 @@ Tasks defined in `specs/` before execution means all agents work from the same s
 | Implementing features line-by-line | Reviewing agent-generated implementations |
 | Running tests manually | Designing test strategies |
 | Fixing linting errors | Configuring hooks to auto-fix |
-| Explaining codebase to new hires | Maintaining CLAUDE.md as living documentation |
+| Explaining codebase to new hires | Maintaining CLAUDE.md as living docs |
 
 ## The Review Mindset
 
 The most important skill shift: **from author to reviewer**
 
-Review agent output like a PR — check logic, check edge cases, check security — but you didn't have to write the first draft.
+Review agent output like a PR — check logic, edge cases, security — but you didn't write the first draft.
 
 </v-clicks>
 
@@ -477,7 +462,7 @@ Getting started, team rollout, security, measuring impact
 
 </div>
 
-<div>
+<div class="dense-col">
 
 ## Tools & Docs
 

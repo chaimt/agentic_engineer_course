@@ -6,7 +6,7 @@
 
 <div class="grid grid-cols-2 gap-6 mt-4">
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -16,13 +16,13 @@
 
 **How Agents Use Tools**:
 
-<img src="/diagrams/tool-use-pattern.svg" class="w-full mt-2 rounded" />
+<img src="/diagrams/tool-use-pattern.svg" class="w-full mt-2 rounded max-h-40 object-contain" />
 
 </v-clicks>
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -97,14 +97,11 @@
 ## Implementation
 
 ```python
-# Semantic (vector) memory
-results = vector_store.search(
-    query, limit=5,
-    filters={"category": "troubleshooting"}
-)
-# Episodic (structured) memory
+# Vector (semantic) search
+results = vector_store.search(query, k=5)
+
+# SQL (episodic) search
 past = db.query(
-    "SELECT solution FROM tickets "
     "WHERE error_code = '429'")
 ```
 
