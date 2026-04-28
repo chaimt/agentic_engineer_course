@@ -36,7 +36,7 @@ layout: section
 
 # Single Agent + Tools (ReAct)
 
-<div class="grid grid-cols-2 gap-6 mt-2">
+<div class="grid grid-cols-2 gap-4 mt-1">
 
 <div class="dense-col">
 
@@ -44,7 +44,7 @@ layout: section
 
 <v-clicks>
 
-The foundational architecture — a single agent reasons about what to do, acts via tools, observes results, and loops.
+The foundational architecture — a single agent reasons, acts via tools, observes results, and loops.
 
 ```text
 Goal
@@ -71,18 +71,17 @@ Goal achieved?
 ## When to Use
 
 - Well-scoped tasks with clear success criteria
-- Tool calls are sequential (each depends on previous)
-- Single domain of expertise required
-- Baseline for measuring more complex architectures
+- Sequential tool calls (each depends on previous)
+- Single domain of expertise
+- Baseline for more complex architectures
 
 ## Strengths
 
 - ✅ Simple to implement and debug
-- ✅ Low latency (no coordination overhead)
-- ✅ Easy to monitor and trace
+- ✅ Low latency, easy to monitor and trace
 - ✅ Solid foundation to build on
 
-*Limitation: Context window fills quickly on long tasks; no parallel execution.*
+*Limitation: context window fills on long tasks; no parallel execution.*
 
 </v-clicks>
 
@@ -149,7 +148,7 @@ Goal
 
 # Single Agent + MCP + Tools
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-2 gap-4 mt-2 text-sm">
 
 <div>
 
@@ -161,18 +160,14 @@ Goal
 
 ```
 Agent
-  ├─ MCP: GitHub server
-  │    → read PRs, issues, code
-  ├─ MCP: Sentry server
-  │    → fetch errors, stack traces
-  ├─ MCP: Database server
-  │    → query, write data
-  └─ MCP: Slack server
-       → read channels, send messages
+  ├─ MCP: GitHub server  → read PRs, issues, code
+  ├─ MCP: Sentry server  → fetch errors, stack traces
+  ├─ MCP: Database server → query, write data
+  └─ MCP: Slack server   → read channels, send messages
 ```
 
-Without MCP: Custom integration for every tool
-With MCP: Standard protocol, any compatible server
+- Without MCP: Custom integration for every tool
+- With MCP: Standard protocol, any compatible server
 
 </v-clicks>
 
@@ -184,18 +179,16 @@ With MCP: Standard protocol, any compatible server
 
 ## Performance Benchmarks
 
-<div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-2 gap-2">
 
-<div class="p-3 bg-gray-800 rounded text-center">
+<div class="p-2 bg-gray-800 rounded text-center">
 
-### Speed
 **37% faster** task completion vs basic agent
 
 </div>
 
-<div class="p-3 bg-gray-800 rounded text-center">
+<div class="p-2 bg-gray-800 rounded text-center">
 
-### Completion
 **93% task completion** rate on complex workflows
 
 </div>
@@ -210,7 +203,7 @@ Instead of: *"The error might be in the auth service"*
 
 With MCP: *reads actual Sentry error* → *"Error is on line 47 of auth/jwt.ts: token expired"*
 
-*Best for: Any task requiring live data from external systems (GitHub, monitoring, databases)*
+*Best for: live data from external systems (GitHub, monitoring, databases)*
 
 </v-clicks>
 
@@ -222,9 +215,9 @@ With MCP: *reads actual Sentry error* → *"Error is on line 47 of auth/jwt.ts: 
 
 # Hierarchy + Parallel + Shared Tools
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-2 gap-4 mt-2">
 
-<div>
+<div class="dense-col">
 
 ## Coordinated Parallel Architecture
 
@@ -279,9 +272,9 @@ All workers access **shared tools**: file system, test runner, linter
 
 # Single Agent + Router
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-2 gap-4 mt-2">
 
-<div>
+<div class="dense-col">
 
 ## Intelligent Request Dispatch
 
@@ -401,9 +394,9 @@ Sweet spot: checkpoint critical decisions
 
 # Dynamic Agent Delegation
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-2 gap-4 mt-2">
 
-<div>
+<div class="dense-col">
 
 ## Hub-Spoke Orchestration
 
@@ -461,9 +454,9 @@ The orchestrator can spawn agents at any point — **adaptive to what it discove
 
 # Hierarchy + Loop + Parallel + RAG
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-2 gap-4 mt-2">
 
-<div>
+<div class="dense-col">
 
 ## The Production-Grade Architecture
 

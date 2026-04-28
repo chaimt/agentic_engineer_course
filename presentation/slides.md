@@ -398,9 +398,7 @@ layout: default
 - ✅ Reusable components
 - ✅ Predictable behavior
 
-## When to Use
-
-Perfect for well-defined transformations where steps are known upfront
+<p class="mt-2 text-orange-300 text-xs">Best for well-defined transformations where steps are known upfront</p>
 
 </div>
 

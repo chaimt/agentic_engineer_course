@@ -22,7 +22,7 @@
 
 /* Typography overrides */
 .default-layout :deep(h1) {
-  @apply text-5xl font-bold mb-6;
+  @apply text-4xl font-bold mb-3;
   color: var(--slidev-theme-heading, #f1f5f9);
 }
 
