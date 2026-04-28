@@ -46,10 +46,9 @@ Welcome to the Agentic Workflows presentation!
 
 This presentation will take you on a journey from understanding basic LLM capabilities to implementing sophisticated agentic workflows in your development practice.
 
-Target time: 45-60 minutes total
+Target time: 30-45 minutes total
 - Introduction and concepts: 8 min
 - Benefits and use cases: 7 min
-- Live demonstration: 15 min
 - Workflow patterns: 10 min
 - Practical tips: 8 min
 - Q&A: 7 min
@@ -67,17 +66,16 @@ layout: default
 
 1. 🤖 **Understanding Agentic Workflows** - What they are and why they matter
 2. 💡 **Benefits and Use Cases** - Real-world applications and advantages
-3. 🎯 **Live Claude Code Demo** - See agentic workflows in action
-4. 🔄 **Workflow Patterns** - Core patterns for practical implementation
-5. 🛠️ **Practical Tips** - Getting started and best practices
-6. ❓ **Q&A** - Your questions and discussion
+3. 🔄 **Workflow Patterns** - Core patterns for practical implementation
+4. 🛠️ **Practical Tips** - Getting started and best practices
+5. ❓ **Q&A** - Your questions and discussion
 
 </v-clicks>
 
 <!--
-This is your roadmap for the next 45-60 minutes.
+This is your roadmap for the next 30-45 minutes.
 
-We'll start with foundational concepts, then see a live demonstration, explore practical patterns, and finish with tips for adoption.
+We'll start with foundational concepts, explore practical patterns, and finish with tips for adoption.
 
 Each section builds on the previous one, so we'll progress from theory to practice.
 -->
@@ -88,10 +86,6 @@ src: ./pages/01-concepts.md
 
 ---
 src: ./pages/02-tools-memory.md
----
-
----
-src: ./pages/03-demo.md
 ---
 
 ---

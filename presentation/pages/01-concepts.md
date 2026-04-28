@@ -1,16 +1,6 @@
 # Agentic Workflows - Concepts
 
 ---
-layout: cover
----
-
-# Agentic Workflows
-## Building AI-Assisted Development Systems
-
-Presenter: [Your Name]
-Date: [Presentation Date]
-
----
 
 # What are Agentic Workflows?
 
