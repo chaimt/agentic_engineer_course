@@ -58,7 +58,7 @@
 
 <div class="grid grid-cols-2 gap-6 mt-4">
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -83,7 +83,7 @@
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -97,18 +97,15 @@
 ## Implementation
 
 ```python
-# Semantic Memory (Vector Store)
-results = vector_store.similarity_search(
-    embedding=get_embedding(query),
-    limit=5,
+# Semantic (vector) memory
+results = vector_store.search(
+    query, limit=5,
     filters={"category": "troubleshooting"}
 )
-
-# Episodic Memory (Structured DB)
+# Episodic (structured) memory
 past = db.query(
     "SELECT solution FROM tickets "
-    "WHERE error_code = '429'"
-)
+    "WHERE error_code = '429'")
 ```
 
 </v-clicks>
@@ -121,9 +118,7 @@ past = db.query(
 
 # Tools + Memory in Action
 
-## RAG Support Agent Example
-
-<div class="grid grid-cols-2 gap-6 mt-2">
+<div class="grid grid-cols-2 gap-6 mt-2 text-sm">
 
 <div>
 
@@ -134,25 +129,19 @@ past = db.query(
 **Step 1 — Tools (Real-time Data)**
 
 ```python
-tool_results = await execute_parallel([
+await asyncio.gather(
     search_issue_tracker("429 errors"),
     check_rate_limits(user_id),
-    fetch_logs(last_hour)
-])
+    fetch_logs(last_hour))
 ```
 
 **Step 2 — Memory (RAG)**
 
 ```python
-# Vector search documentation
-docs = retrieve_relevant_docs(
-    "API rate limiting troubleshooting", k=3
-)
-# Structured past solutions
+docs = vector_store.search(
+    "rate limit troubleshooting", k=3)
 past = db.query(
-    "SELECT solution FROM tickets "
-    "WHERE error_code = '429'"
-)
+    "WHERE error_code = '429'")
 ```
 
 </v-clicks>
@@ -169,9 +158,9 @@ Docs:    Exponential backoff recommended
 History: Enterprise tier resolved 429s
 ```
 
-**Response**: *"You're hitting rate limits (100 req/min max). Implement exponential backoff (code below). For higher limits, upgrade to Enterprise tier."*
+**Response**: *"You're hitting rate limits. Implement exponential backoff — or upgrade to Enterprise for higher limits."*
 
-<div class="mt-4 p-3 bg-green-900 bg-opacity-30 rounded">
+<div class="mt-3 p-3 bg-green-900 bg-opacity-30 rounded">
 
 **Result**: Full context in one turn — no back-and-forth, faster resolution
 

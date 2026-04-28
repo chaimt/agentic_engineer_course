@@ -21,14 +21,22 @@ title: Agentic Workflows
 mdc: true
 ---
 
-# Agentic Workflows
+<div class="flex flex-col items-center justify-center h-full gap-4">
 
-From AI Autocomplete to Development Partner
 
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space to start <mdi:arrow-right class="inline"/>
-  </span>
+
+<h1 class="text-6xl font-extrabold tracking-tight" style="color:#ff8c00;text-shadow:0 0 40px #ff6b0066,0 2px 8px #0008;">
+  Agentic Workflows
+</h1>
+
+<p class="text-2xl font-light mt-1" style="color:#ffb86090;">
+  From AI Autocomplete to Development Partner
+</p>
+
+<div class="pt-4 cursor-pointer" @click="$slidev.nav.next">
+  <img src="/images/agentic-hero.png" alt="Agentic Hero" class="w-128 opacity-95 rounded-xl shadow-lg"/>
+</div>
+
 </div>
 
 <div class="abs-br m-6 flex gap-2">
@@ -65,7 +73,7 @@ layout: default
 ## What We'll Cover
 
 1. 🤖 **Understanding Agentic Workflows** - What they are and why they matter
-2. 💡 **Benefits and Use Cases** - Real-world applications and advantages
+2. 💡 **Benefits** - Real-world productivity gains and industry adoption
 3. 🔄 **Workflow Patterns** - Core patterns for practical implementation
 4. 🛠️ **Practical Tips** - Getting started and best practices
 5. ❓ **Q&A** - Your questions and discussion
@@ -136,7 +144,7 @@ layout: default
 
 </div>
 
-<div v-click>
+<div v-click class="dense-col">
 
 ## Use Cases
 
@@ -197,7 +205,7 @@ layout: default
 
 </div>
 
-<div v-click>
+<div v-click class="dense-col">
 
 ## Common Tools
 
@@ -259,7 +267,7 @@ layout: default
 
 </div>
 
-<div v-click>
+<div v-click class="dense-col">
 
 ## Example Decomposition
 
@@ -355,7 +363,7 @@ layout: default
 
 </div>
 
-<div v-click>
+<div v-click class="dense-col">
 
 ## Use Cases
 
@@ -424,7 +432,7 @@ layout: default
 
 </div>
 
-<div v-click>
+<div v-click class="dense-col">
 
 ## Use Cases
 
@@ -517,7 +525,7 @@ layout: default
 
 </div>
 
-<div v-click>
+<div v-click class="dense-col">
 
 ## Use Cases
 
@@ -589,7 +597,7 @@ layout: default
 
 </div>
 
-<div v-click>
+<div v-click class="dense-col">
 
 ## Use Cases
 
@@ -663,7 +671,7 @@ layout: default
 
 </div>
 
-<div v-click>
+<div v-click class="dense-col">
 
 ## Use Cases
 
@@ -756,7 +764,7 @@ layout: default
 
 </div>
 
-<div v-click>
+<div v-click class="dense-col">
 
 ## Use Cases
 
@@ -831,7 +839,7 @@ layout: default
 
 </div>
 
-<div v-click>
+<div v-click class="dense-col">
 
 ## Use Cases
 
@@ -934,7 +942,7 @@ layout: default
 
 </div>
 
-<div v-click>
+<div v-click class="dense-col">
 
 ## Use Cases
 

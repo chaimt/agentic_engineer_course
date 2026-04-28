@@ -63,7 +63,7 @@ Goal achieved? No → back to Reason
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -81,9 +81,7 @@ Goal achieved? No → back to Reason
 - ✅ Easy to monitor and trace
 - ✅ Solid foundation to build on
 
-## Limitation
-
-Context window fills quickly on long tasks; no parallel execution; single point of failure
+*Limitation: Context window fills quickly on long tasks; no parallel execution.*
 
 </v-clicks>
 
@@ -125,7 +123,7 @@ Goal
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -142,9 +140,7 @@ Goal
 - ♻️ Reuse stages across different workflows
 - 📈 Higher completion on multi-phase tasks
 
-## When to Use
-
-Multi-stage workflows where each phase requires different expertise and the output of one phase informs the next
+*Best for: Multi-stage workflows where each phase requires different expertise*
 
 </v-clicks>
 
@@ -185,7 +181,7 @@ With MCP: Standard protocol, any compatible server
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -217,9 +213,7 @@ Instead of: *"The error might be in the auth service"*
 
 With MCP: *reads actual Sentry error* → *"Error is on line 47 of auth/jwt.ts: token expired"*
 
-## When to Use
-
-Any task requiring live data from external systems (GitHub, monitoring, databases, communication tools)
+*Best for: Any task requiring live data from external systems (GitHub, monitoring, databases)*
 
 </v-clicks>
 
@@ -260,7 +254,7 @@ All workers access **shared tools**: file system, test runner, linter
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -276,9 +270,7 @@ All workers access **shared tools**: file system, test runner, linter
 
 **Dependency Tracking**: Coordinator must know which work units can run in parallel vs which must sequence
 
-## When to Use
-
-Large tasks with genuinely independent subtasks — full-stack features, codebase migrations, batch processing
+*Best for: Large tasks with genuinely independent subtasks — full-stack features, migrations*
 
 </v-clicks>
 
@@ -319,7 +311,7 @@ Incoming Request
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -336,9 +328,7 @@ Incoming Request
 | **Quality** | Domain-specific → specialist agent |
 | **Safety** | Sensitive → human-reviewed path |
 
-## When to Use
-
-Systems handling diverse request types with meaningfully different handling needs — customer support, code assistants, multi-domain Q&A
+*Best for: Diverse request types — customer support, code assistants, multi-domain Q&A*
 
 </v-clicks>
 
@@ -358,29 +348,28 @@ Systems handling diverse request types with meaningfully different handling need
 
 <v-clicks>
 
-Strategic pause points where human judgment is **required** before the agent continues — not as a safety net, but as a deliberate design.
+Strategic pause points where human judgment is **required** before the agent continues — a deliberate design, not just a safety net.
 
 ```
 Agent executes autonomously
          ↓
 [CHECKPOINT: High-stakes decision]
          ↓
-Human reviews → Approve / Reject / Modify
+Human: Approve / Reject / Modify
          ↓
-Agent continues with human-guided direction
+Agent continues with human direction
 ```
 
-**When to insert checkpoints**:
+**Insert checkpoints**:
 - Before irreversible actions (deletes, deploys)
 - After complex decisions (architecture choices)
-- When agent confidence is low
 - When regulations require human sign-off
 
 </v-clicks>
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -391,12 +380,10 @@ Agent continues with human-guided direction
 ## Checkpoint Spectrum
 
 ```
-Fully Autonomous ←————————→ Fully Manual
-       ↑                          ↑
-  Fast, risky             Slow, safe
-  
-Sweet spot: Automate routine work,
-            checkpoint critical decisions
+← Fully Autonomous · · · Fully Manual →
+  Fast, risky           Slow, safe
+
+Sweet spot: checkpoint critical decisions
 ```
 
 ## Adoption Trust Curve
@@ -405,9 +392,7 @@ Sweet spot: Automate routine work,
 - Experienced users: 40%+ auto-approve
 - Trust grows as engineers learn agent strengths
 
-## When to Use
-
-High-stakes domains: legal, financial, security, production deployments, medical
+*Best for: Legal, financial, security, production deployments*
 
 </v-clicks>
 
@@ -447,7 +432,7 @@ The orchestrator can spawn agents at any point — **adaptive to what it discove
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -457,7 +442,7 @@ The orchestrator can spawn agents at any point — **adaptive to what it discove
 |--------|---------|
 | Team defined upfront | Agents spawned on demand |
 | Fixed specializations | Task-shaped specializations |
-| Predictable cost | Variable cost (scales with complexity) |
+| Predictable cost | Variable cost (scales) |
 | Lower overhead | Higher flexibility |
 
 ## Benefits
@@ -467,9 +452,7 @@ The orchestrator can spawn agents at any point — **adaptive to what it discove
 - 📈 Scales with task scope automatically
 - 🛠️ Handles open-ended research tasks
 
-## When to Use
-
-Open-ended tasks where required expertise is not known in advance — complex research, exploratory debugging, unknown-scope migrations
+*Best for: Complex research, exploratory debugging, unknown-scope migrations*
 
 </v-clicks>
 
@@ -511,7 +494,7 @@ Each coordinator runs a feedback loop until quality threshold is met, then passe
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -531,9 +514,7 @@ Each coordinator runs a feedback loop until quality threshold is met, then passe
 - Systems where quality must be verifiably met
 - Production systems where reliability matters
 
-## Start Simple
-
-Only reach for this architecture when simpler patterns are demonstrably insufficient — each added layer adds cost and complexity
+*Only reach for this when simpler patterns demonstrably fail — each added layer adds cost and complexity*
 
 </v-clicks>
 
@@ -545,7 +526,7 @@ Only reach for this architecture when simpler patterns are demonstrably insuffic
 
 # Framework Comparison
 
-<div class="mt-3 text-sm">
+<div class="mt-2 text-xs">
 
 | Framework | Model | Strengths | Best For |
 |-----------|-------|-----------|----------|
@@ -556,27 +537,27 @@ Only reach for this architecture when simpler patterns are demonstrably insuffic
 
 </div>
 
-<div class="grid grid-cols-2 gap-6 mt-3">
+<div class="grid grid-cols-2 gap-6 mt-2 dense-col">
 
 <div v-click>
 
 ### When Each Shines
 
-- **LangChain**: You want to prototype fast and have many pre-built components to leverage
-- **LangGraph**: You need precise control over state transitions and conditional loops
+- **LangChain**: Prototype fast with many pre-built components
+- **LangGraph**: Precise control over state transitions and conditional loops
 
 </div>
 
 <div v-click>
 
-- **AutoGen**: Your workflow naturally maps to agents conversing and negotiating
-- **CrewAI**: You think in terms of roles, responsibilities, and team workflows
+- **AutoGen**: Workflow maps to agents conversing and negotiating
+- **CrewAI**: Think in terms of roles, responsibilities, and team workflows
 
 </div>
 
 </div>
 
-<div class="mt-3 p-2 bg-orange-900 bg-opacity-30 rounded text-sm" v-click>
+<div class="mt-2 p-2 bg-orange-900 bg-opacity-30 rounded text-sm" v-click>
 
 **Recommendation**: Start with Claude Code (no framework needed for many tasks) → LangGraph for complex stateful workflows
 
@@ -586,7 +567,7 @@ Only reach for this architecture when simpler patterns are demonstrably insuffic
 
 # Architecture Selection Guide
 
-<div class="mt-4">
+<div class="mt-3">
 
 Use these 5 criteria to select the right architecture:
 
@@ -594,7 +575,7 @@ Use these 5 criteria to select the right architecture:
 
 <div class="grid grid-cols-2 gap-6 mt-2">
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -614,7 +595,7 @@ Use these 5 criteria to select the right architecture:
 
 </div>
 
-<div>
+<div class="dense-col">
 
 <v-clicks>
 
@@ -628,7 +609,7 @@ Use these 5 criteria to select the right architecture:
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-green-900 bg-opacity-30 rounded">
+<div v-click class="mt-4 p-3 bg-green-900 bg-opacity-30 rounded">
 
 **Decision Rule**: Choose the **simplest architecture** that meets your requirements — add complexity only when you have a measured reason to do so
 

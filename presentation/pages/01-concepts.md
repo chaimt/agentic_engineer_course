@@ -118,24 +118,40 @@
 
 # Industry Adoption
 
+<div class="grid grid-cols-2 gap-6 mt-4">
+
+<div>
+
 <v-clicks>
 
-- **Anthropic**: The majority of Claude's own code is now **written by Claude Code** — eating their own dog food at scale
+- **Anthropic**: Majority of Claude's own code now **written by Claude Code** — eating their own dog food at scale
 
-- **Trust Model**: Adoption follows a trust curve:
-  - New users auto-approve ~**20%** of agent actions
-  - Experienced users reach **40%+** auto-approval
-  - Trust grows as engineers learn what agents do well vs. where they need review
+- **Trust Model**: New users auto-approve ~**20%** of actions; experienced users reach **40%+** as confidence grows
 
-- **Pattern**: Start with bounded, well-defined tasks → expand scope as confidence grows
+- **Pattern**: Start with bounded tasks → expand scope as confidence grows
 
-- **Industry signal**: GitHub Copilot, Cursor, Claude Code, Devin — all major vendors betting on agentic workflows as the future of software development
+- **Vendors**: GitHub Copilot, Cursor, Claude Code, Devin — all betting on agentic workflows as the future
 
 </v-clicks>
 
-<div class="mt-6 p-3 bg-green-900 rounded" v-click>
+</div>
+
+<div class="flex flex-col justify-center gap-4">
+
+<div class="p-3 bg-orange-900 bg-opacity-30 rounded-lg" v-click>
+
+**20% → 40%+**  
+Auto-approval rate as trust grows
+
+</div>
+
+<div class="p-3 bg-green-900 bg-opacity-30 rounded-lg" v-click>
 
 💡 **Key Insight**: This isn't a future trend — engineers using these tools today are already shipping significantly faster
+
+</div>
+
+</div>
 
 </div>
 
@@ -143,88 +159,43 @@
 
 # Developer Productivity Gains
 
-<div class="grid grid-cols-3 gap-4 mt-6">
+<div class="grid grid-cols-3 gap-3 mt-3">
 
-<div class="p-4 bg-gray-800 rounded-lg text-center" v-click>
+<div class="p-3 bg-gray-800 rounded-lg text-center" v-click>
 
 ### Speed
-**55%** faster task completion reported in controlled studies (GitHub Copilot research, 2023)
+**55%** faster task completion (GitHub Copilot research, 2023)
 
 </div>
 
-<div class="p-4 bg-gray-800 rounded-lg text-center" v-click>
+<div class="p-3 bg-gray-800 rounded-lg text-center" v-click>
 
 ### Quality
-**Fewer context switches** — agent handles the boilerplate, engineer focuses on design
+**Fewer context switches** — agent handles boilerplate, engineer focuses on design
 
 </div>
 
-<div class="p-4 bg-gray-800 rounded-lg text-center" v-click>
+<div class="p-3 bg-gray-800 rounded-lg text-center" v-click>
 
 ### Scale
-**Multi-agent systems** can work in parallel — what one engineer does in a sprint, a coordinated agent team can explore in hours
+**Multi-agent systems** work in parallel — a sprint's work explored in hours
 
 </div>
 
 </div>
 
-<div class="mt-6" v-click>
+<div class="mt-3 text-sm" v-click>
 
 **Practical metrics from teams using Claude Code:**
-- Large refactors (change 50+ files): hours → minutes
-- Writing test coverage for existing code: ~10x faster
-- Onboarding to unfamiliar codebases: dramatically reduced ramp time
+
+<div class="grid grid-cols-2 gap-x-6 mt-1">
+
+- Large refactors (50+ files): hours → minutes
+- Writing test coverage: ~10x faster
+
+- Onboarding to unfamiliar codebases: dramatically faster
 - Documentation generation: near-zero marginal cost
 
 </div>
 
----
-
-# Use Cases
-
-<div class="grid grid-cols-2 gap-6 mt-4">
-
-<div>
-
-<v-clicks>
-
-**Code Tasks**
-- Full-feature implementation from specs
-- Codebase-wide refactoring
-- Automated test generation
-- Bug reproduction and fixing
-- Code review and quality analysis
-
-**DevOps & Tooling**
-- CI/CD pipeline configuration
-- Infrastructure-as-code generation
-- Monitoring and alerting setup
-
-</v-clicks>
-
-</div>
-
-<div>
-
-<v-clicks>
-
-**Knowledge Work**
-- Documentation generation from code
-- Architecture decision records (ADRs)
-- Onboarding guides and runbooks
-
-**Research & Analysis**
-- Exploring and summarizing large codebases
-- Dependency audits and security scans
-- Performance profiling and optimization suggestions
-
-</v-clicks>
-
-</div>
-
-</div>
-
-<div class="mt-4 p-3 bg-purple-900 rounded" v-click>
-
-**Coming up**: We'll see these in action — starting with a live Claude Code demo
 </div>
