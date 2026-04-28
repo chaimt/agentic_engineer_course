@@ -14,22 +14,9 @@
 
 **Definition**: Structured interfaces that extend LLM capabilities beyond text generation by enabling interaction with external systems, APIs, databases, and computational resources.
 
-**Tool Definition Structure**:
+**How Agents Use Tools**:
 
-```python{1-2|3|4-10|all}
-{
-  "name": "search_codebase",
-  "description": "Search code for function definitions, class names, or keywords",
-  "input_schema": {
-    "type": "object",
-    "properties": {
-      "query": {"type": "string"},
-      "file_types": {"type": "array"}
-    },
-    "required": ["query"]
-  }
-}
-```
+<img src="/diagrams/tool-use-pattern.svg" class="w-full mt-2 rounded" />
 
 </v-clicks>
 

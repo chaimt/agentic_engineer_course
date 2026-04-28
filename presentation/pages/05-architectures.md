@@ -11,7 +11,7 @@ layout: section
 
 # Architecture Overview
 
-<div class="mt-4">
+<div class="mt-3 text-sm">
 
 | # | Architecture | Key Metric | Best For |
 |---|-------------|-----------|----------|
@@ -26,7 +26,7 @@ layout: section
 
 </div>
 
-<div class="mt-4 p-3 bg-orange-900 bg-opacity-30 rounded" v-click>
+<div class="mt-3 p-2 bg-orange-900 bg-opacity-30 rounded" v-click>
 
 **Principle**: Start with #1, add complexity only when benchmarks justify it
 
@@ -545,7 +545,7 @@ Only reach for this architecture when simpler patterns are demonstrably insuffic
 
 # Framework Comparison
 
-<div class="mt-4">
+<div class="mt-3 text-sm">
 
 | Framework | Model | Strengths | Best For |
 |-----------|-------|-----------|----------|
@@ -556,7 +556,7 @@ Only reach for this architecture when simpler patterns are demonstrably insuffic
 
 </div>
 
-<div class="grid grid-cols-2 gap-6 mt-6">
+<div class="grid grid-cols-2 gap-6 mt-3">
 
 <div v-click>
 
@@ -576,7 +576,7 @@ Only reach for this architecture when simpler patterns are demonstrably insuffic
 
 </div>
 
-<div class="mt-4 p-3 bg-orange-900 bg-opacity-30 rounded" v-click>
+<div class="mt-3 p-2 bg-orange-900 bg-opacity-30 rounded text-sm" v-click>
 
 **Recommendation**: Start with Claude Code (no framework needed for many tasks) → LangGraph for complex stateful workflows
 

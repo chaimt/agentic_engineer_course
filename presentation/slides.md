@@ -993,7 +993,7 @@ src: ./pages/06-principles.md
 
 # References & Further Reading
 
-<div class="two-col">
+<div class="grid grid-cols-2 gap-6">
 
 <div>
 

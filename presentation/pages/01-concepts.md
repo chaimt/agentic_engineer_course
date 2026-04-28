@@ -80,37 +80,37 @@
 
 # Why They Matter
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-3 gap-4 mt-4">
 
 <div v-click>
 
-### For Individual Developers
-- Handle large refactors in minutes, not days
+### For Individual Devs
+- Large refactors in minutes, not days
 - Explore unfamiliar codebases autonomously
-- Write tests, fix bugs, generate docs — in parallel
-- Focus on decisions that require human judgment
+- Tests, bug fixes, docs — in parallel
+- Focus on decisions needing human judgment
 
 </div>
 
 <div v-click>
 
 ### For Teams
-- Consistent code quality through shared agent standards (`CLAUDE.md`)
-- Spec-driven workflows align AI output with team conventions
-- Onboarding accelerated — agent understands the codebase
+- Consistent quality via shared standards (`CLAUDE.md`)
+- Spec-driven workflows align AI with conventions
+- Onboarding accelerated — agent knows the codebase
 - Repetitive tasks automated at scale
 
 </div>
 
-</div>
-
-<div class="mt-6" v-click>
+<div v-click>
 
 ### For Organizations
-- Ship features faster with fewer context switches
+- Ship features faster, fewer context switches
 - Reduce toil on routine engineering tasks
-- Scale expertise: senior patterns encoded into agent instructions
-- Competitive advantage through faster iteration cycles
+- Senior patterns encoded into agent instructions
+- Competitive advantage through faster iteration
+
+</div>
 
 </div>
 

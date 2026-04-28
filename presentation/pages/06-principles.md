@@ -204,9 +204,9 @@ layout: section
 
 </div>
 
-<div class="grid grid-cols-5 gap-3 mt-4">
+<div class="grid grid-cols-5 gap-2 mt-3 text-xs">
 
-<div class="p-3 bg-gray-800 rounded-lg text-center" v-click>
+<div class="p-2 bg-gray-800 rounded-lg text-center" v-click>
 
 **Step 1**
 
@@ -219,57 +219,57 @@ npm install -g \
 
 </div>
 
-<div class="p-3 bg-gray-800 rounded-lg text-center" v-click>
+<div class="p-2 bg-gray-800 rounded-lg text-center" v-click>
 
 **Step 2**
 
-Add CLAUDE.md to your project
+Add `CLAUDE.md` to your project
 
-Encode: stack, commands, conventions, constraints
+Stack, commands, conventions, constraints
 
 </div>
 
-<div class="p-3 bg-gray-800 rounded-lg text-center" v-click>
+<div class="p-2 bg-gray-800 rounded-lg text-center" v-click>
 
 **Step 3**
 
 Run a **bounded task**
 
-Something concrete with clear success criteria and easy to verify
+Concrete with clear success criteria
 
 </div>
 
-<div class="p-3 bg-gray-800 rounded-lg text-center" v-click>
+<div class="p-2 bg-gray-800 rounded-lg text-center" v-click>
 
 **Step 4**
 
 **Review** the output
 
-Build intuition for what the agent does well and where it needs guidance
+Build intuition for what the agent does well
 
 </div>
 
-<div class="p-3 bg-gray-800 rounded-lg text-center" v-click>
+<div class="p-2 bg-gray-800 rounded-lg text-center" v-click>
 
 **Step 5**
 
 **Expand scope** gradually
 
-Add hooks, MCP servers, and larger tasks as confidence grows
+Add hooks, MCP servers, larger tasks
 
 </div>
 
 </div>
 
-<div class="mt-6" v-click>
+<div class="mt-3 text-sm" v-click>
 
-**Good first tasks**: Add tests to existing functions · Rename a symbol across the codebase · Generate API documentation · Fix a specific linting category
+**Good first tasks**: Add tests to existing functions · Rename a symbol across the codebase · Generate API docs · Fix a linting category
 
 </div>
 
-<div class="mt-4 p-3 bg-orange-900 bg-opacity-30 rounded" v-click>
+<div class="mt-2 p-2 bg-orange-900 bg-opacity-30 rounded text-sm" v-click>
 
-**The trust curve is real**: New users auto-approve ~20% of actions. After a few weeks, experienced users reach 40%+. Trust is earned through experience, not assumed.
+**The trust curve**: New users auto-approve ~20% of actions. Experienced users reach 40%+. Trust is earned through experience.
 
 </div>
 
@@ -277,15 +277,15 @@ Add hooks, MCP servers, and larger tasks as confidence grows
 
 # Common Challenges & Solutions
 
-<div class="mt-4">
+<div class="mt-2 text-sm">
 
 | Challenge | Solution |
 |-----------|----------|
-| **Inconsistent output quality** — Agent produces varying results across runs | Add `CLAUDE.md` with explicit coding standards, naming conventions, and patterns. Encode what "good" looks like. |
-| **Trust and verification** — Hard to know when to trust agent output | Start with bounded tasks that have automated tests. Implement hooks for quality gates (lint, security scan) that run automatically. |
-| **Context loss between sessions** — Agent forgets decisions and rationale | Write specifications before running the agent. Specs preserve decision rationale and become the agent's persistent memory. |
-| **Security concerns** — Unsure what code/data the agent can access | Review tool permissions explicitly. Configure which directories and commands are in scope. Start with read-only access, add writes incrementally. |
-| **Team coordination** — Different engineers get different results from the same agent | Establish a shared `CLAUDE.md` checked into the repo. Use spec-driven workflows so all agents operate from the same source of truth. |
+| **Inconsistent output quality** — varying results across runs | Add `CLAUDE.md` with explicit coding standards and patterns. Encode what "good" looks like. |
+| **Trust and verification** — hard to know when to trust output | Start with bounded tasks with automated tests. Use hooks for quality gates (lint, security scan). |
+| **Context loss between sessions** — agent forgets decisions | Write specs before running the agent. Specs preserve rationale and become persistent memory. |
+| **Security concerns** — unsure what the agent can access | Review tool permissions explicitly. Start read-only, add writes incrementally. |
+| **Team coordination** — different engineers get different results | Check `CLAUDE.md` into the repo. Use spec-driven workflows so all agents share the same context. |
 
 </div>
 
