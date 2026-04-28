@@ -1,6 +1,6 @@
 # What are Tools?
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-2 gap-4 mt-1 text-sm">
 
 <div class="dense-col">
 
@@ -12,7 +12,7 @@
 
 **How Agents Use Tools**:
 
-<img src="/diagrams/tool-use-pattern.svg" class="w-full mt-2 rounded max-h-40 object-contain" />
+<img src="/diagrams/tool-use-pattern.svg" class="w-full mt-1 rounded max-h-36 object-contain" />
 
 </v-clicks>
 
@@ -20,25 +20,21 @@
 
 <div class="dense-col">
 
-<v-clicks>
-
 ## Tool Categories
 
-**Information Retrieval**
-- Search, database queries, API calls
+<v-clicks>
 
-**Computation**
-- Math operations, data processing, code execution
+**Information Retrieval** — Search, database queries, API calls
 
-**Action Execution**
-- File operations, shell commands, external services
+**Computation** — Math operations, data processing, code execution
 
-**Memory Access**
-- Vector store queries, context retrieval, history
+**Action Execution** — File operations, shell commands, external services
+
+**Memory Access** — Vector store queries, context retrieval, history
 
 </v-clicks>
 
-<div v-click class="mt-4 p-3 bg-orange-900 bg-opacity-30 rounded">
+<div v-click class="mt-1 p-2 bg-orange-900 bg-opacity-30 rounded">
 
 **Key Insight**: Tools transform LLMs into agents — from advisors into actors
 
