@@ -4,8 +4,15 @@
 **Prerequisites**: plan.md, spec.md, research.md, data-model.md, contracts/
 
 **NEW REQUIREMENTS** (2026-04-24):
-1. Tools and Memory fundamentals section with RAG example (Section 4)
-2. **Single vs Multi-Agent limitations slide before workflow patterns** (before Section 5)
+1. Tools and Memory fundamentals section with RAG example
+2. **Single vs Multi-Agent limitations slide before workflow patterns**
+
+**SLIDE RESTRUCTURE (2026-04-28)** — Reconciliation of tasks with the active deck `presentation/slides.md`:
+- The Live Claude Code Demo section was removed from imports. Tasks T031–T039 (Section 3 demo) are now **OPT-IN** — `pages/03-demo.md` is retained but not part of the active deck.
+- Patterns are now **inline in `slides.md`** organized into 4 thematic groups + arunpshankar reference. Tasks T061–T075 (Phil Schmid foundational patterns) and T054–T060 (Why Multi-Agent in `pages/04-patterns.md`) are now **OPT-IN** — `pages/04-patterns.md` is retained but not imported.
+- Tools & Memory is now Section 2 of the deck (after Concepts, before Patterns), not Section 4.
+- New requirements added: hero/branding visuals, closing References slide, inline section-header slides for the 4 pattern groups + arunpshankar reference.
+- New tasks T130–T148 added at the bottom to capture the restructure work.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
@@ -101,62 +108,68 @@ All paths relative to `presentation/` directory:
 
 **Independent Test**: 80% of attendees can identify at least 3 practical use cases for agentic workflows
 
-### Section 3: Live Claude Code Demo (15 min, 3-5 slides)
+### Section 3 (OPT-IN, removed from active deck per 2026-04-28): Live Claude Code Demo (15 min, 3-5 slides)
 
-- [ ] T031 [SYNC] [US2] Write demo introduction slide in pages/03-demo.md
-- [ ] T032 [SYNC] [US2] Create demo script for CLAUDE.md setup (Segment 1: 3 min) in pages/03-demo.md
-- [ ] T033 [SYNC] [US2] Create demo script for interactive CLI workflow (Segment 2: 6 min)
-- [ ] T034 [SYNC] [US2] Create demo script for hooks and MCP demo (Segment 3: 6 min)
-- [ ] T035 [P] [ASYNC] [US2] Setup demo project files in public/examples/demo-project/
-- [ ] T036 [P] [ASYNC] [US2] Test all demo code examples for execution validity
-- [ ] T037 [P] [ASYNC] [US2] Record backup demo video in public/demos/claude-code-demo.mp4
-- [ ] T038 [P] [ASYNC] [US2] Create demo fallback screenshots in public/screenshots/demo-*.png
-- [ ] T039 [SYNC] [US2] Write detailed presenter notes with timing and recovery protocol
+> **Status**: `pages/03-demo.md` exists in the repo but is NOT imported by `slides.md`. These tasks are retained for presenters who want to opt into a live demo extension. Skip unless re-enabling.
 
-### Section 4: Fundamentals - Tools and Memory (18 min, 4 slides) **NEW REQUIREMENT**
+- [x] T031 [SYNC] [US2] Write demo introduction slide in pages/03-demo.md
+- [x] T032 [SYNC] [US2] Create demo script for CLAUDE.md setup (Segment 1: 3 min) in pages/03-demo.md
+- [x] T033 [SYNC] [US2] Create demo script for interactive CLI workflow (Segment 2: 6 min)
+- [x] T034 [SYNC] [US2] Create demo script for hooks and MCP demo (Segment 3: 6 min)
+- [ ] T035 [P] [ASYNC] [US2] Setup demo project files in public/examples/demo-project/ — opt-in
+- [ ] T036 [P] [ASYNC] [US2] Test all demo code examples for execution validity — opt-in
+- [ ] T037 [P] [ASYNC] [US2] Record backup demo video in public/demos/claude-code-demo.mp4 — opt-in
+- [ ] T038 [P] [ASYNC] [US2] Create demo fallback screenshots in public/screenshots/demo-*.png — opt-in
+- [ ] T039 [SYNC] [US2] Write detailed presenter notes with timing and recovery protocol — opt-in
 
-- [ ] T040 [SYNC] [US2] Write "What are Tools?" slide in pages/02-tools-memory.md (definition, categories, ACI)
+### Section 2 (active deck): Fundamentals - Tools and Memory (≈12 min, 4 slides) **NEW REQUIREMENT**
+
+> **Note**: After the 2026-04-28 restructure this section is now Section 2 of the audience-facing deck (was Section 4 in the prior 9-section plan), placed immediately after Concepts and before Patterns. Section header slide added inline in `slides.md` with hero image `public/images/tools-memory-hero.png`.
+
+- [x] T040 [SYNC] [US2] Write "What are Tools?" slide in pages/02-tools-memory.md (definition, categories, ACI)
 - [ ] T041 [P] [ASYNC] [US2] Create tool definition code example in public/examples/tool-definition.py
-- [ ] T042 [SYNC] [US2] Write "What is Memory?" slide in pages/02-tools-memory.md (types, operations, architecture)
-- [ ] T043 [P] [ASYNC] [US2] Create memory architecture diagram in public/diagrams/memory-types.svg
+- [x] T042 [SYNC] [US2] Write "What is Memory?" slide in pages/02-tools-memory.md (types, operations, architecture)
+- [x] T043 [P] [ASYNC] [US2] Create memory architecture diagram in public/diagrams/memory-types.svg
 - [ ] T044 [P] [ASYNC] [US2] Implement vector store example code in public/examples/vector-store-setup.py
-- [ ] T045 [SYNC] [US2] Write "Tools + Memory in Action: RAG Example" slide with architecture walkthrough
+- [x] T045 [SYNC] [US2] Write "Tools + Memory in Action: RAG Example" slide with architecture walkthrough
 - [ ] T046 [ASYNC] [US2] Create RAG architecture diagram in public/diagrams/rag-architecture.svg
 - [ ] T047 [P] [ASYNC] [US2] Implement complete RAG support agent example in public/examples/rag-support-agent.py
 - [ ] T048 [P] [ASYNC] [US2] Implement tool definitions for RAG example in public/examples/rag-tools.py
 - [ ] T049 [P] [ASYNC] [US2] Implement memory retrieval functions in public/examples/rag-memory.py
 - [ ] T050 [P] [ASYNC] [US2] Create test harness for all code examples in public/examples/test_examples.py
-- [ ] T051 [ASYNC] [US2] Test all code examples execute successfully (validates SC-005)
-- [ ] T052 [SYNC] [US2] Write "Why This Matters" transition slide explaining value of tools+memory
-- [ ] T053 [SYNC] [US2] Write presenter notes for all Section 4 slides with timing (5+5+8 min breakdown)
+- [ ] T051 [ASYNC] [US2] Test all code examples execute successfully (validates SC-005, static validation)
+- [x] T052 [SYNC] [US2] Write "Why This Matters" transition slide explaining value of tools+memory
+- [ ] T053 [SYNC] [US2] Write presenter notes for all Section 2 slides with timing
 
 **Checkpoint**: US2 complete - developers understand practical implementation with working examples
 
 ---
 
-## Phase 5: Single vs Multi-Agent (Before Patterns) **NEW REQUIREMENT**
+## Phase 5 (OPT-IN, deferred per 2026-04-28): Single vs Multi-Agent (Before Patterns)
+
+> **Status**: Authored in `pages/04-patterns.md` but that file is NOT imported by `slides.md`. The active deck transitions directly from Tools & Memory into the Core Patterns section header. Tasks retained for opt-in re-enablement.
 
 **Purpose**: Explain limitations of single-agent systems and benefits of multi-agent architectures
 
 **Goal**: Establish foundation for understanding why complex patterns and multi-agent systems are needed
 
-- [ ] T054 [SYNC] Write "Why Multi-Agent?" slide in pages/04-patterns.md (before pattern content)
-- [ ] T055 [SYNC] Write "Single Agent Limitations" section covering:
+- [x] T054 [SYNC] Write "Why Multi-Agent?" slide in pages/04-patterns.md (before pattern content) — opt-in
+- [x] T055 [SYNC] Write "Single Agent Limitations" section covering:
   - Context window constraints
   - Specialization vs generalization tradeoff
   - Sequential processing bottlenecks
   - Error propagation in long chains
   - Difficulty handling complex multi-domain tasks
-- [ ] T056 [SYNC] Write "Multi-Agent Benefits" section covering:
+- [x] T056 [SYNC] Write "Multi-Agent Benefits" section covering:
   - Parallel processing capabilities
   - Domain specialization (each agent expert in one area)
   - Fault isolation (failure in one agent doesn't break entire system)
   - Scalability through horizontal agent addition
   - Compositional flexibility
-- [ ] T057 [P] [ASYNC] Create comparison diagram in public/diagrams/single-vs-multi-agent.svg
-- [ ] T058 [P] [ASYNC] Create example showing single agent struggling with complex task in public/examples/single-agent-limitation.py
-- [ ] T059 [P] [ASYNC] Create example showing multi-agent handling same task successfully in public/examples/multi-agent-solution.py
-- [ ] T060 [SYNC] Write presenter notes explaining transition from fundamentals to patterns
+- [ ] T057 [P] [ASYNC] Create comparison diagram in public/diagrams/single-vs-multi-agent.svg — opt-in
+- [ ] T058 [P] [ASYNC] Create example showing single agent struggling with complex task in public/examples/single-agent-limitation.py — opt-in
+- [ ] T059 [P] [ASYNC] Create example showing multi-agent handling same task successfully in public/examples/multi-agent-solution.py — opt-in
+- [ ] T060 [SYNC] Write presenter notes explaining transition from fundamentals to patterns — opt-in
 
 **Checkpoint**: Clear foundation for why patterns and architectures are needed
 
@@ -168,23 +181,25 @@ All paths relative to `presentation/` directory:
 
 **Independent Test**: Pattern recognition exercises and optimization scenarios validate understanding
 
-### Section 5: Foundational Workflow Patterns (10 min, 6-8 slides)
+### Section 5 (OPT-IN, in `pages/04-patterns.md`, NOT in active deck): Foundational Workflow Patterns
 
-- [ ] T061 [SYNC] [US3] Write "7 Foundational Patterns Overview" intro slide in pages/04-patterns.md
-- [ ] T062 [SYNC] [US3] Write Prompt Chaining pattern slide (definition, use cases, example)
+> **Status (2026-04-28)**: The pattern slides authored in `pages/04-patterns.md` are NOT imported by `slides.md`. The active deck presents patterns inline in `slides.md`, organized into 4 thematic groups (see new tasks T130–T148 below). Tasks here remain marked done where authored, but their output is not part of the active deck.
+
+- [x] T061 [SYNC] [US3] Write "7 Foundational Patterns Overview" intro slide in pages/04-patterns.md
+- [x] T062 [SYNC] [US3] Write Prompt Chaining pattern slide (definition, use cases, example)
 - [ ] T063 [P] [ASYNC] [US3] Create prompt chaining code example in public/examples/prompt-chaining.py
-- [ ] T064 [SYNC] [US3] Write Routing pattern slide (coordinator-delegate architecture)
+- [x] T064 [SYNC] [US3] Write Routing pattern slide (coordinator-delegate architecture)
 - [ ] T065 [P] [ASYNC] [US3] Create routing example in public/examples/routing-pattern.py
-- [ ] T066 [SYNC] [US3] Write Parallelization pattern slide (fan-out/aggregate)
+- [x] T066 [SYNC] [US3] Write Parallelization pattern slide (fan-out/aggregate)
 - [ ] T067 [P] [ASYNC] [US3] Create parallelization example in public/examples/parallel-pattern.py
-- [ ] T068 [SYNC] [US3] Write Reflection pattern slide (actor-critic framework)
+- [x] T068 [SYNC] [US3] Write Reflection pattern slide (actor-critic framework)
 - [ ] T069 [P] [ASYNC] [US3] Create reflection example in public/examples/reflection-pattern.py
-- [ ] T070 [SYNC] [US3] Write Tool Use pattern slide (function calling, ACI)
-- [ ] T071 [SYNC] [US3] Write Planning pattern slide (orchestrator-workers)
+- [x] T070 [SYNC] [US3] Write Tool Use pattern slide (function calling, ACI)
+- [x] T071 [SYNC] [US3] Write Planning pattern slide (orchestrator-workers)
 - [ ] T072 [P] [ASYNC] [US3] Create planning example in public/examples/planning-pattern.py
-- [ ] T073 [SYNC] [US3] Write Multi-Agent pattern slide (collaborative agents)
+- [x] T073 [SYNC] [US3] Write Multi-Agent pattern slide (collaborative agents)
 - [ ] T074 [P] [ASYNC] [US3] Create multi-agent example in public/examples/multi-agent-pattern.py
-- [ ] T075 [SYNC] [US3] Write presenter notes for all pattern slides
+- [x] T075 [SYNC] [US3] Write presenter notes for all pattern slides
 
 ### Section 6: Modern Architecture Patterns (10 min, 6-8 slides)
 
@@ -412,28 +427,82 @@ Before marking presentation complete, verify:
 
 ---
 
+## Phase 8 (NEW 2026-04-28): Slide Restructure Reconciliation
+
+**Purpose**: Capture the work performed on the active deck (`presentation/slides.md`) during the "fix slides" iterations and reconcile with the new modular structure.
+
+**Goal**: All restructure work is tracked, the active deck matches the spec, and orphaned modules are clearly marked as opt-in.
+
+### Hero & Branding Visuals (FR-015)
+
+- [x] T130 [SYNC] Add title-slide hero image `public/images/agentic-hero.png` and reference it in `slides.md` cover slide
+- [x] T131 [SYNC] Add Tools & Memory section-header hero image `public/images/tools-memory-hero.png` and reference it in `slides.md`
+- [x] T132 [P] [ASYNC] Create per-pattern SVG diagrams in `public/diagrams/` (reflection, tool-use, planning, sequential, parallel, multi-agent, hierarchical, routing, human-loop, feedback, web-access, memory-types, llm-vs-agent, plan-execute-flow, hero-agentic)
+
+### Pattern Slides Inline (FR-008 reorganized)
+
+> All pattern slides moved from `pages/04-patterns.md` (orphaned) to inline sections in `slides.md`, grouped into 4 thematic categories + arunpshankar reference.
+
+- [x] T133 [SYNC] Add "Core Patterns" section-header slide in `slides.md`
+- [x] T134 [SYNC] Author inline Reflection Pattern slide in `slides.md` (how it works, use cases, benefits)
+- [x] T135 [SYNC] Author inline Tool Use Pattern slide in `slides.md`
+- [x] T136 [SYNC] Author inline Planning Pattern slide in `slides.md`
+- [x] T137 [SYNC] Add "Workflow Patterns" section-header slide in `slides.md`
+- [x] T138 [SYNC] Author inline Sequential Workflow Pattern (Prompt Chaining) slide in `slides.md`
+- [x] T139 [SYNC] Author inline Parallel Workflow Pattern (Parallelization) slide in `slides.md`
+- [x] T140 [SYNC] Add "Coordination Patterns" section-header slide in `slides.md`
+- [x] T141 [SYNC] Author inline Multi-Agent Collaboration Pattern slide in `slides.md`
+- [x] T142 [SYNC] Author inline Hierarchical Workflow Pattern slide in `slides.md`
+- [x] T143 [SYNC] Author inline Routing Pattern (Handoff) slide in `slides.md`
+- [x] T144 [SYNC] Add "Control Patterns" section-header slide in `slides.md`
+- [x] T145 [SYNC] Author inline Human-in-the-Loop Pattern slide in `slides.md`
+- [x] T146 [SYNC] Author inline Feedback Loop Pattern slide in `slides.md`
+- [x] T147 [SYNC] Add "arunpshankar Reference Patterns" section-header slide in `slides.md` and author Web Access Pattern slide
+- [ ] T148 [SYNC] (Optional) Add additional arunpshankar reference patterns (Dynamic Sharding, Dynamic Decomposition, DAG Orchestration) — currently documented in research.md only
+
+### Closing References (FR-016)
+
+- [x] T149 [SYNC] Author "References & Further Reading" closing slide in `slides.md` with Phil Schmid, arunpshankar, 2025 Architecture Guide, and tool/framework links
+
+### Reconciliation Bookkeeping
+
+- [x] T150 [SYNC] Update `spec.md` with FR-014/FR-015/FR-016 and Clarifications session 2026-04-28
+- [x] T151 [SYNC] Update `plan.md` with Phase 2 reconciliation summary, restructured Modular Content Architecture, and updated source tree
+- [x] T152 [SYNC] Update `data-model.md` Sections table to reflect 6-section audience-facing deck and orphaned modules
+- [x] T153 [SYNC] Update `tasks.md` to mark Section 3 (demo) and Section 5 (`pages/04-patterns.md`) tasks as opt-in, and add this Phase 8
+- [x] T154 [SYNC] Update `research.md` with R15 documenting the slide restructure rationale
+- [x] T155 [SYNC] Update `quickstart.md` timing reference and section listing
+
+**Checkpoint**: Specs, plan, data model, tasks, research, and quickstart all match the active deck
+
+---
+
 ## Summary
 
-**Total Tasks**: 129
+**Total Tasks**: 155 (after 2026-04-28 restructure additions)
 - Setup: 8 tasks
 - Foundation: 9 tasks
-- US1 (Sections 1-2): 13 tasks
-- US2 (Sections 3-4): 23 tasks
-- **Multi-Agent Slide (NEW)**: 7 tasks
-- US3 (Sections 5-7): 34 tasks
+- US1 (Concepts + Benefits): 13 tasks
+- US2 (Demo opt-in + Tools/Memory): 23 tasks
+- Multi-Agent Slide (opt-in): 7 tasks
+- US3 (Foundational Patterns opt-in + Architectures + Principles): 34 tasks
 - Polish (Sections 8-9): 26 tasks
 - Risk Mitigation: 9 tasks
+- **Slide Restructure Reconciliation (NEW 2026-04-28)**: 26 tasks (T130–T155)
 
-**Execution Mode Distribution**:
-- [SYNC]: 67 tasks (56%) — Educational content, narrative design, pedagogy
-- [ASYNC]: 62 tasks (48%) — Code examples, diagrams, configuration, testing
+**Active Deck Sections** (post 2026-04-28 restructure):
+1. Concepts — `pages/01-concepts.md`
+2. Tools & Memory — `pages/02-tools-memory.md`
+3. Workflow Patterns (4 thematic groups + arunpshankar reference) — inline in `slides.md`
+4. Modern Architectures — `pages/05-architectures.md`
+5. Principles & Practical Tips — `pages/06-principles.md`
+6. Q&A + References — `pages/06-principles.md` + inline closing slides
 
-**Parallel Opportunities**: 45+ tasks marked [P] for parallel execution within phases
+**Orphaned Modules** (retained, not imported): `pages/03-demo.md`, `pages/04-patterns.md`
 
-**Estimated Timeline**: 4 weeks (Setup → US1 → US2+Multi-Agent → US3 → Polish)
-
-**MVP Scope**: Phases 1-3 deliver foundational understanding (US1: Concepts)
-
-**Critical New Requirements**:
-1. ✅ Section 4: Tools and Memory with RAG example (T040-T053)
-2. ✅ Multi-Agent limitations slide before patterns (T054-T060)
+**Critical Requirements Status**:
+1. ✅ Section 2: Tools and Memory with RAG example (T040-T053)
+2. ◯ Multi-Agent limitations slide (T054-T060) — opt-in, not in active deck
+3. ✅ Slide restructure reconciliation (T130-T155 NEW)
+4. ✅ Hero/branding visuals (T130-T132)
+5. ✅ Closing References slide (T149)

@@ -231,12 +231,10 @@ layout: default
 
 ## Common Tools
 
-- File system (read/write/delete)
-- Shell commands
+- File system & shell commands
 - APIs (REST, GraphQL)
 - Databases (SQL, NoSQL)
-- Version control (git)
-- Package managers (npm, pip)
+- Version control & package managers
 
 ## Benefits
 
@@ -459,9 +457,8 @@ layout: default
 ## Use Cases
 
 - **RAG**: Decompose query → parallel searches → aggregate
-- **Document Analysis**: Split sections → analyze each → synthesize
-- **Diverse Perspectives**: Generate multiple viewpoints → combine
-- **Batch Processing**: Process items concurrently
+- **Document Analysis**: Split sections → analyze → synthesize
+- **Diverse Perspectives**: Multiple viewpoints → combine
 
 ## Benefits
 

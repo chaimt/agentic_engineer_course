@@ -653,6 +653,57 @@ Updated Section Order (inserted after live demo, before patterns):
 
 ---
 
+## R15: Slide Restructure (2026-04-28)
+
+**Decision**: Reorganize the active deck (`presentation/slides.md`) around a 6-section audience-facing flow with patterns presented inline in 4 thematic groups, drop the Live Claude Code Demo from the active imports, and promote Tools & Memory to Section 2.
+
+**Rationale**: Iterative authoring of the deck (the "fix slides" commit series) revealed several pedagogical and pacing issues with the prior 9-section plan:
+
+1. **Live demo was high-risk and time-greedy.** A 15-minute live coding segment risked failures during the talk and consumed budget that proved more valuable for pattern coverage. Static Claude Code references (CLAUDE.md, hooks JSON, MCP config) embedded throughout Concepts and Practical Tips communicate the same value with lower delivery risk. The demo content is preserved (`pages/03-demo.md`) for presenters who want to extend the deck.
+
+2. **Tools & Memory needs to come earlier.** Placing the section after a long demo meant attendees encountered patterns without a vocabulary for the primitives those patterns combine. Moving Tools & Memory to Section 2 (right after Concepts) gives the audience a shared mental model — *tools = hands, memory = experience* — before any pattern is introduced.
+
+3. **Patterns benefit from thematic grouping.** A flat list of 7 Phil Schmid patterns + 1+ arunpshankar patterns is hard to navigate and hard to recall. Four thematic groups (Core / Workflow / Coordination / Control) plus a clearly labeled "arunpshankar Reference Patterns" group gives the audience a memorable taxonomy:
+   - **Core** — the agentic primitives (Reflection, Tool Use, Planning)
+   - **Workflow** — non-agentic execution flow (Sequential, Parallel)
+   - **Coordination** — multi-agent collaboration (Multi-Agent, Hierarchical, Routing)
+   - **Control** — oversight and feedback (Human-in-the-Loop, Feedback Loop)
+   - **Reference Implementations** — production patterns (Web Access from arunpshankar; more available)
+
+4. **Inline pattern slides simplify maintenance.** With patterns in `slides.md` directly (rather than `pages/04-patterns.md`), the section-header slides for the 4 thematic groups can interleave with pattern slides without requiring nested file imports. This makes the rendered slide order obvious from a single file.
+
+5. **Hero/branding visuals improve memorability.** Two hero images (`agentic-hero.png` for the title, `tools-memory-hero.png` for the Tools & Memory section header) plus per-pattern SVG diagrams in `public/diagrams/` give each major moment in the talk a distinct visual identity.
+
+6. **Closing References slide closes the loop.** The deck ends on a slide pointing audience members at the three primary research sources (Phil Schmid, arunpshankar, 2025 Architecture Guide) plus framework/tool documentation. This converts "interesting talk" into "I know where to start tomorrow."
+
+**Updated Section Flow** (audience-facing):
+
+| # | Section | Source | Duration |
+|---|---------|--------|----------|
+| 1 | Concepts | `pages/01-concepts.md` | ≈10 min |
+| 2 | Tools & Memory | `pages/02-tools-memory.md` (+ inline section header) | ≈12 min |
+| 3 | Workflow Patterns (4 groups + reference) | inline in `slides.md` | ≈18 min |
+| 4 | Modern Architectures | `pages/05-architectures.md` | ≈10 min |
+| 5 | Principles & Practical Tips | `pages/06-principles.md` | ≈8 min |
+| 6 | Q&A + References | `pages/06-principles.md` (Q&A) + inline References | ≈7 min |
+| | **Total** | | **≈55–65 min** |
+
+**Orphaned Modules** (retained, not imported): `pages/03-demo.md` (live demo), `pages/04-patterns.md` (older standalone patterns layout). These stay in the repo as opt-in extensions.
+
+**Implications for Other Documents**:
+- `spec.md`: FR-001/FR-003 reframed; FR-008 reorganized into 4 thematic groups + reference group; FR-014/FR-015/FR-016 added; SC-005 reframed for static validation; new Clarifications session 2026-04-28.
+- `plan.md`: Summary updated; Modular Content Architecture restructured; source tree annotated with imported vs orphaned modules; Phase 2 Reconciliation Summary added.
+- `data-model.md`: Sections table replaced with 6-section audience-facing layout; orphaned modules called out; demo readiness rules scoped to opt-in only.
+- `tasks.md`: Section 3 (demo) and Section 5 (`pages/04-patterns.md`) marked opt-in; Phase 8 (T130–T155) added for restructure reconciliation.
+- `quickstart.md`: Timing reference and section listing updated.
+
+**Alternatives Considered**:
+- *Keep the 9-section structure with the demo*: rejected — pacing was too tight and the demo introduced a risk surface that didn't justify itself in pilot rehearsals.
+- *Move Tools & Memory to the very end as a "deep dive"*: rejected — defeats its purpose as a building-block introduction.
+- *Keep patterns in `pages/04-patterns.md` and re-import that file with reordering*: rejected — slide ordering becomes opaque when patterns are in one file but section headers are in another. Inline organization in `slides.md` is more obvious to maintain.
+
+---
+
 ## Research Complete
 
 All technical clarifications from plan.md resolved:
@@ -660,7 +711,8 @@ All technical clarifications from plan.md resolved:
 - ✅ Code example implementation patterns
 - ✅ Asset management strategy
 - ✅ Speckit-Slidev integration workflow
-- ✅ Live demo rehearsal and backup procedures
-- ✅ **NEW: Tools and Memory fundamentals with RAG system example**
+- ✅ Live demo rehearsal and backup procedures (now opt-in only — see R15)
+- ✅ Tools and Memory fundamentals with RAG system example
+- ✅ **NEW (2026-04-28): Slide restructure rationale and updated section flow**
 
 **Next Phase**: Phase 1 - Design & Contracts (data-model.md, contracts/, quickstart.md)

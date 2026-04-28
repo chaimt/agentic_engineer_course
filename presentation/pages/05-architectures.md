@@ -93,30 +93,26 @@ Goal achieved? No → back to Reason
 
 # Sequential Agents
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-2 gap-6 mt-2">
 
-<div>
+<div class="dense-col">
 
 ## Agent Pipeline with Handoff
 
 <v-clicks>
 
-Multiple specialized agents execute in sequence — each one receives the previous agent's output as context and builds on it.
+Specialized agents execute in sequence — each receives the previous agent's output as context.
 
-```
+```text
 Goal
   ↓
-[Agent 1: Planner]
-  Creates: task list + architecture
-  ↓ (passes full context)
-[Agent 2: Implementer]
-  Creates: code based on plan
-  ↓ (passes code + plan)
-[Agent 3: Tester]
-  Creates: test suite, runs tests
-  ↓ (passes all context)
-[Agent 4: Reviewer]
-  Final: review + approval
+[1. Planner]     → tasks + architecture
+  ↓  passes full context
+[2. Implementer] → code from plan
+  ↓  passes code + plan
+[3. Tester]      → test suite + runs
+  ↓  passes all context
+[4. Reviewer]    → review + approval
 ```
 
 </v-clicks>
@@ -129,15 +125,15 @@ Goal
 
 ## Performance
 
-**+15-25% higher task completion rate** vs single agent on complex tasks
+**+15-25% higher task completion** vs single agent on complex tasks
 
-**Why**: Each agent has a focused context — the planner's context isn't polluted with implementation details when reviewing
+**Why**: Each agent has a focused context — the planner's context isn't polluted with implementation details
 
 ## Benefits
 
-- 🎯 Each agent has clean, focused context
-- 🔍 Easier to debug (inspect output at each stage)
-- ♻️ Reuse stages across different workflows
+- 🎯 Clean, focused context per agent
+- 🔍 Easier to debug (inspect each stage)
+- ♻️ Reuse stages across workflows
 - 📈 Higher completion on multi-phase tasks
 
 *Best for: Multi-stage workflows where each phase requires different expertise*

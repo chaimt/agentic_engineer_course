@@ -88,14 +88,19 @@
 
 ### Functional Requirements
 
-- **FR-001**: Presentation MUST follow a concept-first structure: (1) What are agentic workflows, (2) Why they matter, (3) Live Claude Code demo, (4) Workflow patterns, (5) Practical tips, (6) Q&A
-- **FR-002**: Presentation MUST demonstrate practical implementation examples using Claude Code as the primary agentic tool, with brief mentions of alternative tools (e.g., GitHub Copilot, Cursor)
-- **FR-003**: Presentation MUST include presenter-driven live coding demos using Claude Code (audience watches, no hands-on exercises)
-- **FR-004**: Presentation MUST provide setup instructions for implementing agentic workflows
+- **FR-001**: Presentation MUST follow a concept-first structure: (1) Understanding Agentic Workflows (concepts, mental model shift, benefits, adoption), (2) Tools & Memory Fundamentals (with practical RAG example), (3) Workflow Patterns organized into 4 thematic categories plus reference implementations, (4) Modern Architecture Patterns, (5) Practical Tips, (6) Q&A — note: the previously planned dedicated "Live Claude Code demo" section has been removed from the slide deck; Claude Code remains the reference tool referenced inline within the concepts and practical tips sections (see Clarifications 2026-04-28)
+- **FR-002**: Presentation MUST reference Claude Code as the primary agentic tool throughout the deck (CLAUDE.md, hooks, MCP examples), with brief mentions of alternative tools (e.g., GitHub Copilot, Cursor)
+- **FR-003**: Presentation MUST be presenter-driven, audience-watch format (no hands-on exercises required); a dedicated live coding demo section is OPTIONAL and not currently included in the active deck (the source page `pages/03-demo.md` remains in the repo as an opt-in module that is not imported by `slides.md`)
+- **FR-004**: Presentation MUST provide setup instructions for implementing agentic workflows (covered in the Practical Tips section: 5-step adoption path, CLAUDE.md, hooks, MCP)
 - **FR-005**: Presentation MUST address common challenges and solutions in agentic development
 - **FR-006**: Presentation MUST include assessment mechanisms to validate learning outcomes
 - **FR-007**: Presentation MUST be delivered using Slidev framework, with black and orange color theme providing strong contrast and professional appearance
-- **FR-008**: Presentation MUST cover the 7 foundational workflow patterns from Phil Schmid's taxonomy, organized into workflow patterns (Prompt Chaining, Routing, Parallelization) and agentic patterns (Reflection, Tool Use, Planning, Multi-Agent), each with: definition, use cases, benefits, and code examples
+- **FR-008**: Presentation MUST cover the 7 foundational workflow patterns from Phil Schmid's taxonomy, organized in the deck into 4 thematic categories (each pattern slide must include: how it works, use cases, benefits, and at minimum one code or diagram artifact):
+  - **Core Patterns** (the agentic primitives): Reflection, Tool Use, Planning
+  - **Workflow Patterns** (non-agentic execution flow): Sequential / Prompt Chaining, Parallel / Parallelization
+  - **Coordination Patterns** (multi-agent collaboration): Multi-Agent Collaboration, Hierarchical, Routing (Handoff)
+  - **Control Patterns** (oversight and feedback): Human-in-the-Loop, Feedback Loop
+  - **arunpshankar Reference Patterns** (production implementations beyond Phil Schmid): Web Access (Search → Scrape → Summarize); other arunpshankar patterns (Dynamic Sharding, Dynamic Decomposition, DAG Orchestration) are documented in research.md and may be added if presentation time permits
 - **FR-009**: Presentation MUST cover the 8 modern agent architecture patterns from the 2025 guide, each with: definition, use cases, performance metrics, and key limitations:
   1. **Single Agent + Tools** (ReAct pattern) — 50% cheaper than complex architectures
   2. **Sequential Agents** — 15-25% higher completion rate on complex tasks
@@ -109,6 +114,9 @@
 - **FR-011**: Presentation MUST include an architecture selection guide with 5 decision criteria: (1) task complexity, (2) specialization needs, (3) control and oversight requirements, (4) resource constraints, (5) framework selection
 - **FR-012**: Presentation MUST include implementation best practices from Phil Schmid's research: simplicity-first approach, robust error handling, iterative optimization, and pattern composition guidance
 - **FR-013**: Presentation MUST include Anthropic's "Building Effective Agents" principles and guidance: (1) simplicity over complexity with measured improvements, (2) transparent planning steps and reasoning display, (3) tool documentation with ACI (Agent-Computer Interface) best practices, (4) clear decision criteria for when to build agents vs simpler solutions, (5) workflow pattern comparisons (Anthropic's perspective), (6) real-world applications (customer support, coding agents)
+- **FR-014**: Presentation MUST include a dedicated "Tools & Memory Fundamentals" section (Section 2 in the active deck, immediately after Concepts and before Patterns) covering: (a) Tools as Agent-Computer Interface (ACI) with categories (Information Retrieval, Computation, Action Execution, Memory Access), (b) Memory types (short-term, long-term, semantic, episodic) and operations (store, retrieve, update, prune), (c) a worked RAG example (API support agent combining tools + RAG memory), and (d) a "Why This Matters" framing slide
+- **FR-015**: Presentation MUST include hero/branding visuals: (a) a title-slide hero image (`public/images/agentic-hero.png`), (b) a section-header hero image for Tools & Memory (`public/images/tools-memory-hero.png`), and (c) per-pattern SVG diagrams in `public/diagrams/` for each of the patterns enumerated in FR-008
+- **FR-016**: Presentation MUST close with a "References & Further Reading" slide listing the three primary research sources (Phil Schmid, arunpshankar GitHub repository, 2025 Architecture Guide) plus framework and tool documentation links
 
 ### Key Entities *(include if feature involves data)*
 
@@ -142,7 +150,7 @@
 - **SC-002**: 80% of attendees can identify at least 3 practical use cases for agentic workflows in their work
 - **SC-003**: 75% of attendees express confidence in implementing basic agentic workflows after the presentation
 - **SC-004**: Presentation maintains audience engagement with average attention score above 85%
-- **SC-005**: Code examples execute successfully during live demonstration without errors
+- **SC-005**: All code examples shown on slides (Python tool/memory snippets, JSON hooks/MCP configurations, Python RAG example) MUST be syntactically valid and conceptually accurate; any executable example files in `public/examples/` MUST run without errors. (Updated 2026-04-28: previously scoped to live demonstration; demo section was removed from the active deck — code accuracy is now validated statically.)
 
 ## Clarifications
 
@@ -160,6 +168,17 @@
 - Q: What additional research sources should inform the pattern taxonomy? → A: Phil Schmid's "Agentic Workflow Patterns" article (https://www.philschmid.de/agentic-pattern) provides authoritative definitions for 7 foundational patterns, organized into workflow patterns (Prompt Chaining, Routing, Parallelization) and agentic patterns (Reflection, Tool Use, Planning, Multi-Agent)
 - Q: How should patterns be organized pedagogically? → A: Start with foundational workflow patterns from Phil Schmid (simpler, non-agentic), progress to agentic patterns (autonomous decision-making), then cover modern architectures from 2025 guide (complex compositions)
 - Q: What implementation best practices should be emphasized? → A: Simplicity-first approach, robust error handling, iterative optimization, and pattern composition guidance from Phil Schmid's research
+
+### Session 2026-04-28 — Slide Restructure Reconciliation
+
+This session reconciles the specification with the actual state of `presentation/slides.md` after a series of "fix slides" iterations on the active branch.
+
+- Q: Should the dedicated "Live Claude Code Demo" section remain in the active deck? → A: No. The demo section (`pages/03-demo.md`) has been removed from `slides.md` imports. Claude Code remains the canonical reference tool but is illustrated through static slides (CLAUDE.md, hooks JSON, MCP config) rather than a presenter-driven live coding segment. The orphaned `pages/03-demo.md` is retained in the repo as an opt-in module for presenters who want to extend the deck.
+- Q: How are workflow patterns now organized in the deck? → A: Patterns are presented inline in `slides.md` (not via `pages/04-patterns.md`, which is also retained but unused) and grouped into 4 thematic categories — Core Patterns (Reflection, Tool Use, Planning), Workflow Patterns (Sequential / Prompt Chaining, Parallel / Parallelization), Coordination Patterns (Multi-Agent Collaboration, Hierarchical, Routing/Handoff), Control Patterns (Human-in-the-Loop, Feedback Loop) — followed by an "arunpshankar Reference Patterns" section currently containing the Web Access pattern.
+- Q: Where does Tools & Memory sit in the new flow? → A: Tools & Memory is now Section 2 of the deck (immediately after Concepts and before Patterns), with its own section-header slide and hero image (`public/images/tools-memory-hero.png`). This is earlier than the prior plan, which placed it after a live demo.
+- Q: What hero/branding visuals are required? → A: Title-slide hero (`public/images/agentic-hero.png`) and Tools & Memory section-header hero (`public/images/tools-memory-hero.png`); plus per-pattern SVG diagrams in `public/diagrams/`.
+- Q: Should there be a closing references slide? → A: Yes — a "References & Further Reading" slide at the end of the deck listing the three primary research sources and key tool/framework links.
+- Q: What is the new section count and timing? → A: Six sections in the audience-facing overview (down from nine in the prior plan that included a dedicated demo): Concepts (≈10 min), Tools & Memory (≈12 min), Patterns including Core/Workflow/Coordination/Control/Reference (≈18 min), Modern Architectures (≈10 min), Practical Tips & Principles (≈8 min), Q&A (≈7 min). Total target ≈ 55–65 minutes. Total slide count ≈ 35–45.
 
 ## Assumptions
 

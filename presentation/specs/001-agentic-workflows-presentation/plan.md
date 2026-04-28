@@ -7,9 +7,17 @@
 
 ## Summary
 
-Create a comprehensive educational presentation on agentic workflows using Slidev framework. The presentation will teach developers how to implement AI-assisted development workflows, covering foundational patterns from Phil Schmid's taxonomy (7 patterns: Prompt Chaining, Routing, Parallelization, Reflection, Tool Use, Planning, Multi-Agent), modern architecture patterns from 2025 guide (8 patterns with performance metrics), and Anthropic's Building Effective Agents principles. Primary tool demonstration will be Claude Code CLI with live presenter-driven demos. Black and orange color theme for professional technical appearance.
+Create a comprehensive educational presentation on agentic workflows using Slidev framework. The presentation teaches developers how to implement AI-assisted development workflows, covering foundational patterns from Phil Schmid's taxonomy (7 patterns: Prompt Chaining, Routing, Parallelization, Reflection, Tool Use, Planning, Multi-Agent) — organized in the deck into 4 thematic categories plus an arunpshankar reference patterns section — modern architecture patterns from the 2025 guide (8 patterns with performance metrics), and Anthropic's "Building Effective Agents" principles. Claude Code is the canonical reference tool, illustrated through static slides (CLAUDE.md, hooks JSON, MCP config). Black and orange color theme for professional technical appearance.
 
-**NEW REQUIREMENT**: Before describing agent architectures, add comprehensive slide section covering Tools and Memory concepts with practical RAG system example demonstrating both.
+**NEW REQUIREMENT (2026-04-24)**: Comprehensive slide section covering Tools and Memory concepts with practical RAG system example demonstrating both — added as Section 2 of the deck (immediately after Concepts, before Patterns).
+
+**SLIDE RESTRUCTURE (2026-04-28)**: After several "fix slides" iterations, the active deck (`presentation/slides.md`) was reorganized as follows. This plan now reflects that final structure:
+
+- **Live Claude Code Demo section removed** from the active deck. The orphaned `pages/03-demo.md` is retained in the repo as an opt-in module not imported by `slides.md`.
+- **Patterns moved inline into `slides.md`** and grouped into 4 thematic categories (Core / Workflow / Coordination / Control) plus an "arunpshankar Reference Patterns" group (currently containing Web Access). The orphaned `pages/04-patterns.md` is retained but unused.
+- **Tools & Memory promoted to Section 2** (after Concepts, before Patterns) with its own section-header slide and hero image.
+- **Hero/branding visuals added**: `public/images/agentic-hero.png` (title slide) and `public/images/tools-memory-hero.png` (section header), plus per-pattern SVG diagrams in `public/diagrams/`.
+- **Closing References slide added** listing the three primary research sources.
 
 ## Technical Context
 
@@ -20,8 +28,8 @@ Create a comprehensive educational presentation on agentic workflows using Slide
 **Target Platform**: Modern web browsers (Chrome, Firefox, Safari), presentation mode with speaker notes
 **Project Type**: Interactive web-based presentation application
 **Performance Goals**: Instant slide transitions (<100ms), smooth animations (60fps), fast initial load (<2s)
-**Constraints**: 45-60 minute delivery window, readable text for audiences 10-100 people, all code examples must be executable and tested, presenter-driven demos only
-**Scale/Scope**: ~60-80 slides covering 7 foundational patterns + 8 architecture patterns + tools/memory section + Anthropic principles + live demos + assessment
+**Constraints**: 55-65 minute delivery window, readable text for audiences 10-100 people, all on-slide code examples must be syntactically valid and conceptually accurate, presenter-narrated (no live coding required in the active deck)
+**Scale/Scope**: ~35-45 slides covering 7 foundational patterns (in 4 thematic groups) + 1 arunpshankar reference pattern (Web Access) + 8 architecture patterns + tools/memory section with RAG example + Anthropic principles + practical tips + assessment + closing references
 
 ## Constitution Check
 
@@ -39,25 +47,30 @@ Create a comprehensive educational presentation on agentic workflows using Slide
 
 ### Developer-Focused Pedagogy (NON-NEGOTIABLE) ✅ PASS
 - Target audience: developers aware of AI tools but not practicing structured workflows (NFR-005)
-- All code examples required to be executable and tested (NFR-003)
-- Presenter-driven live demos with Claude Code (FR-003)
-- Hands-on methodology with practical implementations (FR-002, FR-004)
+- All on-slide code examples required to be syntactically valid and conceptually accurate (NFR-003, SC-005 as updated 2026-04-28)
+- Claude Code referenced throughout the deck via static examples (CLAUDE.md, hooks JSON, MCP config, 5-step adoption path) — see FR-002 / FR-003
+- Practical methodology grounded in working code patterns (FR-002, FR-004, FR-014)
 
 ### Specification-Driven Slides ✅ PASS
 - Learning objectives defined per user story (Priority P1, P2)
-- Code examples and demos specified (FR-003, FR-008, FR-009)
+- On-slide code examples and content specified (FR-008, FR-009, FR-014)
 - Assessment criteria included (FR-006, SC-001 through SC-005)
 - Technical examples derived from approved research sources
 
 ### Modular Content Architecture ✅ PASS
-- Content organized into independent educational modules:
-  1. Agentic concepts introduction
-  2. Live Claude Code demo
-  3. Foundational workflow patterns (7 patterns)
-  4. **NEW: Tools and Memory fundamentals with RAG example**
-  5. Modern architecture patterns (8 patterns)
-  6. Anthropic Building Effective Agents principles
-  7. Practical implementation and Q&A
+- Content organized into independent educational modules (active deck, post 2026-04-28 restructure):
+  1. **Concepts** — `pages/01-concepts.md` (definition, mental model shift, key characteristics, why they matter, industry adoption, productivity gains)
+  2. **Tools & Memory Fundamentals** — `pages/02-tools-memory.md` (Tools/ACI, Memory types, RAG support agent example, "Why this matters")
+  3. **Workflow Patterns** — inline in `slides.md`, organized into 4 thematic groups:
+     - Core Patterns (Reflection, Tool Use, Planning)
+     - Workflow Patterns (Sequential / Prompt Chaining, Parallel / Parallelization)
+     - Coordination Patterns (Multi-Agent, Hierarchical, Routing)
+     - Control Patterns (Human-in-the-Loop, Feedback Loop)
+     - arunpshankar Reference Patterns (Web Access)
+  4. **Modern Architecture Patterns** — `pages/05-architectures.md` (8 architectures with performance metrics, framework comparison, selection guide)
+  5. **Anthropic Building Effective Agents + Practical Tips** — `pages/06-principles.md` (simplicity, transparent planning, when to build agents, getting started, challenges, best practices, team coordination)
+  6. **Q&A and References** — closing slides in `slides.md` (questions, resources, references)
+- Orphaned (retained, not imported): `pages/03-demo.md` (live Claude Code demo), `pages/04-patterns.md` (older standalone patterns page) — kept available for opt-in extension
 - Each module delivers standalone value
 - Clear dependencies documented in presentation flow
 
@@ -81,26 +94,36 @@ specs/[###-feature]/
 
 ```text
 presentation/
-├── slides.md                 # Main Slidev presentation file (markdown-based slides)
-├── pages/                    # Additional slide pages (if splitting content)
-│   ├── 01-concepts.md       # Agentic concepts introduction
-│   ├── 02-tools-memory.md   # NEW: Tools and Memory fundamentals + RAG example
-│   ├── 03-demo.md           # Live Claude Code demo
-│   ├── 04-patterns.md       # Foundational workflow patterns
-│   ├── 05-architectures.md  # Modern architecture patterns
-│   └── 06-principles.md     # Anthropic Building Effective Agents
+├── slides.md                 # Main Slidev presentation entry point
+│                             # — Title + overview slides (inline)
+│                             # — Imports pages/01-concepts.md
+│                             # — Tools & Memory section header (inline) + imports pages/02-tools-memory.md
+│                             # — Core / Workflow / Coordination / Control / arunpshankar Reference pattern sections (all inline)
+│                             # — Imports pages/05-architectures.md and pages/06-principles.md
+│                             # — Closing References slide (inline)
+├── pages/                    # Modular slide pages
+│   ├── 01-concepts.md       # IMPORTED — Agentic concepts (definition, mental model, benefits, adoption, productivity)
+│   ├── 02-tools-memory.md   # IMPORTED — Tools and Memory fundamentals + RAG example + Why This Matters
+│   ├── 03-demo.md           # ORPHANED (retained, not imported) — Live Claude Code demo, opt-in module
+│   ├── 04-patterns.md       # ORPHANED (retained, not imported) — older standalone patterns page; current deck uses inline pattern slides in slides.md
+│   ├── 05-architectures.md  # IMPORTED — 8 modern architecture patterns + framework comparison + selection guide
+│   └── 06-principles.md     # IMPORTED — Anthropic principles + Practical tips + Team coordination + Q&A
 ├── components/               # Custom Vue components for interactive elements
 │   ├── CodeExample.vue      # Syntax-highlighted code with copy button
 │   ├── PatternComparison.vue # Side-by-side pattern comparison
 │   └── ArchitectureDiagram.vue # Interactive architecture diagrams
 ├── public/                   # Static assets
-│   ├── images/              # Diagrams, screenshots, logos
-│   ├── examples/            # Code example files for demos
-│   └── fonts/               # Custom fonts if needed
+│   ├── images/              # Hero images: agentic-hero.png (title), tools-memory-hero.png (Tools & Memory section)
+│   ├── diagrams/            # Per-pattern SVGs (reflection-pattern.svg, tool-use-pattern.svg, planning-pattern.svg,
+│   │                        # sequential-pattern.svg, parallel-pattern.svg, multi-agent-pattern.svg,
+│   │                        # hierarchical-pattern.svg, routing-pattern.svg, human-loop-pattern.svg,
+│   │                        # feedback-pattern.svg, web-access-pattern.svg, memory-types.svg,
+│   │                        # llm-vs-agent.svg, plan-execute-flow.svg, hero-agentic.svg)
+│   └── examples/            # (Optional) executable companion code for static slide examples
 ├── styles/                   # Custom CSS/SCSS
 │   ├── theme.css           # Black and orange color theme
 │   ├── code-highlighting.css # Custom syntax theme
-│   └── layouts.css         # Custom slide layouts
+│   └── layouts.css         # Custom slide layouts (e.g. section-header, dense-col)
 ├── setup/                    # Slidev setup scripts
 │   └── shiki.ts            # Code highlighting configuration
 ├── slidev.config.ts         # Slidev configuration
@@ -108,7 +131,7 @@ presentation/
 └── vite.config.ts          # Vite build configuration
 ```
 
-**Structure Decision**: Slidev presentation with modular page organization. Main slides.md serves as entry point with imports from pages/ directory for each major section. Custom Vue components enable interactive elements (code examples, diagrams, comparisons). Black and orange theme implemented via custom CSS. All code examples stored as executable files in public/examples/ for validation and live demo use.
+**Structure Decision**: Slidev presentation with hybrid organization — `slides.md` serves as the entry point and contains the title, overview, all section header slides, all pattern slides (organized into 4 thematic groups + arunpshankar reference group), and the closing references slide. Larger content modules (Concepts, Tools & Memory, Modern Architectures, Principles & Tips) live in `pages/` and are imported via `src:` frontmatter. The orphaned `pages/03-demo.md` and `pages/04-patterns.md` are retained in the repo as opt-in modules for presenters who want to extend the deck with a live demo or with the older standalone patterns layout. Custom Vue components enable interactive elements (code examples, diagrams, comparisons). Black and orange theme implemented via custom CSS. On-slide code examples are statically validated; any companion executable code lives in `public/examples/`.
 
 ## Triage Framework: [SYNC] vs [ASYNC] Classification
 
@@ -184,6 +207,22 @@ presentation/
 - contracts/ directory reviewed (existing contracts apply to new section)
 - quickstart.md reviewed (setup process unchanged)
 - Agent context updated (CLAUDE.md refreshed with current technologies)
+
+## Phase 2 Reconciliation Summary (2026-04-28)
+
+✅ **Slide Restructure Reconciled with Specifications**
+
+After multiple "fix slides" iterations on the active branch, the deck (`presentation/slides.md`) diverged from the original 9-section plan. This phase reconciles the spec, plan, data model, tasks, research, and quickstart with the deck's actual structure.
+
+**Reconciliation Outcomes**:
+- Active deck has 6 audience-facing sections (Concepts, Tools & Memory, Patterns, Modern Architectures, Principles & Tips, Q&A) — down from 9 — and total runtime ≈55–65 minutes.
+- Patterns are presented inline in `slides.md` and grouped into 4 thematic categories (Core, Workflow, Coordination, Control) plus an arunpshankar Reference Patterns group (Web Access). All 7 Phil Schmid patterns are covered.
+- Live Claude Code Demo section removed from imports; `pages/03-demo.md` retained as opt-in module.
+- Tools & Memory promoted to Section 2 with hero image (`tools-memory-hero.png`).
+- Hero/branding visuals added: `agentic-hero.png`, `tools-memory-hero.png`, plus per-pattern SVG diagrams in `public/diagrams/`.
+- Closing References slide added.
+- New requirements captured: FR-014 (Tools & Memory section), FR-015 (hero/branding visuals), FR-016 (closing references slide).
+- SC-005 reframed: code accuracy validated statically (no live demo to validate against).
 
 ## Constitution Re-Check (Post Phase 1)
 
