@@ -1,7 +1,3 @@
-# Tools and Memory Fundamentals
-
----
-
 # What are Tools?
 
 <div class="grid grid-cols-2 gap-6 mt-4">

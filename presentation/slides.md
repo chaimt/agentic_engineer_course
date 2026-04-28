@@ -73,10 +73,11 @@ layout: default
 ## What We'll Cover
 
 1. 🤖 **Understanding Agentic Workflows** - What they are and why they matter
-2. 💡 **Benefits** - Real-world productivity gains and industry adoption
-3. 🔄 **Workflow Patterns** - Core patterns for practical implementation
-4. 🛠️ **Practical Tips** - Getting started and best practices
-5. ❓ **Q&A** - Your questions and discussion
+2. 🔧 **Tools & Memory Fundamentals** - The building blocks of agentic systems
+3. 💡 **Benefits** - Real-world productivity gains and industry adoption
+4. 🔄 **Workflow Patterns** - Core patterns for practical implementation
+5. 🛠️ **Practical Tips** - Getting started and best practices
+6. ❓ **Q&A** - Your questions and discussion
 
 </v-clicks>
 
@@ -91,6 +92,27 @@ Each section builds on the previous one, so we'll progress from theory to practi
 ---
 src: ./pages/01-concepts.md
 ---
+
+---
+layout: section-header
+---
+
+# Tools & Memory Fundamentals
+
+The building blocks that transform LLMs into agents
+
+<img src="/images/tools-memory-hero.png" alt="Tools and Memory" class="mx-auto mt-6 w-2/3 rounded-xl opacity-90 shadow-lg" />
+
+<!--
+Before diving into patterns, we need to understand the two primitives that make agentic workflows possible.
+
+Tools give agents the ability to interact with the world — file systems, APIs, databases, shell commands.
+Memory gives agents persistence and context — short-term in-context, long-term via vector stores and databases.
+
+Together, they're what separates an LLM from an agent.
+
+Duration: 5-7 minutes
+-->
 
 ---
 src: ./pages/02-tools-memory.md
