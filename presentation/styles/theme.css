@@ -1,6 +1,16 @@
 /* Custom theme styles for Agentic Workflows Presentation */
 /* Black and Orange Professional Technical Theme */
 
+/* Hide the Slidev navigation bar (bottom-left controls) */
+#slide-container > div:not(.slidev-slide-content):not(#slide-content) {
+  display: none !important;
+}
+
+/* Hide the Goto dialog (right-side slide list, triggered by pressing "g") */
+#slidev-goto-dialog {
+  display: none !important;
+}
+
 :root {
   /* Primary Colors - Tikal Orange Palette */
   --slidev-theme-primary: #F47721;
@@ -104,6 +114,15 @@
 
 .slidev-layout a:hover {
   border-bottom-color: var(--slidev-theme-accent);
+}
+
+/* Hide navigation controls */
+.slidev-nav,
+.slidev-controls,
+#slide-controls,
+.nav-controls,
+[class*="slidev-nav-"] {
+  display: none !important;
 }
 
 /* Dense column: compact typography for content-heavy right columns */

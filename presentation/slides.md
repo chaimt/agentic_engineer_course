@@ -18,6 +18,8 @@ drawings:
   persist: false
 transition: slide-left
 title: Agentic Workflows
+controls: false
+hideInToc: True
 mdc: true
 ---
 
@@ -94,14 +96,105 @@ src: ./pages/01-concepts.md
 ---
 
 ---
+layout: default
+zoom: 0.85
+---
+
+# Prompt Engineering Techniques
+
+<div class="grid grid-cols-3 gap-3 mt-1" style="font-size:0.78rem;">
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**🎯 Zero-Shot**
+
+No examples — rely on the model's training knowledge alone.
+
+<p class="mt-1 text-orange-300 italic">"Classify as positive / negative / neutral: 'The flight was okay.'"<br/>→ <strong>Neutral</strong></p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**📚 Few-Shot**
+
+Provide example pairs to guide in-context learning.
+
+<p class="mt-1 text-orange-300 italic">"A baku is a large blue bird. 'We saw bakus in Maui.' → Now write a story about a baku on a ship."</p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**🔗 Chain-of-Thought**
+
+Break complex tasks into explicit reasoning steps.
+
+<p class="mt-1 text-orange-300 italic">"I had 8, gave 3, found 4. <em>Think step by step.</em>"<br/>→ 8−3=5, 5+4=<strong>9</strong></p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**🏗️ Meta Prompting**
+
+Define structure and format, not specific content.
+
+<p class="mt-1 text-orange-300 italic">Step 1: Define variables.<br/>Step 2: Apply formula.<br/>Step 3: Simplify & solve.</p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**♻️ Self-Consistency**
+
+Sample multiple reasoning paths, pick the most consistent answer.
+
+<p class="mt-1 text-orange-300 italic">"At 6 my sister was 3, gap = 3 yrs always."<br/>→ At 70, sister is <strong>67</strong></p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**🎭 Role Prompting**
+
+Assign a persona to shape tone, priorities and domain focus.
+
+<p class="mt-1 text-orange-300 italic">"You are a skeptical VC. List top 3 pros and cons of this pitch."</p>
+
+</div>
+
+</div>
+
+<!--
+Prompt engineering is the foundation before agents even enter the picture.
+
+Six key techniques from simple to advanced:
+
+1. Zero-Shot — no examples, just clear instructions. Works well for tasks the model was trained on.
+
+2. Few-Shot — show don't just tell. Examples dramatically improve performance on novel or ambiguous tasks.
+
+3. Chain-of-Thought — "think step by step" unlocks multi-step reasoning. Critical for math, logic, and planning tasks.
+
+4. Meta Prompting — define structure abstractly, not with specific content. Excellent for token efficiency and generalization.
+
+5. Self-Consistency — sample multiple reasoning paths and vote for the most consistent answer. Great for arithmetic and commonsense tasks.
+
+6. Role Prompting — "You are a security auditor" changes what the model prioritizes. Aligns model behavior with domain expectations.
+
+These techniques compose with each other — e.g., Few-Shot + Chain-of-Thought is especially powerful for complex reasoning.
+
+Source: k2view.com/blog/prompt-engineering-techniques/
+-->
+
+---
 layout: section-header
 ---
 
 # Tools & Memory Fundamentals
 
 The building blocks that transform LLMs into agents
-
-<img src="/images/tools-memory-hero-new.jpg" alt="Tools and Memory" class="mx-auto mt-6 w-2/3 rounded-xl opacity-90 shadow-lg" />
 
 <!--
 Before diving into patterns, we need to understand the two primitives that make agentic workflows possible.
@@ -112,6 +205,27 @@ Memory gives agents persistence and context — short-term in-context, long-term
 Together, they're what separates an LLM from an agent.
 
 Duration: 5-7 minutes
+-->
+
+---
+layout: default
+---
+
+# Agentic RAG
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/agentic-rag.png" alt="Agentic RAG" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+Agentic RAG extends standard retrieval-augmented generation with an agentic loop:
+1. The LLM analyses and possibly rewrites the query
+2. An agent retrieves from multiple data sources (vector DBs, APIs, web)
+3. Results are reranked for relevance
+4. The LLM generates the answer — then evaluates if it's correct/relevant
+5. If not, it rewrites and retries
+
+This is a concrete example of tools + memory enabling autonomous multi-step reasoning.
 -->
 
 ---
@@ -203,6 +317,27 @@ Limitation: Not good for novel problems where the agent doesn't know what "good"
 layout: default
 ---
 
+# Reflection Pattern: Actor-Critic Architecture
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/reflection-pattern.png" alt="Reflection Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The Actor-Critic architecture shows the two agents working in tandem.
+
+The Actor generates and improves responses (blue cycle on the right).
+The Critic reviews and provides feedback (yellow cycle on the left).
+
+Flow: LLM spawns both agents → Actor generates response → Critic reviews it → Critic provides feedback → Actor improves → cycle repeats until quality is met.
+
+Numbers 0–6 show the message flow order between the agents.
+-->
+
+---
+layout: default
+---
+
 # Tool Use Pattern: System Integration
 
 <div class="grid grid-cols-2 gap-6">
@@ -263,6 +398,26 @@ Security note: Tool access must be carefully controlled - agents should only hav
 layout: default
 ---
 
+# Tool Use Pattern
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/tool-use-pattern.png" alt="Tool Use Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The Tool Use Pattern flow:
+1. User sends a query to the LLM
+2. LLM accesses tools (Web Search, Vector DB, APIs)
+3. Tools return results to LLM
+4. LLM generates final response back to the user
+
+This cycle is what transforms a static language model into an active agent that can interact with real-world systems.
+-->
+
+---
+layout: default
+---
+
 # Planning Pattern: Task Decomposition
 
 <div class="grid grid-cols-2 gap-6">
@@ -281,7 +436,7 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded">
 <mdi:sitemap class="inline"/> From "what" to "how" automatically
 </div>
 
@@ -301,12 +456,7 @@ layout: default
 5. Create middleware
 6. Write tests
 
-## Benefits
-
-- 📋 Structured approach
-- 🎯 Clear progress tracking
-- 🔄 Handles complexity
-- ✅ Verifiable completion
+**Benefits**: Structured approach · Clear progress tracking · Handles complexity · Verifiable completion
 
 </div>
 
@@ -334,6 +484,123 @@ Agent Plan:
 Each step is concrete and testable.
 
 Limitation: Requires the agent to have domain knowledge to create good plans.
+-->
+
+---
+layout: default
+---
+
+# Planning Pattern: Flow Diagram
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/planning-pattern.png" alt="Planning Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The Planning Pattern flow:
+1. User sends a Prompt to the Planning agent
+2. Planning generates a Task list (Task Generation)
+3. The Task is executed by the Task Agent
+4. Task Agent returns the Task Result
+5. If needed, Replan adjusts the task list based on results
+6. Final Response is returned to the user
+
+Key insight: Planning separates "what to do" from "how to do it" — the agent builds a strategy first, then executes with the ability to replan based on results.
+-->
+
+---
+layout: default
+---
+
+# Multi-Agent Pattern: Specialization at Scale
+
+<div class="grid grid-cols-2 gap-6">
+
+<div>
+
+## How It Works
+
+<v-clicks>
+
+1. **Specialist Agents**: Each agent has a specific domain or capability
+2. **Critic/Review Agents**: Dedicated agents that evaluate others' outputs
+3. **Orchestrator**: Coordinator manages workflow and routes tasks
+4. **Collaboration**: Agents communicate via handoffs or shared queues
+5. **Synthesis**: Combine diverse outputs into a unified result
+
+</v-clicks>
+
+<div v-click class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded">
+<mdi:account-group class="inline"/> Specialization leads to better performance than generalization
+</div>
+
+</div>
+
+<div v-click class="dense-col">
+
+## Agent Roles
+
+- **Researcher**: Finds and synthesizes information
+- **Coder**: Writes and debugs code
+- **Analyst**: Statistical analysis & visualization
+- **Critic**: Reviews and validates outputs
+- **Orchestrator**: Routes tasks and synthesizes results
+
+## Trade-offs
+
+- ✅ Higher quality through specialization
+- ✅ Diverse expert perspectives
+- ✅ Scalable — add more agents as needed
+- ⚠️ Coordination overhead increases
+- ⚠️ Debugging across agents is harder
+
+</div>
+
+</div>
+
+<!--
+Multi-Agent pattern is about specialization — the core insight is that a single agent trying to be excellent at everything faces fundamental trade-offs.
+
+From ByteByteGo: "A single agent trying to be excellent at everything faces challenges. By dividing responsibilities among multiple agents, each can be optimized for its specific role."
+
+Three types of agents:
+1. Specialist agents: research, coding, data analysis — each optimized for their domain
+2. Critic/review agents: dedicated to finding flaws and improving quality
+3. Coordinator/orchestrator: manages the overall workflow and integration
+
+Communication patterns:
+- Central coordinator (star topology)
+- Direct agent-to-agent handoff (mesh topology)
+- Shared message queue (pub-sub)
+
+Key insight: For simple tasks, a single agent wins. For tasks requiring diverse expertise — software development teams, research pipelines, complex analysis — multi-agent systems produce superior results.
+
+Real example: Software dev team — PM agent (requirements), Coder agent (implementation), Tester agent (QA), Reviewer agent (code review), Coordinator (integration).
+-->
+
+---
+layout: default
+---
+
+# Multi-Agent Pattern: Flow Diagram
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/multi-agent-pattern-bytebytego.png" alt="Multi-Agent Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The Planning Pattern flow from ByteByteGo illustrates how a coordinator-based multi-agent system works:
+
+1. User sends a Prompt to the Planning/Orchestrator agent
+2. Planning generates a Task list (Task Generation)
+3. The Task is dispatched to a specialist Task Agent
+4. Task Agent returns the Task Result
+5. If needed, a Replan cycle adjusts the task list based on the result
+6. Final Response is returned to the user
+
+Key insight: The Replan step is what makes this adaptive — the orchestrator can adjust strategy mid-execution based on what agents discover, making the system resilient to unexpected results.
+
+Source: ByteByteGo — Top AI Agentic Workflow Patterns
 -->
 
 ---
@@ -377,7 +644,7 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded">
 <mdi:pipe class="inline"/> Like a pipeline: each stage transforms the input
 </div>
 
@@ -391,12 +658,7 @@ layout: default
 - **Data Processing**: Extract → Transform → Summarize
 - **Content Creation**: Research → Draft → Edit → Publish
 
-## Benefits
-
-- ✅ Clear separation of concerns
-- ✅ Easy to debug (inspect intermediate outputs)
-- ✅ Reusable components
-- ✅ Predictable behavior
+**Benefits**: Clear separation of concerns · Easy to debug · Reusable components · Predictable behavior
 
 <p class="mt-2 text-orange-300 text-xs">Best for well-defined transformations where steps are known upfront</p>
 
@@ -421,6 +683,36 @@ Example workflow:
 → Final output: French markdown summary
 
 Key limitation: No decision-making. If you need branching logic, you need routing or agentic patterns.
+-->
+
+---
+layout: default
+---
+
+# Sequential Agent: Visual Examples
+
+<div class="flex flex-col gap-4 h-4/5 justify-center">
+
+<div class="flex flex-col items-center gap-1">
+  <p class="text-sm text-orange-300 font-semibold uppercase tracking-wide">Simple Sequential Flow</p>
+  <img src="/images/sequential-agent-simple.png" alt="Sequential Agent - Simple Flow" class="rounded-xl shadow-lg object-contain max-h-36" />
+</div>
+
+<div class="flex flex-col items-center gap-1">
+  <p class="text-sm text-orange-300 font-semibold uppercase tracking-wide">Sequential with Loop Agent</p>
+  <img src="/images/sequential-agent-loop.png" alt="Sequential Agent - Loop" class="rounded-xl shadow-lg object-contain max-h-36" />
+</div>
+
+</div>
+
+<!--
+Two real-world examples of sequential agents in action.
+
+Left: A simple three-step sequential agent — Check Positive Aspect → Check Negative Aspect → Generate Final Confirm. Each step receives the output of the previous step and adds its own analysis before passing forward.
+
+Right: A more advanced sequential pattern where one of the steps is itself a loop agent — Research Agent → Loop Agent (Critic + Review) → Conclusion Agent. This nests an inner feedback loop inside the outer sequential chain, enabling iterative quality improvement in the middle of the pipeline.
+
+Key takeaway: Sequential agents can be composed — steps can themselves be agents with their own internal patterns.
 -->
 
 ---
@@ -937,7 +1229,7 @@ layout: default
 
 # Web Access Pattern
 
-<div class="grid grid-cols-2 gap-6">
+<div class="grid grid-cols-2 gap-4 text-sm">
 
 <div>
 
@@ -948,36 +1240,36 @@ layout: default
 1. **Search Agent**: Queries web using SERP API
 2. **Scrape Agent**: Extracts content from URLs
 3. **Summarize Agent**: Synthesizes information
-4. **Sequential Chain**: Each agent has single responsibility
+4. **Sequential Chain**: Single responsibility per agent
 5. **Tool Specialization**: Web-specific capabilities
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded text-xs">
 <mdi:magnify class="inline"/> Three-stage pipeline for web content processing
 </div>
 
 </div>
 
-<div v-click class="dense-col">
+<div v-click>
 
 ## Use Cases
 
-- **Research Automation**: Gather information from web sources
+- **Research Automation**: Gather info from web sources
 - **Competitive Analysis**: Monitor competitor websites
-- **Content Aggregation**: Collect and summarize news/articles
-- **Market Intelligence**: Track industry trends from web data
+- **Content Aggregation**: Summarize news/articles
+- **Market Intelligence**: Track industry trends
 
 ## Benefits
 
-- 🔍 Specialized agents for each step
-- 🔗 Clean separation of concerns
-- 🛠️ Tool-use best practices
-- 📊 Structured information extraction
+- Specialized agents for each step
+- Clean separation of concerns
+- Tool-use best practices
+- Structured information extraction
 
 ## When to Use
 
-When you need to systematically gather and process web content with clear stages
+Systematically gather and process web content with clear stages
 
 </div>
 
@@ -1007,6 +1299,12 @@ Real-world application: Automated research assistants, competitive intelligence 
 -->
 
 ---
+layout: image
+image: /images/parallel-workflow.png
+backgroundSize: contain
+---
+
+---
 src: ./pages/05-architectures.md
 ---
 
@@ -1018,20 +1316,20 @@ src: ./pages/06-principles.md
 
 # References & Further Reading
 
-<div class="grid grid-cols-2 gap-6">
+<div class="grid grid-cols-2 gap-4 mt-2 text-sm">
 
 <div>
 
 ## Pattern References
 
 - **[Agentic Workflow Patterns](https://www.philschmid.de/agentic-pattern)**  
-  Philipp Schmid — Foundational taxonomy: Prompt Chaining, Routing, Parallelization, Reflection, Tool Use, Planning, Multi-Agent
+  Philipp Schmid — Prompt Chaining, Routing, Parallelization, Reflection, Tool Use, Planning, Multi-Agent
 
 - **[Agentic Workflow Patterns (GitHub)](https://github.com/arunpshankar/Agentic-Workflow-Patterns)**  
-  arunpshankar — Python reference implementations: Reflection, Web Access, Semantic Routing, Parallel Delegation, Dynamic Sharding, Task Decomposition, DAG Orchestration
+  arunpshankar — Python implementations: Reflection, Web Access, Routing, Sharding, Task Decomposition, DAG Orchestration
 
 - **[The Ultimate Guide to AI Agent Architectures in 2025](https://dev.to/sohail-akbar/the-ultimate-guide-to-ai-agent-architectures-in-2025-2j1c)**  
-  Dev.to — Modern architectural compositions: MCP Servers, Hierarchy+Parallel, Human-in-Loop, Dynamic Delegation, RAG-augmented agents
+  Dev.to — 8 modern architectural compositions with performance benchmarks
 
 </div>
 
@@ -1039,11 +1337,12 @@ src: ./pages/06-principles.md
 
 ## Additional Resources
 
-- **Anthropic Claude** — Tool use and multi-agent patterns
-- **ByteByteGo** — System design for agentic workflows
-- **Weaviate** — RAG and vector search integration
-- **LangChain / LangGraph** — Framework implementations
-- **AutoGen / CrewAI** — Multi-agent orchestration frameworks
+- **[Claude Code Docs](https://docs.anthropic.com/en/docs/claude-code)** — CLAUDE.md, hooks, MCP setup
+- **[Anthropic: Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)** — Core principles
+- **[LangGraph](https://langchain-ai.github.io/langgraph/)** — Stateful multi-agent workflows
+- **[AutoGen](https://microsoft.github.io/autogen/)** — Microsoft's multi-agent framework
+- **[CrewAI](https://www.crewai.com/)** — Role-based agent teams
+- **[MCP Protocol](https://modelcontextprotocol.io/)** — Universal tool adapter standard
 
 </div>
 

@@ -1,4 +1,12 @@
+---
+layout: section-header
+---
+
 # Agentic Workflows - Concepts
+
+From LLMs to autonomous development partners
+
+<img src="/images/agentic-hero.png" alt="Agentic Workflows" class="mx-auto mt-6 w-2/3 rounded-xl opacity-90 shadow-lg" />
 
 ---
 
@@ -159,40 +167,40 @@ Auto-approval rate as trust grows
 
 # Developer Productivity Gains
 
-<div class="grid grid-cols-3 gap-3 mt-3">
+<div class="grid grid-cols-3 gap-2 mt-2">
 
-<div class="p-3 bg-gray-800 rounded-lg text-center" v-click>
+<div class="p-2 bg-gray-800 rounded-lg text-center text-sm" v-click>
 
 ### Speed
-**55%** faster task completion (GitHub Copilot research, 2023)
+**55%** faster task completion  
+<span class="text-xs opacity-70">(GitHub Copilot research, 2023)</span>
 
 </div>
 
-<div class="p-3 bg-gray-800 rounded-lg text-center" v-click>
+<div class="p-2 bg-gray-800 rounded-lg text-center text-sm" v-click>
 
 ### Quality
 **Fewer context switches** — agent handles boilerplate, engineer focuses on design
 
 </div>
 
-<div class="p-3 bg-gray-800 rounded-lg text-center" v-click>
+<div class="p-2 bg-gray-800 rounded-lg text-center text-sm" v-click>
 
 ### Scale
-**Multi-agent systems** work in parallel — a sprint's work explored in hours
+**Multi-agent systems** run in parallel — a sprint's work explored in hours
 
 </div>
 
 </div>
 
-<div class="mt-3 text-sm" v-click>
+<div class="mt-2 text-sm" v-click>
 
 **Practical metrics from teams using Claude Code:**
 
-<div class="grid grid-cols-2 gap-x-6 mt-1">
+<div class="grid grid-cols-2 gap-x-6 mt-1 text-sm">
 
 - Large refactors (50+ files): hours → minutes
 - Writing test coverage: ~10x faster
-
 - Onboarding to unfamiliar codebases: dramatically faster
 - Documentation generation: near-zero marginal cost
 
