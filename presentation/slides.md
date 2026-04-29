@@ -18,6 +18,8 @@ drawings:
   persist: false
 transition: slide-left
 title: Agentic Workflows
+controls: false
+hideInToc: True
 mdc: true
 ---
 
@@ -203,6 +205,27 @@ Limitation: Not good for novel problems where the agent doesn't know what "good"
 layout: default
 ---
 
+# Reflection Pattern: Actor-Critic Architecture
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/reflection-pattern.png" alt="Reflection Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The Actor-Critic architecture shows the two agents working in tandem.
+
+The Actor generates and improves responses (blue cycle on the right).
+The Critic reviews and provides feedback (yellow cycle on the left).
+
+Flow: LLM spawns both agents → Actor generates response → Critic reviews it → Critic provides feedback → Actor improves → cycle repeats until quality is met.
+
+Numbers 0–6 show the message flow order between the agents.
+-->
+
+---
+layout: default
+---
+
 # Tool Use Pattern: System Integration
 
 <div class="grid grid-cols-2 gap-6">
@@ -263,6 +286,26 @@ Security note: Tool access must be carefully controlled - agents should only hav
 layout: default
 ---
 
+# Tool Use Pattern
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/tool-use-pattern.png" alt="Tool Use Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The Tool Use Pattern flow:
+1. User sends a query to the LLM
+2. LLM accesses tools (Web Search, Vector DB, APIs)
+3. Tools return results to LLM
+4. LLM generates final response back to the user
+
+This cycle is what transforms a static language model into an active agent that can interact with real-world systems.
+-->
+
+---
+layout: default
+---
+
 # Planning Pattern: Task Decomposition
 
 <div class="grid grid-cols-2 gap-6">
@@ -281,7 +324,7 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded">
 <mdi:sitemap class="inline"/> From "what" to "how" automatically
 </div>
 
@@ -301,12 +344,7 @@ layout: default
 5. Create middleware
 6. Write tests
 
-## Benefits
-
-- 📋 Structured approach
-- 🎯 Clear progress tracking
-- 🔄 Handles complexity
-- ✅ Verifiable completion
+**Benefits**: Structured approach · Clear progress tracking · Handles complexity · Verifiable completion
 
 </div>
 
@@ -334,6 +372,123 @@ Agent Plan:
 Each step is concrete and testable.
 
 Limitation: Requires the agent to have domain knowledge to create good plans.
+-->
+
+---
+layout: default
+---
+
+# Planning Pattern: Flow Diagram
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/planning-pattern.png" alt="Planning Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The Planning Pattern flow:
+1. User sends a Prompt to the Planning agent
+2. Planning generates a Task list (Task Generation)
+3. The Task is executed by the Task Agent
+4. Task Agent returns the Task Result
+5. If needed, Replan adjusts the task list based on results
+6. Final Response is returned to the user
+
+Key insight: Planning separates "what to do" from "how to do it" — the agent builds a strategy first, then executes with the ability to replan based on results.
+-->
+
+---
+layout: default
+---
+
+# Multi-Agent Pattern: Specialization at Scale
+
+<div class="grid grid-cols-2 gap-6">
+
+<div>
+
+## How It Works
+
+<v-clicks>
+
+1. **Specialist Agents**: Each agent has a specific domain or capability
+2. **Critic/Review Agents**: Dedicated agents that evaluate others' outputs
+3. **Orchestrator**: Coordinator manages workflow and routes tasks
+4. **Collaboration**: Agents communicate via handoffs or shared queues
+5. **Synthesis**: Combine diverse outputs into a unified result
+
+</v-clicks>
+
+<div v-click class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded">
+<mdi:account-group class="inline"/> Specialization leads to better performance than generalization
+</div>
+
+</div>
+
+<div v-click class="dense-col">
+
+## Agent Roles
+
+- **Researcher**: Finds and synthesizes information
+- **Coder**: Writes and debugs code
+- **Analyst**: Statistical analysis & visualization
+- **Critic**: Reviews and validates outputs
+- **Orchestrator**: Routes tasks and synthesizes results
+
+## Trade-offs
+
+- ✅ Higher quality through specialization
+- ✅ Diverse expert perspectives
+- ✅ Scalable — add more agents as needed
+- ⚠️ Coordination overhead increases
+- ⚠️ Debugging across agents is harder
+
+</div>
+
+</div>
+
+<!--
+Multi-Agent pattern is about specialization — the core insight is that a single agent trying to be excellent at everything faces fundamental trade-offs.
+
+From ByteByteGo: "A single agent trying to be excellent at everything faces challenges. By dividing responsibilities among multiple agents, each can be optimized for its specific role."
+
+Three types of agents:
+1. Specialist agents: research, coding, data analysis — each optimized for their domain
+2. Critic/review agents: dedicated to finding flaws and improving quality
+3. Coordinator/orchestrator: manages the overall workflow and integration
+
+Communication patterns:
+- Central coordinator (star topology)
+- Direct agent-to-agent handoff (mesh topology)
+- Shared message queue (pub-sub)
+
+Key insight: For simple tasks, a single agent wins. For tasks requiring diverse expertise — software development teams, research pipelines, complex analysis — multi-agent systems produce superior results.
+
+Real example: Software dev team — PM agent (requirements), Coder agent (implementation), Tester agent (QA), Reviewer agent (code review), Coordinator (integration).
+-->
+
+---
+layout: default
+---
+
+# Multi-Agent Pattern: Flow Diagram
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/multi-agent-pattern-bytebytego.png" alt="Multi-Agent Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The Planning Pattern flow from ByteByteGo illustrates how a coordinator-based multi-agent system works:
+
+1. User sends a Prompt to the Planning/Orchestrator agent
+2. Planning generates a Task list (Task Generation)
+3. The Task is dispatched to a specialist Task Agent
+4. Task Agent returns the Task Result
+5. If needed, a Replan cycle adjusts the task list based on the result
+6. Final Response is returned to the user
+
+Key insight: The Replan step is what makes this adaptive — the orchestrator can adjust strategy mid-execution based on what agents discover, making the system resilient to unexpected results.
+
+Source: ByteByteGo — Top AI Agentic Workflow Patterns
 -->
 
 ---
@@ -377,7 +532,7 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded">
 <mdi:pipe class="inline"/> Like a pipeline: each stage transforms the input
 </div>
 
@@ -391,12 +546,7 @@ layout: default
 - **Data Processing**: Extract → Transform → Summarize
 - **Content Creation**: Research → Draft → Edit → Publish
 
-## Benefits
-
-- ✅ Clear separation of concerns
-- ✅ Easy to debug (inspect intermediate outputs)
-- ✅ Reusable components
-- ✅ Predictable behavior
+**Benefits**: Clear separation of concerns · Easy to debug · Reusable components · Predictable behavior
 
 <p class="mt-2 text-orange-300 text-xs">Best for well-defined transformations where steps are known upfront</p>
 
@@ -1018,20 +1168,20 @@ src: ./pages/06-principles.md
 
 # References & Further Reading
 
-<div class="grid grid-cols-2 gap-6">
+<div class="grid grid-cols-2 gap-4 mt-2 text-sm">
 
 <div>
 
 ## Pattern References
 
 - **[Agentic Workflow Patterns](https://www.philschmid.de/agentic-pattern)**  
-  Philipp Schmid — Foundational taxonomy: Prompt Chaining, Routing, Parallelization, Reflection, Tool Use, Planning, Multi-Agent
+  Philipp Schmid — Prompt Chaining, Routing, Parallelization, Reflection, Tool Use, Planning, Multi-Agent
 
 - **[Agentic Workflow Patterns (GitHub)](https://github.com/arunpshankar/Agentic-Workflow-Patterns)**  
-  arunpshankar — Python reference implementations: Reflection, Web Access, Semantic Routing, Parallel Delegation, Dynamic Sharding, Task Decomposition, DAG Orchestration
+  arunpshankar — Python implementations: Reflection, Web Access, Routing, Sharding, Task Decomposition, DAG Orchestration
 
 - **[The Ultimate Guide to AI Agent Architectures in 2025](https://dev.to/sohail-akbar/the-ultimate-guide-to-ai-agent-architectures-in-2025-2j1c)**  
-  Dev.to — Modern architectural compositions: MCP Servers, Hierarchy+Parallel, Human-in-Loop, Dynamic Delegation, RAG-augmented agents
+  Dev.to — 8 modern architectural compositions with performance benchmarks
 
 </div>
 
@@ -1039,11 +1189,12 @@ src: ./pages/06-principles.md
 
 ## Additional Resources
 
-- **Anthropic Claude** — Tool use and multi-agent patterns
-- **ByteByteGo** — System design for agentic workflows
-- **Weaviate** — RAG and vector search integration
-- **LangChain / LangGraph** — Framework implementations
-- **AutoGen / CrewAI** — Multi-agent orchestration frameworks
+- **[Claude Code Docs](https://docs.anthropic.com/en/docs/claude-code)** — CLAUDE.md, hooks, MCP setup
+- **[Anthropic: Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)** — Core principles
+- **[LangGraph](https://langchain-ai.github.io/langgraph/)** — Stateful multi-agent workflows
+- **[AutoGen](https://microsoft.github.io/autogen/)** — Microsoft's multi-agent framework
+- **[CrewAI](https://www.crewai.com/)** — Role-based agent teams
+- **[MCP Protocol](https://modelcontextprotocol.io/)** — Universal tool adapter standard
 
 </div>
 

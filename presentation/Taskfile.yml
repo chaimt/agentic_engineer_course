@@ -30,10 +30,11 @@ tasks:
       - node_modules/**
 
   dev:
-    desc: Start development server with hot reload
+    desc: Start development server with hot reload (navigation panel hidden via styles/theme.css)
     deps: [setup]
     cmds:
       - echo "Starting Slidev development server..."
+      - echo "Navigation panel hidden via styles/theme.css (no Slidev CLI flag exists for this)"
       - "{{.NPM_CMD}} run dev"
 
   build:
@@ -45,6 +46,7 @@ tasks:
       - echo "✓ Build complete - output in dist/"
     sources:
       - slides.md
+      - pages/**/*.md
       - layouts/**/*.vue
       - components/**/*.vue
       - styles/**/*.css
@@ -62,6 +64,7 @@ tasks:
       - echo "✓ PDF exported successfully"
     sources:
       - slides.md
+      - pages/**/*.md
       - layouts/**/*.vue
       - components/**/*.vue
       - styles/**/*.css
