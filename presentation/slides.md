@@ -96,14 +96,105 @@ src: ./pages/01-concepts.md
 ---
 
 ---
+layout: default
+zoom: 0.85
+---
+
+# Prompt Engineering Techniques
+
+<div class="grid grid-cols-3 gap-3 mt-1" style="font-size:0.78rem;">
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**🎯 Zero-Shot**
+
+No examples — rely on the model's training knowledge alone.
+
+<p class="mt-1 text-orange-300 italic">"Classify as positive / negative / neutral: 'The flight was okay.'"<br/>→ <strong>Neutral</strong></p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**📚 Few-Shot**
+
+Provide example pairs to guide in-context learning.
+
+<p class="mt-1 text-orange-300 italic">"A baku is a large blue bird. 'We saw bakus in Maui.' → Now write a story about a baku on a ship."</p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**🔗 Chain-of-Thought**
+
+Break complex tasks into explicit reasoning steps.
+
+<p class="mt-1 text-orange-300 italic">"I had 8, gave 3, found 4. <em>Think step by step.</em>"<br/>→ 8−3=5, 5+4=<strong>9</strong></p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**🏗️ Meta Prompting**
+
+Define structure and format, not specific content.
+
+<p class="mt-1 text-orange-300 italic">Step 1: Define variables.<br/>Step 2: Apply formula.<br/>Step 3: Simplify & solve.</p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**♻️ Self-Consistency**
+
+Sample multiple reasoning paths, pick the most consistent answer.
+
+<p class="mt-1 text-orange-300 italic">"At 6 my sister was 3, gap = 3 yrs always."<br/>→ At 70, sister is <strong>67</strong></p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**🎭 Role Prompting**
+
+Assign a persona to shape tone, priorities and domain focus.
+
+<p class="mt-1 text-orange-300 italic">"You are a skeptical VC. List top 3 pros and cons of this pitch."</p>
+
+</div>
+
+</div>
+
+<!--
+Prompt engineering is the foundation before agents even enter the picture.
+
+Six key techniques from simple to advanced:
+
+1. Zero-Shot — no examples, just clear instructions. Works well for tasks the model was trained on.
+
+2. Few-Shot — show don't just tell. Examples dramatically improve performance on novel or ambiguous tasks.
+
+3. Chain-of-Thought — "think step by step" unlocks multi-step reasoning. Critical for math, logic, and planning tasks.
+
+4. Meta Prompting — define structure abstractly, not with specific content. Excellent for token efficiency and generalization.
+
+5. Self-Consistency — sample multiple reasoning paths and vote for the most consistent answer. Great for arithmetic and commonsense tasks.
+
+6. Role Prompting — "You are a security auditor" changes what the model prioritizes. Aligns model behavior with domain expectations.
+
+These techniques compose with each other — e.g., Few-Shot + Chain-of-Thought is especially powerful for complex reasoning.
+
+Source: k2view.com/blog/prompt-engineering-techniques/
+-->
+
+---
 layout: section-header
 ---
 
 # Tools & Memory Fundamentals
 
 The building blocks that transform LLMs into agents
-
-<img src="/images/tools-memory-hero-new.jpg" alt="Tools and Memory" class="mx-auto mt-6 w-2/3 rounded-xl opacity-90 shadow-lg" />
 
 <!--
 Before diving into patterns, we need to understand the two primitives that make agentic workflows possible.
@@ -114,6 +205,27 @@ Memory gives agents persistence and context — short-term in-context, long-term
 Together, they're what separates an LLM from an agent.
 
 Duration: 5-7 minutes
+-->
+
+---
+layout: default
+---
+
+# Agentic RAG
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/agentic-rag.png" alt="Agentic RAG" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+Agentic RAG extends standard retrieval-augmented generation with an agentic loop:
+1. The LLM analyses and possibly rewrites the query
+2. An agent retrieves from multiple data sources (vector DBs, APIs, web)
+3. Results are reranked for relevance
+4. The LLM generates the answer — then evaluates if it's correct/relevant
+5. If not, it rewrites and retries
+
+This is a concrete example of tools + memory enabling autonomous multi-step reasoning.
 -->
 
 ---
@@ -571,6 +683,36 @@ Example workflow:
 → Final output: French markdown summary
 
 Key limitation: No decision-making. If you need branching logic, you need routing or agentic patterns.
+-->
+
+---
+layout: default
+---
+
+# Sequential Agent: Visual Examples
+
+<div class="flex flex-col gap-4 h-4/5 justify-center">
+
+<div class="flex flex-col items-center gap-1">
+  <p class="text-sm text-orange-300 font-semibold uppercase tracking-wide">Simple Sequential Flow</p>
+  <img src="/images/sequential-agent-simple.png" alt="Sequential Agent - Simple Flow" class="rounded-xl shadow-lg object-contain max-h-36" />
+</div>
+
+<div class="flex flex-col items-center gap-1">
+  <p class="text-sm text-orange-300 font-semibold uppercase tracking-wide">Sequential with Loop Agent</p>
+  <img src="/images/sequential-agent-loop.png" alt="Sequential Agent - Loop" class="rounded-xl shadow-lg object-contain max-h-36" />
+</div>
+
+</div>
+
+<!--
+Two real-world examples of sequential agents in action.
+
+Left: A simple three-step sequential agent — Check Positive Aspect → Check Negative Aspect → Generate Final Confirm. Each step receives the output of the previous step and adds its own analysis before passing forward.
+
+Right: A more advanced sequential pattern where one of the steps is itself a loop agent — Research Agent → Loop Agent (Critic + Review) → Conclusion Agent. This nests an inner feedback loop inside the outer sequential chain, enabling iterative quality improvement in the middle of the pipeline.
+
+Key takeaway: Sequential agents can be composed — steps can themselves be agents with their own internal patterns.
 -->
 
 ---
@@ -1087,7 +1229,7 @@ layout: default
 
 # Web Access Pattern
 
-<div class="grid grid-cols-2 gap-6">
+<div class="grid grid-cols-2 gap-4 text-sm">
 
 <div>
 
@@ -1098,36 +1240,36 @@ layout: default
 1. **Search Agent**: Queries web using SERP API
 2. **Scrape Agent**: Extracts content from URLs
 3. **Summarize Agent**: Synthesizes information
-4. **Sequential Chain**: Each agent has single responsibility
+4. **Sequential Chain**: Single responsibility per agent
 5. **Tool Specialization**: Web-specific capabilities
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded text-xs">
 <mdi:magnify class="inline"/> Three-stage pipeline for web content processing
 </div>
 
 </div>
 
-<div v-click class="dense-col">
+<div v-click>
 
 ## Use Cases
 
-- **Research Automation**: Gather information from web sources
+- **Research Automation**: Gather info from web sources
 - **Competitive Analysis**: Monitor competitor websites
-- **Content Aggregation**: Collect and summarize news/articles
-- **Market Intelligence**: Track industry trends from web data
+- **Content Aggregation**: Summarize news/articles
+- **Market Intelligence**: Track industry trends
 
 ## Benefits
 
-- 🔍 Specialized agents for each step
-- 🔗 Clean separation of concerns
-- 🛠️ Tool-use best practices
-- 📊 Structured information extraction
+- Specialized agents for each step
+- Clean separation of concerns
+- Tool-use best practices
+- Structured information extraction
 
 ## When to Use
 
-When you need to systematically gather and process web content with clear stages
+Systematically gather and process web content with clear stages
 
 </div>
 
@@ -1155,6 +1297,12 @@ Design consideration: Error handling at each stage (failed searches, inaccessibl
 
 Real-world application: Automated research assistants, competitive intelligence gathering, content curation pipelines.
 -->
+
+---
+layout: image
+image: /images/parallel-workflow.png
+backgroundSize: contain
+---
 
 ---
 src: ./pages/05-architectures.md
