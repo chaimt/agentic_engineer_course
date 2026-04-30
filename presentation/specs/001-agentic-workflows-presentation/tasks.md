@@ -145,9 +145,9 @@ All paths relative to `presentation/` directory:
 
 ---
 
-## Phase 5 (OPT-IN, deferred per 2026-04-28): Single vs Multi-Agent (Before Patterns)
+## Phase 5: Single vs Multi-Agent (Before Patterns — Now ACTIVE in deck)
 
-> **Status**: Authored in `pages/04-patterns.md` but that file is NOT imported by `slides.md`. The active deck transitions directly from Tools & Memory into the Core Patterns section header. Tasks retained for opt-in re-enablement.
+> **Status (2026-04-30)**: `pages/04-patterns.md` IS imported by `slides.md`. The "Why Multi-Agent?" section is active and positioned before the Workflow Patterns section. Tasks T054–T056 are complete and part of the active deck.
 
 **Purpose**: Explain limitations of single-agent systems and benefits of multi-agent architectures
 
@@ -181,9 +181,9 @@ All paths relative to `presentation/` directory:
 
 **Independent Test**: Pattern recognition exercises and optimization scenarios validate understanding
 
-### Section 5 (OPT-IN, in `pages/04-patterns.md`, NOT in active deck): Foundational Workflow Patterns
+### Section 5 (ACTIVE in deck via `pages/04-patterns.md`): Foundational Workflow Patterns
 
-> **Status (2026-04-28)**: The pattern slides authored in `pages/04-patterns.md` are NOT imported by `slides.md`. The active deck presents patterns inline in `slides.md`, organized into 4 thematic groups (see new tasks T130–T148 below). Tasks here remain marked done where authored, but their output is not part of the active deck.
+> **Status (2026-04-30)**: `pages/04-patterns.md` IS imported by `slides.md`. Pattern slides are active in the deck. T061–T075 content was authored here and is in use.
 
 - [x] T061 [SYNC] [US3] Write "7 Foundational Patterns Overview" intro slide in pages/04-patterns.md
 - [x] T062 [SYNC] [US3] Write Prompt Chaining pattern slide (definition, use cases, example)
@@ -441,7 +441,7 @@ Before marking presentation complete, verify:
 
 ### Pattern Slides Inline (FR-008 reorganized)
 
-> All pattern slides moved from `pages/04-patterns.md` (orphaned) to inline sections in `slides.md`, grouped into 4 thematic categories + arunpshankar reference.
+> All pattern slides moved from `pages/04-patterns.md` (then orphaned, now re-activated) to inline sections in `slides.md` then back to `pages/04-patterns.md` which is imported. See Phase 3 Reconciliation Summary 2026-04-30 in plan.md.
 
 - [x] T133 [SYNC] Add "Core Patterns" section-header slide in `slides.md`
 - [x] T134 [SYNC] Author inline Reflection Pattern slide in `slides.md` (how it works, use cases, benefits)
@@ -457,7 +457,7 @@ Before marking presentation complete, verify:
 - [x] T144 [SYNC] Add "Control Patterns" section-header slide in `slides.md`
 - [x] T145 [SYNC] Author inline Human-in-the-Loop Pattern slide in `slides.md`
 - [x] T146 [SYNC] Author inline Feedback Loop Pattern slide in `slides.md`
-- [x] T147 [SYNC] Add "arunpshankar Reference Patterns" section-header slide in `slides.md` and author Web Access Pattern slide
+- [x] ~~T147 [SYNC] Add "arunpshankar Reference Patterns" section-header slide in `slides.md` and author Web Access Pattern slide~~ — **REMOVED 2026-04-30**: The arunpshankar Reference Patterns section (including Web Access) was removed from `pages/04-patterns.md`. Pattern documentation retained in research.md.
 - [ ] T148 [SYNC] (Optional) Add additional arunpshankar reference patterns (Dynamic Sharding, Dynamic Decomposition, DAG Orchestration) — currently documented in research.md only
 
 ### Closing References (FR-016)
@@ -477,6 +477,23 @@ Before marking presentation complete, verify:
 
 ---
 
+## Phase 9 (NEW 2026-04-30): Patterns Page Refactor Reconciliation
+
+**Purpose**: Capture the changes made to `pages/04-patterns.md` on the `update-patterns-slides` branch and reconcile all spec docs.
+
+**Goal**: All spec documents reflect that `04-patterns.md` is ACTIVE (imported by `slides.md`), the arunpshankar section is removed, and "Why Multi-Agent?" is positioned before Workflow Patterns.
+
+### Spec Updates (2026-04-30)
+
+- [x] T156 [SYNC] Update `spec.md` — add Clarifications 2026-04-30 session, update FR-001 and FR-008 for arunpshankar removal and `04-patterns.md` as active source
+- [x] T157 [SYNC] Update `plan.md` — add Phase 3 Reconciliation Summary, correct `04-patterns.md` as IMPORTED, remove arunpshankar references, update source code tree and structure decision
+- [x] T158 [SYNC] Update `data-model.md` — fix Section 3 row (source + notes), remove `04-patterns.md` from orphaned modules
+- [x] T159 [SYNC] Update `tasks.md` — fix Phase 5/6 status notes, mark T147 as removed, update Summary section, add this Phase 9
+
+**Checkpoint**: All spec docs reflect the 2026-04-30 patterns refactor
+
+---
+
 ## Summary
 
 **Total Tasks**: 155 (after 2026-04-28 restructure additions)
@@ -490,19 +507,19 @@ Before marking presentation complete, verify:
 - Risk Mitigation: 9 tasks
 - **Slide Restructure Reconciliation (NEW 2026-04-28)**: 26 tasks (T130–T155)
 
-**Active Deck Sections** (post 2026-04-28 restructure):
+**Active Deck Sections** (post 2026-04-30 refactor):
 1. Concepts — `pages/01-concepts.md`
 2. Tools & Memory — `pages/02-tools-memory.md`
-3. Workflow Patterns (4 thematic groups + arunpshankar reference) — inline in `slides.md`
+3. Workflow Patterns (Why Multi-Agent + 4 thematic groups) — `pages/04-patterns.md` (imported by `slides.md`)
 4. Modern Architectures — `pages/05-architectures.md`
 5. Principles & Practical Tips — `pages/06-principles.md`
 6. Q&A + References — `pages/06-principles.md` + inline closing slides
 
-**Orphaned Modules** (retained, not imported): `pages/03-demo.md`, `pages/04-patterns.md`
+**Orphaned Modules** (retained, not imported): `pages/03-demo.md`
 
 **Critical Requirements Status**:
 1. ✅ Section 2: Tools and Memory with RAG example (T040-T053)
-2. ◯ Multi-Agent limitations slide (T054-T060) — opt-in, not in active deck
+2. ✅ Multi-Agent limitations slide (T054-T060) — active in deck (positioned before Workflow Patterns)
 3. ✅ Slide restructure reconciliation (T130-T155 NEW)
 4. ✅ Hero/branding visuals (T130-T132)
 5. ✅ Closing References slide (T149)

@@ -88,19 +88,20 @@
 
 ### Functional Requirements
 
-- **FR-001**: Presentation MUST follow a concept-first structure: (1) Understanding Agentic Workflows (concepts, mental model shift, benefits, adoption), (2) Tools & Memory Fundamentals (with practical RAG example), (3) Workflow Patterns organized into 4 thematic categories plus reference implementations, (4) Modern Architecture Patterns, (5) Practical Tips, (6) Q&A — note: the previously planned dedicated "Live Claude Code demo" section has been removed from the slide deck; Claude Code remains the reference tool referenced inline within the concepts and practical tips sections (see Clarifications 2026-04-28)
+- **FR-001**: Presentation MUST follow a concept-first structure: (1) Understanding Agentic Workflows (concepts, mental model shift, benefits, adoption), (2) Tools & Memory Fundamentals (with practical RAG example), (3) Workflow Patterns organized into 4 thematic categories (Core, Workflow, Coordination, Control) preceded by a "Why Multi-Agent?" intro section, (4) Modern Architecture Patterns, (5) Practical Tips, (6) Q&A — note: the previously planned dedicated "Live Claude Code demo" section has been removed from the slide deck; Claude Code remains the reference tool referenced inline within the concepts and practical tips sections (see Clarifications 2026-04-28); the arunpshankar Reference Patterns group (Web Access) has been removed from the active deck (see Clarifications 2026-04-30)
 - **FR-002**: Presentation MUST reference Claude Code as the primary agentic tool throughout the deck (CLAUDE.md, hooks, MCP examples), with brief mentions of alternative tools (e.g., GitHub Copilot, Cursor)
 - **FR-003**: Presentation MUST be presenter-driven, audience-watch format (no hands-on exercises required); a dedicated live coding demo section is OPTIONAL and not currently included in the active deck (the source page `pages/03-demo.md` remains in the repo as an opt-in module that is not imported by `slides.md`)
 - **FR-004**: Presentation MUST provide setup instructions for implementing agentic workflows (covered in the Practical Tips section: 5-step adoption path, CLAUDE.md, hooks, MCP)
 - **FR-005**: Presentation MUST address common challenges and solutions in agentic development
 - **FR-006**: Presentation MUST include assessment mechanisms to validate learning outcomes
 - **FR-007**: Presentation MUST be delivered using Slidev framework, with black and orange color theme providing strong contrast and professional appearance
-- **FR-008**: Presentation MUST cover the 7 foundational workflow patterns from Phil Schmid's taxonomy, organized in the deck into 4 thematic categories (each pattern slide must include: how it works, use cases, benefits, and at minimum one code or diagram artifact):
+- **FR-008**: Presentation MUST cover the 7 foundational workflow patterns from Phil Schmid's taxonomy, organized in the deck into 4 thematic categories preceded by a "Why Multi-Agent?" intro (each pattern slide must include: how it works, use cases, benefits, and at minimum one code or diagram artifact). All patterns are delivered via `pages/04-patterns.md` (imported by `slides.md`):
+  - **Why Multi-Agent?** (intro before patterns): Single Agent Limitations, Multi-Agent Benefits, Multi-Agent Pitfalls & Failure Modes
   - **Core Patterns** (the agentic primitives): Reflection, Tool Use, Planning
   - **Workflow Patterns** (non-agentic execution flow): Sequential / Prompt Chaining, Parallel / Parallelization
   - **Coordination Patterns** (multi-agent collaboration): Multi-Agent Collaboration, Hierarchical, Routing (Handoff)
   - **Control Patterns** (oversight and feedback): Human-in-the-Loop, Feedback Loop
-  - **arunpshankar Reference Patterns** (production implementations beyond Phil Schmid): Web Access (Search → Scrape → Summarize); other arunpshankar patterns (Dynamic Sharding, Dynamic Decomposition, DAG Orchestration) are documented in research.md and may be added if presentation time permits
+  - **arunpshankar Reference Patterns**: Removed from active deck as of 2026-04-30 (see Clarifications 2026-04-30); patterns documented in research.md for future opt-in use
 - **FR-009**: Presentation MUST cover the 8 modern agent architecture patterns from the 2025 guide, each with: definition, use cases, performance metrics, and key limitations:
   1. **Single Agent + Tools** (ReAct pattern) — 50% cheaper than complex architectures
   2. **Sequential Agents** — 15-25% higher completion rate on complex tasks
@@ -174,11 +175,20 @@
 This session reconciles the specification with the actual state of `presentation/slides.md` after a series of "fix slides" iterations on the active branch.
 
 - Q: Should the dedicated "Live Claude Code Demo" section remain in the active deck? → A: No. The demo section (`pages/03-demo.md`) has been removed from `slides.md` imports. Claude Code remains the canonical reference tool but is illustrated through static slides (CLAUDE.md, hooks JSON, MCP config) rather than a presenter-driven live coding segment. The orphaned `pages/03-demo.md` is retained in the repo as an opt-in module for presenters who want to extend the deck.
-- Q: How are workflow patterns now organized in the deck? → A: Patterns are presented inline in `slides.md` (not via `pages/04-patterns.md`, which is also retained but unused) and grouped into 4 thematic categories — Core Patterns (Reflection, Tool Use, Planning), Workflow Patterns (Sequential / Prompt Chaining, Parallel / Parallelization), Coordination Patterns (Multi-Agent Collaboration, Hierarchical, Routing/Handoff), Control Patterns (Human-in-the-Loop, Feedback Loop) — followed by an "arunpshankar Reference Patterns" section currently containing the Web Access pattern.
+- Q: How are workflow patterns now organized in the deck? → A: Patterns are delivered via `pages/04-patterns.md` (imported by `slides.md`) and grouped into 4 thematic categories — Core Patterns (Reflection, Tool Use, Planning), Workflow Patterns (Sequential / Prompt Chaining, Parallel / Parallelization), Coordination Patterns (Multi-Agent Collaboration, Hierarchical, Routing/Handoff), Control Patterns (Human-in-the-Loop, Feedback Loop) — preceded by a "Why Multi-Agent?" intro section (Single Agent Limitations, Benefits, Pitfalls). An "arunpshankar Reference Patterns" section was initially included (Web Access) but was removed; see Clarifications 2026-04-30.
 - Q: Where does Tools & Memory sit in the new flow? → A: Tools & Memory is now Section 2 of the deck (immediately after Concepts and before Patterns), with its own section-header slide and hero image (`public/images/tools-memory-hero.png`). This is earlier than the prior plan, which placed it after a live demo.
 - Q: What hero/branding visuals are required? → A: Title-slide hero (`public/images/agentic-hero.png`) and Tools & Memory section-header hero (`public/images/tools-memory-hero.png`); plus per-pattern SVG diagrams in `public/diagrams/`.
 - Q: Should there be a closing references slide? → A: Yes — a "References & Further Reading" slide at the end of the deck listing the three primary research sources and key tool/framework links.
 - Q: What is the new section count and timing? → A: Six sections in the audience-facing overview (down from nine in the prior plan that included a dedicated demo): Concepts (≈10 min), Tools & Memory (≈12 min), Patterns including Core/Workflow/Coordination/Control/Reference (≈18 min), Modern Architectures (≈10 min), Practical Tips & Principles (≈8 min), Q&A (≈7 min). Total target ≈ 55–65 minutes. Total slide count ≈ 35–45.
+
+### Session 2026-04-30 — Patterns Refactor
+
+This session documents changes to `pages/04-patterns.md` made on the `update-patterns-slides` branch.
+
+- Q: Are patterns still inline in `slides.md`? → A: No. Patterns were moved into `pages/04-patterns.md`, which is now imported by `slides.md` (`src: ./pages/04-patterns.md`). The deck no longer has inline pattern slides in `slides.md`.
+- Q: What happened to the arunpshankar Reference Patterns section? → A: The entire "arunpshankar Reference Patterns" group (including the Web Access / Search→Scrape→Summarize pattern) was removed from `pages/04-patterns.md`. Pattern documentation remains in `research.md` for potential future opt-in use.
+- Q: Where does the "Why Multi-Agent?" section appear in the patterns flow? → A: The "Why Multi-Agent?" section (Single Agent Limitations, Multi-Agent Benefits, Multi-Agent Pitfalls & Failure Modes) was repositioned to appear *before* the Workflow Patterns section header in `pages/04-patterns.md`, giving it a more logical placement in the instructional flow.
+- Q: What is the current section flow in the patterns page? → A: Core Patterns (Reflection, Tool Use, Planning) → Why Multi-Agent? (Limitations, Benefits, Pitfalls) → Workflow Patterns (Sequential, Parallel) → Coordination Patterns (Multi-Agent, Hierarchical, Routing) → Control Patterns (Human-in-the-Loop, Feedback Loop).
 
 ## Assumptions
 

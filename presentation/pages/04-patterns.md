@@ -374,6 +374,163 @@ Source: ByteByteGo — Top AI Agentic Workflow Patterns
 layout: section-header
 ---
 
+# Why Multi-Agent?
+## Single Agent Limitations and Multi-Agent Benefits
+
+---
+
+# Single Agent Limitations
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+
+<div>
+
+<v-clicks>
+
+### Context Window Constraints
+Every token costs — long tasks overflow the window, losing earlier context and decisions
+
+### Specialization vs Generalization
+A generalist agent is mediocre at everything; deep expertise in one domain requires a specialist
+
+### Sequential Processing Bottlenecks
+One agent can only do one thing at a time — independent subtasks queue up unnecessarily
+
+</v-clicks>
+
+</div>
+
+<div>
+
+<v-clicks>
+
+### Error Propagation
+A mistake in step 3 of a 10-step chain corrupts all downstream work with no isolation
+
+### Multi-Domain Complexity
+Tasks spanning frontend, backend, infrastructure, and security require too many context switches for one agent to handle well
+
+</v-clicks>
+
+<div v-click class="mt-6 p-4 bg-red-900 bg-opacity-30 rounded">
+
+**The ceiling**: A single agent handling complex, multi-domain tasks is like asking one developer to simultaneously write React, design SQL schemas, and configure Kubernetes — context degrades fast
+
+</div>
+
+</div>
+
+</div>
+
+---
+
+# Multi-Agent Benefits
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+
+<div>
+
+<v-clicks>
+
+### Parallel Processing
+Independent subtasks execute simultaneously — what takes hours sequentially takes minutes in parallel
+
+### Domain Specialization
+Each agent is an expert in one area — a dedicated test agent outperforms a generalist on testing tasks
+
+### Fault Isolation
+A failure in one agent is contained — the rest of the system continues; failed tasks can be retried without restarting everything
+
+</v-clicks>
+
+</div>
+
+<div>
+
+<v-clicks>
+
+### Horizontal Scalability
+Add more agents to handle more work — throughput scales linearly with agent count for parallelizable tasks
+
+### Compositional Flexibility
+Combine agents like LEGO blocks — reuse a "code review" agent across multiple workflows without modification
+
+</v-clicks>
+
+<div v-click class="mt-6 p-4 bg-green-900 bg-opacity-30 rounded">
+
+**The result**: Multi-agent systems match how expert human teams work — specialists collaborating in parallel, each handling their domain, coordinated by a shared goal
+
+</div>
+
+</div>
+
+</div>
+
+---
+layout: default
+zoom: 0.85
+---
+
+# Multi-Agent Pitfalls & Failure Modes
+
+<div class="grid grid-cols-2 gap-4 mt-1 text-sm">
+
+<div>
+
+<v-clicks>
+
+**Complexity Explosion** — Each agent added multiplies coordination surface area; debugging a 5-agent system is exponentially harder
+
+**Cascading Failures** — One agent's bad output silently poisons downstream agents; errors compound before anything raises an alarm
+
+**Context Fragmentation** — Agents have partial world views; critical information may not be passed, leading to contradictory decisions
+
+**Runaway Costs** — Every agent hop burns tokens; a 6-agent pipeline can cost 10× more than a well-prompted single agent
+
+</v-clicks>
+
+</div>
+
+<div>
+
+<v-clicks>
+
+**Non-Determinism** — Parallel agents + async handoffs = results that change between runs; nearly impossible to reproduce bugs
+
+**Latency Chains** — Sequential agent dependencies stack latency; 5 agents × 3s each = 15s minimum, with no easy short-circuit
+
+**Orchestration Deadlocks** — Agents waiting on each other, circular dependencies, or resource contention can silently stall everything
+
+</v-clicks>
+
+<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-40 rounded border border-orange-500">
+
+**Golden Rule:** Start with the simplest architecture that could work.
+Multi-agent adds real overhead — only reach for it when a single agent genuinely can't do the job.
+
+</div>
+
+</div>
+
+</div>
+
+<!--
+Multi-agent is powerful but not free — every benefit has a corresponding cost.
+
+Key questions before choosing multi-agent:
+- Can a well-prompted single agent with tools do this?
+- Do we genuinely need parallel specialization, or is that premature optimization?
+- Do we have observability infrastructure to debug agent interactions?
+- Is the added latency and cost acceptable for this use case?
+
+Common anti-pattern: teams reach for multi-agent because it "sounds cool" or seems more sophisticated — then spend weeks debugging coordination issues that a single agent would never have had.
+-->
+
+---
+layout: section-header
+---
+
 # Workflow Patterns
 
 Execution flow control for non-agentic sequences
@@ -885,6 +1042,7 @@ Real-world analogy: Manufacturing assembly line with quality control stations.
 ---
 layout: default
 background: '#000000'
+title: Human-in-the-Loop Diagram
 ---
 
 <div class="flex items-center justify-center h-full">
@@ -975,6 +1133,7 @@ Real-world analogy: Scientific method (hypothesis → experiment → analysis �
 
 ---
 background: '#000000'
+title: Feedback Loop Diagram
 ---
 
 <div class="flex items-center justify-center h-full">
@@ -982,202 +1141,63 @@ background: '#000000'
 </div>
 
 ---
-layout: section-header
----
-
-# arunpshankar Reference Patterns
-
-Advanced implementations from production use cases
-
-<!--
-These patterns come from arunpshankar's GitHub reference implementation repository.
-
-Four unique patterns beyond what we've covered:
-1. Web Access - Specialized agent pipeline for web content
-2. Dynamic Sharding - Adaptive parallel processing for large datasets
-3. Dynamic Decomposition - AI-generated task breakdown
-4. DAG Orchestration - Declarative workflow dependencies
-
-Each demonstrates sophisticated real-world agent architectures.
-
-Duration: 8-10 minutes for all four patterns
--->
-
----
 layout: default
+zoom: 0.78
 ---
 
-# Web Access Pattern
+# Models by Agentic Pattern
 
-<div class="grid grid-cols-2 gap-4 text-sm">
+<div class="mt-2">
 
-<div>
-
-## How It Works
-
-<v-clicks>
-
-1. **Search Agent**: Queries web using SERP API
-2. **Scrape Agent**: Extracts content from URLs
-3. **Summarize Agent**: Synthesizes information
-4. **Sequential Chain**: Single responsibility per agent
-5. **Tool Specialization**: Web-specific capabilities
-
-</v-clicks>
-
-<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded text-xs">
-<mdi:magnify class="inline"/> Three-stage pipeline for web content processing
-</div>
+| Pattern | Best Model Type | Recommended Models | Key Reason |
+|---------|----------------|-------------------|------------|
+| **Reflection** | Reasoning / thinking | o3, Claude (extended thinking) | Deep self-critique requires extended reasoning |
+| **Feedback Loop** | Reasoning / thinking | o3, Claude (extended thinking) | Evaluate + regenerate demands analytical depth |
+| **Planning** | Reasoning / thinking | o3, Gemini 2.5 Pro, Claude thinking | Multi-step decomposition benefits from long-horizon reasoning |
+| **Tool Use** | Function-calling specialists | Claude 3.7 Sonnet, GPT-4o, Gemini 2.5 | Reliable structured outputs and tool invocations |
+| **Multi-Agent** | Tiered | Sonnet/GPT-4o (orchestrator) + Haiku/Flash (workers) | Strong orchestration, cheap parallel workers |
+| **Hierarchical** | Tiered | o3 / Sonnet (planner) + Haiku / Flash (executors) | Quality planning + high-throughput execution |
+| **Human-in-the-Loop** | Any capable | Claude Sonnet, GPT-4o | Human handles critical decisions; model handles drafts |
+| **Routing** | Fast classifiers | Claude Haiku, GPT-4o-mini, Gemini Flash | Low-latency, low-cost intent classification |
+| **Prompt Chaining** | Efficient per-step | Haiku, GPT-4o-mini, Llama 4 Scout | Simple transforms; cost compounds across steps |
+| **Parallelization** | Fast parallel | Haiku, Flash, Llama 4 Scout | High throughput; per-call cost dominates |
 
 </div>
 
-<div v-click>
+<div class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded text-sm" v-click>
 
-## Use Cases
-
-- **Research Automation**: Gather info from web sources
-- **Competitive Analysis**: Monitor competitor websites
-- **Content Aggregation**: Summarize news/articles
-- **Market Intelligence**: Track industry trends
-
-## Benefits
-
-- Specialized agents for each step
-- Clean separation of concerns
-- Tool-use best practices
-- Structured information extraction
-
-## When to Use
-
-Systematically gather and process web content with clear stages
-
-</div>
+**Rule of thumb**: Use reasoning models for *cognitive* patterns (reflection, planning, feedback). Use fast/cheap models for *throughput* patterns (routing, chaining, parallelization). Use tiered mixes for *coordination* patterns.
 
 </div>
 
 <!--
-Web Access Pattern is a practical application of sequential workflow with tool use.
+Key insight: model selection is not one-size-fits-all — it follows the cognitive demand of the pattern.
 
-Three specialized agents:
-1. Search Agent: Uses SERP API to find relevant URLs
-2. Scrape Agent: Extracts content from each URL  
-3. Summarize Agent: Synthesizes information across sources
+Reasoning patterns (reflection, planning, feedback loop):
+- These require the model to evaluate its own output or plan many steps ahead
+- o1/o3 and "extended thinking" models excel here because they spend more compute per token
 
-Key insight: Single-responsibility principle for agents. Each agent does one thing well.
+Tool Use:
+- Needs reliable function-calling / structured output
+- Claude 3.7 Sonnet, GPT-4o, and Gemini 2.5 Pro have the most mature tool-use capabilities
 
-Example workflow:
-User: "Research latest trends in agentic AI"
-→ Search Agent: Finds 10 relevant articles
-→ Scrape Agent: Extracts content from each
-→ Summarize Agent: Creates comprehensive summary
+Coordination patterns (multi-agent, hierarchical):
+- The orchestrator faces the hardest reasoning task — use a strong model there
+- Workers execute bounded, well-defined tasks — use the fastest cheapest model that meets quality bar
+- This tiered approach can cut costs 3–5× vs. using a frontier model for every step
 
-Tool specialization: Each agent uses domain-specific tools (SERP API, web scraping libraries, summarization prompts).
+Efficiency patterns (routing, chaining, parallelization):
+- Cost compounds: 100 parallel calls × premium model = expensive
+- These patterns benefit most from model down-tiering
 
-Design consideration: Error handling at each stage (failed searches, inaccessible URLs, parsing errors).
+Human-in-the-Loop:
+- The human IS the reasoning step for high-stakes decisions
+- Model just needs to generate drafts and incorporate feedback well
 
-Real-world application: Automated research assistants, competitive intelligence gathering, content curation pipelines.
+Real-world example (Anthropic's research):
+Claude Haiku for routing + Claude Sonnet for generation + human review = 70% cost reduction vs. all-Sonnet while maintaining quality.
 -->
 
----
-
-# Workflow Patterns
-
----
-layout: section
----
-
-# Why Multi-Agent?
-## Single Agent Limitations and Multi-Agent Benefits
-
----
-
-# Single Agent Limitations
-
-<div class="grid grid-cols-2 gap-6 mt-4">
-
-<div>
-
-<v-clicks>
-
-### Context Window Constraints
-Every token costs — long tasks overflow the window, losing earlier context and decisions
-
-### Specialization vs Generalization
-A generalist agent is mediocre at everything; deep expertise in one domain requires a specialist
-
-### Sequential Processing Bottlenecks
-One agent can only do one thing at a time — independent subtasks queue up unnecessarily
-
-</v-clicks>
-
-</div>
-
-<div>
-
-<v-clicks>
-
-### Error Propagation
-A mistake in step 3 of a 10-step chain corrupts all downstream work with no isolation
-
-### Multi-Domain Complexity
-Tasks spanning frontend, backend, infrastructure, and security require too many context switches for one agent to handle well
-
-</v-clicks>
-
-<div v-click class="mt-6 p-4 bg-red-900 bg-opacity-30 rounded">
-
-**The ceiling**: A single agent handling complex, multi-domain tasks is like asking one developer to simultaneously write React, design SQL schemas, and configure Kubernetes — context degrades fast
-
-</div>
-
-</div>
-
-</div>
-
----
-
-# Multi-Agent Benefits
-
-<div class="grid grid-cols-2 gap-6 mt-4">
-
-<div>
-
-<v-clicks>
-
-### Parallel Processing
-Independent subtasks execute simultaneously — what takes hours sequentially takes minutes in parallel
-
-### Domain Specialization
-Each agent is an expert in one area — a dedicated test agent outperforms a generalist on testing tasks
-
-### Fault Isolation
-A failure in one agent is contained — the rest of the system continues; failed tasks can be retried without restarting everything
-
-</v-clicks>
-
-</div>
-
-<div>
-
-<v-clicks>
-
-### Horizontal Scalability
-Add more agents to handle more work — throughput scales linearly with agent count for parallelizable tasks
-
-### Compositional Flexibility
-Combine agents like LEGO blocks — reuse a "code review" agent across multiple workflows without modification
-
-</v-clicks>
-
-<div v-click class="mt-6 p-4 bg-green-900 bg-opacity-30 rounded">
-
-**The result**: Multi-agent systems match how expert human teams work — specialists collaborating in parallel, each handling their domain, coordinated by a shared goal
-
-</div>
-
-</div>
-
-</div>
 
 ---
 layout: section
