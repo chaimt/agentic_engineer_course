@@ -1042,6 +1042,7 @@ Real-world analogy: Manufacturing assembly line with quality control stations.
 ---
 layout: default
 background: '#000000'
+title: Human-in-the-Loop Diagram
 ---
 
 <div class="flex items-center justify-center h-full">
@@ -1138,6 +1139,64 @@ title: Feedback Loop Diagram
 <div class="flex items-center justify-center h-full">
   <img src="/images/feedback-loop-diagram.png" class="max-h-full max-w-full object-contain rounded-xl" />
 </div>
+
+---
+layout: default
+zoom: 0.78
+---
+
+# Models by Agentic Pattern
+
+<div class="mt-2">
+
+| Pattern | Best Model Type | Recommended Models | Key Reason |
+|---------|----------------|-------------------|------------|
+| **Reflection** | Reasoning / thinking | o3, Claude (extended thinking) | Deep self-critique requires extended reasoning |
+| **Feedback Loop** | Reasoning / thinking | o3, Claude (extended thinking) | Evaluate + regenerate demands analytical depth |
+| **Planning** | Reasoning / thinking | o3, Gemini 2.5 Pro, Claude thinking | Multi-step decomposition benefits from long-horizon reasoning |
+| **Tool Use** | Function-calling specialists | Claude 3.7 Sonnet, GPT-4o, Gemini 2.5 | Reliable structured outputs and tool invocations |
+| **Multi-Agent** | Tiered | Sonnet/GPT-4o (orchestrator) + Haiku/Flash (workers) | Strong orchestration, cheap parallel workers |
+| **Hierarchical** | Tiered | o3 / Sonnet (planner) + Haiku / Flash (executors) | Quality planning + high-throughput execution |
+| **Human-in-the-Loop** | Any capable | Claude Sonnet, GPT-4o | Human handles critical decisions; model handles drafts |
+| **Routing** | Fast classifiers | Claude Haiku, GPT-4o-mini, Gemini Flash | Low-latency, low-cost intent classification |
+| **Prompt Chaining** | Efficient per-step | Haiku, GPT-4o-mini, Llama 4 Scout | Simple transforms; cost compounds across steps |
+| **Parallelization** | Fast parallel | Haiku, Flash, Llama 4 Scout | High throughput; per-call cost dominates |
+
+</div>
+
+<div class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded text-sm" v-click>
+
+**Rule of thumb**: Use reasoning models for *cognitive* patterns (reflection, planning, feedback). Use fast/cheap models for *throughput* patterns (routing, chaining, parallelization). Use tiered mixes for *coordination* patterns.
+
+</div>
+
+<!--
+Key insight: model selection is not one-size-fits-all — it follows the cognitive demand of the pattern.
+
+Reasoning patterns (reflection, planning, feedback loop):
+- These require the model to evaluate its own output or plan many steps ahead
+- o1/o3 and "extended thinking" models excel here because they spend more compute per token
+
+Tool Use:
+- Needs reliable function-calling / structured output
+- Claude 3.7 Sonnet, GPT-4o, and Gemini 2.5 Pro have the most mature tool-use capabilities
+
+Coordination patterns (multi-agent, hierarchical):
+- The orchestrator faces the hardest reasoning task — use a strong model there
+- Workers execute bounded, well-defined tasks — use the fastest cheapest model that meets quality bar
+- This tiered approach can cut costs 3–5× vs. using a frontier model for every step
+
+Efficiency patterns (routing, chaining, parallelization):
+- Cost compounds: 100 parallel calls × premium model = expensive
+- These patterns benefit most from model down-tiering
+
+Human-in-the-Loop:
+- The human IS the reasoning step for high-stakes decisions
+- Model just needs to generate drafts and incorporate feedback well
+
+Real-world example (Anthropic's research):
+Claude Haiku for routing + Claude Sonnet for generation + human review = 70% cost reduction vs. all-Sonnet while maintaining quality.
+-->
 
 
 ---
