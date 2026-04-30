@@ -207,3 +207,96 @@ Auto-approval rate as trust grows
 </div>
 
 </div>
+
+---
+layout: default
+zoom: 0.85
+---
+
+# Prompt Engineering Techniques
+
+<div class="grid grid-cols-3 gap-3 mt-1" style="font-size:0.78rem;">
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**🎯 Zero-Shot**
+
+No examples — rely on the model's training knowledge alone.
+
+<p class="mt-1 text-orange-300 italic">"Classify as positive / negative / neutral: 'The flight was okay.'"<br/>→ <strong>Neutral</strong></p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**📚 Few-Shot**
+
+Provide example pairs to guide in-context learning.
+
+<p class="mt-1 text-orange-300 italic">"A baku is a large blue bird. 'We saw bakus in Maui.' → Now write a story about a baku on a ship."</p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**🔗 Chain-of-Thought**
+
+Break complex tasks into explicit reasoning steps.
+
+<p class="mt-1 text-orange-300 italic">"I had 8, gave 3, found 4. <em>Think step by step.</em>"<br/>→ 8−3=5, 5+4=<strong>9</strong></p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**🏗️ Meta Prompting**
+
+Define structure and format, not specific content.
+
+<p class="mt-1 text-orange-300 italic">Step 1: Define variables.<br/>Step 2: Apply formula.<br/>Step 3: Simplify & solve.</p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**♻️ Self-Consistency**
+
+Sample multiple reasoning paths, pick the most consistent answer.
+
+<p class="mt-1 text-orange-300 italic">"At 6 my sister was 3, gap = 3 yrs always."<br/>→ At 70, sister is <strong>67</strong></p>
+
+</div>
+
+<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+
+**🎭 Role Prompting**
+
+Assign a persona to shape tone, priorities and domain focus.
+
+<p class="mt-1 text-orange-300 italic">"You are a skeptical VC. List top 3 pros and cons of this pitch."</p>
+
+</div>
+
+</div>
+
+<!--
+Prompt engineering is the foundation before agents even enter the picture.
+
+Six key techniques from simple to advanced:
+
+1. Zero-Shot — no examples, just clear instructions. Works well for tasks the model was trained on.
+
+2. Few-Shot — show don't just tell. Examples dramatically improve performance on novel or ambiguous tasks.
+
+3. Chain-of-Thought — "think step by step" unlocks multi-step reasoning. Critical for math, logic, and planning tasks.
+
+4. Meta Prompting — define structure abstractly, not with specific content. Excellent for token efficiency and generalization.
+
+5. Self-Consistency — sample multiple reasoning paths and vote for the most consistent answer. Great for arithmetic and commonsense tasks.
+
+6. Role Prompting — "You are a security auditor" changes what the model prioritizes. Aligns model behavior with domain expectations.
+
+These techniques compose with each other — e.g., Few-Shot + Chain-of-Thought is especially powerful for complex reasoning.
+
+Source: k2view.com/blog/prompt-engineering-techniques/
+-->
