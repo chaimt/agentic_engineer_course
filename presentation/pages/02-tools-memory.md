@@ -1,3 +1,24 @@
+---
+layout: section-header
+---
+
+# Tools & Memory Fundamentals
+
+The building blocks that transform LLMs into agents
+
+<!--
+Before diving into patterns, we need to understand the two primitives that make agentic workflows possible.
+
+Tools give agents the ability to interact with the world — file systems, APIs, databases, shell commands.
+Memory gives agents persistence and context — short-term in-context, long-term via vector stores and databases.
+
+Together, they're what separates an LLM from an agent.
+
+Duration: 5-7 minutes
+-->
+
+---
+
 # What are Tools?
 
 <div class="grid grid-cols-2 gap-4 mt-1 text-sm">
