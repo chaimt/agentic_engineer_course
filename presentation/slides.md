@@ -877,6 +877,44 @@ Key difference from Multi-Agent: Hierarchical has clear parent-child relationshi
 layout: default
 ---
 
+# Hierarchical Pattern: Example
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/hierarchical-task-decomposition.png" alt="Hierarchical Task Decomposition Agent Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The diagram illustrates the Hierarchical Task Decomposition Agent Pattern — "agents within agents within agents" — the Russian Doll approach.
+
+Architecture (left):
+- User sends: "Write report on AI trends"
+- ReportWriter Agent is the top-level orchestrator
+  - Writes comprehensive reports
+  - Delegates research via AgentTool call "Research AI trends"
+
+Agent Hierarchy (right):
+- Level 1 — Top-Level Agent: ReportWriter Agent (orchestrator)
+- Level 2 — Coordinator Agents: ResearchAssistant Agent
+  - Finds & summarizes info
+  - Tools: [WebSearch, Summarizer]
+- Level 3 — Tool Agents:
+  - WebSearch Agent: searches web for facts, returns raw data
+  - Summarizer Agent: condenses text, extracts key points
+
+Flow:
+1. User request → ReportWriter
+2. AgentTool call "Research AI trends" → ResearchAssistant
+3. AgentTool call "Search web" → WebSearch Agent
+4. AgentTool call "Summarize findings" → Summarizer Agent
+5. Final response back to user: "Complete AI trends report with research and analysis"
+
+Key insight: Each level delegates to the next, enabling complex multi-step tasks through clean separation of concerns.
+-->
+
+---
+layout: default
+---
+
 # Routing Pattern (Handoff)
 
 <div class="grid grid-cols-2 gap-6">
@@ -944,6 +982,22 @@ Performance benefit: Simple queries can go to smaller/cheaper models, complex qu
 Implementation: Router LLM generates classification, system routes based on that classification.
 
 85-95% routing accuracy is achievable (from 2025 architecture guide).
+-->
+
+---
+layout: default
+---
+
+# Routing Pattern: Visual Overview
+
+<div class="flex items-center justify-center h-4/5">
+  <img src="/images/routing-pattern.png" alt="Routing Pattern - Router Agent dispatching to specialized experts" class="max-h-full max-w-full rounded-xl shadow-lg object-contain" />
+</div>
+
+<!--
+The diagram shows a Router Agent receiving a Question and routing it to one of three specialized experts: Legal, Medical, or Technical. Each expert returns a Response back through the router.
+
+Key insight: The Router Agent uses an LLM (the brain icon) to classify the incoming question and determine which specialist to dispatch to — enabling smart, cost-effective delegation.
 -->
 
 ---
@@ -1043,6 +1097,16 @@ Real-world analogy: Manufacturing assembly line with quality control stations.
 
 ---
 layout: default
+background: '#000000'
+---
+
+<div class="flex items-center justify-center h-full">
+  <img src="/images/human-in-the-loop.png" class="max-h-full max-w-full object-contain rounded-xl" />
+</div>
+
+---
+layout: default
+zoom: 0.85
 ---
 
 # Feedback Loop Pattern
@@ -1121,6 +1185,14 @@ Synergy: Combine with Reflection pattern for self-evaluation feedback loop.
 
 Real-world analogy: Scientific method (hypothesis → experiment → analysis → revision).
 -->
+
+---
+background: '#000000'
+---
+
+<div class="flex items-center justify-center h-full">
+  <img src="/images/feedback-loop-diagram.png" class="max-h-full max-w-full object-contain rounded-xl" />
+</div>
 
 ---
 layout: section-header
