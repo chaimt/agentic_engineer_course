@@ -1132,6 +1132,7 @@ Real-world analogy: Scientific method (hypothesis → experiment → analysis �
 
 ---
 background: '#000000'
+title: Feedback Loop Diagram
 ---
 
 <div class="flex items-center justify-center h-full">

@@ -43,7 +43,7 @@ A logical grouping of slides forming one part of the presentation arc.
 | 0 | Title + Overview | inline (`slides.md`) | ≈2 min | Hero image: `agentic-hero.png`; overview lists the 6 audience-facing sections |
 | 1 | Understanding Agentic Workflows | `pages/01-concepts.md` | ≈10 min | Definition, mental model shift, key characteristics, why they matter, industry adoption, productivity gains |
 | 2 | Tools & Memory Fundamentals | section-header inline + `pages/02-tools-memory.md` | ≈12 min | Hero image: `tools-memory-hero.png`. Sub-slides: What are Tools? · What is Memory? · Tools + Memory in Action (RAG) · Why This Matters |
-| 3 | Workflow Patterns | inline (`slides.md`), 5 sub-groups | ≈18 min | Core (Reflection, Tool Use, Planning) · Workflow (Sequential / Prompt Chaining, Parallel / Parallelization) · Coordination (Multi-Agent, Hierarchical, Routing) · Control (Human-in-the-Loop, Feedback Loop) · arunpshankar Reference (Web Access) |
+| 3 | Workflow Patterns | `pages/04-patterns.md` (imported) | ≈18 min | Why Multi-Agent? (Limitations, Benefits, Pitfalls) → Core (Reflection, Tool Use, Planning) · Workflow (Sequential / Prompt Chaining, Parallel / Parallelization) · Coordination (Multi-Agent, Hierarchical, Routing) · Control (Human-in-the-Loop, Feedback Loop). arunpshankar Reference group removed 2026-04-30. |
 | 4 | Modern Architecture Patterns | `pages/05-architectures.md` | ≈10 min | 8 architectures with performance metrics + framework comparison + selection guide |
 | 5 | Anthropic Principles + Practical Tips | `pages/06-principles.md` | ≈8 min | Simplicity, transparent planning, when to build agents, getting started, challenges, best practices, team coordination |
 | 6 | Q&A + References | `pages/06-principles.md` (Q&A) + inline References slide | ≈7 min | Closing references list (Phil Schmid, arunpshankar, 2025 architecture guide) + tool/framework links |
@@ -52,7 +52,6 @@ A logical grouping of slides forming one part of the presentation arc.
 
 **Orphaned modules** (retained in repo, not imported by `slides.md`):
 - `pages/03-demo.md` — Live Claude Code demo (CLAUDE.md setup, interactive CLI workflow, hooks/MCP). Available as opt-in extension if presenter chooses to include a live coding segment.
-- `pages/04-patterns.md` — Older standalone patterns page including a "Why Multi-Agent?" intro and Phil Schmid pattern slides. Superseded by inline pattern slides in `slides.md` organized into 4 thematic groups.
 
 ### CodeExample
 
