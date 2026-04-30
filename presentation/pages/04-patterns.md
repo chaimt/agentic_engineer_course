@@ -374,6 +374,163 @@ Source: ByteByteGo — Top AI Agentic Workflow Patterns
 layout: section-header
 ---
 
+# Why Multi-Agent?
+## Single Agent Limitations and Multi-Agent Benefits
+
+---
+
+# Single Agent Limitations
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+
+<div>
+
+<v-clicks>
+
+### Context Window Constraints
+Every token costs — long tasks overflow the window, losing earlier context and decisions
+
+### Specialization vs Generalization
+A generalist agent is mediocre at everything; deep expertise in one domain requires a specialist
+
+### Sequential Processing Bottlenecks
+One agent can only do one thing at a time — independent subtasks queue up unnecessarily
+
+</v-clicks>
+
+</div>
+
+<div>
+
+<v-clicks>
+
+### Error Propagation
+A mistake in step 3 of a 10-step chain corrupts all downstream work with no isolation
+
+### Multi-Domain Complexity
+Tasks spanning frontend, backend, infrastructure, and security require too many context switches for one agent to handle well
+
+</v-clicks>
+
+<div v-click class="mt-6 p-4 bg-red-900 bg-opacity-30 rounded">
+
+**The ceiling**: A single agent handling complex, multi-domain tasks is like asking one developer to simultaneously write React, design SQL schemas, and configure Kubernetes — context degrades fast
+
+</div>
+
+</div>
+
+</div>
+
+---
+
+# Multi-Agent Benefits
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+
+<div>
+
+<v-clicks>
+
+### Parallel Processing
+Independent subtasks execute simultaneously — what takes hours sequentially takes minutes in parallel
+
+### Domain Specialization
+Each agent is an expert in one area — a dedicated test agent outperforms a generalist on testing tasks
+
+### Fault Isolation
+A failure in one agent is contained — the rest of the system continues; failed tasks can be retried without restarting everything
+
+</v-clicks>
+
+</div>
+
+<div>
+
+<v-clicks>
+
+### Horizontal Scalability
+Add more agents to handle more work — throughput scales linearly with agent count for parallelizable tasks
+
+### Compositional Flexibility
+Combine agents like LEGO blocks — reuse a "code review" agent across multiple workflows without modification
+
+</v-clicks>
+
+<div v-click class="mt-6 p-4 bg-green-900 bg-opacity-30 rounded">
+
+**The result**: Multi-agent systems match how expert human teams work — specialists collaborating in parallel, each handling their domain, coordinated by a shared goal
+
+</div>
+
+</div>
+
+</div>
+
+---
+layout: default
+zoom: 0.85
+---
+
+# Multi-Agent Pitfalls & Failure Modes
+
+<div class="grid grid-cols-2 gap-4 mt-1 text-sm">
+
+<div>
+
+<v-clicks>
+
+**Complexity Explosion** — Each agent added multiplies coordination surface area; debugging a 5-agent system is exponentially harder
+
+**Cascading Failures** — One agent's bad output silently poisons downstream agents; errors compound before anything raises an alarm
+
+**Context Fragmentation** — Agents have partial world views; critical information may not be passed, leading to contradictory decisions
+
+**Runaway Costs** — Every agent hop burns tokens; a 6-agent pipeline can cost 10× more than a well-prompted single agent
+
+</v-clicks>
+
+</div>
+
+<div>
+
+<v-clicks>
+
+**Non-Determinism** — Parallel agents + async handoffs = results that change between runs; nearly impossible to reproduce bugs
+
+**Latency Chains** — Sequential agent dependencies stack latency; 5 agents × 3s each = 15s minimum, with no easy short-circuit
+
+**Orchestration Deadlocks** — Agents waiting on each other, circular dependencies, or resource contention can silently stall everything
+
+</v-clicks>
+
+<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-40 rounded border border-orange-500">
+
+**Golden Rule:** Start with the simplest architecture that could work.
+Multi-agent adds real overhead — only reach for it when a single agent genuinely can't do the job.
+
+</div>
+
+</div>
+
+</div>
+
+<!--
+Multi-agent is powerful but not free — every benefit has a corresponding cost.
+
+Key questions before choosing multi-agent:
+- Can a well-prompted single agent with tools do this?
+- Do we genuinely need parallel specialization, or is that premature optimization?
+- Do we have observability infrastructure to debug agent interactions?
+- Is the added latency and cost acceptable for this use case?
+
+Common anti-pattern: teams reach for multi-agent because it "sounds cool" or seems more sophisticated — then spend weeks debugging coordination issues that a single agent would never have had.
+-->
+
+---
+layout: section-header
+---
+
 # Workflow Patterns
 
 Execution flow control for non-agentic sequences
@@ -981,103 +1138,6 @@ background: '#000000'
   <img src="/images/feedback-loop-diagram.png" class="max-h-full max-w-full object-contain rounded-xl" />
 </div>
 
-
----
-layout: section
----
-
-# Why Multi-Agent?
-## Single Agent Limitations and Multi-Agent Benefits
-
----
-
-# Single Agent Limitations
-
-<div class="grid grid-cols-2 gap-6 mt-4">
-
-<div>
-
-<v-clicks>
-
-### Context Window Constraints
-Every token costs — long tasks overflow the window, losing earlier context and decisions
-
-### Specialization vs Generalization
-A generalist agent is mediocre at everything; deep expertise in one domain requires a specialist
-
-### Sequential Processing Bottlenecks
-One agent can only do one thing at a time — independent subtasks queue up unnecessarily
-
-</v-clicks>
-
-</div>
-
-<div>
-
-<v-clicks>
-
-### Error Propagation
-A mistake in step 3 of a 10-step chain corrupts all downstream work with no isolation
-
-### Multi-Domain Complexity
-Tasks spanning frontend, backend, infrastructure, and security require too many context switches for one agent to handle well
-
-</v-clicks>
-
-<div v-click class="mt-6 p-4 bg-red-900 bg-opacity-30 rounded">
-
-**The ceiling**: A single agent handling complex, multi-domain tasks is like asking one developer to simultaneously write React, design SQL schemas, and configure Kubernetes — context degrades fast
-
-</div>
-
-</div>
-
-</div>
-
----
-
-# Multi-Agent Benefits
-
-<div class="grid grid-cols-2 gap-6 mt-4">
-
-<div>
-
-<v-clicks>
-
-### Parallel Processing
-Independent subtasks execute simultaneously — what takes hours sequentially takes minutes in parallel
-
-### Domain Specialization
-Each agent is an expert in one area — a dedicated test agent outperforms a generalist on testing tasks
-
-### Fault Isolation
-A failure in one agent is contained — the rest of the system continues; failed tasks can be retried without restarting everything
-
-</v-clicks>
-
-</div>
-
-<div>
-
-<v-clicks>
-
-### Horizontal Scalability
-Add more agents to handle more work — throughput scales linearly with agent count for parallelizable tasks
-
-### Compositional Flexibility
-Combine agents like LEGO blocks — reuse a "code review" agent across multiple workflows without modification
-
-</v-clicks>
-
-<div v-click class="mt-6 p-4 bg-green-900 bg-opacity-30 rounded">
-
-**The result**: Multi-agent systems match how expert human teams work — specialists collaborating in parallel, each handling their domain, coordinated by a shared goal
-
-</div>
-
-</div>
-
-</div>
 
 ---
 layout: section
