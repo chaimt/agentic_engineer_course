@@ -208,27 +208,6 @@ Duration: 5-7 minutes
 -->
 
 ---
-layout: default
----
-
-# Agentic RAG
-
-<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
-  <img src="/images/agentic-rag.png" alt="Agentic RAG" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
-</div>
-
-<!--
-Agentic RAG extends standard retrieval-augmented generation with an agentic loop:
-1. The LLM analyses and possibly rewrites the query
-2. An agent retrieves from multiple data sources (vector DBs, APIs, web)
-3. Results are reranked for relevance
-4. The LLM generates the answer — then evaluates if it's correct/relevant
-5. If not, it rewrites and retries
-
-This is a concrete example of tools + memory enabling autonomous multi-step reasoning.
--->
-
----
 src: ./pages/02-tools-memory.md
 ---
 
@@ -510,6 +489,7 @@ Key insight: Planning separates "what to do" from "how to do it" — the agent b
 
 ---
 layout: default
+zoom: 0.85
 ---
 
 # Multi-Agent Pattern: Specialization at Scale
@@ -585,7 +565,7 @@ layout: default
 # Multi-Agent Pattern: Flow Diagram
 
 <div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
-  <img src="/images/multi-agent-pattern-bytebytego.png" alt="Multi-Agent Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+  <img src="/images/multi-agent-pattern-animated.gif" alt="Multi-Agent Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
 </div>
 
 <!--
@@ -717,6 +697,7 @@ Key takeaway: Sequential agents can be composed — steps can themselves be agen
 
 ---
 layout: default
+zoom: 0.85
 ---
 
 # Parallel Workflow Pattern (Parallelization)
@@ -736,7 +717,7 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
+<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded">
 <mdi:arrow-left-right class="inline"/> Map-Reduce for LLMs
 </div>
 
@@ -757,9 +738,7 @@ layout: default
 - 📈 Scalability (add more workers)
 - 🔄 Better coverage (multiple approaches)
 
-## When to Use
-
-When subtasks are independent with no sequential dependencies
+<p class="mt-2 text-orange-300 text-xs">Best when subtasks are independent with no sequential dependencies</p>
 
 </div>
 
@@ -786,6 +765,20 @@ Real-world analogy: Divide-and-conquer algorithms in computer science.
 -->
 
 ---
+layout: default
+---
+
+# Parallel Workflow Pattern
+
+<div class="flex items-center justify-center h-4/5">
+  <img src="/images/parallel-workflow-pattern.png" alt="Parallel Workflow Pattern" class="max-h-full max-w-full rounded-xl shadow-lg" />
+</div>
+
+<!--
+Visual diagram of the parallel workflow pattern.
+-->
+
+---
 layout: section-header
 ---
 
@@ -804,78 +797,6 @@ Three key patterns:
 These patterns enable complex workflows that require diverse expertise or task decomposition.
 
 Duration: 8-10 minutes for all three
--->
-
----
-layout: default
----
-
-# Multi-Agent Collaboration Pattern
-
-<div class="grid grid-cols-2 gap-6">
-
-<div>
-
-## How It Works
-
-<v-clicks>
-
-1. **Define Agent Roles**: Each agent has specific expertise
-2. **Autonomous Operation**: Agents work independently
-3. **Collaboration**: Agents communicate and handoff
-4. **Coordination**: Central orchestrator or handoff logic
-5. **Synthesis**: Combine outputs from all agents
-
-</v-clicks>
-
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
-<mdi:account-group class="inline"/> Like a team of specialists working together
-</div>
-
-</div>
-
-<div v-click class="dense-col">
-
-## Use Cases
-
-- **Software Development**: PM + Coder + Tester + Reviewer agents
-- **Content Creation**: Researcher + Writer + Editor agents
-- **Complex Analysis**: Different perspectives/domains
-- **Virtual Experiments**: Agents as different actors
-
-## Benefits
-
-- 🎯 Specialization improves quality
-- 🤝 Mimics human team dynamics
-- 📈 Scalable (add more agents)
-- 🔄 Parallel collaboration possible
-
-## When to Use
-
-When diverse expertise is needed and tasks benefit from specialized handling
-
-</div>
-
-</div>
-
-<!--
-Multi-Agent is Phil Schmid's most sophisticated agentic pattern.
-
-Key insight: "Multiple distinct agents with specific roles/expertise collaborate autonomously or semi-autonomously"
-
-Example: Customer service system
-- Hotel Booking Agent: Searches hotels, books rooms
-- Restaurant Booking Agent: Handles restaurant reservations
-- Coordinator: Routes requests and synthesizes responses
-
-Each agent has unique role and specialized knowledge. They can work in parallel or hand off to each other.
-
-Real-world analogy: A hospital with specialists (cardiologist, neurologist, etc.) who collaborate on complex cases.
-
-Design consideration: How do agents communicate? Options:
-1. Central coordinator (orchestrator pattern)
-2. Direct handoff (agent-to-agent)
-3. Shared message queue
 -->
 
 ---
@@ -956,6 +877,44 @@ Key difference from Multi-Agent: Hierarchical has clear parent-child relationshi
 layout: default
 ---
 
+# Hierarchical Pattern: Example
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/hierarchical-task-decomposition.png" alt="Hierarchical Task Decomposition Agent Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The diagram illustrates the Hierarchical Task Decomposition Agent Pattern — "agents within agents within agents" — the Russian Doll approach.
+
+Architecture (left):
+- User sends: "Write report on AI trends"
+- ReportWriter Agent is the top-level orchestrator
+  - Writes comprehensive reports
+  - Delegates research via AgentTool call "Research AI trends"
+
+Agent Hierarchy (right):
+- Level 1 — Top-Level Agent: ReportWriter Agent (orchestrator)
+- Level 2 — Coordinator Agents: ResearchAssistant Agent
+  - Finds & summarizes info
+  - Tools: [WebSearch, Summarizer]
+- Level 3 — Tool Agents:
+  - WebSearch Agent: searches web for facts, returns raw data
+  - Summarizer Agent: condenses text, extracts key points
+
+Flow:
+1. User request → ReportWriter
+2. AgentTool call "Research AI trends" → ResearchAssistant
+3. AgentTool call "Search web" → WebSearch Agent
+4. AgentTool call "Summarize findings" → Summarizer Agent
+5. Final response back to user: "Complete AI trends report with research and analysis"
+
+Key insight: Each level delegates to the next, enabling complex multi-step tasks through clean separation of concerns.
+-->
+
+---
+layout: default
+---
+
 # Routing Pattern (Handoff)
 
 <div class="grid grid-cols-2 gap-6">
@@ -1023,6 +982,22 @@ Performance benefit: Simple queries can go to smaller/cheaper models, complex qu
 Implementation: Router LLM generates classification, system routes based on that classification.
 
 85-95% routing accuracy is achievable (from 2025 architecture guide).
+-->
+
+---
+layout: default
+---
+
+# Routing Pattern: Visual Overview
+
+<div class="flex items-center justify-center h-4/5">
+  <img src="/images/routing-pattern.png" alt="Routing Pattern - Router Agent dispatching to specialized experts" class="max-h-full max-w-full rounded-xl shadow-lg object-contain" />
+</div>
+
+<!--
+The diagram shows a Router Agent receiving a Question and routing it to one of three specialized experts: Legal, Medical, or Technical. Each expert returns a Response back through the router.
+
+Key insight: The Router Agent uses an LLM (the brain icon) to classify the incoming question and determine which specialist to dispatch to — enabling smart, cost-effective delegation.
 -->
 
 ---
@@ -1122,6 +1097,16 @@ Real-world analogy: Manufacturing assembly line with quality control stations.
 
 ---
 layout: default
+background: '#000000'
+---
+
+<div class="flex items-center justify-center h-full">
+  <img src="/images/human-in-the-loop.png" class="max-h-full max-w-full object-contain rounded-xl" />
+</div>
+
+---
+layout: default
+zoom: 0.85
 ---
 
 # Feedback Loop Pattern
@@ -1200,6 +1185,14 @@ Synergy: Combine with Reflection pattern for self-evaluation feedback loop.
 
 Real-world analogy: Scientific method (hypothesis → experiment → analysis → revision).
 -->
+
+---
+background: '#000000'
+---
+
+<div class="flex items-center justify-center h-full">
+  <img src="/images/feedback-loop-diagram.png" class="max-h-full max-w-full object-contain rounded-xl" />
+</div>
 
 ---
 layout: section-header

@@ -89,15 +89,17 @@
 
 # Tools + Memory in Action
 
-<img src="/images/tools-action-hero.jpg" class="w-full max-h-14 object-cover rounded-lg mb-2 opacity-75" style="object-position: center 60%" alt="AI Tools and Memory in Action" />
-
-<div class="grid grid-cols-2 gap-6 mt-1 text-sm">
+<div class="grid grid-cols-2 gap-4 mt-1 text-sm">
 
 <div>
 
-<v-clicks>
+<div v-click class="mb-2">
 
 **User**: *"My API calls are returning 429 errors"*
+
+</div>
+
+<div v-click>
 
 **Step 1 — Tools (Real-time Data)**
 
@@ -108,6 +110,10 @@ await asyncio.gather(
     fetch_logs(last_hour))
 ```
 
+</div>
+
+<div v-click class="mt-2">
+
 **Step 2 — Memory (RAG)**
 
 ```python
@@ -117,13 +123,11 @@ past = db.query(
     "WHERE error_code = '429'")
 ```
 
-</v-clicks>
+</div>
 
 </div>
 
 <div v-click>
-
-<img src="/images/memory-brain.jpg" class="w-full max-h-20 object-cover rounded-lg mb-2 opacity-85" style="object-position: center 30%" alt="AI Memory Retrieval" />
 
 **Step 3 — Synthesis**
 
@@ -135,7 +139,7 @@ History: Enterprise tier resolved 429s
 
 **Response**: *"You're hitting rate limits. Implement exponential backoff — or upgrade to Enterprise for higher limits."*
 
-<div class="mt-3 p-3 bg-green-900 bg-opacity-30 rounded">
+<div class="mt-2 p-2 bg-green-900 bg-opacity-30 rounded">
 
 **Result**: Full context in one turn — no back-and-forth, faster resolution
 
