@@ -55,7 +55,7 @@ layout: default
 
 # Pros & Cons at a Glance (1/2)
 
-<div class="grid grid-cols-2 gap-6 mt-4 text-sm">
+<div class="grid grid-cols-2 gap-6 mt-4">
 
 <div class="p-5 bg-orange-950 bg-opacity-40 border border-orange-900 border-opacity-30 rounded-lg dense-col" v-click>
 
@@ -96,12 +96,11 @@ Pydantic AI optimises correctness and refactor-ability.
 
 ---
 layout: default
-zoom: 0.85
 ---
 
 # Pros & Cons at a Glance (2/2)
 
-<div class="grid grid-cols-2 gap-6 mt-4 text-sm">
+<div class="grid grid-cols-2 gap-6 mt-4">
 
 <div class="p-5 bg-orange-950 bg-opacity-40 border border-orange-900 border-opacity-30 rounded-lg dense-col" v-click>
 

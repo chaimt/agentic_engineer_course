@@ -23,6 +23,27 @@ Duration: 8-10 minutes for all three
 layout: default
 ---
 
+# Reflection Pattern: Actor-Critic Architecture
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/reflection-pattern.png" alt="Reflection Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The Actor-Critic architecture shows the two agents working in tandem.
+
+The Actor generates and improves responses (blue cycle on the right).
+The Critic reviews and provides feedback (yellow cycle on the left).
+
+Flow: LLM spawns both agents → Actor generates response → Critic reviews it → Critic provides feedback → Actor improves → cycle repeats until quality is met.
+
+Numbers 0–6 show the message flow order between the agents.
+-->
+
+---
+layout: default
+---
+
 # Reflection Pattern: How It Works
 
 <div class="flex flex-col gap-6 mt-4">
@@ -115,21 +136,20 @@ The limitation is important: reflection is only as good as the agent's ability t
 layout: default
 ---
 
-# Reflection Pattern: Actor-Critic Architecture
+# Tool Use Pattern
 
 <div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
-  <img src="/images/reflection-pattern.png" alt="Reflection Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+  <img src="/images/tool-use-pattern.png" alt="Tool Use Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
 </div>
 
 <!--
-The Actor-Critic architecture shows the two agents working in tandem.
+The Tool Use Pattern flow:
+1. User sends a query to the LLM
+2. LLM accesses tools (Web Search, Vector DB, APIs)
+3. Tools return results to LLM
+4. LLM generates final response back to the user
 
-The Actor generates and improves responses (blue cycle on the right).
-The Critic reviews and provides feedback (yellow cycle on the left).
-
-Flow: LLM spawns both agents → Actor generates response → Critic reviews it → Critic provides feedback → Actor improves → cycle repeats until quality is met.
-
-Numbers 0–6 show the message flow order between the agents.
+This cycle is what transforms a static language model into an active agent that can interact with real-world systems.
 -->
 
 ---
@@ -224,20 +244,22 @@ Security note: Tool access must be carefully controlled - agents should only hav
 layout: default
 ---
 
-# Tool Use Pattern
+# Planning Pattern: Flow Diagram
 
 <div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
-  <img src="/images/tool-use-pattern.png" alt="Tool Use Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+  <img src="/images/planning-pattern.png" alt="Planning Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
 </div>
 
 <!--
-The Tool Use Pattern flow:
-1. User sends a query to the LLM
-2. LLM accesses tools (Web Search, Vector DB, APIs)
-3. Tools return results to LLM
-4. LLM generates final response back to the user
+The Planning Pattern flow:
+1. User sends a Prompt to the Planning agent
+2. Planning generates a Task list (Task Generation)
+3. The Task is executed by the Task Agent
+4. Task Agent returns the Task Result
+5. If needed, Replan adjusts the task list based on results
+6. Final Response is returned to the user
 
-This cycle is what transforms a static language model into an active agent that can interact with real-world systems.
+Key insight: Planning separates "what to do" from "how to do it" — the agent builds a strategy first, then executes with the ability to replan based on results.
 -->
 
 ---
@@ -282,11 +304,21 @@ layout: default
 
 # Planning Pattern: Example Decomposition
 
-<div class="flex flex-col gap-4 mt-4">
+<div class="grid grid-cols-2 gap-6 mt-3">
 
-<div class="p-4 bg-gray-900 bg-opacity-60 rounded-xl border border-gray-700">
+<div class="flex flex-col gap-2">
+
+<div class="p-2 bg-gray-900 bg-opacity-60 rounded-xl border border-gray-700 text-sm">
 
 **Goal**: "Add user authentication"
+
+</div>
+
+<div v-after class="p-2 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700 text-sm">
+
+**Benefits**: Structured approach · Clear progress tracking · Handles complexity · Verifiable completion
+
+</div>
 
 </div>
 
@@ -304,12 +336,6 @@ layout: default
 6. Write tests
 
 </v-clicks>
-
-</div>
-
-<div v-after class="p-4 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
-
-**Benefits**: Structured approach · Clear progress tracking · Handles complexity · Verifiable completion
 
 </div>
 
@@ -331,99 +357,6 @@ Agent Plan:
 Each step is concrete and testable.
 
 Limitation: Requires the agent to have domain knowledge to create good plans.
--->
-
----
-layout: default
----
-
-# Planning Pattern: Flow Diagram
-
-<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
-  <img src="/images/planning-pattern.png" alt="Planning Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
-</div>
-
-<!--
-The Planning Pattern flow:
-1. User sends a Prompt to the Planning agent
-2. Planning generates a Task list (Task Generation)
-3. The Task is executed by the Task Agent
-4. Task Agent returns the Task Result
-5. If needed, Replan adjusts the task list based on results
-6. Final Response is returned to the user
-
-Key insight: Planning separates "what to do" from "how to do it" — the agent builds a strategy first, then executes with the ability to replan based on results.
--->
-
----
-layout: default
-zoom: 0.85
----
-
-# Multi-Agent Pattern: Specialization at Scale
-
-<div class="grid grid-cols-2 gap-6">
-
-<div>
-
-## How It Works
-
-<v-clicks>
-
-1. **Specialist Agents**: Each agent has a specific domain or capability
-2. **Critic/Review Agents**: Dedicated agents that evaluate others' outputs
-3. **Orchestrator**: Coordinator manages workflow and routes tasks
-4. **Collaboration**: Agents communicate via handoffs or shared queues
-5. **Synthesis**: Combine diverse outputs into a unified result
-
-</v-clicks>
-
-<div v-click class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded">
-<mdi:account-group class="inline"/> Specialization leads to better performance than generalization
-</div>
-
-</div>
-
-<div v-click class="dense-col">
-
-## Agent Roles
-
-- **Researcher**: Finds and synthesizes information
-- **Coder**: Writes and debugs code
-- **Analyst**: Statistical analysis & visualization
-- **Critic**: Reviews and validates outputs
-- **Orchestrator**: Routes tasks and synthesizes results
-
-## Trade-offs
-
-- ✅ Higher quality through specialization
-- ✅ Diverse expert perspectives
-- ✅ Scalable — add more agents as needed
-- ⚠️ Coordination overhead increases
-- ⚠️ Debugging across agents is harder
-
-</div>
-
-</div>
-
-<!--
-Multi-Agent pattern is about specialization — the core insight is that a single agent trying to be excellent at everything faces fundamental trade-offs.
-
-From ByteByteGo: "A single agent trying to be excellent at everything faces challenges. By dividing responsibilities among multiple agents, each can be optimized for its specific role."
-
-Three types of agents:
-1. Specialist agents: research, coding, data analysis — each optimized for their domain
-2. Critic/review agents: dedicated to finding flaws and improving quality
-3. Coordinator/orchestrator: manages the overall workflow and integration
-
-Communication patterns:
-- Central coordinator (star topology)
-- Direct agent-to-agent handoff (mesh topology)
-- Shared message queue (pub-sub)
-
-Key insight: For simple tasks, a single agent wins. For tasks requiring diverse expertise — software development teams, research pipelines, complex analysis — multi-agent systems produce superior results.
-
-Real example: Software dev team — PM agent (requirements), Coder agent (implementation), Tester agent (QA), Reviewer agent (code review), Coordinator (integration).
 -->
 
 ---
@@ -452,6 +385,93 @@ Source: ByteByteGo — Top AI Agentic Workflow Patterns
 -->
 
 ---
+layout: default
+---
+
+# Multi-Agent Pattern: How It Works
+
+<div class="flex flex-col gap-6 mt-4">
+
+<div>
+
+<v-clicks>
+
+1. **Specialist Agents**: Each agent has a specific domain or capability
+2. **Critic/Review Agents**: Dedicated agents that evaluate others' outputs
+3. **Orchestrator**: Coordinator manages workflow and routes tasks
+4. **Collaboration**: Agents communicate via handoffs or shared queues
+5. **Synthesis**: Combine diverse outputs into a unified result
+
+</v-clicks>
+
+</div>
+
+<div v-click class="p-5 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
+<mdi:account-group class="inline text-orange-400 mr-2"/> <strong>Key Insight:</strong> Specialization leads to better performance — a single agent trying to be excellent at everything faces fundamental trade-offs.
+</div>
+
+</div>
+
+<!--
+Multi-Agent pattern is about specialization — from ByteByteGo: "A single agent trying to be excellent at everything faces challenges. By dividing responsibilities among multiple agents, each can be optimized for its specific role."
+
+Communication patterns:
+- Central coordinator (star topology)
+- Direct agent-to-agent handoff (mesh topology)
+- Shared message queue (pub-sub)
+-->
+
+---
+layout: default
+---
+
+# Multi-Agent Pattern: Roles & Trade-offs
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+
+<div>
+
+## Agent Roles
+
+<v-clicks>
+
+- **Researcher**: Finds and synthesizes information
+- **Coder**: Writes and debugs code
+- **Analyst**: Statistical analysis & visualization
+- **Critic**: Reviews and validates outputs
+- **Orchestrator**: Routes tasks and synthesizes results
+
+</v-clicks>
+
+</div>
+
+<div v-click class="dense-col">
+
+## Trade-offs
+
+- ✅ Higher quality through specialization
+- ✅ Diverse expert perspectives
+- ✅ Scalable — add more agents as needed
+- ⚠️ Coordination overhead increases
+- ⚠️ Debugging across agents is harder
+
+<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
+
+**Best for**: tasks requiring diverse expertise — dev teams, research pipelines, complex multi-domain analysis
+
+</div>
+
+</div>
+
+</div>
+
+<!--
+Real example: Software dev team — PM agent (requirements), Coder agent (implementation), Tester agent (QA), Reviewer agent (code review), Coordinator (integration).
+
+Key insight: For simple tasks, a single agent wins. For tasks requiring diverse expertise, multi-agent systems produce superior results.
+-->
+
+---
 layout: section-header
 ---
 
@@ -462,43 +482,35 @@ layout: section-header
 
 # Single Agent Limitations
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-3 gap-5 mt-6">
 
-<div>
-
-<v-clicks>
-
-### Context Window Constraints
-Every token costs — long tasks overflow the window, losing earlier context and decisions
-
-### Specialization vs Generalization
-A generalist agent is mediocre at everything; deep expertise in one domain requires a specialist
-
-### Sequential Processing Bottlenecks
-One agent can only do one thing at a time — independent subtasks queue up unnecessarily
-
-</v-clicks>
-
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">📊</div>
+<div class="text-lg font-bold text-orange-300">Context Window Limits</div>
 </div>
 
-<div>
-
-<v-clicks>
-
-### Error Propagation
-A mistake in step 3 of a 10-step chain corrupts all downstream work with no isolation
-
-### Multi-Domain Complexity
-Tasks spanning frontend, backend, infrastructure, and security require too many context switches for one agent to handle well
-
-</v-clicks>
-
-<div v-click class="mt-6 p-4 bg-red-900 bg-opacity-30 rounded">
-
-**The ceiling**: A single agent handling complex, multi-domain tasks is like asking one developer to simultaneously write React, design SQL schemas, and configure Kubernetes — context degrades fast
-
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🎯</div>
+<div class="text-lg font-bold text-orange-300">Specialization Ceiling</div>
 </div>
 
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">⏳</div>
+<div class="text-lg font-bold text-orange-300">Sequential Bottlenecks</div>
+</div>
+
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🌊</div>
+<div class="text-lg font-bold text-orange-300">Error Propagation</div>
+</div>
+
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🧩</div>
+<div class="text-lg font-bold text-orange-300">Multi-Domain Complexity</div>
+</div>
+
+<div v-click class="p-4 bg-red-900 bg-opacity-50 rounded-xl border border-red-500 text-center flex items-center justify-center">
+<div class="text-base font-bold text-red-200">One agent + complex multi-domain tasks = context degrades fast</div>
 </div>
 
 </div>
@@ -507,43 +519,35 @@ Tasks spanning frontend, backend, infrastructure, and security require too many 
 
 # Multi-Agent Benefits
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="grid grid-cols-3 gap-5 mt-6">
 
-<div>
-
-<v-clicks>
-
-### Parallel Processing
-Independent subtasks execute simultaneously — what takes hours sequentially takes minutes in parallel
-
-### Domain Specialization
-Each agent is an expert in one area — a dedicated test agent outperforms a generalist on testing tasks
-
-### Fault Isolation
-A failure in one agent is contained — the rest of the system continues; failed tasks can be retried without restarting everything
-
-</v-clicks>
-
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">⚡</div>
+<div class="text-lg font-bold text-orange-300">Parallel Processing</div>
 </div>
 
-<div>
-
-<v-clicks>
-
-### Horizontal Scalability
-Add more agents to handle more work — throughput scales linearly with agent count for parallelizable tasks
-
-### Compositional Flexibility
-Combine agents like LEGO blocks — reuse a "code review" agent across multiple workflows without modification
-
-</v-clicks>
-
-<div v-click class="mt-6 p-4 bg-green-900 bg-opacity-30 rounded">
-
-**The result**: Multi-agent systems match how expert human teams work — specialists collaborating in parallel, each handling their domain, coordinated by a shared goal
-
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🎯</div>
+<div class="text-lg font-bold text-orange-300">Domain Specialization</div>
 </div>
 
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🛡️</div>
+<div class="text-lg font-bold text-orange-300">Fault Isolation</div>
+</div>
+
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">📈</div>
+<div class="text-lg font-bold text-orange-300">Horizontal Scalability</div>
+</div>
+
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🧩</div>
+<div class="text-lg font-bold text-orange-300">Compositional Flexibility</div>
+</div>
+
+<div v-click class="p-4 bg-green-900 bg-opacity-50 rounded-xl border border-green-500 text-center flex items-center justify-center">
+<div class="text-base font-bold text-green-200">Specialists collaborating in parallel — each handling their domain</div>
 </div>
 
 </div>
@@ -745,14 +749,27 @@ Key limitation: No decision-making. If you need branching logic, you need routin
 
 ---
 layout: default
-zoom: 0.85
+---
+
+# Parallel Workflow Pattern
+
+<div class="flex items-center justify-center h-4/5">
+  <img src="/images/parallel-workflow-pattern.png" alt="Parallel Workflow Pattern" class="max-h-full max-w-full rounded-xl shadow-lg" />
+</div>
+
+<!--
+Visual diagram of the parallel workflow pattern.
+-->
+
+---
+layout: default
 ---
 
 # Parallel Workflow Pattern (Parallelization)
 
 <div class="grid grid-cols-2 gap-6">
 
-<div>
+<div class="dense-col">
 
 ## How It Works
 
@@ -813,20 +830,6 @@ Real-world analogy: Divide-and-conquer algorithms in computer science.
 -->
 
 ---
-layout: default
----
-
-# Parallel Workflow Pattern
-
-<div class="flex items-center justify-center h-4/5">
-  <img src="/images/parallel-workflow-pattern.png" alt="Parallel Workflow Pattern" class="max-h-full max-w-full rounded-xl shadow-lg" />
-</div>
-
-<!--
-Visual diagram of the parallel workflow pattern.
--->
-
----
 layout: section-header
 ---
 
@@ -845,80 +848,6 @@ Three key patterns:
 These patterns enable complex workflows that require diverse expertise or task decomposition.
 
 Duration: 8-10 minutes for all three
--->
-
----
-layout: default
----
-
-# Hierarchical Workflow Pattern
-
-<div class="grid grid-cols-2 gap-6">
-
-<div>
-
-## How It Works
-
-<v-clicks>
-
-1. **Coordinator Agent**: High-level planning and delegation
-2. **Worker Agents**: Specialized execution
-3. **Task Breakdown**: Coordinator decomposes goals
-4. **Assignment**: Delegate to appropriate workers
-5. **Collection**: Gather and synthesize results
-
-</v-clicks>
-
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
-<mdi:file-tree class="inline"/> Parent-child relationship for delegation
-</div>
-
-</div>
-
-<div v-click class="dense-col">
-
-## Use Cases
-
-- **Complex Projects**: Break into sub-projects with specialists
-- **Task Orchestration**: Coordinator manages workflow
-- **Resource Management**: Allocate workers efficiently
-- **Phased Execution**: Sequential delegation with dependencies
-
-## Benefits
-
-- 📋 Clear responsibility hierarchy
-- 🎯 Specialized worker expertise
-- 🔄 Coordinator handles complexity
-- ✅ Centralized monitoring
-
-## When to Use
-
-When tasks have clear hierarchy and need central coordination
-
-</div>
-
-</div>
-
-<!--
-Hierarchical pattern is closely related to the Planning pattern, but with multiple specialized workers.
-
-The coordinator is like a project manager who:
-1. Understands the goal
-2. Breaks it into tasks
-3. Assigns tasks to specialized workers
-4. Monitors progress
-5. Synthesizes final deliverable
-
-Example: Building a web application
-- Coordinator: Understands "build todo app"
-- Frontend Worker: Builds UI
-- Backend Worker: Builds API
-- Database Worker: Designs schema
-- Test Worker: Writes tests
-
-Coordinator collects outputs and ensures they integrate correctly.
-
-Key difference from Multi-Agent: Hierarchical has clear parent-child relationships. Multi-Agent can be peer-to-peer.
 -->
 
 ---
@@ -963,73 +892,87 @@ Key insight: Each level delegates to the next, enabling complex multi-step tasks
 layout: default
 ---
 
-# Routing Pattern (Handoff)
+# Hierarchical Workflow Pattern: How It Works
 
-<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-6 mt-4">
 
 <div>
 
-## How It Works
-
 <v-clicks>
 
-1. **Classifier LLM**: Analyzes incoming request
-2. **Categorization**: Determines type/complexity
-3. **Route Decision**: Select appropriate handler
-4. **Delegation**: Send to specialized agent/model
-5. **Response**: Handler provides result
+1. **Coordinator Agent**: High-level planning and delegation
+2. **Worker Agents**: Specialized execution
+3. **Task Breakdown**: Coordinator decomposes goals
+4. **Assignment**: Delegate to appropriate workers
+5. **Collection**: Gather and synthesize results
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
-<mdi:graph class="inline"/> Smart dispatch to specialists
 </div>
+
+<div v-click class="p-5 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
+<mdi:file-tree class="inline text-orange-400 mr-2"/> <strong>Key Insight:</strong> Parent-child delegation — the coordinator is like a project manager who understands the goal, breaks it into tasks, and assigns them to specialists.
+</div>
+
+</div>
+
+<!--
+Hierarchical pattern is closely related to the Planning pattern, but with multiple specialized workers.
+
+Key difference from Multi-Agent: Hierarchical has clear parent-child relationships. Multi-Agent can be peer-to-peer.
+-->
+
+---
+layout: default
+---
+
+# Hierarchical Workflow Pattern: Use Cases & Benefits
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+
+<div>
+
+## Use Cases
+
+<v-clicks>
+
+- **Complex Projects**: Break into sub-projects with specialists
+- **Task Orchestration**: Coordinator manages workflow
+- **Resource Management**: Allocate workers efficiently
+- **Phased Execution**: Sequential delegation with dependencies
+
+</v-clicks>
 
 </div>
 
 <div v-click class="dense-col">
 
-## Use Cases
-
-- **Customer Support**: Route by category (billing, technical, product)
-- **Model Selection**: Simple → cheap model, Complex → advanced
-- **Domain Routing**: Weather, Science, Finance specialists
-- **Load Balancing**: Distribute across available handlers
-
 ## Benefits
 
-- 💰 Cost optimization (use right-sized models)
-- ⚡ Latency optimization (fast models for simple)
-- 🎯 Quality optimization (specialists for domains)
-- 📊 Separation of concerns
+- 📋 Clear responsibility hierarchy
+- 🎯 Specialized worker expertise
+- 🔄 Coordinator handles complexity
+- ✅ Centralized monitoring
 
-## When to Use
+<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
 
-When requests have clear categories with specialized handlers
+**When to Use**: When tasks have clear hierarchy and need central coordination
+
+</div>
 
 </div>
 
 </div>
 
 <!--
-Routing is Phil Schmid's workflow pattern for intelligent delegation.
+Example: Building a web application
+- Coordinator: Understands "build todo app"
+- Frontend Worker: Builds UI
+- Backend Worker: Builds API
+- Database Worker: Designs schema
+- Test Worker: Writes tests
 
-Phil Schmid's definition: "An initial LLM classifies user input and directs it to specialized downstream handlers based on category"
-
-Classic example: Customer support triage
-User: "I can't log in"
-Router: Classifies as "Technical Support"
-→ Routes to Technical Support Agent (specialized for auth issues)
-
-User: "Why was I charged twice?"
-Router: Classifies as "Billing"
-→ Routes to Billing Agent (has access to payment systems)
-
-Performance benefit: Simple queries can go to smaller/cheaper models, complex queries to advanced models.
-
-Implementation: Router LLM generates classification, system routes based on that classification.
-
-85-95% routing accuracy is achievable (from 2025 architecture guide).
+Coordinator collects outputs and ensures they integrate correctly.
 -->
 
 ---
@@ -1046,6 +989,92 @@ layout: default
 The diagram shows a Router Agent receiving a Question and routing it to one of three specialized experts: Legal, Medical, or Technical. Each expert returns a Response back through the router.
 
 Key insight: The Router Agent uses an LLM (the brain icon) to classify the incoming question and determine which specialist to dispatch to — enabling smart, cost-effective delegation.
+-->
+
+---
+layout: default
+---
+
+# Routing Pattern (Handoff): How It Works
+
+<div class="flex flex-col gap-6 mt-4">
+
+<div>
+
+<v-clicks>
+
+1. **Classifier LLM**: Analyzes incoming request
+2. **Categorization**: Determines type/complexity
+3. **Route Decision**: Select appropriate handler
+4. **Delegation**: Send to specialized agent/model
+5. **Response**: Handler provides result
+
+</v-clicks>
+
+</div>
+
+<div v-click class="p-5 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
+<mdi:graph class="inline text-orange-400 mr-2"/> <strong>Key Insight:</strong> Smart dispatch to specialists — an initial LLM classifies user input and directs it to specialized downstream handlers based on category.
+</div>
+
+</div>
+
+<!--
+Phil Schmid's definition: "An initial LLM classifies user input and directs it to specialized downstream handlers based on category"
+
+Classic example: Customer support triage
+User: "I can't log in" → Routes to Technical Support Agent
+User: "Why was I charged twice?" → Routes to Billing Agent
+
+85-95% routing accuracy is achievable.
+-->
+
+---
+layout: default
+---
+
+# Routing Pattern: Use Cases & Benefits
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+
+<div>
+
+## Use Cases
+
+<v-clicks>
+
+- **Customer Support**: Route by category (billing, technical, product)
+- **Model Selection**: Simple → cheap model, Complex → advanced
+- **Domain Routing**: Weather, Science, Finance specialists
+- **Load Balancing**: Distribute across available handlers
+
+</v-clicks>
+
+</div>
+
+<div v-click class="dense-col">
+
+## Benefits
+
+- 💰 Cost optimization (use right-sized models)
+- ⚡ Latency optimization (fast models for simple)
+- 🎯 Quality optimization (specialists for domains)
+- 📊 Separation of concerns
+
+<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
+
+**When to Use**: When requests have clear categories with specialized handlers
+
+</div>
+
+</div>
+
+</div>
+
+<!--
+Performance benefit: Simple queries can go to smaller/cheaper models, complex queries to advanced models.
+
+Implementation: Router LLM generates classification, system routes based on that classification.
 -->
 
 ---
@@ -1070,15 +1099,23 @@ Duration: 5-6 minutes for both
 
 ---
 layout: default
+background: '#000000'
+title: Human-in-the-Loop Diagram
 ---
 
-# Human-in-the-Loop Pattern
+<div class="flex items-center justify-center h-full">
+  <img src="/images/human-in-the-loop.png" class="object-contain rounded-xl" style="width: 100%; height: 100%;" />
+</div>
 
-<div class="grid grid-cols-2 gap-6">
+---
+layout: default
+---
+
+# Human-in-the-Loop Pattern: How It Works
+
+<div class="flex flex-col gap-6 mt-4">
 
 <div>
-
-## How It Works
 
 <v-clicks>
 
@@ -1090,20 +1127,48 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
-<mdi:account class="inline"/> Critical checkpoints for human wisdom
+</div>
+
+<div v-click class="p-5 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
+<mdi:account class="inline text-orange-400 mr-2"/> <strong>Key Insight:</strong> Critical checkpoints for human wisdom — agents handle routine work, humans make critical decisions.
 </div>
 
 </div>
 
-<div v-click class="dense-col">
+<!--
+Key principle: Agents handle routine work, humans make critical decisions.
+
+Design consideration: Where to place HITL checkpoints?
+- Before irreversible actions
+- After complex decisions
+- When confidence is low
+- When regulations require it
+-->
+
+---
+layout: default
+---
+
+# Human-in-the-Loop Pattern: Use Cases & Benefits
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+
+<div>
 
 ## Use Cases
+
+<v-clicks>
 
 - **High-Stakes Decisions**: Legal, medical, financial domains
 - **Content Moderation**: Human review of sensitive content
 - **Approval Workflows**: Multi-stage business processes
 - **Safety-Critical**: Systems where errors are unacceptable
+
+</v-clicks>
+
+</div>
+
+<div v-click class="dense-col">
 
 ## Benefits
 
@@ -1112,9 +1177,11 @@ layout: default
 - ⚖️ Compliance (regulatory requirements)
 - 🎯 Trust building (human accountability)
 
-## When to Use
+<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
 
-When decisions are too critical for full automation or require domain expertise
+**When to Use**: When decisions are too critical for full automation or require domain expertise
+
+</div>
 
 </div>
 
@@ -1122,8 +1189,6 @@ When decisions are too critical for full automation or require domain expertise
 
 <!--
 Human-in-the-Loop (HITL) is essential for high-stakes scenarios.
-
-Key principle: Agents handle routine work, humans make critical decisions.
 
 Example: Document generation workflow
 1. Agent drafts contract
@@ -1133,38 +1198,26 @@ Example: Document generation workflow
 5. Agent processes finalized contract
 
 Balance: Too many HITL checkpoints slow workflow, too few reduce quality/safety.
-
-Design consideration: Where to place HITL checkpoints?
-- Before irreversible actions
-- After complex decisions
-- When confidence is low
-- When regulations require it
-
-Real-world analogy: Manufacturing assembly line with quality control stations.
 -->
 
 ---
-layout: default
 background: '#000000'
-title: Human-in-the-Loop Diagram
+title: Feedback Loop Diagram
 ---
 
 <div class="flex items-center justify-center h-full">
-  <img src="/images/human-in-the-loop.png" class="object-contain rounded-xl" style="width: 100%; height: 100%;" />
+  <img src="/images/feedback-loop-diagram.png" class="max-h-full max-w-full object-contain rounded-xl" />
 </div>
 
 ---
 layout: default
-zoom: 0.85
 ---
 
-# Feedback Loop Pattern
+# Feedback Loop Pattern: How It Works
 
-<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-6 mt-4">
 
 <div>
-
-## How It Works
 
 <v-clicks>
 
@@ -1176,53 +1229,16 @@ zoom: 0.85
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
-<mdi:refresh class="inline"/> Self-improvement through iteration
 </div>
 
-</div>
-
-<div v-click class="dense-col">
-
-## Use Cases
-
-- **Code Generation**: Write → Test → Fix → Repeat
-- **Content Refinement**: Draft → Critique → Revise
-- **Optimization**: Propose → Evaluate → Improve
-- **Conversation**: Respond → Assess → Refine
-
-## Benefits
-
-- 🎯 Quality improvement (iterative refinement)
-- 📈 Adaptive behavior (learn from mistakes)
-- 🔄 Self-correction (automatic refinement)
-- ⚡ Efficiency (fewer manual interventions)
-
-## When to Use
-
-When output quality can be measured and iterative refinement is beneficial
-
+<div v-click class="p-5 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
+<mdi:refresh class="inline text-orange-400 mr-2"/> <strong>Key Insight:</strong> If you can evaluate output, you can iteratively improve it — self-improvement through iteration.
 </div>
 
 </div>
 
 <!--
 Feedback Loop pattern enables autonomous quality improvement.
-
-Key insight: If you can evaluate output, you can iteratively improve it.
-
-Example: Code generation with tests
-1. Agent writes function
-2. Run tests → 2 failures
-3. Agent analyzes failures, updates code
-4. Run tests → all pass
-5. Success!
-
-Feedback sources:
-- Automated tests (code generation)
-- Quality metrics (content generation)
-- User feedback (conversational agents)
-- Self-evaluation (reflection-style)
 
 Design considerations:
 - Maximum iterations (prevent infinite loops)
@@ -1231,18 +1247,60 @@ Design considerations:
 - Cost vs. benefit (each iteration costs tokens)
 
 Synergy: Combine with Reflection pattern for self-evaluation feedback loop.
-
-Real-world analogy: Scientific method (hypothesis → experiment → analysis → revision).
 -->
 
 ---
-background: '#000000'
-title: Feedback Loop Diagram
+layout: default
 ---
 
-<div class="flex items-center justify-center h-full">
-  <img src="/images/feedback-loop-diagram.png" class="max-h-full max-w-full object-contain rounded-xl" />
+# Feedback Loop Pattern: Use Cases & Benefits
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+
+<div>
+
+## Use Cases
+
+<v-clicks>
+
+- **Code Generation**: Write → Test → Fix → Repeat
+- **Content Refinement**: Draft → Critique → Revise
+- **Optimization**: Propose → Evaluate → Improve
+- **Conversation**: Respond → Assess → Refine
+
+</v-clicks>
+
 </div>
+
+<div v-click class="dense-col">
+
+## Benefits
+
+- 🎯 Quality improvement (iterative refinement)
+- 📈 Adaptive behavior (learn from mistakes)
+- 🔄 Self-correction (automatic refinement)
+- ⚡ Efficiency (fewer manual interventions)
+
+<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
+
+**When to Use**: When output quality can be measured and iterative refinement is beneficial
+
+</div>
+
+</div>
+
+</div>
+
+<!--
+Example: Code generation with tests
+1. Agent writes function
+2. Run tests → 2 failures
+3. Agent analyzes failures, updates code
+4. Run tests → all pass
+5. Success!
+
+Real-world analogy: Scientific method (hypothesis → experiment → analysis → revision).
+-->
 
 ---
 layout: default

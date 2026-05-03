@@ -58,33 +58,47 @@ response = client.messages.create(
 
 ---
 
-# When to Build Agents
+# When to Build Agents: Good Candidates
 
-<div class="grid grid-cols-2 gap-6 mt-4">
-
-<div>
+<div class="mt-6">
 
 <v-clicks>
 
-## Good Candidates for Agents
-
 Tasks that are genuinely hard to automate with simple scripts but **well-suited for agentic execution**:
 
-- **Predictable subtasks** — goal can be decomposed into concrete, verifiable steps
-- **Parallel opportunities** — independent subtasks exist and speed matters
-- **Multiple domains** — task spans frontend, backend, infra, testing simultaneously
-- **Iteration required** — output quality can be measured and needs refinement
-- **Tedious but well-defined** — tasks you understand but don't want to execute manually
+<div class="grid grid-cols-1 gap-3 mt-4">
+
+<div class="p-3 bg-green-900 bg-opacity-20 rounded border border-green-800">
+<strong>Predictable subtasks</strong> — goal can be decomposed into concrete, verifiable steps
+</div>
+
+<div class="p-3 bg-green-900 bg-opacity-20 rounded border border-green-800">
+<strong>Parallel opportunities</strong> — independent subtasks exist and speed matters
+</div>
+
+<div class="p-3 bg-green-900 bg-opacity-20 rounded border border-green-800">
+<strong>Multiple domains</strong> — task spans frontend, backend, infra, testing simultaneously
+</div>
+
+<div class="p-3 bg-green-900 bg-opacity-20 rounded border border-green-800">
+<strong>Iteration required</strong> — output quality can be measured and needs refinement
+</div>
+
+<div class="p-3 bg-green-900 bg-opacity-20 rounded border border-green-800">
+<strong>Tedious but well-defined</strong> — tasks you understand but don't want to execute manually
+</div>
+
+</div>
 
 </v-clicks>
 
 </div>
 
-<div class="dense-col">
+---
 
-<v-clicks>
+# When to Build Agents: Poor Candidates
 
-## Poor Candidates
+<div class="mt-4 text-sm">
 
 Tasks where agents underperform simple alternatives:
 
@@ -96,15 +110,11 @@ Tasks where agents underperform simple alternatives:
 | Requirements are deeply ambiguous | Clarify first, then agent |
 | High-security, no room for error | Human with AI assist |
 
-</v-clicks>
+</div>
 
-<div v-click class="mt-4 p-3 bg-blue-900 bg-opacity-30 rounded">
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
 
 **Decision heuristic**: If you can write a script for it, write the script. If the script would require too much conditional logic and judgment, use an agent.
-
-</div>
-
-</div>
 
 </div>
 

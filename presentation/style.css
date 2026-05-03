@@ -1,1 +1,3 @@
+@import './styles/theme.css';
+@import './styles/layouts.css';
 @import './styles/code-highlighting.css';
