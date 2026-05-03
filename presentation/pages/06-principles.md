@@ -1,10 +1,7 @@
-# Building Effective Agents
-
 ---
 layout: section
 ---
 
-# Anthropic's Agent Principles
 ## Building Effective Agents Guidance
 
 ---
@@ -181,85 +178,6 @@ layout: section
 ---
 
 # Practical Tips
-
----
-
-# Getting Started
-
-<div class="mt-4">
-
-## 5-Step Adoption Path
-
-</div>
-
-<div class="grid grid-cols-5 gap-2 mt-3 text-xs">
-
-<div class="p-2 bg-gray-800 rounded-lg text-center" v-click>
-
-**Step 1**
-
-Install Claude Code
-
-```bash
-npm install -g \
-  @anthropic-ai/claude-code
-```
-
-</div>
-
-<div class="p-2 bg-gray-800 rounded-lg text-center" v-click>
-
-**Step 2**
-
-Add `CLAUDE.md` to your project
-
-Stack, commands, conventions, constraints
-
-</div>
-
-<div class="p-2 bg-gray-800 rounded-lg text-center" v-click>
-
-**Step 3**
-
-Run a **bounded task**
-
-Concrete with clear success criteria
-
-</div>
-
-<div class="p-2 bg-gray-800 rounded-lg text-center" v-click>
-
-**Step 4**
-
-**Review** the output
-
-Build intuition for what the agent does well
-
-</div>
-
-<div class="p-2 bg-gray-800 rounded-lg text-center" v-click>
-
-**Step 5**
-
-**Expand scope** gradually
-
-Add hooks, MCP servers, larger tasks
-
-</div>
-
-</div>
-
-<div class="mt-3 text-sm" v-click>
-
-**Good first tasks**: Add tests to existing functions · Rename a symbol across the codebase · Generate API docs · Fix a linting category
-
-</div>
-
-<div class="mt-2 p-2 bg-orange-900 bg-opacity-30 rounded text-sm" v-click>
-
-**The trust curve**: New users auto-approve ~20% of actions. Experienced users reach 40%+. Trust is earned through experience.
-
-</div>
 
 ---
 

@@ -108,13 +108,5 @@ src: ./pages/07-frameworks.md
 ---
 
 ---
-src: ./pages/04b-foundational-patterns.md
----
-
----
-src: ./pages/05-architectures.md
----
-
----
 src: ./pages/06-principles.md
 ---

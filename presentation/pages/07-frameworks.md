@@ -53,11 +53,11 @@ you already model the problem mentally.
 layout: default
 ---
 
-# Pros & Cons at a Glance
+# Pros & Cons at a Glance (1/2)
 
-<div class="grid grid-cols-2 gap-3 mt-2 text-xs">
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm">
 
-<div class="p-3 bg-gray-800 rounded-lg dense-col" v-click>
+<div class="p-5 bg-orange-950 bg-opacity-40 border border-orange-900 border-opacity-30 rounded-lg dense-col" v-click>
 
 ### CrewAI
 
@@ -72,7 +72,7 @@ layout: default
 
 </div>
 
-<div class="p-3 bg-gray-800 rounded-lg dense-col" v-click>
+<div class="p-5 bg-orange-950 bg-opacity-40 border border-orange-900 border-opacity-30 rounded-lg dense-col" v-click>
 
 ### Pydantic AI
 
@@ -87,7 +87,23 @@ layout: default
 
 </div>
 
-<div class="p-3 bg-gray-800 rounded-lg dense-col" v-click>
+</div>
+
+<!--
+CrewAI optimises developer ergonomics for team-style problems.
+Pydantic AI optimises correctness and refactor-ability.
+-->
+
+---
+layout: default
+zoom: 0.85
+---
+
+# Pros & Cons at a Glance (2/2)
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm">
+
+<div class="p-5 bg-orange-950 bg-opacity-40 border border-orange-900 border-opacity-30 rounded-lg dense-col" v-click>
 
 ### LangGraph
 
@@ -102,7 +118,7 @@ layout: default
 
 </div>
 
-<div class="p-3 bg-gray-800 rounded-lg dense-col" v-click>
+<div class="p-5 bg-orange-950 bg-opacity-40 border border-orange-900 border-opacity-30 rounded-lg dense-col" v-click>
 
 ### Agno
 
@@ -120,15 +136,15 @@ layout: default
 </div>
 
 <!--
-None of these are "best" in the absolute sense — each excels along a
-different axis. CrewAI optimises developer ergonomics for team-style
-problems. Pydantic AI optimises correctness and refactor-ability.
 LangGraph optimises control and observability for complex stateful
 workflows. Agno optimises speed-to-running-agent and built-in features.
+None of these are "best" in the absolute sense — each excels along a
+different axis.
 -->
 
 ---
 layout: default
+zoom: 0.85
 ---
 
 # CrewAI — Role-Based Teams
@@ -207,6 +223,7 @@ control over the execution graph than you do in LangGraph.
 
 ---
 layout: default
+zoom: 0.85
 ---
 
 # Pydantic AI — Type-Safe Agents
@@ -285,6 +302,7 @@ prototype but pays off enormously once the system grows.
 
 ---
 layout: default
+zoom: 0.85
 ---
 
 # LangGraph — Stateful Graphs
@@ -365,6 +383,7 @@ the explicit structure pays for itself.
 
 ---
 layout: default
+zoom: 0.85
 ---
 
 # Agno — High-Performance Lightweight

@@ -1142,36 +1142,84 @@ title: Feedback Loop Diagram
 
 ---
 layout: default
-zoom: 0.78
 ---
 
 # Models by Agentic Pattern
 
-<div class="mt-2">
+<div class="grid grid-cols-2 gap-4 mt-6">
 
-| Pattern | Best Model Type | Recommended Models | Key Reason |
-|---------|----------------|-------------------|------------|
-| **Reflection** | Reasoning / thinking | o3, Claude (extended thinking) | Deep self-critique requires extended reasoning |
-| **Feedback Loop** | Reasoning / thinking | o3, Claude (extended thinking) | Evaluate + regenerate demands analytical depth |
-| **Planning** | Reasoning / thinking | o3, Gemini 2.5 Pro, Claude thinking | Multi-step decomposition benefits from long-horizon reasoning |
-| **Tool Use** | Function-calling specialists | Claude 3.7 Sonnet, GPT-4o, Gemini 2.5 | Reliable structured outputs and tool invocations |
-| **Multi-Agent** | Tiered | Sonnet/GPT-4o (orchestrator) + Haiku/Flash (workers) | Strong orchestration, cheap parallel workers |
-| **Hierarchical** | Tiered | o3 / Sonnet (planner) + Haiku / Flash (executors) | Quality planning + high-throughput execution |
-| **Human-in-the-Loop** | Any capable | Claude Sonnet, GPT-4o | Human handles critical decisions; model handles drafts |
-| **Routing** | Fast classifiers | Claude Haiku, GPT-4o-mini, Gemini Flash | Low-latency, low-cost intent classification |
-| **Prompt Chaining** | Efficient per-step | Haiku, GPT-4o-mini, Llama 4 Scout | Simple transforms; cost compounds across steps |
-| **Parallelization** | Fast parallel | Haiku, Flash, Llama 4 Scout | High throughput; per-call cost dominates |
+<div class="p-4 rounded-xl border border-orange-500/40 bg-orange-900/10">
+  <div class="text-3xl">🧠</div>
+  <div class="text-orange-400 font-bold text-lg mt-1">Reasoning Models</div>
+  <div class="text-xs opacity-70 italic">o3 · Claude thinking · Gemini 2.5 Pro</div>
+  <div class="mt-3 flex flex-wrap gap-2 text-xs">
+    <span class="px-2 py-1 rounded bg-orange-500/20">Reflection</span>
+    <span class="px-2 py-1 rounded bg-orange-500/20">Feedback Loop</span>
+    <span class="px-2 py-1 rounded bg-orange-500/20">Planning</span>
+  </div>
+</div>
+
+<div class="p-4 rounded-xl border border-orange-500/40 bg-orange-900/10">
+  <div class="text-3xl">🔧</div>
+  <div class="text-orange-400 font-bold text-lg mt-1">Function-Calling Specialists</div>
+  <div class="text-xs opacity-70 italic">Claude 3.7 Sonnet · GPT-4o · Gemini 2.5</div>
+  <div class="mt-3 flex flex-wrap gap-2 text-xs">
+    <span class="px-2 py-1 rounded bg-orange-500/20">Tool Use</span>
+    <span class="px-2 py-1 rounded bg-orange-500/20">Human-in-the-Loop</span>
+  </div>
+</div>
+
+<div class="p-4 rounded-xl border border-orange-500/40 bg-orange-900/10">
+  <div class="text-3xl">🤝</div>
+  <div class="text-orange-400 font-bold text-lg mt-1">Tiered Mixes</div>
+  <div class="text-xs opacity-70 italic">Sonnet/o3 orchestrator + Haiku/Flash workers</div>
+  <div class="mt-3 flex flex-wrap gap-2 text-xs">
+    <span class="px-2 py-1 rounded bg-orange-500/20">Multi-Agent</span>
+    <span class="px-2 py-1 rounded bg-orange-500/20">Hierarchical</span>
+  </div>
+</div>
+
+<div class="p-4 rounded-xl border border-orange-500/40 bg-orange-900/10">
+  <div class="text-3xl">⚡</div>
+  <div class="text-orange-400 font-bold text-lg mt-1">Fast / Cheap Models</div>
+  <div class="text-xs opacity-70 italic">Haiku · GPT-4o-mini · Gemini Flash · Llama 4 Scout</div>
+  <div class="mt-3 flex flex-wrap gap-2 text-xs">
+    <span class="px-2 py-1 rounded bg-orange-500/20">Routing</span>
+    <span class="px-2 py-1 rounded bg-orange-500/20">Prompt Chaining</span>
+    <span class="px-2 py-1 rounded bg-orange-500/20">Parallelization</span>
+  </div>
+</div>
 
 </div>
 
-<div class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded text-sm" v-click>
-
-**Rule of thumb**: Use reasoning models for *cognitive* patterns (reflection, planning, feedback). Use fast/cheap models for *throughput* patterns (routing, chaining, parallelization). Use tiered mixes for *coordination* patterns.
-
+<div class="mt-6 text-center text-sm text-orange-300" v-click>
+  Match the model to the <strong>cognitive demand</strong> of the pattern
 </div>
 
 <!--
 Key insight: model selection is not one-size-fits-all — it follows the cognitive demand of the pattern.
+
+Full mapping (pattern → model type → recommended models → reason):
+
+Reasoning / thinking models:
+- Reflection → o3, Claude (extended thinking) — Deep self-critique requires extended reasoning
+- Feedback Loop → o3, Claude (extended thinking) — Evaluate + regenerate demands analytical depth
+- Planning → o3, Gemini 2.5 Pro, Claude thinking — Multi-step decomposition benefits from long-horizon reasoning
+
+Function-calling specialists:
+- Tool Use → Claude 3.7 Sonnet, GPT-4o, Gemini 2.5 — Reliable structured outputs and tool invocations
+- Human-in-the-Loop → Claude Sonnet, GPT-4o — Human handles critical decisions; model handles drafts
+
+Tiered mixes:
+- Multi-Agent → Sonnet/GPT-4o (orchestrator) + Haiku/Flash (workers) — Strong orchestration, cheap parallel workers
+- Hierarchical → o3 / Sonnet (planner) + Haiku / Flash (executors) — Quality planning + high-throughput execution
+
+Fast classifiers / efficient per-step:
+- Routing → Claude Haiku, GPT-4o-mini, Gemini Flash — Low-latency, low-cost intent classification
+- Prompt Chaining → Haiku, GPT-4o-mini, Llama 4 Scout — Simple transforms; cost compounds across steps
+- Parallelization → Haiku, Flash, Llama 4 Scout — High throughput; per-call cost dominates
+
+Why this grouping works:
 
 Reasoning patterns (reflection, planning, feedback loop):
 - These require the model to evaluate its own output or plan many steps ahead
@@ -1196,4 +1244,6 @@ Human-in-the-Loop:
 
 Real-world example (Anthropic's research):
 Claude Haiku for routing + Claude Sonnet for generation + human review = 70% cost reduction vs. all-Sonnet while maintaining quality.
+
+Rule of thumb: reasoning models for *cognitive* patterns (reflection, planning, feedback); fast/cheap models for *throughput* patterns (routing, chaining, parallelization); tiered mixes for *coordination* patterns.
 -->
