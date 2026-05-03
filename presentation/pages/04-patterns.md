@@ -1046,7 +1046,7 @@ title: Human-in-the-Loop Diagram
 ---
 
 <div class="flex items-center justify-center h-full">
-  <img src="/images/human-in-the-loop.png" class="max-h-full max-w-full object-contain rounded-xl" />
+  <img src="/images/human-in-the-loop.png" class="object-contain rounded-xl" style="width: 100%; height: 100%;" />
 </div>
 
 ---
