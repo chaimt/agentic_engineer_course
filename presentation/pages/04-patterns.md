@@ -550,54 +550,71 @@ Combine agents like LEGO blocks — reuse a "code review" agent across multiple 
 
 ---
 layout: default
-zoom: 0.85
 ---
 
 # Multi-Agent Pitfalls & Failure Modes
 
-<div class="grid grid-cols-2 gap-4 mt-1 text-sm">
+<div class="grid grid-cols-4 gap-5 mt-6">
 
-<div>
-
-<v-clicks>
-
-**Complexity Explosion** — Each agent added multiplies coordination surface area; debugging a 5-agent system is exponentially harder
-
-**Cascading Failures** — One agent's bad output silently poisons downstream agents; errors compound before anything raises an alarm
-
-**Context Fragmentation** — Agents have partial world views; critical information may not be passed, leading to contradictory decisions
-
-**Runaway Costs** — Every agent hop burns tokens; a 6-agent pipeline can cost 10× more than a well-prompted single agent
-
-</v-clicks>
-
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">💥</div>
+<div class="text-lg font-bold text-orange-300">Complexity Explosion</div>
 </div>
 
-<div>
-
-<v-clicks>
-
-**Non-Determinism** — Parallel agents + async handoffs = results that change between runs; nearly impossible to reproduce bugs
-
-**Latency Chains** — Sequential agent dependencies stack latency; 5 agents × 3s each = 15s minimum, with no easy short-circuit
-
-**Orchestration Deadlocks** — Agents waiting on each other, circular dependencies, or resource contention can silently stall everything
-
-</v-clicks>
-
-<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-40 rounded border border-orange-500">
-
-**Golden Rule:** Start with the simplest architecture that could work.
-Multi-agent adds real overhead — only reach for it when a single agent genuinely can't do the job.
-
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🌊</div>
+<div class="text-lg font-bold text-orange-300">Cascading Failures</div>
 </div>
 
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🧩</div>
+<div class="text-lg font-bold text-orange-300">Context Fragmentation</div>
+</div>
+
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">💸</div>
+<div class="text-lg font-bold text-orange-300">Runaway Costs</div>
+</div>
+
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🎲</div>
+<div class="text-lg font-bold text-orange-300">Non-Determinism</div>
+</div>
+
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">⏳</div>
+<div class="text-lg font-bold text-orange-300">Latency Chains</div>
+</div>
+
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🔒</div>
+<div class="text-lg font-bold text-orange-300">Orchestration Deadlocks</div>
+</div>
+
+<div v-click class="p-4 bg-orange-900 bg-opacity-50 rounded-xl border border-orange-500 text-center flex items-center justify-center">
+<div class="text-base font-bold text-orange-200">Start with the simplest architecture that could work</div>
 </div>
 
 </div>
 
 <!--
 Multi-agent is powerful but not free — every benefit has a corresponding cost.
+
+**Complexity Explosion** — Each agent added multiplies coordination surface area; debugging a 5-agent system is exponentially harder.
+
+**Cascading Failures** — One agent's bad output silently poisons downstream agents; errors compound before anything raises an alarm.
+
+**Context Fragmentation** — Agents have partial world views; critical information may not be passed, leading to contradictory decisions.
+
+**Runaway Costs** — Every agent hop burns tokens; a 6-agent pipeline can cost 10× more than a well-prompted single agent.
+
+**Non-Determinism** — Parallel agents + async handoffs = results that change between runs; nearly impossible to reproduce bugs.
+
+**Latency Chains** — Sequential agent dependencies stack latency; 5 agents × 3s each = 15s minimum, with no easy short-circuit.
+
+**Orchestration Deadlocks** — Agents waiting on each other, circular dependencies, or resource contention can silently stall everything.
+
+Golden Rule: Multi-agent adds real overhead — only reach for it when a single agent genuinely can't do the job.
 
 Key questions before choosing multi-agent:
 - Can a well-prompted single agent with tools do this?
