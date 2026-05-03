@@ -3,33 +3,43 @@
 
 .shiki,
 .shiki code {
-  background-color: #0d1117 !important;
-  color: #e6edf3 !important;
+  background-color: #ffffff !important;
+  color: #1f2328 !important;
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid #ff6b35;
   overflow-x: auto;
 }
 
-.shiki .line {
-  line-height: 1.6;
+.shiki * {
   text-decoration: none !important;
   border-bottom: none !important;
   border-top: none !important;
 }
 
-.shiki span {
-  text-decoration: none !important;
-  border-bottom: none !important;
+.shiki .line {
+  line-height: 1.6;
 }
 
-/* Highlighted lines - orange accent */
+/* Highlighted lines - subtle background only */
 .shiki .highlighted {
   background-color: rgba(255, 107, 53, 0.15);
   display: block;
   margin: 0 -1rem;
   padding: 0 1rem;
-  border-left: 3px solid #ff6b35;
+}
+
+/* Hide Slidev line-range bracket indicators */
+.slidev-code-line-collapser,
+.slidev-code-wrapper > .line-range-indicator,
+[class*="line-range"] > *::before,
+[class*="line-range"] > *::after {
+  display: none !important;
+}
+
+.shiki .line::before,
+.shiki .line::after {
+  display: none !important;
 }
 
 /* Line numbers */

@@ -7,7 +7,7 @@ export default defineConfig({
 
   // Syntax highlighting - using dark theme to complement black/orange
   highlighter: 'shiki',
-  shikiTheme: 'github-dark',
+  shikiTheme: 'github-light',
 
   // Monaco editor disabled to avoid unwanted token decorations
   monaco: false,
