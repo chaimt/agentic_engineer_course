@@ -1,11 +1,6 @@
 /* Custom theme styles for Agentic Workflows Presentation */
 /* Black and Orange Professional Technical Theme */
 
-/* Hide the Slidev navigation bar (bottom-left controls) */
-#slide-container > div:not(.slidev-slide-content):not(#slide-content) {
-  display: none !important;
-}
-
 /* Hide the Goto dialog (right-side slide list, triggered by pressing "g") */
 #slidev-goto-dialog {
   display: none !important;
@@ -116,12 +111,12 @@
   border-bottom-color: var(--slidev-theme-accent);
 }
 
-/* Hide navigation controls */
-.slidev-nav,
-.slidev-controls,
-#slide-controls,
-.nav-controls,
-[class*="slidev-nav-"] {
+/* Hide the bottom-left nav controls overlay in slide mode.
+   Target the controls-slot wrapper that play.vue renders inside #slide-container.
+   IMPORTANT: do NOT use [class*="slidev-nav-"] — it would also match the
+   `slidev-nav-go-forward` / `slidev-nav-go-backward` direction classes Slidev
+   puts on #slideshow during navigation, hiding the entire slideshow. */
+#slide-container > div.absolute.bottom-0.left-0 {
   display: none !important;
 }
 

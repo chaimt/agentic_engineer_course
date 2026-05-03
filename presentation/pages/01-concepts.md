@@ -239,6 +239,3 @@ Prompt engineering is the foundation before agents even enter the picture.
 
 3. Chain-of-Thought — "think step by step" unlocks multi-step reasoning. Critical for math, logic, and planning tasks.
 -->
-
----
-layout: default
