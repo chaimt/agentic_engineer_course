@@ -21,28 +21,36 @@ Duration: 5-7 minutes
 
 # What are Tools?
 
-<div class="mt-4 text-sm">
+<div class="grid grid-cols-2 gap-4 mt-4">
 
-## Tool Categories
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🔍</div>
+<div class="text-lg font-bold text-orange-300">Information Retrieval</div>
+<div class="text-sm mt-1 opacity-80">Search, database queries, API calls</div>
+</div>
 
-<v-clicks>
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">⚡</div>
+<div class="text-lg font-bold text-orange-300">Computation</div>
+<div class="text-sm mt-1 opacity-80">Math operations, data processing, code execution</div>
+</div>
 
-**Information Retrieval** — Search, database queries, API calls
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🚀</div>
+<div class="text-lg font-bold text-orange-300">Action Execution</div>
+<div class="text-sm mt-1 opacity-80">File operations, shell commands, external services</div>
+</div>
 
-**Computation** — Math operations, data processing, code execution
-
-**Action Execution** — File operations, shell commands, external services
-
-**Memory Access** — Vector store queries, context retrieval, history
-
-</v-clicks>
-
-<div v-click class="mt-4 p-2 bg-orange-900 bg-opacity-30 rounded">
-
-**Key Insight**: Tools transform LLMs into agents — from advisors into actors
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🗄️</div>
+<div class="text-lg font-bold text-orange-300">Memory Access</div>
+<div class="text-sm mt-1 opacity-80">Vector store queries, context retrieval, history</div>
+</div>
 
 </div>
 
+<div v-click class="mt-4 p-4 bg-orange-900 bg-opacity-50 rounded-xl border border-orange-500 text-center">
+<div class="text-base font-bold text-orange-200">Tools transform LLMs into agents — from advisors into actors</div>
 </div>
 
 <!--
@@ -59,21 +67,31 @@ The agent sends a structured tool call → the environment executes it → the r
 
 # What is Memory? — Types
 
-<div class="mt-4 text-sm">
+<div class="grid grid-cols-2 gap-4 mt-4">
 
-<v-clicks>
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">⚡</div>
+<div class="text-lg font-bold text-orange-300">Short-term</div>
+<div class="text-sm mt-1 opacity-80">Conversation context within token limits (~200K tokens), ephemeral and fast</div>
+</div>
 
-## Memory Types
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">📚</div>
+<div class="text-lg font-bold text-orange-300">Long-term</div>
+<div class="text-sm mt-1 opacity-80">Persistent storage across sessions via vector DBs, SQL, file systems</div>
+</div>
 
-**Short-term** — Conversation context within token limits (~200K tokens), ephemeral and fast
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🔍</div>
+<div class="text-lg font-bold text-orange-300">Semantic</div>
+<div class="text-sm mt-1 opacity-80">Embeddings-based retrieval (RAG); query by meaning, not exact match</div>
+</div>
 
-**Long-term** — Persistent storage across sessions via vector DBs, SQL, file systems
-
-**Semantic** — Embeddings-based retrieval (RAG); query by meaning, not exact match
-
-**Episodic** — Structured records of past interactions, decisions, and outcomes
-
-</v-clicks>
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">📋</div>
+<div class="text-lg font-bold text-orange-300">Episodic</div>
+<div class="text-sm mt-1 opacity-80">Structured records of past interactions, decisions, and outcomes</div>
+</div>
 
 </div>
 
@@ -81,18 +99,31 @@ The agent sends a structured tool call → the environment executes it → the r
 
 # What is Memory? — Operations
 
-<div class="mt-4 text-sm">
+<div class="grid grid-cols-2 gap-4 mt-4">
 
-<v-clicks>
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">💾</div>
+<div class="text-lg font-bold text-orange-300">Store</div>
+<div class="text-sm mt-1 opacity-80">Save information for future retrieval</div>
+</div>
 
-## Memory Operations
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🔍</div>
+<div class="text-lg font-bold text-orange-300">Retrieve</div>
+<div class="text-sm mt-1 opacity-80">Query relevant info based on current context</div>
+</div>
 
-- **Store** — Save information for future retrieval
-- **Retrieve** — Query relevant info based on current context
-- **Update** — Modify memories as understanding evolves
-- **Prune** — Remove outdated or irrelevant information
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🔄</div>
+<div class="text-lg font-bold text-orange-300">Update</div>
+<div class="text-sm mt-1 opacity-80">Modify memories as understanding evolves</div>
+</div>
 
-</v-clicks>
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">✂️</div>
+<div class="text-lg font-bold text-orange-300">Prune</div>
+<div class="text-sm mt-1 opacity-80">Remove outdated or irrelevant information</div>
+</div>
 
 </div>
 
@@ -166,25 +197,25 @@ History: Enterprise tier resolved 429s
 
 <div class="grid grid-cols-3 gap-4 mt-6">
 
-<div class="p-4 bg-gray-800 rounded-lg text-center" v-click>
-
-### Without Tools
+<div class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center" v-click>
+<div class="text-3xl mb-2">📝</div>
+<div class="text-lg font-bold text-orange-300 mb-2">Without Tools</div>
 LLM can only generate text from **training knowledge**
 
 Static, outdated, unable to act on real systems
 
 </div>
 
-<div class="p-4 bg-gray-800 rounded-lg text-center" v-click>
-
-### Without Memory
+<div class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center" v-click>
+<div class="text-3xl mb-2">🌪️</div>
+<div class="text-lg font-bold text-orange-300 mb-2">Without Memory</div>
 Agent repeats the same mistakes, lacks personalization, loses context between sessions
 
 </div>
 
-<div class="p-4 bg-orange-900 bg-opacity-40 rounded-lg text-center" v-click>
-
-### Tools + Memory
+<div class="p-4 bg-orange-900 bg-opacity-50 rounded-xl border border-orange-500 text-center" v-click>
+<div class="text-3xl mb-2">🤖</div>
+<div class="text-lg font-bold text-orange-200 mb-2">Tools + Memory</div>
 Powerful, context-aware, action-capable agents that **learn** and **act**
 
 </div>

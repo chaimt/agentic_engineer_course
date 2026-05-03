@@ -68,21 +68,45 @@ From LLMs to autonomous development partners
 
 # Key Characteristics
 
-<v-clicks>
+<div class="grid grid-cols-3 gap-4 mt-4">
 
-1. **Multi-Step Execution** — Tasks decomposed into sequences of actions, not a single prompt
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🔄</div>
+<div class="text-lg font-bold text-orange-300">Multi-Step Execution</div>
+<div class="text-sm mt-1 opacity-80">Tasks decomposed into sequences of actions, not a single prompt</div>
+</div>
 
-2. **Tool Use** — Agents call real tools: read files, run tests, query APIs, search the web
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🔧</div>
+<div class="text-lg font-bold text-orange-300">Tool Use</div>
+<div class="text-sm mt-1 opacity-80">Read files, run tests, query APIs, search the web</div>
+</div>
 
-3. **Observation & Iteration** — Agent observes results of each action and adjusts its next step
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">👁️</div>
+<div class="text-lg font-bold text-orange-300">Observe & Iterate</div>
+<div class="text-sm mt-1 opacity-80">Observes results of each action and adjusts the next step</div>
+</div>
 
-4. **Autonomy within Guardrails** — Works independently, but respects boundaries you define
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🛡️</div>
+<div class="text-lg font-bold text-orange-300">Autonomy + Guardrails</div>
+<div class="text-sm mt-1 opacity-80">Works independently, but respects boundaries you define</div>
+</div>
 
-5. **Context Accumulation** — Builds up context across steps to make informed decisions
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🧠</div>
+<div class="text-lg font-bold text-orange-300">Context Accumulation</div>
+<div class="text-sm mt-1 opacity-80">Builds up context across steps to make informed decisions</div>
+</div>
 
-6. **Goal-Oriented** — Drives toward a defined outcome, handling intermediate failures itself
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 text-center">
+<div class="text-3xl mb-2">🎯</div>
+<div class="text-lg font-bold text-orange-300">Goal-Oriented</div>
+<div class="text-sm mt-1 opacity-80">Drives toward a defined outcome, handling intermediate failures itself</div>
+</div>
 
-</v-clicks>
+</div>
 
 ---
 
@@ -90,9 +114,10 @@ From LLMs to autonomous development partners
 
 <div class="grid grid-cols-3 gap-4 mt-4">
 
-<div v-click>
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600">
+<div class="text-3xl mb-2 text-center">👨‍💻</div>
+<div class="text-lg font-bold text-orange-300 text-center mb-2">For Individual Devs</div>
 
-### For Individual Devs
 - Large refactors in minutes, not days
 - Explore unfamiliar codebases autonomously
 - Tests, bug fixes, docs — in parallel
@@ -100,9 +125,10 @@ From LLMs to autonomous development partners
 
 </div>
 
-<div v-click>
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600">
+<div class="text-3xl mb-2 text-center">👥</div>
+<div class="text-lg font-bold text-orange-300 text-center mb-2">For Teams</div>
 
-### For Teams
 - Consistent quality via shared standards (`CLAUDE.md`)
 - Spec-driven workflows align AI with conventions
 - Onboarding accelerated — agent knows the codebase
@@ -110,9 +136,10 @@ From LLMs to autonomous development partners
 
 </div>
 
-<div v-click>
+<div v-click class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600">
+<div class="text-3xl mb-2 text-center">🏢</div>
+<div class="text-lg font-bold text-orange-300 text-center mb-2">For Organizations</div>
 
-### For Organizations
 - Ship features faster, fewer context switches
 - Reduce toil on routine engineering tasks
 - Senior patterns encoded into agent instructions
@@ -165,70 +192,39 @@ Auto-approval rate as trust grows
 
 ---
 layout: default
-zoom: 0.85
 ---
 
 # Prompt Engineering Techniques
 
-<div class="grid grid-cols-3 gap-3 mt-1" style="font-size:0.78rem;">
+<div class="grid grid-cols-3 gap-4 mt-3">
 
-<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+<div v-click class="p-4 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
 
 **🎯 Zero-Shot**
 
 No examples — rely on the model's training knowledge alone.
 
-<p class="mt-1 text-orange-300 italic">"Classify as positive / negative / neutral: 'The flight was okay.'"<br/>→ <strong>Neutral</strong></p>
+<p class="mt-2 text-orange-300 italic">"Classify as positive / negative / neutral: 'The flight was okay.'"<br/>→ <strong>Neutral</strong></p>
 
 </div>
 
-<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+<div v-click class="p-4 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
 
 **📚 Few-Shot**
 
 Provide example pairs to guide in-context learning.
 
-<p class="mt-1 text-orange-300 italic">"A baku is a large blue bird. 'We saw bakus in Maui.' → Now write a story about a baku on a ship."</p>
+<p class="mt-2 text-orange-300 italic">"A baku is a large blue bird. 'We saw bakus in Maui.' → Now write a story about a baku on a ship."</p>
 
 </div>
 
-<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
+<div v-click class="p-4 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
 
 **🔗 Chain-of-Thought**
 
 Break complex tasks into explicit reasoning steps.
 
-<p class="mt-1 text-orange-300 italic">"I had 8, gave 3, found 4. <em>Think step by step.</em>"<br/>→ 8−3=5, 5+4=<strong>9</strong></p>
-
-</div>
-
-<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
-
-**🏗️ Meta Prompting**
-
-Define structure and format, not specific content.
-
-<p class="mt-1 text-orange-300 italic">Step 1: Define variables.<br/>Step 2: Apply formula.<br/>Step 3: Simplify & solve.</p>
-
-</div>
-
-<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
-
-**♻️ Self-Consistency**
-
-Sample multiple reasoning paths, pick the most consistent answer.
-
-<p class="mt-1 text-orange-300 italic">"At 6 my sister was 3, gap = 3 yrs always."<br/>→ At 70, sister is <strong>67</strong></p>
-
-</div>
-
-<div v-click class="p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-800">
-
-**🎭 Role Prompting**
-
-Assign a persona to shape tone, priorities and domain focus.
-
-<p class="mt-1 text-orange-300 italic">"You are a skeptical VC. List top 3 pros and cons of this pitch."</p>
+<p class="mt-2 text-orange-300 italic">"I had 8, gave 3, found 4. <em>Think step by step.</em>"<br/>→ 8−3=5, 5+4=<strong>9</strong></p>
 
 </div>
 
@@ -237,21 +233,12 @@ Assign a persona to shape tone, priorities and domain focus.
 <!--
 Prompt engineering is the foundation before agents even enter the picture.
 
-Six key techniques from simple to advanced:
-
 1. Zero-Shot — no examples, just clear instructions. Works well for tasks the model was trained on.
 
 2. Few-Shot — show don't just tell. Examples dramatically improve performance on novel or ambiguous tasks.
 
 3. Chain-of-Thought — "think step by step" unlocks multi-step reasoning. Critical for math, logic, and planning tasks.
-
-4. Meta Prompting — define structure abstractly, not with specific content. Excellent for token efficiency and generalization.
-
-5. Self-Consistency — sample multiple reasoning paths and vote for the most consistent answer. Great for arithmetic and commonsense tasks.
-
-6. Role Prompting — "You are a security auditor" changes what the model prioritizes. Aligns model behavior with domain expectations.
-
-These techniques compose with each other — e.g., Few-Shot + Chain-of-Thought is especially powerful for complex reasoning.
-
-Source: k2view.com/blog/prompt-engineering-techniques/
 -->
+
+---
+layout: default
