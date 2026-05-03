@@ -21,25 +21,7 @@ Duration: 5-7 minutes
 
 # What are Tools?
 
-<div class="grid grid-cols-2 gap-4 mt-1 text-sm">
-
-<div class="dense-col">
-
-<v-clicks>
-
-## Agent-Computer Interface (ACI)
-
-**Definition**: Structured interfaces that extend LLM capabilities beyond text generation by enabling interaction with external systems, APIs, databases, and computational resources.
-
-**How Agents Use Tools**:
-
-<img src="/diagrams/tool-use-pattern.svg" class="w-full mt-1 rounded max-h-36 object-contain" />
-
-</v-clicks>
-
-</div>
-
-<div class="dense-col">
+<div class="mt-4 text-sm">
 
 ## Tool Categories
 
@@ -55,7 +37,7 @@ Duration: 5-7 minutes
 
 </v-clicks>
 
-<div v-click class="mt-1 p-2 bg-orange-900 bg-opacity-30 rounded">
+<div v-click class="mt-4 p-2 bg-orange-900 bg-opacity-30 rounded">
 
 **Key Insight**: Tools transform LLMs into agents — from advisors into actors
 
@@ -63,15 +45,21 @@ Duration: 5-7 minutes
 
 </div>
 
-</div>
+<!--
+## Agent-Computer Interface (ACI)
+
+**Definition**: Structured interfaces that extend LLM capabilities beyond text generation by enabling interaction with external systems, APIs, databases, and computational resources.
+
+Tools are the ACI — the layer through which an agent perceives and acts on the world. Just as a GUI is a Human-Computer Interface, the ACI defines how an agent reads inputs (tool results) and writes outputs (tool calls).
+
+The agent sends a structured tool call → the environment executes it → the result is returned as an observation → the agent decides the next action.
+-->
 
 ---
 
-# What is Memory?
+# What is Memory? — Types
 
-<div class="grid grid-cols-2 gap-6 mt-2 text-sm">
-
-<div class="dense-col">
+<div class="mt-4 text-sm">
 
 <v-clicks>
 
@@ -89,7 +77,11 @@ Duration: 5-7 minutes
 
 </div>
 
-<div class="dense-col">
+---
+
+# What is Memory? — Operations
+
+<div class="mt-4 text-sm">
 
 <v-clicks>
 
@@ -101,8 +93,6 @@ Duration: 5-7 minutes
 - **Prune** — Remove outdated or irrelevant information
 
 </v-clicks>
-
-</div>
 
 </div>
 
