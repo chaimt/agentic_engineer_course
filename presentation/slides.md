@@ -74,11 +74,16 @@ layout: default
 
 ## What We'll Cover
 
-1. 🤖 **Understanding Agentic Workflows** - What they are and why they matter
-2. 🔧 **Tools & Memory Fundamentals** - The building blocks of agentic systems
-3. 💡 **Benefits** - Real-world productivity gains and industry adoption
-4. 🔄 **Workflow Patterns** - Core patterns for practical implementation
-5. 🛠️ **Practical Tips** - Getting started and best practices
+1. 🤖 **Agentic Workflows** - From LLMs to autonomous development partners
+
+2. 🔧 **Tools & Memory** - The primitives that transform LLMs into agents
+
+3. 🔄 **Core Patterns** - Reflection, Tool Use, and Planning in practice
+
+4. 🏗️ **Frameworks** - CrewAI, Pydantic AI, LangGraph, and Agno compared
+
+5. 🛠️ **Principles & Best Practices** - ACI design, hooks, spec-driven workflows
+
 6. ❓ **Q&A** - Your questions and discussion
 
 </v-clicks>

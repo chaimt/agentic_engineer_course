@@ -649,68 +649,6 @@ Duration: 5-7 minutes for both
 layout: default
 ---
 
-# Sequential Workflow Pattern (Prompt Chaining)
-
-<div class="grid grid-cols-2 gap-6">
-
-<div>
-
-## How It Works
-
-<v-clicks>
-
-1. **Chain LLM Calls**: Output of one feeds into next
-2. **Fixed Sequence**: Predefined order of operations
-3. **Transform Data**: Each step processes and passes on
-4. **No Branching**: Linear, deterministic flow
-
-</v-clicks>
-
-<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded">
-<mdi:pipe class="inline"/> Like a pipeline: each stage transforms the input
-</div>
-
-</div>
-
-<div v-click class="dense-col">
-
-## Use Cases
-
-- **Document Generation**: Outline → Validate → Write → Format
-- **Data Processing**: Extract → Transform → Summarize
-- **Content Creation**: Research → Draft → Edit → Publish
-
-**Benefits**: Clear separation of concerns · Easy to debug · Reusable components · Predictable behavior
-
-<p class="mt-2 text-orange-300 text-xs">Best for well-defined transformations where steps are known upfront</p>
-
-</div>
-
-</div>
-
-<!--
-Sequential/Prompt Chaining is the simplest workflow pattern.
-
-Think of it as a Unix pipeline: `cat file.txt | grep pattern | sort | uniq`
-
-Each LLM call is a stage in the pipeline. The output of one becomes the input of the next.
-
-Phil Schmid's key insight: "The output of one LLM call sequentially feeds into the input of the next"
-
-Example workflow:
-1. User provides text
-2. LLM summarizes text
-3. LLM translates summary to French
-4. LLM formats as markdown
-→ Final output: French markdown summary
-
-Key limitation: No decision-making. If you need branching logic, you need routing or agentic patterns.
--->
-
----
-layout: default
----
-
 # Sequential Agent: Visual Examples
 
 <div class="flex flex-col gap-4 h-4/5 justify-center">
@@ -735,6 +673,74 @@ Left: A simple three-step sequential agent — Check Positive Aspect → Check N
 Right: A more advanced sequential pattern where one of the steps is itself a loop agent — Research Agent → Loop Agent (Critic + Review) → Conclusion Agent. This nests an inner feedback loop inside the outer sequential chain, enabling iterative quality improvement in the middle of the pipeline.
 
 Key takeaway: Sequential agents can be composed — steps can themselves be agents with their own internal patterns.
+-->
+
+---
+layout: default
+---
+
+# Sequential Workflow Pattern: How It Works
+
+<div class="flex flex-col gap-6 mt-4">
+
+<v-clicks>
+
+1. **Chain LLM Calls**: Output of one feeds into next
+2. **Fixed Sequence**: Predefined order of operations
+3. **Transform Data**: Each step processes and passes on
+4. **No Branching**: Linear, deterministic flow
+
+</v-clicks>
+
+<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded">
+<mdi:pipe class="inline"/> Like a pipeline: each stage transforms the input
+</div>
+
+</div>
+
+<!--
+Sequential/Prompt Chaining is the simplest workflow pattern.
+
+Think of it as a Unix pipeline: `cat file.txt | grep pattern | sort | uniq`
+
+Each LLM call is a stage in the pipeline. The output of one becomes the input of the next.
+
+Phil Schmid's key insight: "The output of one LLM call sequentially feeds into the input of the next"
+
+Example workflow:
+1. User provides text
+2. LLM summarizes text
+3. LLM translates summary to French
+4. LLM formats as markdown
+→ Final output: French markdown summary
+-->
+
+---
+layout: default
+---
+
+# Sequential Workflow Pattern: Use Cases
+
+<div class="flex flex-col gap-6 mt-4">
+
+<div>
+
+- **Document Generation**: Outline → Validate → Write → Format
+- **Data Processing**: Extract → Transform → Summarize
+- **Content Creation**: Research → Draft → Edit → Publish
+
+</div>
+
+<div class="p-4 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
+<strong>Benefits</strong>: Clear separation of concerns · Easy to debug · Reusable components · Predictable behavior
+</div>
+
+<p class="text-orange-300 text-sm">Best for well-defined transformations where steps are known upfront</p>
+
+</div>
+
+<!--
+Key limitation: No decision-making. If you need branching logic, you need routing or agentic patterns.
 -->
 
 ---
