@@ -23,46 +23,25 @@ Duration: 8-10 minutes for all three
 layout: default
 ---
 
-# Reflection Pattern: Self-Improvement
+# Reflection Pattern: How It Works
 
-<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-6 mt-4">
 
 <div>
 
-## How It Works
-
 <v-clicks>
 
-1. **Generate**: Agent produces initial output
-2. **Critique**: Agent reviews its own work
-3. **Refine**: Agent improves based on critique
-4. **Repeat**: Iterate until quality threshold met
+1. **Generate** — Agent produces an initial output (code, text, plan, etc.)
+2. **Critique** — Agent reviews its own work as if seeing it for the first time
+3. **Refine** — Agent improves the output based on the critique
+4. **Repeat** — Iterate until a quality threshold is met or max cycles reached
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
-<mdi:lightbulb class="inline"/> The agent becomes its own code reviewer
 </div>
 
-</div>
-
-<div v-click class="dense-col">
-
-## Use Cases
-
-- Code quality improvement
-- Documentation refinement
-- Test case generation
-- Error message clarity
-- Architecture review
-
-## Benefits
-
-- ✅ Higher quality outputs
-- ✅ Reduced human review time
-- ✅ Consistent standards
-- ✅ Self-correcting behavior
-
+<div v-click class="p-5 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
+<mdi:lightbulb class="inline text-orange-400 mr-2"/> <strong>Key Insight:</strong> The agent becomes its own pair programmer — write, review, fix — without human intervention. Each cycle brings the output closer to production quality.
 </div>
 
 </div>
@@ -77,6 +56,59 @@ The magic: Each critique-refine cycle improves quality without human interventio
 Real example: "Write a user authentication function" → Agent writes code → Agent reviews for security issues → Agent fixes vulnerabilities → Final code is production-ready.
 
 Limitation: Not good for novel problems where the agent doesn't know what "good" looks like.
+-->
+
+---
+layout: default
+---
+
+# Reflection Pattern: Use Cases & Benefits
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+
+<div>
+
+## Where It Shines
+
+<v-clicks>
+
+- **Code quality** — spot bugs, edge cases, and style issues before humans do
+- **Documentation** — refine clarity, completeness, and accuracy iteratively
+- **Test generation** — critique coverage gaps and add missing scenarios
+- **Error messages** — improve user-facing clarity through critique cycles
+- **Architecture review** — self-audit design decisions for consistency
+
+</v-clicks>
+
+</div>
+
+<div v-click class="dense-col">
+
+## Benefits
+
+- ✅ Higher quality outputs with fewer human review cycles
+- ✅ Consistent standards applied on every run
+- ✅ Self-correcting — catches its own mistakes
+- ✅ Scales review effort without scaling headcount
+
+## Limitation
+
+<div class="mt-2 p-3 bg-red-900 bg-opacity-20 rounded border border-red-700 text-sm">
+<mdi:alert class="inline text-red-400 mr-1"/> Not effective when the agent lacks domain knowledge to judge "good" — garbage criteria in, garbage critique out.
+</div>
+
+</div>
+
+</div>
+
+<!--
+The use cases all share a common trait: there's a measurable quality bar the agent can check against.
+
+Code: does it pass tests? does it follow conventions?
+Docs: is every parameter described? are examples correct?
+Tests: does coverage reach critical paths?
+
+The limitation is important: reflection is only as good as the agent's ability to self-evaluate. For genuinely novel problems or domains outside training, the critique step may not catch real issues.
 -->
 
 ---
@@ -104,13 +136,11 @@ Numbers 0–6 show the message flow order between the agents.
 layout: default
 ---
 
-# Tool Use Pattern: System Integration
+# Tool Use Pattern: How It Works
 
-<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-6 mt-4">
 
 <div>
-
-## How It Works
 
 <v-clicks>
 
@@ -122,28 +152,10 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded">
-<mdi:tools class="inline"/> Transforms suggestions into actions
 </div>
 
-</div>
-
-<div v-click class="dense-col">
-
-## Common Tools
-
-- File system & shell commands
-- APIs (REST, GraphQL)
-- Databases (SQL, NoSQL)
-- Version control & package managers
-
-## Benefits
-
-- ⚡ Autonomous execution
-- 🔧 Real-world impact
-- 🔄 Feedback loops enabled
-- 🎯 Goal-oriented behavior
-
+<div v-click class="p-5 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
+<mdi:tools class="inline text-orange-400 mr-2"/> <strong>Key Insight:</strong> Tool use is what makes an agent actually <em>do</em> things instead of just suggesting them — think of tools as the agent's hands.
 </div>
 
 </div>
@@ -156,6 +168,54 @@ Think of tools as the agent's hands - ways to manipulate the world.
 The pattern: Agent decides "I need to check if this file exists" → Calls file.exists(path) → Gets true/false → Makes next decision based on result.
 
 This is the CORE difference between LLM and Agent - the ability to take action.
+-->
+
+---
+layout: default
+---
+
+# Tool Use Pattern: Tools & Benefits
+
+<div class="grid grid-cols-2 gap-8 mt-4">
+
+<div>
+
+## Common Tools
+
+<v-clicks>
+
+- File system & shell commands
+- APIs (REST, GraphQL)
+- Databases (SQL, NoSQL)
+- Version control & package managers
+
+</v-clicks>
+
+</div>
+
+<div>
+
+## Benefits
+
+<v-clicks>
+
+- ⚡ Autonomous execution
+- 🔧 Real-world impact
+- 🔄 Feedback loops enabled
+- 🎯 Goal-oriented behavior
+
+</v-clicks>
+
+</div>
+
+</div>
+
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
+<mdi:shield-check class="inline text-orange-400 mr-2"/> <strong>Security note:</strong> Tool access must be carefully controlled — agents should only have tools appropriate for their task.
+</div>
+
+<!--
+Two sides of tool use: what tools exist and why they matter.
 
 Security note: Tool access must be carefully controlled - agents should only have tools appropriate for their task.
 -->
@@ -184,13 +244,11 @@ This cycle is what transforms a static language model into an active agent that 
 layout: default
 ---
 
-# Planning Pattern: Task Decomposition
+# Planning Pattern: How It Works
 
-<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-6 mt-4">
 
 <div>
-
-## How It Works
 
 <v-clicks>
 
@@ -202,28 +260,10 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded">
-<mdi:sitemap class="inline"/> From "what" to "how" automatically
 </div>
 
-</div>
-
-<div v-click class="dense-col">
-
-## Example Decomposition
-
-**Goal**: "Add user authentication"
-
-**Plan**:
-1. Create user model
-2. Implement password hashing
-3. Build login endpoint
-4. Add JWT generation
-5. Create middleware
-6. Write tests
-
-**Benefits**: Structured approach · Clear progress tracking · Handles complexity · Verifiable completion
-
+<div v-click class="p-5 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
+<mdi:sitemap class="inline text-orange-400 mr-2"/> <strong>Key Insight:</strong> Planning separates "what to do" from "how to do it" — the agent builds a strategy first, then executes with the ability to replan based on results.
 </div>
 
 </div>
@@ -234,7 +274,48 @@ Planning is where the agent thinks before acting.
 Instead of rushing straight to code, the agent creates a roadmap.
 
 The beauty: Complex requests become manageable sequences of simple tasks.
+-->
 
+---
+layout: default
+---
+
+# Planning Pattern: Example Decomposition
+
+<div class="flex flex-col gap-4 mt-4">
+
+<div class="p-4 bg-gray-900 bg-opacity-60 rounded-xl border border-gray-700">
+
+**Goal**: "Add user authentication"
+
+</div>
+
+<div>
+
+**Plan**:
+
+<v-clicks>
+
+1. Create user model
+2. Implement password hashing
+3. Build login endpoint
+4. Add JWT generation
+5. Create middleware
+6. Write tests
+
+</v-clicks>
+
+</div>
+
+<div v-after class="p-4 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
+
+**Benefits**: Structured approach · Clear progress tracking · Handles complexity · Verifiable completion
+
+</div>
+
+</div>
+
+<!--
 Real workflow:
 User: "Build a REST API for todo items"
 Agent Plan:

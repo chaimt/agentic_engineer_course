@@ -1,14 +1,21 @@
 /* Code syntax highlighting configuration */
 /* Dark background with light text for visibility on dark slides */
 
-.shiki,
-.shiki code {
+.shiki {
   background-color: #ffffff !important;
   color: #1f2328 !important;
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid #ff6b35;
   overflow-x: auto;
+}
+
+.shiki code {
+  background-color: #ffffff !important;
+  color: #1f2328 !important;
+  border: none !important;
+  padding: 0;
+  border-radius: 0;
 }
 
 .shiki * {
