@@ -112,7 +112,7 @@ Tasks where agents underperform simple alternatives:
 
 </div>
 
-<div v-click class="mt-6 p-4 bg-blue-900 bg-opacity-30 rounded">
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
 
 **Decision heuristic**: If you can write a script for it, write the script. If the script would require too much conditional logic and judgment, use an agent.
 

@@ -230,7 +230,7 @@ Powerful, context-aware, action-capable agents that **learn** and **act**
 
 </div>
 
-<div class="mt-4 p-3 bg-blue-900 bg-opacity-30 rounded" v-click>
+<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700" v-click>
 
 **Up next**: How these primitives combine into **workflow patterns** and **multi-agent architectures**
 

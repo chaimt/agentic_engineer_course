@@ -23,7 +23,7 @@ layout: section
 
 </div>
 
-<div class="mt-6 p-3 bg-blue-900 bg-opacity-30 rounded" v-click>
+<div class="mt-6 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700" v-click>
 
 **Progression**: Patterns build on each other — start simple (chaining), grow to sophisticated (multi-agent) only as your needs require
 

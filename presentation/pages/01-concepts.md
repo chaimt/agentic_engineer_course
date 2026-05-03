@@ -58,7 +58,7 @@ From LLMs to autonomous development partners
 
 </div>
 
-<div class="mt-8 p-4 bg-blue-900 rounded-lg">
+<div class="mt-8 p-4 bg-orange-900 bg-opacity-20 rounded-lg border border-orange-700">
 
 **Key Shift**: Engineers focus on **architecture, specifications, and review** — not line-by-line implementation
 

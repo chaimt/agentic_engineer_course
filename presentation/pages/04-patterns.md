@@ -23,6 +23,27 @@ Duration: 8-10 minutes for all three
 layout: default
 ---
 
+# Reflection Pattern: Actor-Critic Architecture
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/reflection-pattern.png" alt="Reflection Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The Actor-Critic architecture shows the two agents working in tandem.
+
+The Actor generates and improves responses (blue cycle on the right).
+The Critic reviews and provides feedback (yellow cycle on the left).
+
+Flow: LLM spawns both agents → Actor generates response → Critic reviews it → Critic provides feedback → Actor improves → cycle repeats until quality is met.
+
+Numbers 0–6 show the message flow order between the agents.
+-->
+
+---
+layout: default
+---
+
 # Reflection Pattern: How It Works
 
 <div class="flex flex-col gap-6 mt-4">
@@ -115,21 +136,20 @@ The limitation is important: reflection is only as good as the agent's ability t
 layout: default
 ---
 
-# Reflection Pattern: Actor-Critic Architecture
+# Tool Use Pattern
 
 <div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
-  <img src="/images/reflection-pattern.png" alt="Reflection Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+  <img src="/images/tool-use-pattern.png" alt="Tool Use Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
 </div>
 
 <!--
-The Actor-Critic architecture shows the two agents working in tandem.
+The Tool Use Pattern flow:
+1. User sends a query to the LLM
+2. LLM accesses tools (Web Search, Vector DB, APIs)
+3. Tools return results to LLM
+4. LLM generates final response back to the user
 
-The Actor generates and improves responses (blue cycle on the right).
-The Critic reviews and provides feedback (yellow cycle on the left).
-
-Flow: LLM spawns both agents → Actor generates response → Critic reviews it → Critic provides feedback → Actor improves → cycle repeats until quality is met.
-
-Numbers 0–6 show the message flow order between the agents.
+This cycle is what transforms a static language model into an active agent that can interact with real-world systems.
 -->
 
 ---
@@ -224,20 +244,22 @@ Security note: Tool access must be carefully controlled - agents should only hav
 layout: default
 ---
 
-# Tool Use Pattern
+# Planning Pattern: Flow Diagram
 
 <div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
-  <img src="/images/tool-use-pattern.png" alt="Tool Use Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+  <img src="/images/planning-pattern.png" alt="Planning Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
 </div>
 
 <!--
-The Tool Use Pattern flow:
-1. User sends a query to the LLM
-2. LLM accesses tools (Web Search, Vector DB, APIs)
-3. Tools return results to LLM
-4. LLM generates final response back to the user
+The Planning Pattern flow:
+1. User sends a Prompt to the Planning agent
+2. Planning generates a Task list (Task Generation)
+3. The Task is executed by the Task Agent
+4. Task Agent returns the Task Result
+5. If needed, Replan adjusts the task list based on results
+6. Final Response is returned to the user
 
-This cycle is what transforms a static language model into an active agent that can interact with real-world systems.
+Key insight: Planning separates "what to do" from "how to do it" — the agent builds a strategy first, then executes with the ability to replan based on results.
 -->
 
 ---
@@ -282,11 +304,21 @@ layout: default
 
 # Planning Pattern: Example Decomposition
 
-<div class="flex flex-col gap-4 mt-4">
+<div class="grid grid-cols-2 gap-6 mt-3">
 
-<div class="p-4 bg-gray-900 bg-opacity-60 rounded-xl border border-gray-700">
+<div class="flex flex-col gap-2">
+
+<div class="p-2 bg-gray-900 bg-opacity-60 rounded-xl border border-gray-700 text-sm">
 
 **Goal**: "Add user authentication"
+
+</div>
+
+<div v-after class="p-2 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700 text-sm">
+
+**Benefits**: Structured approach · Clear progress tracking · Handles complexity · Verifiable completion
+
+</div>
 
 </div>
 
@@ -304,12 +336,6 @@ layout: default
 6. Write tests
 
 </v-clicks>
-
-</div>
-
-<div v-after class="p-4 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700">
-
-**Benefits**: Structured approach · Clear progress tracking · Handles complexity · Verifiable completion
 
 </div>
 
@@ -337,22 +363,25 @@ Limitation: Requires the agent to have domain knowledge to create good plans.
 layout: default
 ---
 
-# Planning Pattern: Flow Diagram
+# Multi-Agent Pattern: Flow Diagram
 
 <div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
-  <img src="/images/planning-pattern.png" alt="Planning Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+  <img src="/images/multi-agent-pattern-animated.gif" alt="Multi-Agent Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
 </div>
 
 <!--
-The Planning Pattern flow:
-1. User sends a Prompt to the Planning agent
+The Planning Pattern flow from ByteByteGo illustrates how a coordinator-based multi-agent system works:
+
+1. User sends a Prompt to the Planning/Orchestrator agent
 2. Planning generates a Task list (Task Generation)
-3. The Task is executed by the Task Agent
+3. The Task is dispatched to a specialist Task Agent
 4. Task Agent returns the Task Result
-5. If needed, Replan adjusts the task list based on results
+5. If needed, a Replan cycle adjusts the task list based on the result
 6. Final Response is returned to the user
 
-Key insight: Planning separates "what to do" from "how to do it" — the agent builds a strategy first, then executes with the ability to replan based on results.
+Key insight: The Replan step is what makes this adaptive — the orchestrator can adjust strategy mid-execution based on what agents discover, making the system resilient to unexpected results.
+
+Source: ByteByteGo — Top AI Agentic Workflow Patterns
 -->
 
 ---
@@ -426,7 +455,7 @@ layout: default
 - ⚠️ Coordination overhead increases
 - ⚠️ Debugging across agents is harder
 
-<div class="mt-4 p-3 bg-blue-900 bg-opacity-30 rounded">
+<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
 
 **Best for**: tasks requiring diverse expertise — dev teams, research pipelines, complex multi-domain analysis
 
@@ -440,31 +469,6 @@ layout: default
 Real example: Software dev team — PM agent (requirements), Coder agent (implementation), Tester agent (QA), Reviewer agent (code review), Coordinator (integration).
 
 Key insight: For simple tasks, a single agent wins. For tasks requiring diverse expertise, multi-agent systems produce superior results.
--->
-
----
-layout: default
----
-
-# Multi-Agent Pattern: Flow Diagram
-
-<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
-  <img src="/images/multi-agent-pattern-animated.gif" alt="Multi-Agent Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
-</div>
-
-<!--
-The Planning Pattern flow from ByteByteGo illustrates how a coordinator-based multi-agent system works:
-
-1. User sends a Prompt to the Planning/Orchestrator agent
-2. Planning generates a Task list (Task Generation)
-3. The Task is dispatched to a specialist Task Agent
-4. Task Agent returns the Task Result
-5. If needed, a Replan cycle adjusts the task list based on the result
-6. Final Response is returned to the user
-
-Key insight: The Replan step is what makes this adaptive — the orchestrator can adjust strategy mid-execution based on what agents discover, making the system resilient to unexpected results.
-
-Source: ByteByteGo — Top AI Agentic Workflow Patterns
 -->
 
 ---
@@ -745,14 +749,27 @@ Key limitation: No decision-making. If you need branching logic, you need routin
 
 ---
 layout: default
-zoom: 0.85
+---
+
+# Parallel Workflow Pattern
+
+<div class="flex items-center justify-center h-4/5">
+  <img src="/images/parallel-workflow-pattern.png" alt="Parallel Workflow Pattern" class="max-h-full max-w-full rounded-xl shadow-lg" />
+</div>
+
+<!--
+Visual diagram of the parallel workflow pattern.
+-->
+
+---
+layout: default
 ---
 
 # Parallel Workflow Pattern (Parallelization)
 
 <div class="grid grid-cols-2 gap-6">
 
-<div>
+<div class="dense-col">
 
 ## How It Works
 
@@ -813,20 +830,6 @@ Real-world analogy: Divide-and-conquer algorithms in computer science.
 -->
 
 ---
-layout: default
----
-
-# Parallel Workflow Pattern
-
-<div class="flex items-center justify-center h-4/5">
-  <img src="/images/parallel-workflow-pattern.png" alt="Parallel Workflow Pattern" class="max-h-full max-w-full rounded-xl shadow-lg" />
-</div>
-
-<!--
-Visual diagram of the parallel workflow pattern.
--->
-
----
 layout: section-header
 ---
 
@@ -845,6 +848,44 @@ Three key patterns:
 These patterns enable complex workflows that require diverse expertise or task decomposition.
 
 Duration: 8-10 minutes for all three
+-->
+
+---
+layout: default
+---
+
+# Hierarchical Pattern: Example
+
+<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
+  <img src="/images/hierarchical-task-decomposition.png" alt="Hierarchical Task Decomposition Agent Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+</div>
+
+<!--
+The diagram illustrates the Hierarchical Task Decomposition Agent Pattern — "agents within agents within agents" — the Russian Doll approach.
+
+Architecture (left):
+- User sends: "Write report on AI trends"
+- ReportWriter Agent is the top-level orchestrator
+  - Writes comprehensive reports
+  - Delegates research via AgentTool call "Research AI trends"
+
+Agent Hierarchy (right):
+- Level 1 — Top-Level Agent: ReportWriter Agent (orchestrator)
+- Level 2 — Coordinator Agents: ResearchAssistant Agent
+  - Finds & summarizes info
+  - Tools: [WebSearch, Summarizer]
+- Level 3 — Tool Agents:
+  - WebSearch Agent: searches web for facts, returns raw data
+  - Summarizer Agent: condenses text, extracts key points
+
+Flow:
+1. User request → ReportWriter
+2. AgentTool call "Research AI trends" → ResearchAssistant
+3. AgentTool call "Search web" → WebSearch Agent
+4. AgentTool call "Summarize findings" → Summarizer Agent
+5. Final response back to user: "Complete AI trends report with research and analysis"
+
+Key insight: Each level delegates to the next, enabling complex multi-step tasks through clean separation of concerns.
 -->
 
 ---
@@ -913,7 +954,7 @@ layout: default
 - 🔄 Coordinator handles complexity
 - ✅ Centralized monitoring
 
-<div class="mt-4 p-3 bg-blue-900 bg-opacity-30 rounded">
+<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
 
 **When to Use**: When tasks have clear hierarchy and need central coordination
 
@@ -938,38 +979,16 @@ Coordinator collects outputs and ensures they integrate correctly.
 layout: default
 ---
 
-# Hierarchical Pattern: Example
+# Routing Pattern: Visual Overview
 
-<div class="flex justify-center items-center" style="height: calc(100% - 4rem);">
-  <img src="/images/hierarchical-task-decomposition.png" alt="Hierarchical Task Decomposition Agent Pattern" class="rounded-xl shadow-lg" style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+<div class="flex items-center justify-center h-4/5">
+  <img src="/images/routing-pattern.png" alt="Routing Pattern - Router Agent dispatching to specialized experts" class="max-h-full max-w-full rounded-xl shadow-lg object-contain" />
 </div>
 
 <!--
-The diagram illustrates the Hierarchical Task Decomposition Agent Pattern — "agents within agents within agents" — the Russian Doll approach.
+The diagram shows a Router Agent receiving a Question and routing it to one of three specialized experts: Legal, Medical, or Technical. Each expert returns a Response back through the router.
 
-Architecture (left):
-- User sends: "Write report on AI trends"
-- ReportWriter Agent is the top-level orchestrator
-  - Writes comprehensive reports
-  - Delegates research via AgentTool call "Research AI trends"
-
-Agent Hierarchy (right):
-- Level 1 — Top-Level Agent: ReportWriter Agent (orchestrator)
-- Level 2 — Coordinator Agents: ResearchAssistant Agent
-  - Finds & summarizes info
-  - Tools: [WebSearch, Summarizer]
-- Level 3 — Tool Agents:
-  - WebSearch Agent: searches web for facts, returns raw data
-  - Summarizer Agent: condenses text, extracts key points
-
-Flow:
-1. User request → ReportWriter
-2. AgentTool call "Research AI trends" → ResearchAssistant
-3. AgentTool call "Search web" → WebSearch Agent
-4. AgentTool call "Summarize findings" → Summarizer Agent
-5. Final response back to user: "Complete AI trends report with research and analysis"
-
-Key insight: Each level delegates to the next, enabling complex multi-step tasks through clean separation of concerns.
+Key insight: The Router Agent uses an LLM (the brain icon) to classify the incoming question and determine which specialist to dispatch to — enabling smart, cost-effective delegation.
 -->
 
 ---
@@ -1042,7 +1061,7 @@ layout: default
 - 🎯 Quality optimization (specialists for domains)
 - 📊 Separation of concerns
 
-<div class="mt-4 p-3 bg-blue-900 bg-opacity-30 rounded">
+<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
 
 **When to Use**: When requests have clear categories with specialized handlers
 
@@ -1056,22 +1075,6 @@ layout: default
 Performance benefit: Simple queries can go to smaller/cheaper models, complex queries to advanced models.
 
 Implementation: Router LLM generates classification, system routes based on that classification.
--->
-
----
-layout: default
----
-
-# Routing Pattern: Visual Overview
-
-<div class="flex items-center justify-center h-4/5">
-  <img src="/images/routing-pattern.png" alt="Routing Pattern - Router Agent dispatching to specialized experts" class="max-h-full max-w-full rounded-xl shadow-lg object-contain" />
-</div>
-
-<!--
-The diagram shows a Router Agent receiving a Question and routing it to one of three specialized experts: Legal, Medical, or Technical. Each expert returns a Response back through the router.
-
-Key insight: The Router Agent uses an LLM (the brain icon) to classify the incoming question and determine which specialist to dispatch to — enabling smart, cost-effective delegation.
 -->
 
 ---
@@ -1093,6 +1096,16 @@ These patterns ensure quality and safety in autonomous systems.
 
 Duration: 5-6 minutes for both
 -->
+
+---
+layout: default
+background: '#000000'
+title: Human-in-the-Loop Diagram
+---
+
+<div class="flex items-center justify-center h-full">
+  <img src="/images/human-in-the-loop.png" class="object-contain rounded-xl" style="width: 100%; height: 100%;" />
+</div>
 
 ---
 layout: default
@@ -1164,7 +1177,7 @@ layout: default
 - ⚖️ Compliance (regulatory requirements)
 - 🎯 Trust building (human accountability)
 
-<div class="mt-4 p-3 bg-blue-900 bg-opacity-30 rounded">
+<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
 
 **When to Use**: When decisions are too critical for full automation or require domain expertise
 
@@ -1188,13 +1201,12 @@ Balance: Too many HITL checkpoints slow workflow, too few reduce quality/safety.
 -->
 
 ---
-layout: default
 background: '#000000'
-title: Human-in-the-Loop Diagram
+title: Feedback Loop Diagram
 ---
 
 <div class="flex items-center justify-center h-full">
-  <img src="/images/human-in-the-loop.png" class="object-contain rounded-xl" style="width: 100%; height: 100%;" />
+  <img src="/images/feedback-loop-diagram.png" class="max-h-full max-w-full object-contain rounded-xl" />
 </div>
 
 ---
@@ -1269,7 +1281,7 @@ layout: default
 - 🔄 Self-correction (automatic refinement)
 - ⚡ Efficiency (fewer manual interventions)
 
-<div class="mt-4 p-3 bg-blue-900 bg-opacity-30 rounded">
+<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
 
 **When to Use**: When output quality can be measured and iterative refinement is beneficial
 
@@ -1289,15 +1301,6 @@ Example: Code generation with tests
 
 Real-world analogy: Scientific method (hypothesis → experiment → analysis → revision).
 -->
-
----
-background: '#000000'
-title: Feedback Loop Diagram
----
-
-<div class="flex items-center justify-center h-full">
-  <img src="/images/feedback-loop-diagram.png" class="max-h-full max-w-full object-contain rounded-xl" />
-</div>
 
 ---
 layout: default
