@@ -34,9 +34,9 @@
   --slidev-theme-error: #C13429;
 
   /* Code Block Colors */
-  --slidev-code-background: #1a1a1a;
+  --slidev-code-background: #0d1117;
   --slidev-code-border: #F47721;
-  --slidev-code-text: #f0f0f0;
+  --slidev-code-text: #e6edf3;
 }
 
 /* Typography */

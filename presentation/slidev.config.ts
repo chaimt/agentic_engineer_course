@@ -9,8 +9,8 @@ export default defineConfig({
   highlighter: 'shiki',
   shikiTheme: 'github-dark',
 
-  // Monaco editor for interactive code examples
-  monaco: 'dev',
+  // Monaco editor disabled to avoid unwanted token decorations
+  monaco: false,
 
   // Layout and rendering
   layout: 'default',

@@ -1,9 +1,10 @@
 /* Code syntax highlighting configuration */
-/* Black and Orange theme with high contrast */
+/* Dark background with light text for visibility on dark slides */
 
-.shiki {
-  background-color: #1a1a1a !important;
-  color: #f0f0f0 !important;
+.shiki,
+.shiki code {
+  background-color: #0d1117 !important;
+  color: #e6edf3 !important;
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid #ff6b35;
@@ -12,6 +13,14 @@
 
 .shiki .line {
   line-height: 1.6;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
+}
+
+.shiki span {
+  text-decoration: none !important;
+  border-bottom: none !important;
 }
 
 /* Highlighted lines - orange accent */
@@ -30,52 +39,5 @@
   width: 3rem;
   margin-right: 1rem;
   text-align: right;
-  color: #676e95;
-}
-
-/* Keywords */
-.shiki .token.keyword {
-  color: #c792ea;
-  font-weight: 600;
-}
-
-/* Strings */
-.shiki .token.string {
-  color: #c3e88d;
-}
-
-/* Functions */
-.shiki .token.function {
-  color: #82aaff;
-}
-
-/* Comments */
-.shiki .token.comment {
-  color: #676e95;
-  font-style: italic;
-}
-
-/* Variables */
-.shiki .token.variable {
-  color: #f07178;
-}
-
-/* Operators */
-.shiki .token.operator {
-  color: #89ddff;
-}
-
-/* Numbers */
-.shiki .token.number {
-  color: #f78c6c;
-}
-
-/* Classes */
-.shiki .token.class-name {
-  color: #ffcb6b;
-}
-
-/* Punctuation */
-.shiki .token.punctuation {
-  color: #89ddff;
+  color: #6e7681;
 }
