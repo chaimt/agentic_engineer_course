@@ -514,47 +514,6 @@ Each coordinator runs a feedback loop until quality threshold is met, then passe
 
 ---
 
-# Framework Comparison
-
-<div class="mt-2 text-xs">
-
-| Framework | Model | Strengths | Best For |
-|-----------|-------|-----------|----------|
-| **LangChain** | Flexible chains | Huge ecosystem, many integrations | Rapid prototyping, chain-based workflows |
-| **LangGraph** | Stateful DAGs | Cyclical graphs, explicit state management | Complex agentic loops, production workflows |
-| **AutoGen** | Multi-agent conversations | Agent-to-agent dialogue, easy role definition | Collaborative multi-agent systems |
-| **CrewAI** | Role-based teams | Human-readable team definitions, task delegation | Team simulation, hierarchical workflows |
-
-</div>
-
-<div class="grid grid-cols-2 gap-6 mt-2 dense-col">
-
-<div v-click>
-
-### When Each Shines
-
-- **LangChain**: Prototype fast with many pre-built components
-- **LangGraph**: Precise control over state transitions and conditional loops
-
-</div>
-
-<div v-click>
-
-- **AutoGen**: Workflow maps to agents conversing and negotiating
-- **CrewAI**: Think in terms of roles, responsibilities, and team workflows
-
-</div>
-
-</div>
-
-<div class="mt-2 p-2 bg-orange-900 bg-opacity-30 rounded text-sm" v-click>
-
-**Recommendation**: Start with Claude Code (no framework needed for many tasks) → LangGraph for complex stateful workflows
-
-</div>
-
----
-
 # Architecture Selection Guide
 
 <div class="text-sm mb-1">Use these 5 criteria to select the right architecture:</div>

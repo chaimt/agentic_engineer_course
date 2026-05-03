@@ -104,6 +104,14 @@ src: ./pages/04-patterns.md
 ---
 
 ---
+src: ./pages/07-frameworks.md
+---
+
+---
+src: ./pages/04b-foundational-patterns.md
+---
+
+---
 src: ./pages/05-architectures.md
 ---
 
