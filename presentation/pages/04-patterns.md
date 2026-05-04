@@ -1,5 +1,6 @@
 ---
 layout: section-header
+sectionTitle: "Patterns"
 ---
 
 # Core Patterns
@@ -631,6 +632,7 @@ Common anti-pattern: teams reach for multi-agent because it "sounds cool" or see
 
 ---
 layout: section-header
+sectionTitle: "Workflow Patterns"
 ---
 
 # Workflow Patterns

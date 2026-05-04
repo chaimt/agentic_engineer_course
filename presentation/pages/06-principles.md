@@ -1,4 +1,6 @@
 ---
+sectionTitle: "Principles"
+---
 
 # Transparent Planning
 

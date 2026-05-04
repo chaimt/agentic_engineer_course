@@ -1,5 +1,6 @@
 ---
 layout: section
+sectionTitle: "Frameworks"
 ---
 
 # Agentic Frameworks

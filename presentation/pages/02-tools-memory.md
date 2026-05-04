@@ -1,5 +1,6 @@
 ---
 layout: section-header
+sectionTitle: "Tools & Memory"
 ---
 
 # Tools & Memory Fundamentals

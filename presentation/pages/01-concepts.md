@@ -1,5 +1,6 @@
 ---
 layout: section-header
+sectionTitle: "Concepts"
 ---
 
 # Agentic Workflows - Concepts
