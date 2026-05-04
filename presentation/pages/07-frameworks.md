@@ -1,10 +1,11 @@
 ---
-layout: section
+layout: section-header
 sectionTitle: "Frameworks"
 ---
 
 # Agentic Frameworks
-## Choosing the right Python framework for your agent stack
+
+Choosing the right Python framework for your agent stack
 
 <!--
 Now that we've covered the patterns and which models suit each pattern,
