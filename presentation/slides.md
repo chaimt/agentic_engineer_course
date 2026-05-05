@@ -68,6 +68,61 @@ Target time: 30-45 minutes total
 layout: default
 ---
 
+# About Me
+
+<div class="flex gap-8 mt-4">
+
+<div class="flex-shrink-0 flex flex-col items-center gap-3">
+  <img src="/images/chaim-turkel.png" alt="Chaim Turkel" class="w-44 h-44 rounded-full object-cover border-4 shadow-lg" style="border-color:#ff8c00;" />
+  <div class="text-xl font-bold text-orange-300">Chaim Turkel</div>
+</div>
+
+<div class="grid grid-cols-2 gap-4 flex-1">
+
+<div class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 flex items-center gap-3">
+  <mdi:account-circle class="text-4xl flex-shrink-0" style="color:#ff8c00;" />
+  <div>
+    <div class="text-base font-bold text-orange-300">Software Architect</div>
+    <div class="text-xs opacity-70 mt-1">AI / Distributed & Data</div>
+  </div>
+</div>
+
+<div class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 flex items-center gap-3">
+  <mdi:account-group class="text-4xl flex-shrink-0" style="color:#ff8c00;" />
+  <div>
+    <div class="text-base font-bold text-orange-300">Group Leader @ Tikal</div>
+    <div class="text-xs opacity-70 mt-1">Leading developer community & knowledge sharing</div>
+  </div>
+</div>
+
+<div class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 flex items-center gap-3">
+  <mdi:calendar-clock class="text-4xl flex-shrink-0" style="color:#ff8c00;" />
+  <div>
+    <div class="text-base font-bold text-orange-300">25+ Years in the Industry</div>
+    <div class="text-xs opacity-70 mt-1">From early web to modern cloud-native systems</div>
+  </div>
+</div>
+
+<div class="p-4 bg-gray-800 bg-opacity-60 rounded-xl border border-gray-600 flex items-center gap-3">
+  <mdi:brain class="text-4xl flex-shrink-0" style="color:#ff8c00;" />
+  <div>
+    <div class="text-base font-bold text-orange-300">Distributed Data & AI</div>
+    <div class="text-xs opacity-70 mt-1">Expertise in scalable systems & agentic workflows</div>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<!--
+A quick intro before we dive in.
+-->
+
+---
+layout: default
+---
+
 # Presentation Overview
 
 <v-clicks>

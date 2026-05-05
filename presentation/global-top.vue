@@ -79,7 +79,7 @@ const isVisible = computed(() => currentPage.value > 2 && sections.value.length 
 }
 
 .section-item.past::after {
-  background: #555;
+  background: #22c55e;
 }
 
 .section-item.active {
@@ -101,7 +101,11 @@ const isVisible = computed(() => currentPage.value > 2 && sections.value.length 
 }
 
 .section-item.past .section-label {
-  color: #777;
+  color: #22c55e;
+}
+
+.section-item.past {
+  background: rgba(34, 197, 94, 0.06);
 }
 
 .section-item.active .section-label {
