@@ -1,10 +1,11 @@
 ---
-layout: section
+layout: section-header
 sectionTitle: "Frameworks"
 ---
 
 # Agentic Frameworks
-## Choosing the right Python framework for your agent stack
+
+Choosing the right Python framework for your agent stack
 
 <!--
 Now that we've covered the patterns and which models suit each pattern,
@@ -144,14 +145,15 @@ different axis.
 
 ---
 layout: default
-zoom: 0.85
+zoom: 0.78
+class: crewai-code-slide
 ---
 
 # CrewAI — Role-Based Teams
 
-<div class="grid grid-cols-2 gap-4 mt-2">
+<div class="grid grid-cols-2 gap-3 mt-1 items-start">
 
-<div class="dense-col">
+<div class="dense-col min-w-0">
 
 ## When to Use
 
@@ -172,9 +174,11 @@ zoom: 0.85
 
 </div>
 
-<div class="dense-col">
+<div class="dense-col min-w-0 flex flex-col gap-1">
 
 ## Minimal Example
+
+<div class="crewai-code-scroll">
 
 ```python
 from crewai import Agent, Task, Crew, Process
@@ -209,6 +213,20 @@ result = crew.kickoff()
 </div>
 
 </div>
+
+</div>
+
+<style scoped>
+.crewai-code-slide .crewai-code-scroll {
+  max-height: min(52vh, 24rem);
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+}
+.crewai-code-slide .crewai-code-scroll :deep(.shiki) {
+  margin: 0;
+}
+</style>
 
 <!--
 CrewAI's superpower is that the code reads like an org chart. You

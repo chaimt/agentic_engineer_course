@@ -769,9 +769,9 @@ layout: default
 
 # Parallel Workflow Pattern (Parallelization)
 
-<div class="grid grid-cols-2 gap-6">
+<div class="grid grid-cols-2 gap-10 mt-6" style="height: calc(100% - 6rem);">
 
-<div class="dense-col">
+<div class="flex flex-col justify-between">
 
 ## How It Works
 
@@ -784,13 +784,13 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-3 p-3 bg-orange-900 bg-opacity-20 rounded">
-<mdi:arrow-left-right class="inline"/> Map-Reduce for LLMs
+<div v-click class="mt-6 p-4 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700 text-lg">
+<mdi:arrow-left-right class="inline mr-2"/> <strong>Map-Reduce for LLMs</strong>
 </div>
 
 </div>
 
-<div v-click class="dense-col">
+<div v-click class="flex flex-col justify-between">
 
 ## Use Cases
 
@@ -805,7 +805,7 @@ layout: default
 - 📈 Scalability (add more workers)
 - 🔄 Better coverage (multiple approaches)
 
-<p class="mt-2 text-orange-300 text-xs">Best when subtasks are independent with no sequential dependencies</p>
+<p class="text-orange-300 text-base leading-snug">Best when subtasks are independent with no sequential dependencies</p>
 
 </div>
 
@@ -947,7 +947,7 @@ layout: default
 
 </div>
 
-<div v-click class="dense-col">
+<div v-click class="space-y-4 text-xl leading-snug [&_h2]:!text-2xl [&_h2]:!mb-2 [&_li]:!text-xl">
 
 ## Benefits
 
@@ -956,7 +956,7 @@ layout: default
 - 🔄 Coordinator handles complexity
 - ✅ Centralized monitoring
 
-<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
+<div class="mt-4 p-4 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700 text-base leading-snug">
 
 **When to Use**: When tasks have clear hierarchy and need central coordination
 
@@ -1054,7 +1054,7 @@ layout: default
 
 </div>
 
-<div v-click class="dense-col">
+<div v-click class="space-y-4 text-xl leading-snug [&_h2]:!text-2xl [&_h2]:!mb-2 [&_li]:!text-xl">
 
 ## Benefits
 
@@ -1063,7 +1063,7 @@ layout: default
 - 🎯 Quality optimization (specialists for domains)
 - 📊 Separation of concerns
 
-<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
+<div class="mt-4 p-4 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700 text-base leading-snug">
 
 **When to Use**: When requests have clear categories with specialized handlers
 
@@ -1170,7 +1170,7 @@ layout: default
 
 </div>
 
-<div v-click class="dense-col">
+<div v-click class="space-y-4 text-xl leading-snug [&_h2]:!text-2xl [&_h2]:!mb-2 [&_li]:!text-xl">
 
 ## Benefits
 
@@ -1179,7 +1179,7 @@ layout: default
 - ⚖️ Compliance (regulatory requirements)
 - 🎯 Trust building (human accountability)
 
-<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
+<div class="mt-4 p-4 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700 text-base leading-snug">
 
 **When to Use**: When decisions are too critical for full automation or require domain expertise
 
@@ -1274,7 +1274,7 @@ layout: default
 
 </div>
 
-<div v-click class="dense-col">
+<div v-click class="space-y-4 text-xl leading-snug [&_h2]:!text-2xl [&_h2]:!mb-2 [&_li]:!text-xl">
 
 ## Benefits
 
@@ -1283,7 +1283,7 @@ layout: default
 - 🔄 Self-correction (automatic refinement)
 - ⚡ Efficiency (fewer manual interventions)
 
-<div class="mt-4 p-3 bg-orange-900 bg-opacity-20 rounded border border-orange-700">
+<div class="mt-4 p-4 bg-orange-900 bg-opacity-20 rounded-xl border border-orange-700 text-base leading-snug">
 
 **When to Use**: When output quality can be measured and iterative refinement is beneficial
 
